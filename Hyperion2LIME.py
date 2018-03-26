@@ -13,6 +13,20 @@ class Hyperion2LIME:
         self.hyperion = ModelOutput(rtout)
         self.hy_grid = self.hyperion.get_quantities()
 
+    def Cart2Spherical(self, x, y, z):
+        r_in = (x**2+y**2+z**2)**0.5
+        if r_in != 0:
+            t_in = np.arccos(z/r_in)
+        else:
+            t_in = 0
+        if x != 0:
+            p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        else:
+            p_in = np.sign(y)*np.pi/2
+
+        return (r_in, t_in, p_in)
+
+
     def locateCell(self, coord, wall_grid):
         """
         return the indice of cell at given coordinates
@@ -38,22 +52,13 @@ class Hyperion2LIME:
 
         return (r_ind, t_ind)
 
-
     def getDensity(self, x, y, z):
         r_wall = self.hy_grid.r_wall
         t_wall = self.hy_grid.t_wall
         p_wall = self.hy_grid.p_wall
         self.rho = self.hy_grid.quantities['density'][0].T
 
-        r_in = (x**2+y**2+z**2)**0.5
-        if r_in != 0:
-            t_in = np.arccos(z/r_in)
-        else:
-            t_in = 0
-        if x != 0:
-            p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
-        else:
-            p_in = np.sign(y)*np.pi/2
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
@@ -65,9 +70,7 @@ class Hyperion2LIME:
         p_wall = self.hy_grid.p_wall
         self.temp = self.hy_grid.quantities['temperature'][0].T
 
-        r_in = (x**2+y**2+z**2)**0.5
-        t_in = np.arccos(z/r_in)
-        p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
@@ -80,9 +83,7 @@ class Hyperion2LIME:
         """
         r_inf = cs*1e5*age*3600*24*365
 
-        r_in = (x**2+y**2+z**2)**0.5
-        t_in = np.arccos(z/r_in)
-        p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         # outside of infall radius, the envelope is static
         if r_in > r_inf:
