@@ -1,0 +1,7 @@
+mmw     2.37
+rtout   /Users/yaolun/test/model32.rtout
+velfile /Users/yaolun/programs/misc/TSC/rho_v_env
+cs      0.38
+age     36000
+g2d     100
+rMin    0.2
