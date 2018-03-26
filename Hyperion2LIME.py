@@ -48,7 +48,10 @@ class Hyperion2LIME:
         print(x,y,x)
 
         r_in = (x**2+y**2+z**2)**0.5
-        t_in = np.arccos(z/r_in)
+        if r_in != 0:
+            t_in = np.arccos(z/r_in)
+        else:
+            t_in = 0
         if x != 0:
             p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
         else:
