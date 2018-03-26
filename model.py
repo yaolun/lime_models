@@ -331,7 +331,7 @@ def velocity(macros, x, y, z):
     # vel[1] = -y*ffSpeed/rToUse
     # vel[2] = -z*ffSpeed/rToUse
 
-    vel = model.getVelocity(x, y, z, cs, age)/1e2
+    vel = model.getVelocity(x, y, z, cs, age)
 
     return vel
 

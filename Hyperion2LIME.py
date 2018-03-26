@@ -112,7 +112,7 @@ class Hyperion2LIME:
         vphi2d = tsc['uphi'].reshape([nxr, ntheta]) * cs*1e5
 
         ind = self.locateCell2d((r_in, t_in), (xr_wall*r_inf, theta_wall))
-        v_out = list(map(float, [vr2d[ind], vtheta2d[ind], vphi2d[ind]]))
+        v_out = list(map(float, [vr2d[ind]/1e2, vtheta2d[ind]/1e2, vphi2d[ind]/1e2]))
 
         return v_out
 
