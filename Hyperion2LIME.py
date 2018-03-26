@@ -47,7 +47,10 @@ class Hyperion2LIME:
 
         r_in = (x**2+y**2+z**2)**0.5
         t_in = np.arccos(z/r_in)
-        p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        if x != 0:
+            p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        else:
+            np.sign(y)*np.pi/2
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
