@@ -45,8 +45,6 @@ class Hyperion2LIME:
         p_wall = self.hy_grid.p_wall
         self.rho = self.hy_grid.quantities['density'][0].T
 
-        print(x,y,x)
-
         r_in = (x**2+y**2+z**2)**0.5
         if r_in != 0:
             t_in = np.arccos(z/r_in)
@@ -59,7 +57,7 @@ class Hyperion2LIME:
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
-        return self.rho[indice]
+        return float(self.rho[indice])
 
     def getTemperature(self, x, y, z):
         r_wall = self.hy_grid.r_wall
@@ -73,7 +71,7 @@ class Hyperion2LIME:
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
-        return self.temp[indice]
+        return float(self.temp[indice])
 
     def getVelocity(self, x, y, z, cs, age):
         """
@@ -113,7 +111,7 @@ class Hyperion2LIME:
         vphi2d = tsc['uphi'].reshape([nxr, ntheta]) * cs*1e5
 
         ind = self.locateCell2d((r_in, t_in), (xr_wall*r_inf, theta_wall))
-        v_out = np.array([vr2d[ind], vtheta2d[ind], vphi2d[ind]])
+        v_out = map(float, [vr2d[ind], vtheta2d[ind], vphi2d[ind]])
 
         return v_out
 
