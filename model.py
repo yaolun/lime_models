@@ -47,10 +47,10 @@ def input(macros):
     # Parameters which must be set (they have no sensible defaults).
     #
     # TODO: review the choice of these parameters
-    par.radius            = 40000.0*macros["AU"]
+    par.radius            = 1000.0*macros["AU"]
     par.minScale          = 0.5*macros["AU"]
-    par.pIntensity        = 10000  # number of model grid points
-    par.sinkPoints        = 3000   # grid points that are distributed randomly at surface of the model
+    par.pIntensity        = 5000  # number of model grid points
+    par.sinkPoints        = 1000   # grid points that are distributed randomly at surface of the model
 
     # Parameters which may be omitted (i.e. left at their default values) under some circumstances.
     #
