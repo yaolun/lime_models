@@ -87,7 +87,7 @@ class Hyperion2LIME:
 
         # outside of infall radius, the envelope is static
         if r_in > r_inf:
-            v_out = np.array([0,0,0])
+            v_out = [0.0, 0.0, 0.0]
             return v_out
 
         tsc = io.ascii.read(self.velfile)

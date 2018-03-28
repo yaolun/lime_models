@@ -48,9 +48,9 @@ def input(macros):
     #
     # TODO: review the choice of these parameters
     par.radius            = 1000.0*macros["AU"]
-    par.minScale          = 0.5*macros["AU"]
+    par.minScale          = 1*macros["AU"]
     par.pIntensity        = 5000  # number of model grid points
-    par.sinkPoints        = 1000   # grid points that are distributed randomly at surface of the model
+    par.sinkPoints        = 3000   # grid points that are distributed randomly at surface of the model
 
     # Parameters which may be omitted (i.e. left at their default values) under some circumstances.
     #
@@ -119,7 +119,7 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    par.nThreads          = 10
+    # par.nThreads          = 10
     par.nSolveIters       = 17
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
