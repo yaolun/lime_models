@@ -34,6 +34,15 @@ class Hyperion2LIME:
 
         return (r_in, t_in, p_in)
 
+    def Spherical2Cart_vector(self, (r, theta, phi), (vr, vt, vp)):
+
+        transform = np.matrix([[np.cos(theta)*np.cos(phi), np.cos(theta)*np.cos(phi), -np.sin(phi)],
+                               [np.sin(theta)*np.sin(phi)  , np.cos(theta)*np.sin(phi), np.cos(phi)],
+                               [np.cos(theta)              , -np.sin(theta)           , 0]])
+        v_cart = transform.dot(np.array([vr, vt, vp]))
+
+        return list(np.asarray(v_cart).flatten())
+
 
     def locateCell(self, coord, wall_grid):
         """
@@ -122,7 +131,9 @@ class Hyperion2LIME:
         vphi2d = tsc['uphi'].reshape([nxr, ntheta]) * cs*1e5
 
         ind = self.locateCell2d((r_in, t_in), (xr_wall*r_inf, theta_wall))
-        v_out = list(map(float, [vr2d[ind]/1e2, vtheta2d[ind]/1e2, vphi2d[ind]/1e2]))
+        v_sph = list(map(float, [vr2d[ind]/1e2, vtheta2d[ind]/1e2, vphi2d[ind]/1e2]))
+
+        v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
         return v_out
 
