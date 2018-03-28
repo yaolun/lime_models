@@ -7,11 +7,12 @@ class Hyperion2LIME:
     Class for importing Hyperion result to LIME
     """
 
-    def __init__(self, rtout, velfile):
+    def __init__(self, rtout, velfile, rmin=0):
         self.rtout = rtout
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
         self.hy_grid = self.hyperion.get_quantities()
+        self.rmin = rmin
 
     def Cart2Spherical(self, x, y, z):
         r_in = (x**2+y**2+z**2)**0.5
@@ -23,6 +24,9 @@ class Hyperion2LIME:
             p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
         else:
             p_in = np.sign(y)*np.pi/2
+
+        if r_in < self.rmin:
+            r_in = self.rmin
 
         return (r_in, t_in, p_in)
 

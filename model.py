@@ -34,7 +34,7 @@ age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
 rMin = float(config['rMin'])*au # greater than zero to avoid a singularity at the origin.
 
-model = h2l.Hyperion2LIME(rtout, velfile)
+model = h2l.Hyperion2LIME(rtout, velfile, rmin=rMin)
 
 # Note that the useful macros defined in lime.h are also provided here in the dictionary 'macros' provided as an argument to each function below. See the example code at the end for the full list of macro values provided.
 
