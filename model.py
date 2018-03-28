@@ -124,7 +124,7 @@ def input(macros):
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
-    par.gridOutFiles      = ['grid1','grid2','grid3','grid4',"grid5"] # must be a list with 5 string elements, although some or all can be empty.
+    par.gridOutFiles      = ['', '', 'grid3','grid4',"grid5"] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
@@ -314,24 +314,24 @@ def velocity(macros, x, y, z):
     #
     # # Calculate radial distance from origin
     # #
-    r = math.sqrt(x*x+y*y+z*z)
-
-    if r > rMin:
-        rToUse = r
-    else:
-        rToUse = rMin # Just to prevent overflows at r==0!
-
-    # Free-fall velocity in the radial direction onto a central
-    # mass of 1.0 solar mass
+    # r = math.sqrt(x*x+y*y+z*z)
     #
-    ffSpeed = math.sqrt(2.0*macros["GRAV"]*1.989e30/rToUse)
+    # if r > rMin:
+    #     rToUse = r
+    # else:
+    #     rToUse = rMin # Just to prevent overflows at r==0!
+    #
+    # # Free-fall velocity in the radial direction onto a central
+    # # mass of 1.0 solar mass
+    # #
+    # ffSpeed = math.sqrt(2.0*macros["GRAV"]*1.989e30/rToUse)
+    #
+    # vel = [0,0,0] # just to initialize its size.
+    # vel[0] = -x*ffSpeed/rToUse
+    # vel[1] = -y*ffSpeed/rToUse
+    # vel[2] = -z*ffSpeed/rToUse
 
-    vel = [0,0,0] # just to initialize its size.
-    vel[0] = -x*ffSpeed/rToUse
-    vel[1] = -y*ffSpeed/rToUse
-    vel[2] = -z*ffSpeed/rToUse
-
-    # vel = model.getVelocity(x, y, z, cs, age)
+    vel = model.getVelocity(x, y, z, cs, age)
 
     return vel
 
