@@ -317,9 +317,9 @@ def velocity(macros, x, y, z):
     r = math.sqrt(x*x+y*y+z*z)
 
     if r > rMin:
-    rToUse = r
+        rToUse = r
     else:
-    rToUse = rMin # Just to prevent overflows at r==0!
+        rToUse = rMin # Just to prevent overflows at r==0!
 
     # Free-fall velocity in the radial direction onto a central
     # mass of 1.0 solar mass
