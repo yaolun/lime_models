@@ -72,7 +72,7 @@ class Hyperion2LIME:
 
         # LIME needs molecule number density per cubic meter
 
-        return float(self.rho[indice])*g2d/mh/mmw*1e6
+        return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
 
     def getTemperature(self, x, y, z):
         r_wall = self.hy_grid.r_wall
