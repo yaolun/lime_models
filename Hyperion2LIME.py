@@ -41,7 +41,7 @@ class Hyperion2LIME:
                                [np.cos(theta)              , -np.sin(theta)           , 0]])
         v_cart = transform.dot(np.array([vr, vt, vp]))
 
-        return list(np.asarray(v_cart).flatten())
+        return map(float, np.asarray(v_cart).flatten())
 
 
     def locateCell(self, coord, wall_grid):
@@ -103,7 +103,6 @@ class Hyperion2LIME:
         r_inf = cs*1e5*age*3600*24*365
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
-        print(x,y,z)
 
         # outside of infall radius, the envelope is static
         if r_in > r_inf:
@@ -135,8 +134,6 @@ class Hyperion2LIME:
         v_sph = list(map(float, [vr2d[ind]/1e2, vtheta2d[ind]/1e2, vphi2d[ind]/1e2]))
 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
-
-        print(v_out)
 
         return v_out
 
