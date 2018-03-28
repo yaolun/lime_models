@@ -1,18 +1,22 @@
 from hyperion.model import ModelOutput
 import numpy as np
 import astropy.io as io
+import astropy.constants as const
+mh = const.m_p.cgs.value+const.m_e.cgs.value
 
 class Hyperion2LIME:
     """
     Class for importing Hyperion result to LIME
     """
 
-    def __init__(self, rtout, velfile, rmin=0):
+    def __init__(self, rtout, velfile, rmin=0, mmw=2.37, g2d=100):
         self.rtout = rtout
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
         self.hy_grid = self.hyperion.get_quantities()
         self.rmin = rmin
+        self.mmw = mmw
+        self.g2d = g2d
 
     def Cart2Spherical(self, x, y, z):
         r_in = (x**2+y**2+z**2)**0.5
@@ -66,7 +70,9 @@ class Hyperion2LIME:
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
-        return float(self.rho[indice])
+        # LIME needs molecule number density per cubic meter
+
+        return float(self.rho[indice])*g2d/mh/mmw*1e6
 
     def getTemperature(self, x, y, z):
         r_wall = self.hy_grid.r_wall

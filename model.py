@@ -34,7 +34,7 @@ age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
 rMin = float(config['rMin'])*au # greater than zero to avoid a singularity at the origin.
 
-model = h2l.Hyperion2LIME(rtout, velfile, rmin=rMin)
+model = h2l.Hyperion2LIME(rtout, velfile, rmin=rMin, g2d=g2d, mmw=mmw)
 
 # Note that the useful macros defined in lime.h are also provided here in the dictionary 'macros' provided as an argument to each function below. See the example code at the end for the full list of macro values provided.
 
@@ -204,7 +204,7 @@ def density(macros, x, y, z):
     # listOfDensities = [1.5e6*((rToUse/(300.0*macros["AU"]))**(-1.5))*1e6] # must be a list, even when there is only 1 item.
 
 
-    listOfDensities = [model.getDensity(x, y, z)*g2d/mh/mmw]
+    listOfDensities = [model.getDensity(x, y, z)]
 
 
     return listOfDensities
