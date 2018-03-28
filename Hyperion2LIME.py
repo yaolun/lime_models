@@ -136,6 +136,8 @@ class Hyperion2LIME:
 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
+        print(v_out)
+
         return v_out
 
     def getAbundance(self, x, y, z):
