@@ -103,6 +103,7 @@ class Hyperion2LIME:
         r_inf = cs*1e5*age*3600*24*365
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+        print(x,y,z)
 
         # outside of infall radius, the envelope is static
         if r_in > r_inf:
