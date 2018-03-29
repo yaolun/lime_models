@@ -36,6 +36,8 @@ rMin = float(config['rMin'])*au # greater than zero to avoid a singularity at th
 
 model = h2l.Hyperion2LIME(rtout, velfile, rmin=rMin, g2d=g2d, mmw=mmw)
 
+
+
 # Note that the useful macros defined in lime.h are also provided here in the dictionary 'macros' provided as an argument to each function below. See the example code at the end for the full list of macro values provided.
 
 #.......................................................................
@@ -141,7 +143,7 @@ def input(macros):
     par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
     #  par.img[-1].molI              = -1
     par.img[-1].velres            = 100.0          # Channel resolution in m/s
-    par.img[-1].imgres            = 1.0            # Resolution in arc seconds
+    par.img[-1].imgres            = 0.1            # Resolution in arc seconds
     par.img[-1].pxls              = 100            # Pixels per dimension
     par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
     #  par.img[-1].freq              = -1.0
@@ -332,6 +334,11 @@ def velocity(macros, x, y, z):
     # vel[2] = -z*ffSpeed/rToUse
 
     vel = model.getVelocity(x, y, z, cs, age)
+
+    # debug
+    foo = open('h2l.log', 'w+')
+    foo.write('%e \t %e \t %e \t %f \t %f \t %f \n' % (x,y,z,vel[0],vel[1],vel[2]))
+    foo.close()
 
     return vel
 
