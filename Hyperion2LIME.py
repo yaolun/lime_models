@@ -7,6 +7,7 @@ mh = const.m_p.cgs.value+const.m_e.cgs.value
 class Hyperion2LIME:
     """
     Class for importing Hyperion result to LIME
+    IMPORTANT: LIME uses SI units, while Hyperion uses CGS units.
     """
 
     def __init__(self, rtout, velfile, rmin=0, mmw=2.37, g2d=100):
@@ -18,7 +19,14 @@ class Hyperion2LIME:
         self.mmw = mmw
         self.g2d = g2d
 
-    def Cart2Spherical(self, x, y, z):
+    def Cart2Spherical(self, x, y, z, unit_convert=True):
+        """
+        if unit_convert, the inputs (x, y, z) are meter.
+        The outputs are in cm.
+        """
+        if unit_convert:
+            x, y, z = x*1e2, y*1e2, z*1e2
+
         r_in = (x**2+y**2+z**2)**0.5
         if r_in != 0:
             t_in = np.arccos(z/r_in)
@@ -100,7 +108,7 @@ class Hyperion2LIME:
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
         """
-        r_inf = cs*1e5*age*3600*24*365
+        r_inf = cs*1e5*age*3600*24*365  # in cm
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
