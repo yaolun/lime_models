@@ -10,7 +10,7 @@ class Hyperion2LIME:
     IMPORTANT: LIME uses SI units, while Hyperion uses CGS units.
     """
 
-    def __init__(self, rtout, velfile, rmin=0, mmw=2.37, g2d=100):
+    def __init__(self, rtout, velfile, cs, age, rmin=0, mmw=2.37, g2d=100):
         self.rtout = rtout
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
@@ -18,6 +18,27 @@ class Hyperion2LIME:
         self.rmin = rmin
         self.mmw = mmw
         self.g2d = g2d
+        self.cs = cs
+        self.age = age
+
+        # velocity grid construction
+        self.tsc = io.ascii.read(self.velfile)
+        self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
+        self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
+                                 (self.xr[:-1]+self.xr[1:])/2,
+                                 [2*self.xr[-1]-self.xr[-2]]))
+        self.theta = np.unique(self.tsc['theta'])
+        self.theta_wall = np.hstack(([2*self.theta[0]-self.theta[1]],
+                                (self.theta[:-1]+self.theta[1:])/2,
+                                [2*self.theta[-1]-self.theta[-2]]))
+        self.nxr = len(self.xr)
+        self.ntheta = len(self.theta)
+        self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
+
+        self.vr2d = self.tsc['ur'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.vtheta2d = self.tsc['utheta'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.vphi2d = self.tsc['uphi'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
+
 
     def Cart2Spherical(self, x, y, z, unit_convert=True):
         """
@@ -42,14 +63,16 @@ class Hyperion2LIME:
 
         return (r_in, t_in, p_in)
 
-    def Spherical2Cart_vector(self, (r, theta, phi), (vr, vt, vp)):
+    def Spherical2Cart_vector(self, coord_sph, v_sph):
+        r, theta, phi = coord_sph
+        vr, vt, vp = v_sph
 
         transform = np.matrix([[np.cos(theta)*np.cos(phi), np.cos(theta)*np.cos(phi), -np.sin(phi)],
                                [np.sin(theta)*np.sin(phi)  , np.cos(theta)*np.sin(phi), np.cos(phi)],
                                [np.cos(theta)              , -np.sin(theta)           , 0]])
         v_cart = transform.dot(np.array([vr, vt, vp]))
 
-        return map(float, np.asarray(v_cart).flatten())
+        return list(map(float, np.asarray(v_cart).flatten()))
 
 
     def locateCell(self, coord, wall_grid):
@@ -103,43 +126,27 @@ class Hyperion2LIME:
 
         return float(self.temp[indice])
 
-    def getVelocity(self, x, y, z, cs, age):
+    def getVelocity(self, x, y, z):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
         """
-        r_inf = cs*1e5*age*3600*24*365  # in cm
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         # outside of infall radius, the envelope is static
-        if r_in > r_inf:
+        if r_in > self.r_inf:
             v_out = [0.0, 0.0, 0.0]
             return v_out
 
-        tsc = io.ascii.read(self.velfile)
-
-        xr = np.unique(tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
-        xr_wall = np.hstack(([2*xr[0]-xr[1]], (xr[:-1]+xr[1:])/2, [2*xr[-1]-xr[-2]]))
-        theta = np.unique(tsc['theta'])
-        theta_wall = np.hstack(([2*theta[0]-theta[1]],
-                                (theta[:-1]+theta[1:])/2,
-                                [2*theta[-1]-theta[-2]]))
-        nxr = len(xr)
-        ntheta = len(theta)
-
         # if the input radius is smaller than the minimum in xr array,
         # use the minimum in xr array instead.
-        if r_in < xr_wall.min()*r_inf:
-            r_in = xr.min()*r_inf
+        if r_in < self.xr_wall.min()*self.r_inf:
+            r_in = self.xr.min()*self.r_inf
             # TODO: raise warning
 
-        vr2d = tsc['ur'].reshape([nxr, ntheta]) * cs*1e5
-        vtheta2d = tsc['utheta'].reshape([nxr, ntheta]) * cs*1e5
-        vphi2d = tsc['uphi'].reshape([nxr, ntheta]) * cs*1e5
-
-        ind = self.locateCell2d((r_in, t_in), (xr_wall*r_inf, theta_wall))
-        v_sph = list(map(float, [vr2d[ind]/1e2, vtheta2d[ind]/1e2, vphi2d[ind]/1e2]))
+        ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
+        v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 

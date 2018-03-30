@@ -34,7 +34,7 @@ age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
 rMin = float(config['rMin'])*au # greater than zero to avoid a singularity at the origin.
 
-model = h2l.Hyperion2LIME(rtout, velfile, rmin=rMin, g2d=g2d, mmw=mmw)
+model = h2l.Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw)
 
 
 
@@ -333,7 +333,7 @@ def velocity(macros, x, y, z):
     # vel[1] = -y*ffSpeed/rToUse
     # vel[2] = -z*ffSpeed/rToUse
 
-    vel = model.getVelocity(x, y, z, cs, age)
+    vel = model.getVelocity(x, y, z)
 
     # debug
     foo = open('h2l.log', 'a')
