@@ -336,9 +336,9 @@ def velocity(macros, x, y, z):
     vel = model.getVelocity(x, y, z)
 
     # debug
-    foo = open('h2l.log', 'a')
-    foo.write('%e \t %e \t %e \t %f \t %f \t %f \n' % (x,y,z,vel[0],vel[1],vel[2]))
-    foo.close()
+    # foo = open('h2l.log', 'a')
+    # foo.write('%e \t %e \t %e \t %f \t %f \t %f \n' % (x,y,z,vel[0],vel[1],vel[2]))
+    # foo.close()
 
     return vel
 
