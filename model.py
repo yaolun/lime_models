@@ -49,10 +49,10 @@ def input(macros):
     # Parameters which must be set (they have no sensible defaults).
     #
     # TODO: review the choice of these parameters
-    par.radius            = 10000.0*macros["AU"]
+    par.radius            = 64973*macros["AU"]
     par.minScale          = 0.5*macros["AU"]
-    par.pIntensity        = 10000  # number of model grid points
-    par.sinkPoints        = 3000   # grid points that are distributed randomly at surface of the model
+    par.pIntensity        = 50000  # number of model grid points
+    par.sinkPoints        = 8000   # grid points that are distributed randomly at surface of the model
 
     # Parameters which may be omitted (i.e. left at their default values) under some circumstances.
     #
@@ -139,12 +139,12 @@ def input(macros):
     # The [-1] entry is the most recently added.
     # TODO: review the choice of imaging parameters
 
-    par.img[-1].nchan             = 100            # Number of channels
+    par.img[-1].nchan             = 200            # Number of channels
     par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
     #  par.img[-1].molI              = -1
     par.img[-1].velres            = 100.0          # Channel resolution in m/s
     par.img[-1].imgres            = 0.2            # Resolution in arc seconds
-    par.img[-1].pxls              = 500            # Pixels per dimension
+    par.img[-1].pxls              = 1500            # Pixels per dimension
     par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
     #  par.img[-1].freq              = -1.0
     #  par.img[-1].bandwidth         = -1.0
