@@ -56,7 +56,7 @@ def input(macros):
 
     # Parameters which may be omitted (i.e. left at their default values) under some circumstances.
     #
-    par.dust              = "jena_thin_e6.tab"  # TODO: adopt other dust profile in the future
+    par.dust              = "dust_oh5.txt"  # opacity per gram of dust.  This is only used for generating continuum image.
     par.outputfile        = "populations.pop"
     par.binoutputfile     = "restart.pop"  # contains the grid, popilations, and molecular data in binary format for re-imaging
     par.gridfile          = "grid.vtk"
