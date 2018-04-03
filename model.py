@@ -121,7 +121,7 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    # par.nThreads          = 10
+    par.nThreads          = 20
     par.nSolveIters       = 17
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
