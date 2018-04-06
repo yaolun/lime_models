@@ -62,7 +62,7 @@ def input(macros):
     par.gridfile          = "grid.vtk"
     #  par.pregrid           = "pregrid.asc"
     #  par.restart           = "restart.pop"
-    #  par.gridInFile        = "grid_5.ds"
+     par.gridInFile        = "grid5"
 
     #    Setting elements of the following two arrays is optional. NOTE
     #    that, if you do set any of their values, you should set as many as
@@ -121,7 +121,7 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    par.nThreads          = 20
+    par.nThreads          = 10
     par.nSolveIters       = 17
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
