@@ -62,7 +62,7 @@ def input(macros):
     par.gridfile          = "grid.vtk"
     #  par.pregrid           = "pregrid.asc"
     #  par.restart           = "restart.pop"
-     par.gridInFile        = "grid5"
+    par.gridInFile        = "grid5"
 
     #    Setting elements of the following two arrays is optional. NOTE
     #    that, if you do set any of their values, you should set as many as
