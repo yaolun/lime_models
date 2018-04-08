@@ -3,6 +3,7 @@ import numpy as np
 import astropy.io as io
 import astropy.constants as const
 mh = const.m_p.cgs.value+const.m_e.cgs.value
+au_cgs = const.au.cgs.value
 
 class Hyperion2LIME:
     """
@@ -152,14 +153,24 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getAbundance(self, x, y, z):
-        # (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
-        #
-        # if r_in > self.r_inf:
-        #     abundance = 3.5e-9
-        # else:
-        #     abundance = 3.5e-8
+    def getAbundance(self, x, y, z, tol=10):
+        # tol: the size (in AU) of the linear region between two steps
+        # (try to avoid "cannot find cell" problem in LIME)
 
-        abundance = 3.5e-9
+        abundances = [3.5e-8, 3.5e-9]  # inner, outer
+        tol = tol*au_cgs
+
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+
+        if (r_in - self.r_inf) > tol/2:
+            abundance = abundances[1]
+        elif abs(r_in - self.r_inf) <= tol/2:
+            abundance = abundances[0] +
+                        (r_in-self.r_inf+tol/2)*(abundances[1]-abundances[0])/tol
+        else:
+            abundance = abundances[0]
+
+        # uniform abundance
+        # abundance = 3.5e-9
 
         return abundance
