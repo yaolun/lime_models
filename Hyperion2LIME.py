@@ -160,6 +160,6 @@ class Hyperion2LIME:
         # else:
         #     abundance = 3.5e-8
 
-        abndance = 3.5e-9
+        abundance = 3.5e-9
 
         return abundance
