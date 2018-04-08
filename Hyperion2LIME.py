@@ -153,11 +153,13 @@ class Hyperion2LIME:
         return v_out
 
     def getAbundance(self, x, y, z):
-        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
-        
-        if r_in > self.r_inf:
-            abundance = 3.5e-9
-        else:
-            abundance = 3.5e-8
+        # (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+        #
+        # if r_in > self.r_inf:
+        #     abundance = 3.5e-9
+        # else:
+        #     abundance = 3.5e-8
+
+        abndance = 3.5e-9
 
         return abundance
