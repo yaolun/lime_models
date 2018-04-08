@@ -165,7 +165,7 @@ class Hyperion2LIME:
         if (r_in - self.r_inf) > tol/2:
             abundance = abundances[1]
         elif abs(r_in - self.r_inf) <= tol/2:
-            abundance = abundances[0] +
+            abundance = abundances[0] + \
                         (r_in-self.r_inf+tol/2)*(abundances[1]-abundances[0])/tol
         else:
             abundance = abundances[0]
