@@ -7,8 +7,6 @@
 #	  You will need the location of pylime in your PATH environment variable; also you need to have the location of the par_classes.py module in your PYTHONPATH environment variable.
 print('strat running pylime')
 
-import math
-
 # For definitions of the classes ModelParameters and ImageParameters:
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
