@@ -20,6 +20,8 @@ import astropy.constants as const
 import astropy.io as io
 mh = const.m_p.cgs.value + const.m_e.cgs.value
 au = const.au.cgs.value
+au_si = const.au.si.value
+pc_si = const.pc.si.value
 
 # TODO: read in the following parameters from files
 config_file = io.ascii.read('lime_config.txt')
@@ -35,10 +37,10 @@ velfile = config['velfile']
 cs = float(config['cs'])
 age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
-rMax = float(config['rMax'])*macros["AU"]
-rMin = float(config['rMin'])*macros["AU"] # greater than zero to avoid a singularity at the origin.
+rMax = float(config['rMax'])*au_si
+rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at the origin.
 a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
-distance = float(config['distance'])*macros["PC"]
+distance = float(config['distance'])*pc_si
 
 # path
 outdir = config['outdir']
