@@ -45,8 +45,8 @@ for m in model_list['model_name']:
     # run pylime
     log = open(outdir+'pylime.log','w')
     err = open(outdir+'pylime.err','w')
-    run = Popen(['pylime', '/scratch/LIMEmods/pylime/lime/YLY/lime_models/model.py'],
+    run = call(['pylime', 'model.py'],
                 stdout=log, stderr=err)
-    run.communicate()
+    # run.communicate()
 
     print('Finish model '+str(m))

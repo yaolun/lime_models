@@ -5,8 +5,8 @@
 #	- You should run lime with this script in the form
 #		pylime model.py
 #	  You will need the location of pylime in your PATH environment variable; also you need to have the location of the par_classes.py module in your PYTHONPATH environment variable.
-print(wtf)
 # For definitions of the classes ModelParameters and ImageParameters:
+
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
