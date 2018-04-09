@@ -45,6 +45,7 @@ distance = float(config['distance'])*pc_si
 # path
 outdir = str(config['outdir'].data[0])
 dustfile = str(config['dustfile'].data[0])
+print('output directory = '+outdir)
 
 # TODO: rmax, rmin, dustfile, distance, inclination
 
@@ -141,7 +142,7 @@ def input(macros):
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
-    par.gridOutFiles      = ['', '', outdir+'grid3',outdir+'grid4',outdir+"grid5"] # must be a list with 5 string elements, although some or all can be empty.
+    par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+"grid5"] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
