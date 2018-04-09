@@ -45,7 +45,5 @@ for m in model_list['model_name']:
     err = open(outdir+'pylime.err','w')
     run = Popen([pylime, 'model.py'], stdout=log, stderr=err)
     run.communicate()
-    log.close()
-    err.close()
 
-    print('Finish model '+m)
+    print('Finish model '+str(m))
