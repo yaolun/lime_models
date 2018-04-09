@@ -14,6 +14,8 @@ sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/)
 from par_classes import *
 
+print('strat running pylime')
+
 # import results from Hyperion and TSC calculations
 import sys
 import os
