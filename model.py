@@ -11,7 +11,7 @@ import math
 # For definitions of the classes ModelParameters and ImageParameters:
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
-sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/)
+sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
 print(sys.path)
 from par_classes import *
 
