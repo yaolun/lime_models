@@ -9,13 +9,16 @@
 import math
 
 # For definitions of the classes ModelParameters and ImageParameters:
+import sys
+sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
+sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/)
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
 import sys
 import os
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
-import Hyperion2LIME as h2l
+from Hyperion2LIME import *
 import astropy.constants as const
 import astropy.io as io
 mh = const.m_p.cgs.value + const.m_e.cgs.value
@@ -48,7 +51,7 @@ dustfile = config['dustfile']
 
 # TODO: rmax, rmin, dustfile, distance, inclination
 
-model = h2l.Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw)
+model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw)
 
 
 
