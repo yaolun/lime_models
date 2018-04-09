@@ -12,6 +12,7 @@ import math
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/)
+print(sys.path)
 from par_classes import *
 
 print('strat running pylime')
