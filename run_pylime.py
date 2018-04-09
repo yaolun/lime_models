@@ -21,7 +21,7 @@ for m in model_list['model_name']:
                 '0.2', '64973', '200.0']
 
     for i, (name, val) in enumerate(zip(p_names, p_values)):
-        foo.write('{:<14s}  {:<s}'.format(name, val))
+        foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     # model parameters - only abundance now
     outdir = outdir_base+'model'+str(m)+'/'
@@ -31,7 +31,7 @@ for m in model_list['model_name']:
                 model_list['a_params1'][model_list['model_name'] == m],
                 model_list['a_params2'][model_list['model_name'] == m]]
     for i, (name, val) in enumerate(zip(p_names, p_values)):
-        foo.write('{:<14s}  {:<s}'.format(name, val))
+        foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     foo.close()
 
