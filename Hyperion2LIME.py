@@ -16,7 +16,7 @@ class Hyperion2LIME:
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
         self.hy_grid = self.hyperion.get_quantities()
-        self.rmin = rmin
+        self.rmin = rmin*1e2        # rmin defined in LIME, which use SI unit
         self.mmw = mmw
         self.g2d = g2d
         self.cs = cs
@@ -153,22 +153,26 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getAbundance(self, x, y, z, tol=10):
+    def getAbundance(self, x, y, z, a_params, tol=10):
         # tol: the size (in AU) of the linear region between two steps
         # (try to avoid "cannot find cell" problem in LIME)
 
-        abundances = [3.5e-8, 3.5e-9]  # inner, outer
+        # a_params = [abundance at outer region,
+        #             fraction of outer abundance to the inner abundance,
+        #             the ratio of the outer radius of the inner region to the infall radius]
+
+        # abundances = [3.5e-8, 3.5e-9]  # inner, outer
         tol = tol*au_cgs
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
-        if (r_in - self.r_inf) > tol/2:
-            abundance = abundances[1]
-        elif abs(r_in - self.r_inf) <= tol/2:
-            abundance = abundances[0] + \
-                        (r_in-self.r_inf+tol/2)*(abundances[1]-abundances[0])/tol
+        if (r_in - a_params[2]*self.r_inf) > tol/2:
+            abundance = a_params[0]
+        elif abs(r_in - a_params[2]*self.r_inf) <= tol/2:
+            abundance = a_params[0] + \
+                        (r_in-a_params[2]*self.r_inf+tol/2)*(a_params[1]-a_params[0])/tol
         else:
-            abundance = abundances[0]
+            abundance = a_params[0]
 
         # uniform abundance
         # abundance = 3.5e-9

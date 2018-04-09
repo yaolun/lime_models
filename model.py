@@ -26,13 +26,25 @@ config_file = io.ascii.read('lime_config.txt')
 config = {}
 for name, val in zip(config_file['col1'],config_file['col2']):
     config[name] = val
+
+pIntensity = int(config['pIntensity'])
+sinkPoints = int(config['sinkPoints'])
 mmw = float(config['mmw'])
 rtout = config['rtout']
 velfile = config['velfile']
 cs = float(config['cs'])
 age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
-rMin = float(config['rMin'])*au # greater than zero to avoid a singularity at the origin.
+rMax = float(config['rMax'])*macros["AU"]
+rMin = float(config['rMin'])*macros["AU"] # greater than zero to avoid a singularity at the origin.
+a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
+distance = float(config['distance'])*macros["PC"]
+
+# path
+outdir = config['outdir']
+dustfile = config['dustfile']
+
+# TODO: rmax, rmin, dustfile, distance, inclination
 
 model = h2l.Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw)
 
@@ -49,18 +61,18 @@ def input(macros):
     # Parameters which must be set (they have no sensible defaults).
     #
     # TODO: review the choice of these parameters
-    par.radius            = 64973*macros["AU"]
-    par.minScale          = 0.5*macros["AU"]
-    par.pIntensity        = 50000  # number of model grid points
-    par.sinkPoints        = 8000   # grid points that are distributed randomly at surface of the model
+    par.radius            = rMax
+    par.minScale          = rMin
+    par.pIntensity        = pIntensity  # number of model grid points
+    par.sinkPoints        = sinkPoints   # grid points that are distributed randomly at surface of the model
 
     # Parameters which may be omitted (i.e. left at their default values) under some circumstances.
     #
-    par.dust              = "dust_oh5.txt"  # opacity per gram of dust.  This is only used for generating continuum image.
+    par.dust              = dustfile  # opacity per gram of dust.  This is only used for generating continuum image.
     # par.dust              = "jena_thin_e6.tab"  # default dust model, similar to OH5
-    par.outputfile        = "populations.pop"
-    par.binoutputfile     = "restart.pop"  # contains the grid, popilations, and molecular data in binary format for re-imaging
-    par.gridfile          = "grid.vtk"
+    par.outputfile        = outdir+"populations.pop"
+    par.binoutputfile     = outdir+"restart.pop"  # contains the grid, popilations, and molecular data in binary format for re-imaging
+    par.gridfile          = outdir+"grid.vtk"
     #  par.pregrid           = "pregrid.asc"
     #  par.restart           = "restart.pop"
     # par.gridInFile        = ['', '', 'grid3','grid4','grid5']
@@ -127,7 +139,7 @@ def input(macros):
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
-    par.gridOutFiles      = ['', '', 'grid3','grid4',"grid5"] # must be a list with 5 string elements, although some or all can be empty.
+    par.gridOutFiles      = ['', '', outdir+'grid3',outdir+'grid4',outdir+"grid5"] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
@@ -152,12 +164,12 @@ def input(macros):
     par.img[-1].source_vel        = 0.0            # source velocity in m/s
     #  par.img[-1].theta             = 0.0
     #  par.img[-1].phi               = 0.0
-    par.img[-1].incl              = 40.0
+    par.img[-1].incl              = 40.0            # TODO: read from file
     #  par.img[-1].posang            = 0.0
     #  par.img[-1].azimuth           = 0.0
-    par.img[-1].distance          = 200.0*macros["PC"] # source distance in m
+    par.img[-1].distance          = distance         # source distance in m
     par.img[-1].doInterpolateVels = True
-    par.img[-1].filename          = "image0.fits"  # Output filename
+    par.img[-1].filename          = outdir+"image0.fits"  # Output filename
     #  par.img[-1].units             = "0,1"
 
     return par
@@ -275,7 +287,7 @@ def abundance(macros, x, y, z):
     #
     # listOfAbundances = [1.0e-9] # must be a list, even when there is only 1 item.
 
-    listOfAbundances = [model.getAbundance(x, y, z)]
+    listOfAbundances = [model.getAbundance(x, y, z, a_params)]
 
     return listOfAbundances
 
