@@ -27,9 +27,9 @@ for m in model_list['model_name']:
     outdir = outdir_base+'model'+str(m)+'/'
     p_names = ['outdir', 'a_params0', 'a_params1', 'a_params2']
     p_values = [outdir,
-                str(model_list['a_params0'][model_list['model_name'] == m].data),
-                str(model_list['a_params1'][model_list['model_name'] == m].data),
-                str(model_list['a_params2'][model_list['model_name'] == m].data)]
+                str(model_list['a_params0'][model_list['model_name'] == m].data[0]),
+                str(model_list['a_params1'][model_list['model_name'] == m].data[0]),
+                str(model_list['a_params2'][model_list['model_name'] == m].data[0])]
     for i, (name, val) in enumerate(zip(p_names, p_values)):
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
