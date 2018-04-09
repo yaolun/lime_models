@@ -43,8 +43,8 @@ a_params = [float(config['a_params0']), float(config['a_params1']), float(config
 distance = float(config['distance'])*pc_si
 
 # path
-outdir = config['outdir']
-dustfile = config['dustfile']
+outdir = str(config['outdir'])
+dustfile = str(config['dustfile'])
 print('output directory = '+outdir)
 
 # TODO: rmax, rmin, dustfile, distance, inclination
