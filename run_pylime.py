@@ -22,7 +22,7 @@ for m in model_list['model_name']:
         foo.write('{:<14s}  {:<s}'.format(name, val))
 
     # model parameters - only abundance now
-    outdir = outdir_base+'model'+m+'/'
+    outdir = outdir_base+'model'+str(m)+'/'
     p_names = ['outdir', 'a_params0', 'a_params1', 'a_params2']
     p_values = [outdir,
                 model_list['a_params0'][model_list['model_name'] == m],
