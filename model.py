@@ -5,6 +5,7 @@
 #	- You should run lime with this script in the form
 #		pylime model.py
 #	  You will need the location of pylime in your PATH environment variable; also you need to have the location of the par_classes.py module in your PYTHONPATH environment variable.
+print('strat running pylime')
 
 import math
 
@@ -12,10 +13,9 @@ import math
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
-print(sys.path)
 from par_classes import *
 
-print('strat running pylime')
+print('strat running pylime-2')
 
 # import results from Hyperion and TSC calculations
 import sys
