@@ -33,6 +33,8 @@ for m in model_list['model_name']:
     for i, (name, val) in enumerate(zip(p_names, p_values)):
         foo.write('{:<14s}  {:<s}'.format(name, val))
 
+    foo.close()
+
     if not os.path.exists(outdir):
         os.makedirs(outdir)
 
