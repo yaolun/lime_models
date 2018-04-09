@@ -2,6 +2,8 @@
 from astropy.io import ascii
 import os
 import shutil
+from subprocess import Popen, call
+
 model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt')
 outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime'
