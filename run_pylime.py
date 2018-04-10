@@ -15,7 +15,7 @@ for m in model_list['model_name']:
     # default parameters - the parameters that typically fixed and not defined in the model list
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
                'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance']
-    p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/lime/YLY/dust_oh5.txt',
+    p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/lime/YLY/lime_models/dust_oh5.txt',
                 '50000', '8000', '/scratch/LIMEmods/pylime/lime/YLY/model12.rtout',
                 '/scratch/LIMEmods/pylime/lime/YLY/rho_v_env', '0.38', '36000',
                 '0.2', '64973', '200.0']
