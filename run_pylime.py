@@ -8,7 +8,9 @@ model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_lis
 outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime'
 
-for m in model_list['model_name'][-1]:
+for m in model_list['model_name']:
+    if m != 6:
+        continue
     # use the config file as the communication between model.py and user-defined model list
     foo = open('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt', 'w')
 
