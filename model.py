@@ -142,7 +142,7 @@ def input(macros):
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
-    par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+"grid5"] # must be a list with 5 string elements, although some or all can be empty.
+    par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
@@ -172,8 +172,10 @@ def input(macros):
     #  par.img[-1].azimuth           = 0.0
     par.img[-1].distance          = distance         # source distance in m
     par.img[-1].doInterpolateVels = True
-    par.img[-1].filename          = outdir+"image0.fits"  # Output filename
+    par.img[-1].filename          = outdir+'image0.fits'  # Output filename
     #  par.img[-1].units             = "0,1"
+
+    print(par.img[-1].filename)
 
     return par
 
