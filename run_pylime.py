@@ -4,12 +4,12 @@ import os
 import shutil
 from subprocess import Popen, call
 
-model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt')
+model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt', comment='#')
 outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime'
 
 for m in model_list['model_name']:
-    
+
     # use the config file as the communication between model.py and user-defined model list
     foo = open('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt', 'w')
 
@@ -39,9 +39,10 @@ for m in model_list['model_name']:
     if not os.path.exists(outdir):
         os.makedirs(outdir)
 
-    # make a copy of config to the model directory
+    # make a copy of config and model.py to the model directory
     shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
                     outdir+'lime_config.txt')
+    shutil.copyfile('model.py', outdir)
 
     # run pylime
     log = open(outdir+'pylime.log','w')
