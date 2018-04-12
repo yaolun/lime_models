@@ -42,7 +42,7 @@ for m in model_list['model_name']:
     # make a copy of config and model.py to the model directory
     shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
                     outdir+'lime_config.txt')
-    shutil.copyfile('model.py', outdir)
+    shutil.copyfile('model.py', outdir+'model.py')
 
     # run pylime
     log = open(outdir+'pylime.log','w')
