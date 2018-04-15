@@ -51,3 +51,5 @@ for m in model_list['model_name']:
     # run.communicate()
 
     print('Finish model '+str(m))
+    if not os.path.exists(outdir+'image0.fits'):
+        print('Image file not found.  pylime probably failed.')
