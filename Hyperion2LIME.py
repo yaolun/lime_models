@@ -4,6 +4,7 @@ import astropy.io as io
 import astropy.constants as const
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 au_cgs = const.au.cgs.value
+au_si = const.au.si.value
 
 class Hyperion2LIME:
     """
@@ -11,7 +12,8 @@ class Hyperion2LIME:
     IMPORTANT: LIME uses SI units, while Hyperion uses CGS units.
     """
 
-    def __init__(self, rtout, velfile, cs, age, rmin=0, mmw=2.37, g2d=100):
+    def __init__(self, rtout, velfile, cs, age,
+                 rmin=0, mmw=2.37, g2d=100, truncate=None):
         self.rtout = rtout
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
@@ -21,6 +23,9 @@ class Hyperion2LIME:
         self.g2d = g2d
         self.cs = cs
         self.age = age
+        # option to truncate the sphere to be a cylinder
+        # the value is given in au to specify the radius of the truncated cylinder viewed from the observer
+        self.truncate = truncate
 
         # velocity grid construction
         self.tsc = io.ascii.read(self.velfile)
@@ -107,6 +112,10 @@ class Hyperion2LIME:
         p_wall = self.hy_grid.p_wall
         self.rho = self.hy_grid.quantities['density'][0].T
 
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                return 0.0
+
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
@@ -121,6 +130,10 @@ class Hyperion2LIME:
         p_wall = self.hy_grid.p_wall
         self.temp = self.hy_grid.quantities['temperature'][0].T
 
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                return 0.0
+
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
@@ -134,6 +147,11 @@ class Hyperion2LIME:
         """
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                v_out = [0.0, 0.0, 0.0]
+                return v_out
 
         # outside of infall radius, the envelope is static
         if r_in > self.r_inf:
@@ -162,6 +180,11 @@ class Hyperion2LIME:
         #             the ratio of the outer radius of the inner region to the infall radius]
 
         # abundances = [3.5e-8, 3.5e-9]  # inner, outer
+
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                return 0.0
+
         tol = tol*au_cgs
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)

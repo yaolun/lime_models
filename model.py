@@ -48,8 +48,8 @@ dustfile = str(config['dustfile'])
 print('output directory = '+outdir)
 
 # TODO: rmax, rmin, dustfile, distance, inclination
-
-model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw)
+truncate = 2000.0  # in unit of au
+model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate)
 
 
 
@@ -160,7 +160,7 @@ def input(macros):
     #  par.img[-1].molI              = -1
     par.img[-1].velres            = 100.0          # Channel resolution in m/s
     par.img[-1].imgres            = 0.05           # Resolution in arc seconds
-    par.img[-1].pxls              = 100            # Pixels per dimension
+    par.img[-1].pxls              = 200            # Pixels per dimension
     par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
     #  par.img[-1].freq              = -1.0
     #  par.img[-1].bandwidth         = -1.0
