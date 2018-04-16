@@ -60,7 +60,7 @@ class Hyperion2LIME:
         else:
             t_in = 0
         if x != 0:
-            p_in = np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+            p_in = np.sign(y)*np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
         else:
             p_in = np.sign(y)*np.pi/2
 
@@ -73,7 +73,7 @@ class Hyperion2LIME:
         r, theta, phi = coord_sph
         vr, vt, vp = v_sph
 
-        transform = np.matrix([[np.cos(theta)*np.cos(phi), np.cos(theta)*np.cos(phi), -np.sin(phi)],
+        transform = np.matrix([[np.sin(theta)*np.cos(phi)  , np.cos(theta)*np.cos(phi), -np.sin(phi)],
                                [np.sin(theta)*np.sin(phi)  , np.cos(theta)*np.sin(phi), np.cos(phi)],
                                [np.cos(theta)              , -np.sin(theta)           , 0]])
         v_cart = transform.dot(np.array([vr, vt, vp]))
