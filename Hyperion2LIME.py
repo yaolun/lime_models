@@ -123,7 +123,7 @@ class Hyperion2LIME:
         # LIME needs molecule number density per cubic meter
 
         foo = open('density.log', 'a')
-        foo.write('%f \t %f \t %f \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
+        foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
         foo.close()
 
         return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
@@ -174,7 +174,7 @@ class Hyperion2LIME:
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
         foo = open('velocity.log', 'a')
-        foo.write('%f \t %f \t %f \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
+        foo.write('%e \t %e \t %e \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
         foo.close()
 
         return v_out
@@ -206,7 +206,7 @@ class Hyperion2LIME:
             abundance = a_params[0]
 
         foo = open('abundance.log', 'a')
-        foo.write('%f \t %f \t %f \t %f\n' % (x, y, z, abundance))
+        foo.write('%e \t %e \t %e \t %f\n' % (x, y, z, abundance))
         foo.close()
 
         # uniform abundance
