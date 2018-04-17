@@ -13,7 +13,7 @@ class Hyperion2LIME:
     """
 
     def __init__(self, rtout, velfile, cs, age,
-                 rmin=0, mmw=2.37, g2d=100, truncate=None):
+                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False):
         self.rtout = rtout
         self.velfile = velfile
         self.hyperion = ModelOutput(rtout)
@@ -26,6 +26,9 @@ class Hyperion2LIME:
         # option to truncate the sphere to be a cylinder
         # the value is given in au to specify the radius of the truncated cylinder viewed from the observer
         self.truncate = truncate
+
+        # debug option: print out every call to getDensity, getVelocity and getAbundance
+        self.debug = debug
 
         # velocity grid construction
         self.tsc = io.ascii.read(self.velfile)
@@ -122,9 +125,10 @@ class Hyperion2LIME:
 
         # LIME needs molecule number density per cubic meter
 
-        foo = open('density.log', 'a')
-        foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
-        foo.close()
+        if self.debug:
+            foo = open('density.log', 'a')
+            foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
+            foo.close()
 
         return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
 
@@ -173,9 +177,10 @@ class Hyperion2LIME:
 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
-        foo = open('velocity.log', 'a')
-        foo.write('%e \t %e \t %e \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
-        foo.close()
+        if self.debug:
+            foo = open('velocity.log', 'a')
+            foo.write('%e \t %e \t %e \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
+            foo.close()
 
         return v_out
 
@@ -205,11 +210,12 @@ class Hyperion2LIME:
         else:
             abundance = a_params[0]
 
-        foo = open('abundance.log', 'a')
-        foo.write('%e \t %e \t %e \t %f\n' % (x, y, z, abundance))
-        foo.close()
+        if self.debug:
+            foo = open('abundance.log', 'a')
+            foo.write('%e \t %e \t %e \t %f\n' % (x, y, z, abundance))
+            foo.close()
 
         # uniform abundance
-        # abundance = 3.5e-9
+        abundance = 3.5e-9
 
         return abundance
