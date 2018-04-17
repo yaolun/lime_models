@@ -48,7 +48,8 @@ dustfile = str(config['dustfile'])
 print('output directory = '+outdir)
 
 # TODO: rmax, rmin, dustfile, distance, inclination
-truncate = 2000.0  # in unit of au
+# truncate = 2000.0  # in unit of au
+truncate = None
 model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate)
 
 
