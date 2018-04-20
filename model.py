@@ -139,7 +139,7 @@ def input(macros):
     #  par.blend             = False
     #  par.polarization      = False
     par.nThreads          = 10
-    par.nSolveIters       = 17
+    par.nSolveIters       = 5
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
@@ -160,8 +160,8 @@ def input(macros):
     par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
     #  par.img[-1].molI              = -1
     par.img[-1].velres            = 100.0          # Channel resolution in m/s
-    par.img[-1].imgres            = 0.2            # Resolution in arc seconds
-    par.img[-1].pxls              = 1000           # Pixels per dimension
+    par.img[-1].imgres            = 1.0            # Resolution in arc seconds
+    par.img[-1].pxls              = 100            # Pixels per dimension
     par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
     #  par.img[-1].freq              = -1.0
     #  par.img[-1].bandwidth         = -1.0
