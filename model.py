@@ -138,8 +138,8 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    par.nThreads          = 5
-    par.nSolveIters       = 17
+    par.nThreads          = 1
+    par.nSolveIters       = 5
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
