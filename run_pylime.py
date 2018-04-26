@@ -44,12 +44,19 @@ for m in model_list['model_name']:
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
-    # run pylime
-    log = open(outdir+'pylime.log','w')
-    err = open(outdir+'pylime.err','w')
-    run = call(['pylime', 'model.py'], stdout=log, stderr=err)
+    # run pylime - RTE only
+    log = open(outdir+'pylime_RTE.log','w')
+    err = open(outdir+'pylime_RTE.err','w')
+    run = call(['pylime', 'model.py', '--RTE'], stdout=log, stderr=err)
     # run.communicate()
 
-    print('Finish model '+str(m))
+    print('Finish RTE for model '+str(m))
+
+    # imaging only
+    log = open(outdir+'pylime_imaging.log','w')
+    err = open(outdir+'pylime_imaging.err','w')
+    run = call(['pylime', 'model.py', '--imaging'], stdout=log, stderr=err)
+
+    print('Finish imaging for model '+str(m))
     if not os.path.exists(outdir+'image0.fits'):
         print('Image file not found.  pylime probably failed.')

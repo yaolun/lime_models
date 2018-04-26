@@ -12,6 +12,16 @@ sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
 from par_classes import *
 
+# parse the options for choosing between RTE-only run and imaging run
+import argparse
+# get command-line arguments (ver 2.0)
+parser = argparse.ArgumentParser(description='Options forchoosing between RTE-only run and imaging run')
+parser.add_argument('--RTE', action='store_true',
+                    help='do the RTE only run')
+parser.add_argument('--imaging', action='store_true',
+                    help='do the imaging only run')
+args = vars(parser.parse_args())
+
 # import results from Hyperion and TSC calculations
 import os
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
@@ -57,7 +67,7 @@ model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw, trun
 # Note that the useful macros defined in lime.h are also provided here in the dictionary 'macros' provided as an argument to each function below. See the example code at the end for the full list of macro values provided.
 
 #.......................................................................
-def input(macros):
+def input(macros, **args):
     par = ModelParameters()
 
     # We give all the possible parameters here, but have commented out many which can be left at their defaults.
@@ -138,45 +148,54 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    par.nThreads          = 1
-    par.nSolveIters       = 5
+    # par.nThreads          = 1
+    par.nSolveIters       = 17
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
-    par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
+    # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
+    # par.gridInFiles       = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5']
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
 
+    if RTE:
+        par.nThreads = 20
+        par.doSolveRTE = True
+        par.gridOutFiles = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
-    # Definitions for image #0. Add further similar blocks for additional images.
-    #
-    par.img.append(ImageParameters())
-    # by default this list par.img has 0 entries. Each 'append' will add an entry.
-    # The [-1] entry is the most recently added.
-    # TODO: review the choice of imaging parameters
+    if imaging:
+        par.nThreads = 1
+        par.gridInFiles       = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
-    par.img[-1].nchan             = 200            # Number of channels
-    par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
-    #  par.img[-1].molI              = -1
-    par.img[-1].velres            = 100.0          # Channel resolution in m/s
-    par.img[-1].imgres            = 0.1            # Resolution in arc seconds
-    par.img[-1].pxls              = 500            # Pixels per dimension
-    par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
-    #  par.img[-1].freq              = -1.0
-    #  par.img[-1].bandwidth         = -1.0
-    par.img[-1].source_vel        = 0.0            # source velocity in m/s
-    #  par.img[-1].theta             = 0.0
-    #  par.img[-1].phi               = 0.0
-    par.img[-1].incl              = 40.0            # TODO: read from file
-    #  par.img[-1].posang            = 0.0
-    #  par.img[-1].azimuth           = 0.0
-    par.img[-1].distance          = distance         # source distance in m
-    par.img[-1].doInterpolateVels = True
-    par.img[-1].filename          = outdir+'image0.fits'  # Output filename
-    #  par.img[-1].units             = "0,1"
+        # Definitions for image #0. Add further similar blocks for additional images.
+        #
+        par.img.append(ImageParameters())
+        # by default this list par.img has 0 entries. Each 'append' will add an entry.
+        # The [-1] entry is the most recently added.
+        # TODO: review the choice of imaging parameters
 
-    print(par.img[-1].filename)
+        par.img[-1].nchan             = 200            # Number of channels
+        par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
+        #  par.img[-1].molI              = -1
+        par.img[-1].velres            = 100.0          # Channel resolution in m/s
+        par.img[-1].imgres            = 0.1            # Resolution in arc seconds
+        par.img[-1].pxls              = 500            # Pixels per dimension
+        par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
+        #  par.img[-1].freq              = -1.0
+        #  par.img[-1].bandwidth         = -1.0
+        par.img[-1].source_vel        = 0.0            # source velocity in m/s
+        #  par.img[-1].theta             = 0.0
+        #  par.img[-1].phi               = 0.0
+        par.img[-1].incl              = 40.0            # TODO: read from file
+        #  par.img[-1].posang            = 0.0
+        #  par.img[-1].azimuth           = 0.0
+        par.img[-1].distance          = distance         # source distance in m
+        par.img[-1].doInterpolateVels = True
+        par.img[-1].filename          = outdir+'image0.fits'  # Output filename
+        #  par.img[-1].units             = "0,1"
+
+        print(par.img[-1].filename)
 
     return par
 
