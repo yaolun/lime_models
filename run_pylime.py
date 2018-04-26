@@ -3,6 +3,7 @@ from astropy.io import ascii
 import os
 import shutil
 from subprocess import Popen, call
+import glob
 
 model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt', comment='#')
 outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
@@ -39,8 +40,8 @@ for m in model_list['model_name']:
     if not os.path.exists(outdir):
         os.makedirs(outdir)
     else:
-        for file in ['grid1', 'grid2', 'grid3', 'grid4', 'grid5']:
-            os.remove(outdir+file)
+        for file in glob.glob(outdir+'grid*'):
+            os.remove(file)
 
     # make a copy of config and model.py to the model directory
     shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
