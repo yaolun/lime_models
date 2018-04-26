@@ -12,16 +12,6 @@ sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
 from par_classes import *
 
-# parse the options for choosing between RTE-only run and imaging run
-import argparse
-# get command-line arguments (ver 2.0)
-parser = argparse.ArgumentParser(description='Options forchoosing between RTE-only run and imaging run')
-parser.add_argument('--RTE', action='store_true',
-                    help='do the RTE only run')
-parser.add_argument('--imaging', action='store_true',
-                    help='do the imaging only run')
-args = vars(parser.parse_args())
-
 # import results from Hyperion and TSC calculations
 import os
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
@@ -67,7 +57,7 @@ model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw, trun
 # Note that the useful macros defined in lime.h are also provided here in the dictionary 'macros' provided as an argument to each function below. See the example code at the end for the full list of macro values provided.
 
 #.......................................................................
-def input(macros, **args):
+def input(macros):
     par = ModelParameters()
 
     # We give all the possible parameters here, but have commented out many which can be left at their defaults.
@@ -159,12 +149,12 @@ def input(macros, **args):
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
 
-    if RTE:
+    if not os.path.exists(outdir+'grid5'):
         par.nThreads = 20
         par.doSolveRTE = True
         par.gridOutFiles = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
-    if imaging:
+    else:
         par.nThreads = 1
         par.gridInFiles       = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 

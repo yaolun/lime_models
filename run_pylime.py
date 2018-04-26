@@ -38,25 +38,31 @@ for m in model_list['model_name']:
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
+    else:
+        for file in ['grid1', 'grid2', 'grid3', 'grid4', 'grid5']:
+            os.remove(outdir+file)
 
     # make a copy of config and model.py to the model directory
     shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
+
     # run pylime - RTE only
     log = open(outdir+'pylime_RTE.log','w')
     err = open(outdir+'pylime_RTE.err','w')
-    run = call(['pylime', 'model.py', '--RTE'], stdout=log, stderr=err)
+    run = call(['pylime', 'model.py'], stdout=log, stderr=err)
     # run.communicate()
 
     print('Finish RTE for model '+str(m))
+    if not os.path.exists(outdir+'grid5'):
+        print('grid files not found.  pylime probably failed, no further imaging is performed.')
+    else:
+        # imaging only
+        log = open(outdir+'pylime_imaging.log','w')
+        err = open(outdir+'pylime_imaging.err','w')
+        run = call(['pylime', 'model.py', '--imaging'], stdout=log, stderr=err)
 
-    # imaging only
-    log = open(outdir+'pylime_imaging.log','w')
-    err = open(outdir+'pylime_imaging.err','w')
-    run = call(['pylime', 'model.py', '--imaging'], stdout=log, stderr=err)
-
-    print('Finish imaging for model '+str(m))
-    if not os.path.exists(outdir+'image0.fits'):
-        print('Image file not found.  pylime probably failed.')
+        print('Finish imaging for model '+str(m))
+        if not os.path.exists(outdir+'image0.fits'):
+            print('Image file not found.  pylime probably failed.')
