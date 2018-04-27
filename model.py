@@ -152,11 +152,12 @@ def input(macros):
     if not os.path.exists(outdir+'grid5'):
         par.nThreads = 20
         par.doSolveRTE = True
-        par.gridOutFiles = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
+        par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
     else:
         par.nThreads = 1
-        par.gridInFiles       = [outdir+'grid1', outdir+'grid1', outdir+'grid3', outdir+'grid4', outdir+'grid5']
+        par.gridInFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
+        par.restart = outdir+"restart.pop"
 
         # Definitions for image #0. Add further similar blocks for additional images.
         #
