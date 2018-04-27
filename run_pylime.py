@@ -5,6 +5,13 @@ import shutil
 from subprocess import Popen, call
 import glob
 
+import argparse
+parser = argparse.ArgumentParser(description='Options for running LIME in batch mode')
+parser.add_argument('--restart', action='store_true',
+                    help='run the models from scratch')
+args = vars(parser.parse_args())
+
+
 model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt', comment='#')
 outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime'
@@ -49,20 +56,29 @@ for m in model_list['model_name']:
     shutil.copyfile('model.py', outdir+'model.py')
 
 
-    # run pylime - RTE only
-    log = open(outdir+'pylime_RTE.log','w')
-    err = open(outdir+'pylime_RTE.err','w')
-    run = call(['pylime', 'model.py'], stdout=log, stderr=err)
-    # run.communicate()
+    if args['restart']:
+        # run pylime - RTE only
+        log = open(outdir+'pylime_RTE.log','w')
+        err = open(outdir+'pylime_RTE.err','w')
+        run = call(['pylime', 'model.py'], stdout=log, stderr=err)
+        print('Finish RTE for model '+str(m))
+    else:
+        if not os.path.exists(outdir+'grid5'):
+            # run pylime - RTE only
+            log = open(outdir+'pylime_RTE.log','w')
+            err = open(outdir+'pylime_RTE.err','w')
+            run = call(['pylime', 'model.py'], stdout=log, stderr=err)
+            print('Finish RTE for model '+str(m))
+        else:
+            print('grid5 is found, and no "restart" specified.  Will skip the RTE calculation.')
 
-    print('Finish RTE for model '+str(m))
     if not os.path.exists(outdir+'grid5'):
         print('grid files not found.  pylime probably failed, no further imaging is performed.')
     else:
         # imaging only
         log = open(outdir+'pylime_imaging.log','w')
         err = open(outdir+'pylime_imaging.err','w')
-        run = call(['pylime', 'model.py', '--imaging'], stdout=log, stderr=err)
+        run = call(['pylime', 'model.py'], stdout=log, stderr=err)
 
         print('Finish imaging for model '+str(m))
         if not os.path.exists(outdir+'image0.fits'):
