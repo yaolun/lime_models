@@ -46,9 +46,6 @@ for m in model_list['model_name']:
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
-    else:
-        for file in glob.glob(outdir+'grid*'):
-            os.remove(file)
 
     # make a copy of config and model.py to the model directory
     shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
@@ -57,6 +54,9 @@ for m in model_list['model_name']:
 
 
     if args['restart']:
+        for file in glob.glob(outdir+'grid*'):
+            os.remove(file)
+
         # run pylime - RTE only
         log = open(outdir+'pylime_RTE.log','w')
         err = open(outdir+'pylime_RTE.err','w')
