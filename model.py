@@ -134,7 +134,7 @@ def input(macros):
     #  par.tcmb              = 2.72548
     #  par.lte_only          = False
     #  par.init_lte          = False
-    par.samplingAlgorithm = 1  # TODO: may want to try "1" in the future to employ a faster sampling
+    par.samplingAlgorithm = 0  # TODO: may want to try "1" in the future to employ a faster sampling
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
@@ -150,11 +150,13 @@ def input(macros):
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
 
     if not os.path.exists(outdir+'grid5'):
+        print('run in RTE-only mode')
         par.nThreads = 20
         par.doSolveRTE = True
         par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
     else:
+        print('run in imaging-only mode')
         par.nThreads = 1
         par.gridInFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
         par.restart = outdir+"restart.pop"
@@ -170,8 +172,8 @@ def input(macros):
         par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
         #  par.img[-1].molI              = -1
         par.img[-1].velres            = 100.0          # Channel resolution in m/s
-        par.img[-1].imgres            = 0.1            # Resolution in arc seconds
-        par.img[-1].pxls              = 500            # Pixels per dimension
+        par.img[-1].imgres            = 1.0            # Resolution in arc seconds
+        par.img[-1].pxls              = 100            # Pixels per dimension
         par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
         #  par.img[-1].freq              = -1.0
         #  par.img[-1].bandwidth         = -1.0
