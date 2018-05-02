@@ -33,12 +33,13 @@ for m in model_list['model_name']:
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     # model parameters - only abundance now
+    # the names of parameters will be the same as the ones in the header of model_list.txt
     outdir = outdir_base+'model'+str(m)+'/'
-    p_names = ['outdir', 'a_params0', 'a_params1', 'a_params2']
-    p_values = [outdir,
-                str(model_list['a_params0'][model_list['model_name'] == m].data[0]),
-                str(model_list['a_params1'][model_list['model_name'] == m].data[0]),
-                str(model_list['a_params2'][model_list['model_name'] == m].data[0])]
+    p_names = ['outdir']
+    p_names.extend(model_list.keys()[1:])
+    p_values = [outdir]
+    p_values.extend([str(model_list[p][model_list['model_name'] == m].data[0]) for p in model_list.keys()[1:]])
+
     for i, (name, val) in enumerate(zip(p_names, p_values)):
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 

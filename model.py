@@ -39,7 +39,7 @@ age = float(config['age'])
 g2d = float(config['g2d'])  # gas-to-dust mass ratio
 rMax = float(config['rMax'])*au_si
 rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at the origin.
-a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
+# a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
 
 # path
@@ -305,7 +305,7 @@ def abundance(macros, x, y, z):
     #
     # listOfAbundances = [1.0e-9] # must be a list, even when there is only 1 item.
 
-    listOfAbundances = [model.getAbundance(x, y, z, a_params)]
+    listOfAbundances = [model.getAbundance(x, y, z, config)]
 
     return listOfAbundances
 

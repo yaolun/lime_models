@@ -184,7 +184,7 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getAbundance(self, x, y, z, a_params, tol=10):
+    def getAbundance(self, x, y, z, config, tol=10):
         # tol: the size (in AU) of the linear region between two steps
         # (try to avoid "cannot find cell" problem in LIME)
 
@@ -202,13 +202,40 @@ class Hyperion2LIME:
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
-        if (r_in - a_params[2]*self.r_inf) > tol/2:
-            abundance = a_params[0]
-        elif abs(r_in - a_params[2]*self.r_inf) <= tol/2:
-            abundance = a_params[0] + \
-                        (r_in-a_params[2]*self.r_inf+tol/2)*(a_params[1]-a_params[0])/tol
-        else:
-            abundance = a_params[0]
+        # single negative drop case
+        if config['a_model'] == 'neg_step1':
+            a0 = float(config['a_params0'])
+            a1 = float(config['a_params1'])
+            a2 = float(config['a_params2'])
+
+            if (r_in - a2*self.r_inf) > tol/2:
+                abundance = a0
+            elif abs(r_in - a2*self.r_inf) <= tol/2:
+                abundance =
+                abundance = a0*a1 + (r_in-(a2*self.r_inf-tol/2))*(a0-a0*a1)/tol
+            else:
+                abundance = a0*a1
+
+        elif config['a_model'] == 'neg_step2':
+            a0 = float(config['a_params0'])
+            a1 = float(config['a_params1'])
+            a2 = float(config['a_params2'])
+            a3 = float(config['a_params3'])
+            a4 = float(config['a_params4'])
+
+            if (r_in - a2*self.r_inf) > tol/2:
+                abundance = a0
+            # linear interpolation from the outer region to the first step
+            elif abs(r_in - a2*self.r_inf) <= tol/2:
+                abundance = a0*a1 + (r_in-(a2*self.r_inf-tol/2))*(a0-a0*a1)/tol
+            # first step
+            elif (r_in - a4*au_cgs) > tol/5/2 and (a2*self.r_inf - r_in) > tol/2:
+                abundance = a0*a1
+            # linear interpolation from the first step to the second step
+            elif abs(r_in - a4*au_cgs) <= tol/5/2:
+                abundance = a0*a3 + (r-(a4*au_cgs-tol/5/2))*(a0*a1-a0*a3)/(tol/5)
+            else:
+                abundance = a0*a3
 
         if self.debug:
             foo = open('abundance.log', 'a')
