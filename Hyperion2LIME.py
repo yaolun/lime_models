@@ -232,7 +232,7 @@ class Hyperion2LIME:
                 abundance = a0*a1
             # linear interpolation from the first step to the second step
             elif abs(r_in - a4*au_cgs) <= tol/5/2:
-                abundance = a0*a3 + (r-(a4*au_cgs-tol/5/2))*(a0*a1-a0*a3)/(tol/5)
+                abundance = a0*a3 + (r_in-(a4*au_cgs-tol/5/2))*(a0*a1-a0*a3)/(tol/5)
             else:
                 abundance = a0*a3
 
@@ -242,6 +242,6 @@ class Hyperion2LIME:
             foo.close()
 
         # uniform abundance
-        abundance = 3.5e-9
+        # abundance = 3.5e-9
 
         return abundance
