@@ -161,8 +161,8 @@ def input(macros):
     else:
         print('run in imaging-only mode')
         par.nThreads = 1
-        par.gridInFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
-        par.restart = outdir+"restart.pop"
+        par.gridInFile = outdir+'grid5'
+        # par.restart = outdir+"restart.pop"
 
         # Definitions for image #0. Add further similar blocks for additional images.
         #
@@ -175,7 +175,7 @@ def input(macros):
         par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
         #  par.img[-1].molI              = -1
         par.img[-1].velres            = 100.0          # Channel resolution in m/s
-        par.img[-1].imgres            = 0.1            # Resolution in arc seconds
+        par.img[-1].imgres            = 0.5            # Resolution in arc seconds
         par.img[-1].pxls              = 500            # Pixels per dimension
         par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
         #  par.img[-1].freq              = -1.0
