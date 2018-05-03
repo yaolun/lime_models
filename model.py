@@ -18,6 +18,7 @@ sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/'
 from Hyperion2LIME import *
 import astropy.constants as const
 import astropy.io as io
+import pprint
 mh = const.m_p.cgs.value + const.m_e.cgs.value
 au = const.au.cgs.value
 au_si = const.au.si.value
