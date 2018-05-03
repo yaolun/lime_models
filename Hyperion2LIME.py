@@ -235,6 +235,8 @@ class Hyperion2LIME:
                 abundance = a0*a3 + (r_in-(a4*au_cgs-tol/5/2))*(a0*a1-a0*a3)/(tol/5)
             else:
                 abundance = a0*a3
+        elif config['a_model'] == 'uniform':
+            abundance = float(config['a_params0'])
 
         if self.debug:
             foo = open('abundance.log', 'a')
