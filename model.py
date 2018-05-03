@@ -46,6 +46,8 @@ distance = float(config['distance'])*pc_si
 outdir = str(config['outdir'])
 dustfile = str(config['dustfile'])
 print('output directory = '+outdir)
+print('input parameters --')
+pprint.pprint(config)
 
 # TODO: rmax, rmin, dustfile, distance, inclination
 # truncate = 2000.0  # in unit of au
