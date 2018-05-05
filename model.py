@@ -142,7 +142,6 @@ def input(macros):
     #  par.blend             = False
     #  par.polarization      = False
     # par.nThreads          = 1
-    par.nSolveIters       = 17
     par.traceRayAlgorithm = 1
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
@@ -156,13 +155,15 @@ def input(macros):
         print('run in RTE-only mode')
         par.nThreads = 20
         par.doSolveRTE = True
+        par.nSolveIters       = 17
         par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
 
     else:
         print('run in imaging-only mode')
         par.nThreads = 1
-        par.gridInFile = outdir+'grid5'
-        # par.restart = outdir+"restart.pop"
+        # par.gridInFile = outdir+'grid5'
+        par.restart = outdir+"restart.pop"
+        par.nSolveIters       = 0
 
         # Definitions for image #0. Add further similar blocks for additional images.
         #
