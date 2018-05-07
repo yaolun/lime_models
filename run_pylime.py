@@ -12,21 +12,21 @@ parser.add_argument('--restart', action='store_true',
 args = vars(parser.parse_args())
 
 
-model_list = ascii.read('/scratch/LIMEmods/pylime/lime/YLY/lime_models/model_list.txt', comment='#')
-outdir_base = '/scratch/LIMEmods/pylime/lime/YLY/run/'
+model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
+outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime'
 
 for m in model_list['model_name']:
 
     # use the config file as the communication between model.py and user-defined model list
-    foo = open('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt', 'w')
+    foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
 
     # default parameters - the parameters that typically fixed and not defined in the model list
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
                'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance']
-    p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/lime/YLY/lime_models/dust_oh5.txt',
-                '50000', '8000', '/scratch/LIMEmods/pylime/lime/YLY/model12.rtout',
-                '/scratch/LIMEmods/pylime/lime/YLY/rho_v_env', '0.38', '36000',
+    p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt',
+                '50000', '8000', '/scratch/LIMEmods/pylime/YLY/model12.rtout',
+                '/scratch/LIMEmods/pylime/YLY/rho_v_env', '0.38', '36000',
                 '0.2', '64973', '200.0']
 
     for i, (name, val) in enumerate(zip(p_names, p_values)):
@@ -49,7 +49,7 @@ for m in model_list['model_name']:
         os.makedirs(outdir)
 
     # make a copy of config and model.py to the model directory
-    shutil.copyfile('/scratch/LIMEmods/pylime/lime/YLY/lime_models/lime_config.txt',
+    shutil.copyfile('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt',
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 

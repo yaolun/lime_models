@@ -9,7 +9,7 @@
 
 import sys
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
-sys.path.append('/scratch/LIMEmods/pylime/lime/YLY/lime_models/')
+sys.path.append('/scratch/LIMEmods/pylime/YLY/lime_models/')
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
@@ -163,7 +163,6 @@ def input(macros):
         par.nThreads = 1
         # par.gridInFile = outdir+'grid5'
         par.restart = outdir+"restart.pop"
-        par.nSolveIters       = 0
 
         # Definitions for image #0. Add further similar blocks for additional images.
         #
