@@ -25,7 +25,8 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 # 13          neg_step1   3e-9        0.1         1.0         -1          -1
 # 14          neg_step2   3e-9        0.1         1.0         0.02        200.0
 # 15          uniform     3e-9        -1          -1          -1          -1
-16          neg_step2   3e-9        0.1         1.0         0.02        200.0
-17          neg_step2   1e-8        0.1         1.0         0.02        200.0
-18          neg_step2   5e-8        0.1         1.0         0.02        200.0
-19          neg_step2   1e-7        0.1         1.0         0.02        200.0
+# 16          neg_step2   3e-9        0.1         1.0         0.02        200.0
+# 17          neg_step2   1e-8        0.1         1.0         0.02        200.0
+# 18          neg_step2   5e-8        0.1         1.0         0.02        200.0
+# 19          neg_step2   1e-7        0.1         1.0         0.02        200.0
+20          neg_step2   5e-8        0.1         1.0         0.001       200.0
