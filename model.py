@@ -47,6 +47,14 @@ distance = float(config['distance'])*pc_si
 outdir = str(config['outdir'])
 dustfile = str(config['dustfile'])
 print('output directory = '+outdir)
+
+if os.path.exists(outdir+'image_only'):
+    image_only = True
+    print('#######  Entering image-only mode  #######')
+    print('make sure the necessary files are presented.')
+else:
+    image_only = False
+
 print('input parameters --')
 pprint.pprint(config)
 
@@ -141,57 +149,50 @@ def input(macros):
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
-    # par.nThreads          = 1
-    par.traceRayAlgorithm = 1
+    par.traceRayAlgorithm = 0
     #  par.resetRNG          = False
     #  par.doSolveRTE        = False
     # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
-    # par.gridInFiles       = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5']
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
 
-    if not os.path.exists(outdir+'grid5'):
-        print('run in RTE-only mode')
-        par.nThreads = 20
-        par.doSolveRTE = True
-        par.nSolveIters       = 17
-        par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
+    par.nThreads = 20
+    par.nSolveIters = 17
+    par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
+    
+    if image_only:
+        # TODO: need to fix the problem of CFITSIO and use the new interface to do this
+        par.restart = 'restart.pop'
+        par.nSolveIters = 0
+    # Definitions for image #0. Add further similar blocks for additional images.
+    #
+    par.img.append(ImageParameters())
+    # by default this list par.img has 0 entries. Each 'append' will add an entry.
+    # The [-1] entry is the most recently added.
+    # TODO: review the choice of imaging parameters
 
-    else:
-        print('run in imaging-only mode')
-        par.nThreads = 1
-        # par.gridInFile = outdir+'grid5'
-        par.restart = outdir+"restart.pop"
+    par.img[-1].nchan             = 200            # Number of channels
+    par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
+    #  par.img[-1].molI              = -1
+    par.img[-1].velres            = 100.0          # Channel resolution in m/s
+    par.img[-1].imgres            = 0.1            # Resolution in arc seconds
+    par.img[-1].pxls              = 500            # Pixels per dimension
+    par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
+    #  par.img[-1].freq              = -1.0
+    #  par.img[-1].bandwidth         = -1.0
+    par.img[-1].source_vel        = 0.0            # source velocity in m/s
+    #  par.img[-1].theta             = 0.0
+    #  par.img[-1].phi               = 0.0
+    par.img[-1].incl              = 40.0            # TODO: read from file
+    #  par.img[-1].posang            = 0.0
+    #  par.img[-1].azimuth           = 0.0
+    par.img[-1].distance          = distance         # source distance in m
+    par.img[-1].doInterpolateVels = True
+    par.img[-1].filename          = outdir+'image0.fits'  # Output filename
+    #  par.img[-1].units             = "0,1"
 
-        # Definitions for image #0. Add further similar blocks for additional images.
-        #
-        par.img.append(ImageParameters())
-        # by default this list par.img has 0 entries. Each 'append' will add an entry.
-        # The [-1] entry is the most recently added.
-        # TODO: review the choice of imaging parameters
-
-        par.img[-1].nchan             = 200            # Number of channels
-        par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
-        #  par.img[-1].molI              = -1
-        par.img[-1].velres            = 100.0          # Channel resolution in m/s
-        par.img[-1].imgres            = 0.5            # Resolution in arc seconds
-        par.img[-1].pxls              = 500            # Pixels per dimension
-        par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
-        #  par.img[-1].freq              = -1.0
-        #  par.img[-1].bandwidth         = -1.0
-        par.img[-1].source_vel        = 0.0            # source velocity in m/s
-        #  par.img[-1].theta             = 0.0
-        #  par.img[-1].phi               = 0.0
-        par.img[-1].incl              = 40.0            # TODO: read from file
-        #  par.img[-1].posang            = 0.0
-        #  par.img[-1].azimuth           = 0.0
-        par.img[-1].distance          = distance         # source distance in m
-        par.img[-1].doInterpolateVels = True
-        par.img[-1].filename          = outdir+'image0.fits'  # Output filename
-        #  par.img[-1].units             = "0,1"
-
-        print(par.img[-1].filename)
+    print(par.img[-1].filename)
 
     return par
 

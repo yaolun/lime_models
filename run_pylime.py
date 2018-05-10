@@ -4,11 +4,12 @@ import os
 import shutil
 from subprocess import Popen, call
 import glob
+import sys
 
 import argparse
 parser = argparse.ArgumentParser(description='Options for running LIME in batch mode')
-parser.add_argument('--restart', action='store_true',
-                    help='run the models from scratch')
+parser.add_argument('--image_only', action='store_true',
+                    help='only imaging the existing results of LIME')
 args = vars(parser.parse_args())
 
 
@@ -53,34 +54,30 @@ for m in model_list['model_name']:
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
-
-    if args['restart']:
-        for file in glob.glob(outdir+'grid*'):
-            os.remove(file)
-
-        # run pylime - RTE only
-        log = open(outdir+'pylime_RTE.log','w')
-        err = open(outdir+'pylime_RTE.err','w')
-        run = call(['pylime', 'model.py'], stdout=log, stderr=err)
-        print('Finish RTE for model '+str(m))
-    else:
+    
+    # make sure the "image_only" file is reset everytime LIME run
+    if os.path.exists(outdir+'image_only'):
+        os.remove(outdir+'image_only')
+    if args['image_only']:
         if not os.path.exists(outdir+'grid5'):
-            # run pylime - RTE only
-            log = open(outdir+'pylime_RTE.log','w')
-            err = open(outdir+'pylime_RTE.err','w')
-            run = call(['pylime', 'model.py'], stdout=log, stderr=err)
-            print('Finish RTE for model '+str(m))
-        else:
-            print('grid5 is found, and no "restart" specified.  Will skip the RTE calculation.')
+            print('No appropriate grid file found.  Abort...')
+            sys.exit()
+        foo = open(outdir+'image_only', 'w')
+        foo.close()
+    # if not using the "image-only" mode, all files from previous runs of the current model will be deleted
+    else:
+        for f in glob.glob(outdir+'grid*'):
+            os.remove(f)
+        for f in glob.glob(outdir+'*pop'):
+            os.remove(f)
+
+    # run pylime - if "image_only" file is presented, it will enter image-only mode
+    print('Start running model '+str(m))
+    log = open(outdir+'pylime.log','w')
+    err = open(outdir+'pylime.err','w')
+    run = call(['pylime', 'model.py'], stdout=log, stderr=err)
 
     if not os.path.exists(outdir+'grid5'):
-        print('grid files not found.  pylime probably failed, no further imaging is performed.')
-    else:
-        # imaging only
-        log = open(outdir+'pylime_imaging.log','w')
-        err = open(outdir+'pylime_imaging.err','w')
-        run = call(['pylime', 'model.py'], stdout=log, stderr=err)
-
-        print('Finish imaging for model '+str(m))
-        if not os.path.exists(outdir+'image0.fits'):
-            print('Image file not found.  pylime probably failed.')
+        print('grid files not found.  pylime probably failed.')
+    if not os.path.exists(outdir+'image0.fits'):
+        print('Image file not found.  pylime probably failed.')
