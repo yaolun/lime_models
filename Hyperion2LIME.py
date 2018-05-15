@@ -203,7 +203,8 @@ class Hyperion2LIME:
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         # single negative drop case
-        if config['a_model'] == 'neg_step1':
+        # TODO: adopt a more generic model name, but keep backward compatability.
+        if (config['a_model'] == 'neg_step1') or (config['a_model'] == 'step1'):
             a0 = float(config['a_params0'])
             a1 = float(config['a_params1'])
             a2 = float(config['a_params2'])
@@ -215,7 +216,7 @@ class Hyperion2LIME:
             else:
                 abundance = a0*a1
 
-        elif config['a_model'] == 'neg_step2':
+        elif (config['a_model'] == 'neg_step2') or (config['a_model'] == 'step2'):
             a0 = float(config['a_params0'])
             a1 = float(config['a_params1'])
             a2 = float(config['a_params2'])
