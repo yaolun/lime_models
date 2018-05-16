@@ -236,8 +236,22 @@ class Hyperion2LIME:
                 abundance = a0*a3 + (r_in-(a4*au_cgs-tol/5/2))*(a0*a1-a0*a3)/(tol/5)
             else:
                 abundance = a0*a3
+
         elif config['a_model'] == 'uniform':
             abundance = float(config['a_params0'])
+
+        elif config['a_model'] == 'powerlaw':
+            a0 = float(config['a_params0'])
+            a1 = float(config['a_params1'])
+            a2 = float(config['a_params2'])
+            a3 = float(config['a_params3']) # r_in for power law decrease
+
+            if r_in >= a2*self.r_inf:
+                abundance = a0
+            elif (r_in < a2*self.r_inf) & (r_in > a3*au_cgs):
+                abundance = a0*a1+a0*(1-a1)/(np.log10(self.r_inf*a2)-np.log10(a3*au_cgs))*(np.log10(r_in)-np.log10(a3*au_cgs))
+            else:
+                abundance = a0*a1
 
         if self.debug:
             foo = open('abundance.log', 'a')

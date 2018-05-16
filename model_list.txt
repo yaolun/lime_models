@@ -35,4 +35,8 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 # 23          neg_step2   5e-8        0.1         0.7         0.001       200.0
 # 24          neg_step2   5e-8        0.1         0.6         0.001       200.0
 # 25          neg_step2   5e-8        0.1         0.5         0.001       200.0
-26          uniform     3.5e-9      -1          -1          -1          -1
+# 26          uniform     3.5e-9      -1          -1          -1          -1
+27          powerlaw    3.5e-9      0.001       1.0         100.0       -1
+28          powerlaw    3.5e-10     0.001       1.0         100.0       -1
+29          powerlaw    1e-9        0.001       1.0         100.0       -1
+# 30          step1       3.5e-9      5           1.0         -1          -1

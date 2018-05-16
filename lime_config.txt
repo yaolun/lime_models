@@ -11,9 +11,9 @@ rMin            0.2
 rMax            64973
 distance        200.0
 outdir          /scratch/LIMEmods/pylime/YLY/run/model25/
-a_model         neg_step2
-a_params0       5e-08
+a_model         powerlaw
+a_params0       3.5e-9
 a_params1       0.1
-a_params2       0.5
-a_params3       0.001
-a_params4       200.0
+a_params2       1.0
+a_params3       100.0
+a_params4       -1
