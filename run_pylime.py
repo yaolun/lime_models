@@ -15,7 +15,7 @@ args = vars(parser.parse_args())
 
 model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
 outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
-pylime = '/scratch/LIMEmods/pylime/lime/pylime'
+pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 
 for m in model_list['model_name']:
 
@@ -54,7 +54,7 @@ for m in model_list['model_name']:
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
-    
+
     # make sure the "image_only" file is reset everytime LIME run
     if os.path.exists(outdir+'image_only'):
         os.remove(outdir+'image_only')
@@ -75,7 +75,7 @@ for m in model_list['model_name']:
     print('Start running model '+str(m))
     log = open(outdir+'pylime.log','w')
     err = open(outdir+'pylime.err','w')
-    run = call(['pylime', 'model.py'], stdout=log, stderr=err)
+    run = call([pylime, 'model.py'], stdout=log, stderr=err)
 
     if not os.path.exists(outdir+'grid5'):
         print('grid files not found.  pylime probably failed.')
