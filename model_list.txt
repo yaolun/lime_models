@@ -21,6 +21,6 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 9           step2       5e-8        0.1         1.0         0.02        200.0
 10          step2       5e-8        0.1         1.0         0.001       200.0
 11          uniform     3.5e-9      -1          -1          -1          -1
-13          powerlaw    3.5e-9      0.001       1.0         100.0       -1
-14          powerlaw    3.5e-10     0.001       1.0         100.0       -1
-15          powerlaw    1e-9        0.001       1.0         100.0       -1
+12          powerlaw    3.5e-9      0.001       1.0         100.0       -1
+13          powerlaw    3.5e-10     0.001       1.0         100.0       -1
+14          powerlaw    1e-9        0.001       1.0         100.0       -1

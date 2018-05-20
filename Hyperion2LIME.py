@@ -261,4 +261,4 @@ class Hyperion2LIME:
         # uniform abundance
         # abundance = 3.5e-9
 
-        return abundance
+        return float(abundance)
