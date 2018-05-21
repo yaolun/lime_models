@@ -160,11 +160,12 @@ def input(macros):
     par.nThreads = 20
     par.nSolveIters = 17
     par.gridOutFiles = [outdir+'grid1', outdir+'grid2', outdir+'grid3', outdir+'grid4', outdir+'grid5']
-    
+
     if image_only:
         # TODO: need to fix the problem of CFITSIO and use the new interface to do this
         par.restart = 'restart.pop'
         par.nSolveIters = 0
+        par.nThreads = 1
     # Definitions for image #0. Add further similar blocks for additional images.
     #
     par.img.append(ImageParameters())
