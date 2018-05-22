@@ -2,6 +2,7 @@ from hyperion.model import ModelOutput
 import numpy as np
 import astropy.io as io
 import astropy.constants as const
+from astropy.convolution import convolve, Box1DKernel
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 au_cgs = const.au.cgs.value
 au_si = const.au.si.value
@@ -71,6 +72,16 @@ class Hyperion2LIME:
             r_in = self.rmin
 
         return (r_in, t_in, p_in)
+
+    def Spherical2Cart(self, r, t, p):
+        """
+        This is only valid for axisymmetric model
+        """
+        x = r*np.sin(t)*np.cos(p)
+        y = r*np.sin(t)*np.sin(p)
+        z = r*np.cos(t)
+
+        return (x, y, z)
 
     def Spherical2Cart_vector(self, coord_sph, v_sph):
         r, theta, phi = coord_sph
@@ -240,7 +251,7 @@ class Hyperion2LIME:
         elif config['a_model'] == 'uniform':
             abundance = float(config['a_params0'])
 
-        elif config['a_model'] == 'powerlaw':
+        elif config['a_model'] == 'lognorm':
             a0 = float(config['a_params0'])
             a1 = float(config['a_params1'])
             a2 = float(config['a_params2'])
@@ -253,6 +264,21 @@ class Hyperion2LIME:
             else:
                 abundance = a0*a1
 
+        elif config['a_model'] == 'powerlaw':
+            a0 = float(config['a_params0'])
+            a1 = float(config['a_params1'])
+            a2 = float(config['a_params2'])
+            a3 = float(config['a_params3'])
+
+            if r_in >= a2*self.r_inf:
+                abundance = a0
+            else:
+                # y = Ax^a3+B
+                A = a0*(1-a1)/((a2*self.r_inf)**a3 - self.rmin**a3)
+                B = a0-a0*(1-a1)*(a2*self.r_inf)**a3/((a2*self.r_inf)**a3 - self.rmin**a3)
+
+                abundance = A*r_in**a3+B
+
         if self.debug:
             foo = open('abundance.log', 'a')
             foo.write('%e \t %e \t %e \t %f\n' % (x, y, z, abundance))
@@ -262,3 +288,30 @@ class Hyperion2LIME:
         # abundance = 3.5e-9
 
         return float(abundance)
+
+    def radialSmoothing(self, x, y, z, variable, kernel='boxcar',
+                        smooth_length=50, config=None):
+        # convert the coordinates from Cartian to spherical
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+
+        # r-array for smoothing
+        smoothL = smooth_length*au_cgs
+        r_arr = np.arange(r_in-smoothL/2, r_in+smoothL/2, smoothL/50)  # 50 bins
+
+        # setup the smoothing kernel
+        # it is not really a smoothing kernel, more like a local mean
+        def averageKernel(kernel, r, var):
+            if kernel == 'boxcar':
+                out = np.mean(var)
+            return out
+
+        # run the corresponding look-up function for the desired variable
+
+        var_arr = np.empty_like(r_arr)
+        for i, r in enumerate(r_arr):
+            (xd, yd, zd) = self.Spherical2Cart(r, t_in, p_in)
+            if variable == 'abundance':
+                var_arr[i] = self.getAbundance(xd/1e2, yd/1e2, zd/1e2, config)
+        var = averageKernel(kernel, r, var_arr)
+
+        return float(var)

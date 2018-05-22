@@ -10,6 +10,16 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 #       * a_params2: the radius of the first step in unit of the infall radius
 #       * a_params3: the ratio of the second inner abundance to the outer abundance
 #       * a_params4: the radius of the second step in unit of AU
+#   - lognorm: log-normal decrease between two radii (y = e^x)
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the ratio of the inner abundance to the outer abundance
+#       * a_params2: the radius where the outer abundance starts to decrease in log-normal.
+#       * a_params3: the inner radius where the log-normal decrease to a0*a1.
+#   - powerlaw: power-law decrease (y = x^a)
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the abundance at the minimum raidus (rMin)
+#       * a_params2: the radius where the outer abundance starts to decrease in power-law
+#       * a_params3: the power of the power-law decrease
 # 1           uniform     3e-9        -1          -1          -1          -1
 # 2           step1       3e-9        5           1.0         -1          -1
 # 3           step1       3e-9        0.01        1.0         -1          -1      # failed in raytracing
@@ -21,19 +31,20 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 # 9           step2       5e-8        0.1         1.0         0.02        200.0
 # 10          step2       5e-8        0.1         1.0         0.001       200.0
 # 11          uniform     3.5e-9      -1          -1          -1          -1
-# 12          powerlaw    3.5e-9      0.001       1.0         100.0       -1
-# 13          powerlaw    3.5e-10     0.001       1.0         100.0       -1
-# 14          powerlaw    1e-9        0.001       1.0         100.0       -1      # failed in raytracing
+# 12          lognorm    3.5e-9      0.001       1.0         100.0       -1
+# 13          lognorm    3.5e-10     0.001       1.0         100.0       -1
+# 14          lognorm    1e-9        0.001       1.0         100.0       -1      # failed in raytracing
 # 15          step2       1e-7        0.1         1.0         0.0005      200.0
 # 16          step2       5e-7        0.1         1.0         0.0001      200.0
 # 17          step2       1e-6        0.1         1.0         0.00005     200.0
-# 18          powerlaw    3.5e-8      0.001       1.0         100.0       -1
-# 19          powerlaw    3.5e-7      0.001       1.0         100.0       -1
-20          powerlaw    3.5e-8      0.0001      1.0         100.0       -1
-21          powerlaw    3.5e-7      0.00001     1.0         100.0       -1
-22          powerlaw    3.5e-9      0.001       1.5         100.0       -1
-23          powerlaw    3.5e-8      0.0001      1.5         100.0       -1
-24          powerlaw    3.5e-7      0.00001     1.5         100.0       -1
-25          powerlaw    3.5e-9      0.001       1.5         200.0       -1
-26          powerlaw    3.5e-8      0.0001      1.5         200.0       -1
-27          powerlaw    3.5e-7      0.00001     1.5         200.0       -1
+# 18          lognorm    3.5e-8      0.001       1.0         100.0       -1
+# 19          lognorm    3.5e-7      0.001       1.0         100.0       -1
+# 20          lognorm    3.5e-8      0.0001      1.0         100.0       -1
+# 21          lognorm    3.5e-7      0.00001     1.0         100.0       -1
+# 22          lognorm    3.5e-9      0.001       1.5         100.0       -1
+# 23          lognorm    3.5e-8      0.0001      1.5         100.0       -1
+# 24          lognorm    3.5e-7      0.00001     1.5         100.0       -1
+# 25          lognorm    3.5e-9      0.001       1.5         200.0       -1
+# 26          lognorm    3.5e-8      0.0001      1.5         200.0       -1
+# 27          lognorm    3.5e-7      0.00001     1.5         200.0       -1
+28          powerlaw   3.5e-8      0.0001      1.0         2.0         -1
