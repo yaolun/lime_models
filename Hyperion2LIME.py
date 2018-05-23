@@ -290,12 +290,12 @@ class Hyperion2LIME:
         return float(abundance)
 
     def radialSmoothing(self, x, y, z, variable, kernel='boxcar',
-                        smooth_length=50, config=None):
+                        smooth_factor=2, config=None):
         # convert the coordinates from Cartian to spherical
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         # r-array for smoothing
-        smoothL = smooth_length*au_cgs
+        smoothL = r_in/smooth_factor*au_cgs
         r_arr = np.arange(r_in-smoothL/2, r_in+smoothL/2, smoothL/50)  # 50 bins
 
         # setup the smoothing kernel
