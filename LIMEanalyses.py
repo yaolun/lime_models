@@ -1,8 +1,12 @@
 import numpy as np
-from astropy.io import fits
+from astropy.io import fits, ascii
 import astropy.constants as const
 
 au_si = const.au.si.value
+au_cgs = const.au.cgs.value
+c = const.c.cgs.value
+h = const.h.cgs.value
+mh = const.m_p.cgs.value+const.m_e.cgs.value
 
 class LIMEanalyses:
     """
@@ -12,14 +16,26 @@ class LIMEanalyses:
         - grid inspection
     """
 
-    def __init__(self, grid, gridtype):
+    def __init__(self, config=None):
+
+        if config != None:
+            config_file = ascii.read(config)
+            config = {}
+            for name, val in zip(config_file['col1'],config_file['col2']):
+                config[name] = val
+
+            self.config = config
+
+    def unpackLIME(self, grid, gridtype):
+        """
+        this result include the sink points
+        """
         self.grid = np.array([list(g) for g in fits.open(grid)[1].data])
         self.gridtype = gridtype
+
         if gridtype != 5:
             print('unsupported grid type', gridtype)
             return None
-
-    def unpackLIME(self):
 
         grid = self.getGrid()
         sph_grid = self.Cart2Spherical(grid)
@@ -32,6 +48,33 @@ class LIMEanalyses:
                   'vx': velocity[0], 'vy': velocity[1], 'vz': velocity[2],
                   'density': density, 'abundance': abundance, 'Tk': Tk}
         return output
+
+    def unpackLIMEpop(self, grid, gridtype, pop):
+        """
+        this result does not include the sink points
+        it can now do velocity, but it is based on the assumption
+        that the order in grid is the same as the order in populations.pop
+        all outputs in cgs unit
+        """
+        popdata = ascii.read(pop)
+        if gridtype != 5:
+            print('unsupported grid type', gridtype)
+            return None
+
+        lime_grid = self.unpackLIME(grid, 5)
+        v_grid = (lime_grid['vx'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs],
+                  lime_grid['vy'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs],
+                  lime_grid['vz'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs])
+
+        sph_grid = self.Cart2Spherical((popdata['x']*1e2, popdata['y']*1e2, popdata['z']*1e2))
+
+        output = {'x': popdata['x']*1e2, 'y': popdata['y']*1e2, 'z': popdata['z']*1e2,
+                  'r': sph_grid[0], 'theta': sph_grid[1], 'phi': sph_grid[2],
+                  'vx': v_grid[0], 'vy': v_grid[1], 'vz': v_grid[2],
+                  'density': popdata['H2_density']/1e6,
+                  'abundance': popdata['molecular_abundance'],
+                  'Tk': popdata['kinetic_gas_temperature']}
+        return output, popdata
 
     def Cart2Spherical(self, grid):
         # convert arrays of x, y, z to r, theta, phi
@@ -68,6 +111,7 @@ class LIMEanalyses:
     def getDensity(self):
         # get density
         # unit: cm-3  (I think it is number density although the FITS header says it's mass density)
+
         return self.grid[:,10]*1e-6
 
     def getTempK(self):
@@ -77,3 +121,39 @@ class LIMEanalyses:
     def getTempDust(self):
         # get the dust temperature
         return self.grid[:,14]
+
+    def LIME2COLT(self, grid, gridtype, pop, auxdata):
+
+        output, popdata = self.unpackLIMEpop(grid, gridtype, pop)
+        n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]
+        n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]
+        B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
+        B12 = B21*auxdata['degeneracy'][0]/auxdata['degeneracy'][1]
+
+        # gas
+        jv_gas = h*auxdata['nu0']/(4*np.pi)*n2*auxdata['EA']
+        av_gas = h*auxdata['nu0']/(4*np.pi)*(n1*B12-n2*B21)
+
+        def Planck(nu, T):
+            import astropy.constants as const
+            h = const.h.cgs.value
+            k = const.k_B.cgs.value
+            c = const.c.cgs.value
+
+            # for given temperature, calculate the corresponding B_v
+            B_v = 2*h*nu**3/c**2*(np.exp(h*nu/k/T)-1)**-1
+
+            return B_v
+
+        # dust
+        g2d = 100
+        # kappa_v in cm2 per gram of dust
+        av_dust = auxdata['kappa_v']*output['density']*float(self.config['mmw'])*mh/g2d
+        jv_dust = -av_dust*Planck(auxdata['nu0'], output['Tk'])
+
+        output['jv_gas'] = jv_gas
+        output['av_gas'] = av_gas
+        output['jv_dust'] = jv_dust
+        output['av_dust'] = av_dust
+
+        return output
