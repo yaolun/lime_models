@@ -124,11 +124,14 @@ class LIMEanalyses:
 
     def LIME2COLT(self, grid, gridtype, pop, auxdata):
 
+        c = const.c.cgs.value
+        h = const.h.cgs.value
+
         output, popdata = self.unpackLIMEpop(grid, gridtype, pop)
-        n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]
-        n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]
+        n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]  # number density (1/cm3)
+        n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]    # number density (1/cm3)
         B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
-        B12 = B21*auxdata['degeneracy'][0]/auxdata['degeneracy'][1]
+        B12 = B21*auxdata['degeneracy'][0]/auxdata['degeneracy'][1]   # (upper, lower)
 
         # gas
         jv_gas = h*auxdata['nu0']/(4*np.pi)*n2*auxdata['EA']

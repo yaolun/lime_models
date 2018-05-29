@@ -55,6 +55,12 @@ model_name  a_model     a_params0   a_params1   a_params2   a_params3   a_params
 # 33          powerlaw   3.5e-8      0.0001      1.0         1.0         -1
 # 34          powerlaw   3.5e-7      0.0001      1.0         2.0         -1
 # 35          powerlaw   3.5e-6      0.0001      1.0         2.0         -1
-36          powerlaw   3.5e-8      0.0001      0.8         2.0         -1
-37          powerlaw   3.5e-8      0.0001      0.6         2.0         -1
-38          powerlaw   3.5e-8      0.0001      0.4         2.0         -1
+# 36          powerlaw   3.5e-8      0.0001      0.8         2.0         -1
+# 37          powerlaw   3.5e-8      0.0001      0.6         2.0         -1
+# 38          powerlaw   3.5e-8      0.0001      0.4         2.0         -1
+39          powerlaw   3.5e-8      0.0001      1.2         1.7         -1
+40          powerlaw   3.5e-8      0.0001      1.5         1.7         -1
+41          powerlaw   3.5e-8      0.0001      2.0         1.7         -1
+42          powerlaw   3.5e-8      0.0001      1.2         1.5         -1
+43          powerlaw   3.5e-8      0.0001      1.5         1.5         -1
+44          powerlaw   3.5e-8      0.0001      2.0         1.5         -1
