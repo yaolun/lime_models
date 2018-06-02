@@ -184,8 +184,7 @@ class Hyperion2LIME:
             # TODO: raise warning
 
         ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-        v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
-
+ 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
         if self.debug:

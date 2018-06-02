@@ -130,8 +130,11 @@ class LIMEanalyses:
         output, popdata = self.unpackLIMEpop(grid, gridtype, pop)
         n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]  # number density (1/cm3)
         n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]    # number density (1/cm3)
-        B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
+        # B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
+        B21 = auxdata['EA']*c**2/(2*h*auxdata['nu0']**3)
         B12 = B21*auxdata['degeneracy'][0]/auxdata['degeneracy'][1]   # (upper, lower)
+
+        auxdata['r_max'] = float(self.config['rMax'])
 
         # gas
         jv_gas = h*auxdata['nu0']/(4*np.pi)*n2*auxdata['EA']
@@ -159,4 +162,4 @@ class LIMEanalyses:
         output['jv_dust'] = jv_dust
         output['av_dust'] = av_dust
 
-        return output
+        return output, auxdata
