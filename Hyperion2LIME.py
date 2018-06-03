@@ -50,9 +50,9 @@ class Hyperion2LIME:
         self.ntheta = len(self.theta)
         self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
 
-        self.vr2d = self.tsc['ur'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
-        self.vtheta2d = self.tsc['utheta'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
-        self.vphi2d = self.tsc['uphi'].reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
 
 
     def Cart2Spherical(self, x, y, z, unit_convert=True):
