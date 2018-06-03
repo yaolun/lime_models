@@ -1,5 +1,6 @@
 from hyperion.model import ModelOutput
 import numpy as np
+import pandas as pd
 import astropy.io as io
 import astropy.constants as const
 from astropy.convolution import convolve, Box1DKernel
@@ -32,7 +33,11 @@ class Hyperion2LIME:
         self.debug = debug
 
         # velocity grid construction
-        self.tsc = io.ascii.read(self.velfile)
+        # ascii.read() fails for large file.  Use pandas instead
+        # self.tsc = io.ascii.read(self.velfile)
+        self.tsc = pd.read_table(velfile, skiprows=1, delim_whitespace=True, header=None)
+        self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
+
         self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
         self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
                                  (self.xr[:-1]+self.xr[1:])/2,
