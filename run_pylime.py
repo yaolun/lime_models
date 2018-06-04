@@ -17,7 +17,7 @@ model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt
 outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 
-for m in model_list['model_name']:
+for i, m in enumerate(model_list['model_name']):
 
     # use the config file as the communication between model.py and user-defined model list
     foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
@@ -26,8 +26,8 @@ for m in model_list['model_name']:
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
                'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance']
     p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt',
-                '50000', '8000', '/scratch/LIMEmods/pylime/YLY/model12.rtout',
-                '/scratch/LIMEmods/pylime/YLY/rho_v_env', '0.38', '36000',
+                '50000', '8000', '/scratch/LIMEmods/pylime/YLY/'+model_list['hy_model']+'.rtout',
+                '/scratch/LIMEmods/pylime/YLY/rho_v_env.'+str(model_list['tsc']), str(model_list['cs']), '36000',
                 '0.2', '64973', '200.0']
 
     for i, (name, val) in enumerate(zip(p_names, p_values)):
