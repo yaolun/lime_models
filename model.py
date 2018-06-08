@@ -42,6 +42,7 @@ rMax = float(config['rMax'])*au_si
 rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at the origin.
 # a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
+theta_incl = float(config['inclination'])
 
 # path
 outdir = str(config['outdir'])
@@ -173,19 +174,19 @@ def input(macros):
     # The [-1] entry is the most recently added.
     # TODO: review the choice of imaging parameters
 
-    par.img[-1].nchan             = 200            # Number of channels
+    par.img[-1].nchan             = 100            # Number of channels
     par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
     #  par.img[-1].molI              = -1
     par.img[-1].velres            = 100.0          # Channel resolution in m/s
-    par.img[-1].imgres            = 0.1            # Resolution in arc seconds
-    par.img[-1].pxls              = 500            # Pixels per dimension
+    par.img[-1].imgres            = 0.05           # Resolution in arc seconds
+    par.img[-1].pxls              = 100            # Pixels per dimension
     par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
     #  par.img[-1].freq              = -1.0
     #  par.img[-1].bandwidth         = -1.0
     par.img[-1].source_vel        = 0.0            # source velocity in m/s
-    #  par.img[-1].theta             = 0.0
-    #  par.img[-1].phi               = 0.0
-    par.img[-1].incl              = 40.0            # TODO: read from file
+    par.img[-1].theta             = 90.0-theta_incl
+    par.img[-1].phi               = 0.0
+    # par.img[-1].incl              = theta_incl
     #  par.img[-1].posang            = 0.0
     #  par.img[-1].azimuth           = 0.0
     par.img[-1].distance          = distance         # source distance in m

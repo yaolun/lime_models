@@ -24,11 +24,11 @@ for i, m in enumerate(model_list['model_name']):
 
     # default parameters - the parameters that typically fixed and not defined in the model list
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
-               'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance']
+               'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
     p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt',
                 '50000', '8000', '/scratch/LIMEmods/pylime/YLY/'+model_list['hy_model'][i]+'.rtout',
                 '/scratch/LIMEmods/pylime/YLY/rho_v_env.'+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
-                '0.2', '64973', '200.0']
+                '0.2', '64973', '200.0', '50.0']
 
     for i, (name, val) in enumerate(zip(p_names, p_values)):
         foo.write('{:<14s}  {:<s}\n'.format(name, val))

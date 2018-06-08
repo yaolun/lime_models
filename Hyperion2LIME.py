@@ -4,6 +4,7 @@ import pandas as pd
 import astropy.io as io
 import astropy.constants as const
 from astropy.convolution import convolve, Box1DKernel
+from scipy.interpolate import interp2d
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 au_cgs = const.au.cgs.value
 au_si = const.au.si.value
@@ -34,7 +35,6 @@ class Hyperion2LIME:
 
         # velocity grid construction
         # ascii.read() fails for large file.  Use pandas instead
-        # self.tsc = io.ascii.read(self.velfile)
         self.tsc = pd.read_table(velfile, skiprows=1, delim_whitespace=True, header=None)
         self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
 
@@ -53,6 +53,7 @@ class Hyperion2LIME:
         self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
         self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
         self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
 
     def Cart2Spherical(self, x, y, z, unit_convert=True):
@@ -68,10 +69,12 @@ class Hyperion2LIME:
             t_in = np.arccos(z/r_in)
         else:
             t_in = 0
-        if x != 0:
-            p_in = np.sign(y)*np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
-        else:
-            p_in = np.sign(y)*np.pi/2
+
+        # if x != 0:
+            # p_in = np.sign(y)*np.arctan(y/x)  # the input phi is irrelevant in axisymmetric model
+        # else:
+            # p_in = np.sign(y)*np.pi/2
+        p_in = np.arctan2(y, x)
 
         if r_in < self.rmin:
             r_in = self.rmin
@@ -164,13 +167,13 @@ class Hyperion2LIME:
 
         return float(self.temp[indice])
 
-    def getVelocity(self, x, y, z):
+    def getVelocity(self, x, y, z, sph=False, unit_convert=True):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
         """
 
-        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z, unit_convert=unit_convert)
 
         if self.truncate != None:
             if (y**2+z**2)**0.5 > self.truncate*au_si:
@@ -190,6 +193,72 @@ class Hyperion2LIME:
 
         ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
         v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+        if sph:
+            return v_sph
+
+        v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
+
+        if self.debug:
+            foo = open('velocity.log', 'a')
+            foo.write('%e \t %e \t %e \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
+            foo.close()
+
+        return v_out
+
+    def getVelocity2(self, x, y, z, sph=False, unit_convert=True):
+        """
+        new method to interpolate the velocity
+        cs: effecitve sound speed in km/s;
+        age: the time since the collapse began in year.
+        """
+
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z, unit_convert=unit_convert)
+
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                v_out = [0.0, 0.0, 0.0]
+                return v_out
+
+        # outside of infall radius, the envelope is static
+        if r_in > self.r_inf:
+            v_out = [0.0, 0.0, 0.0]
+            return v_out
+
+        # if the input radius is smaller than the minimum in xr array,
+        # use the minimum in xr array instead.
+        if r_in < self.xr_wall.min()*self.r_inf:
+            r_in = self.xr.min()*self.r_inf
+            # TODO: raise warning
+
+        # r, t = 10*au, np.radians(30.)
+        # print(r, t)
+        r_corners = np.argsort(abs(r_in-self.xr*self.r_inf))[:2]
+        theta_corners = np.argsort(abs(t_in-self.theta))[:2]
+
+        # print(r_corners, theta_corners)
+
+        # initialize the velocity vector in spherical coordinates
+        # TODO: use scipy interp2d
+        v_sph = []
+        for k in ['vr2d', 'vtheta2d', 'vphi2d']:
+            f = interp2d(self.xr[r_corners]*self.r_inf,
+                         self.theta[theta_corners],
+                         self.tsc2d[k][np.ix_(r_corners, theta_corners)])
+            v_sph.append(float(f(r_in, t_in)/1e2))
+
+        # v_r, v_theta, v_phi = 0.0, 0.0, 0.0
+        # for rc in r_corners:
+        #     for tc in theta_corners:
+        #         v_r += self.vr2d[rc, tc]
+        #         v_theta += self.vtheta2d[rc, tc]
+        #         v_phi += self.vphi2d[rc, tc]
+        # v_r = v_r/4
+        # v_theta = v_theta/4
+        # v_phi = v_phi/4
+        #
+        # v_sph = list(map(float, [v_r/1e2, v_theta/1e2, v_phi/1e2]))  # convert to SI unit (meter)
+        if sph:
+            return v_sph
 
         v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
 
