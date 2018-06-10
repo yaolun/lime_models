@@ -10,11 +10,13 @@ mh = const.m_p.cgs.value+const.m_e.cgs.value
 mmw = 2.37
 
 from LIMEanalyses import *
-mod_dir = '/Volumes/SD-Mac/lime_runs/model28_test/'
-outfilename = 'infall_zeroV'
+mod_dir = '/Volumes/SD-Mac/lime_runs/model49/'
+outfilename = 'infall_model49'
 grid = mod_dir+'grid5'
 pop = mod_dir+'populations.pop'
 config = mod_dir+'lime_config.txt'
+rtout = '/Volumes/SD-Mac/model12.rtout'
+velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
 
 # HCO+ 4-3
 auxdata = {'EA': 3.6269e-03, 'nu0': 356.7342880e9, 'trans_up': 4, 'degeneracy': [9,7]}  # degeneracy from upper to lower
@@ -29,7 +31,7 @@ auxdata['kappa_v'] = kappa_v_dust
 # TODO:  add r_max
 
 
-lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata)
+lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata, velfile=velfile, rtout=rtout)
 
 def write_hdf5((lime_out, auxdata), filename='infall.h5'):
     n_cells = np.int32(len(lime_out['Tk']))
@@ -54,6 +56,7 @@ def write_hdf5((lime_out, auxdata), filename='infall.h5'):
     with h5py.File(filename, 'w') as f:
         f.attrs['n_cells'] = n_cells
         f.attrs['r_max'] = r_max
+        f.attrs['kappa_dust'] = kappa_dust  # Dust opacity at line center (cm^2/g of dust)
         # if you need to ensure np.float64
         # f.create_dataset('T', data=np.array(T, dtype=np.float64)) # Temperature (K)
         f.create_dataset('T', data=T) # Temperature (K)

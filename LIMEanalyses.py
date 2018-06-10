@@ -49,7 +49,7 @@ class LIMEanalyses:
                   'density': density, 'abundance': abundance, 'Tk': Tk}
         return output
 
-    def unpackLIMEpop(self, grid, gridtype, pop):
+    def unpackLIMEpop(self, grid, gridtype, pop, velfile=None, rtout=None):
         """
         this result does not include the sink points
         it can now do velocity, but it is based on the assumption
@@ -67,6 +67,30 @@ class LIMEanalyses:
                   lime_grid['vz'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs])
 
         sph_grid = self.Cart2Spherical((popdata['x']*1e2, popdata['y']*1e2, popdata['z']*1e2))
+
+        # check if the velocity grid has the same length as the population grid
+        # sometime LIME outputs these two arrays in different size
+        if len(popdata['x']) < len(v_grid[0]):
+            print('The length of population grid is smaller than the LIME grid\nRe-calculate the velocity with Hyperion2LIME.')
+            # use the H2L velocity function to re-calculate the velocity
+            if velfile == None:
+                velfile = input('Where is the TSC velocity file?')
+            if rtout == None:
+                rtout = input('Where is the Hyperion output file?')
+
+            from Hyperion2LIME import Hyperion2LIME
+            model = Hyperion2LIME(rtout, velfile, float(self.config['cs']), float(self.config['age']),
+                                  rmin=float(self.config['rMin']), g2d=float(self.config['g2d']), mmw=float(self.config['mmw']))
+            v_grid = [[], [], []]
+            for i, (x,y,z) in enumerate(zip(popdata['x'], popdata['y'], popdata['z'])):  # unit is meter here
+                v = model.getVelocity2(x,y,z)
+                v_grid[0].append(v[0]*1e2)
+                v_grid[1].append(v[1]*1e2)
+                v_grid[2].append(v[2]*1e2)
+
+        elif len(popdata['x']) > len(v_grid[0]):
+            print('The population grid ({:<d}) is larger than the velocity grid ({:<d}).\nThis never happen, abort abort!'.format(len(v_grid[0]), len(popdata['x'])))
+            return None
 
         output = {'x': popdata['x']*1e2, 'y': popdata['y']*1e2, 'z': popdata['z']*1e2,
                   'r': sph_grid[0], 'theta': sph_grid[1], 'phi': sph_grid[2],
@@ -122,12 +146,12 @@ class LIMEanalyses:
         # get the dust temperature
         return self.grid[:,14]
 
-    def LIME2COLT(self, grid, gridtype, pop, auxdata):
+    def LIME2COLT(self, grid, gridtype, pop, auxdata, velfile=None, rtout=None):
 
         c = const.c.cgs.value
         h = const.h.cgs.value
 
-        output, popdata = self.unpackLIMEpop(grid, gridtype, pop)
+        output, popdata = self.unpackLIMEpop(grid, gridtype, pop, velfile=velfile, rtout=rtout)
         n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]  # number density (1/cm3)
         n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]    # number density (1/cm3)
         # B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
