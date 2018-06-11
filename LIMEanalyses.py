@@ -49,7 +49,7 @@ class LIMEanalyses:
                   'density': density, 'abundance': abundance, 'Tk': Tk}
         return output
 
-    def unpackLIMEpop(self, grid, gridtype, pop, velfile=None, rtout=None):
+    def unpackLIMEpop(self, grid, gridtype, pop, velfile=None, rtout=None, recalVelo=False):
         """
         this result does not include the sink points
         it can now do velocity, but it is based on the assumption
@@ -77,7 +77,13 @@ class LIMEanalyses:
                 velfile = input('Where is the TSC velocity file?')
             if rtout == None:
                 rtout = input('Where is the Hyperion output file?')
+            recalVelo = True
 
+        elif len(popdata['x']) > len(v_grid[0]):
+            print('The population grid ({:<d}) is larger than the velocity grid ({:<d}).\nThis never happen, abort abort!'.format(len(v_grid[0]), len(popdata['x'])))
+            return None
+
+        if recalVelo:
             from Hyperion2LIME import Hyperion2LIME
             model = Hyperion2LIME(rtout, velfile, float(self.config['cs']), float(self.config['age']),
                                   rmin=float(self.config['rMin']), g2d=float(self.config['g2d']), mmw=float(self.config['mmw']))
@@ -87,10 +93,6 @@ class LIMEanalyses:
                 v_grid[0].append(v[0]*1e2)
                 v_grid[1].append(v[1]*1e2)
                 v_grid[2].append(v[2]*1e2)
-
-        elif len(popdata['x']) > len(v_grid[0]):
-            print('The population grid ({:<d}) is larger than the velocity grid ({:<d}).\nThis never happen, abort abort!'.format(len(v_grid[0]), len(popdata['x'])))
-            return None
 
         output = {'x': popdata['x']*1e2, 'y': popdata['y']*1e2, 'z': popdata['z']*1e2,
                   'r': sph_grid[0], 'theta': sph_grid[1], 'phi': sph_grid[2],
@@ -146,12 +148,12 @@ class LIMEanalyses:
         # get the dust temperature
         return self.grid[:,14]
 
-    def LIME2COLT(self, grid, gridtype, pop, auxdata, velfile=None, rtout=None):
+    def LIME2COLT(self, grid, gridtype, pop, auxdata, velfile=None, rtout=None, recalVelo=False):
 
         c = const.c.cgs.value
         h = const.h.cgs.value
 
-        output, popdata = self.unpackLIMEpop(grid, gridtype, pop, velfile=velfile, rtout=rtout)
+        output, popdata = self.unpackLIMEpop(grid, gridtype, pop, velfile=velfile, rtout=rtout, recalVelo=recalVelo)
         n1 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up']-1)]  # number density (1/cm3)
         n2 = output['density']*output['abundance']*popdata['pops_'+str(auxdata['trans_up'])]    # number density (1/cm3)
         # B21 = auxdata['EA']*c**3/(8*np.pi*h*auxdata['nu0']**3)
