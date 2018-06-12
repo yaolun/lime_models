@@ -73,11 +73,13 @@ model_name  hy_model    cs      tsc         a_model     a_params0   a_params1   
 # 47        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
 # 48        model15     0.35    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
 # 49        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 50        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.001        1.0         2.0         -1
-# 51        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.0001       1.0         2.0         -1
+# 50        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.001       1.0         2.0         -1
+# 51        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.0001      1.0         2.0         -1
 # 52        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
 # 53        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.5         2.0         -1
 # 54        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      2.0         2.0         -1
 # 55        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.00001     2.0         2.0         -1
-56        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.8         2.0         -1
-57        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.6         2.0         -1
+# 56        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.8         2.0         -1
+# 57        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.6         2.0         -1
+58        model14     0.37    bhr71dust   powerlaw   1.0e-8      0.00035     1.0         2.0         -1
+59        model14     0.37    bhr71dust   powerlaw   5.0e-9      0.0007      1.0         2.0         -1
