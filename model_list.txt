@@ -19,6 +19,9 @@
 #       * a_params1: the abundance at the minimum raidus (rMin)
 #       * a_params2: the radius where the outer abundance starts to decrease in power-law
 #       * a_params3: the power of the power-law decrease
+#       * a_params4: the maximum abundance that a profile can have.
+#                    (This is used to artificially decrease the abundance at outer radii
+#                     while keep the inner part following the same power law profile)
 #
 #################################################################################
 model_name  hy_model    cs      tsc         a_model     a_params0   a_params1   a_params2   a_params3   a_params4
@@ -81,5 +84,7 @@ model_name  hy_model    cs      tsc         a_model     a_params0   a_params1   
 # 55        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.00001     2.0         2.0         -1
 # 56        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.8         2.0         -1
 # 57        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.6         2.0         -1
-58        model14     0.37    bhr71dust   powerlaw   1.0e-8      0.00035     1.0         2.0         -1
-59        model14     0.37    bhr71dust   powerlaw   5.0e-9      0.0007      1.0         2.0         -1
+# 58        model14     0.37    bhr71dust   powerlaw   1.0e-8      0.00035     1.0         2.0         -1
+# 59        model14     0.37    bhr71dust   powerlaw   5.0e-9      0.0007      1.0         2.0         -1
+60        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         1.0e-8
+61        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         5.0e-9

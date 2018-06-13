@@ -343,6 +343,7 @@ class Hyperion2LIME:
             a1 = float(config['a_params1'])
             a2 = float(config['a_params2'])
             a3 = float(config['a_params3'])
+            a4 = float(config['a_params4'])
 
             if r_in >= a2*self.r_inf:
                 abundance = a0
@@ -352,6 +353,11 @@ class Hyperion2LIME:
                 B = a0-a0*(1-a1)*(a2*self.r_inf)**a3/((a2*self.r_inf)**a3 - self.rmin**a3)
 
                 abundance = A*r_in**a3+B
+
+            # option to cap the maximum value of abundance
+            if a4 > 0:
+                if abundance > a4:
+                    abundance = a4
 
         if self.debug:
             foo = open('abundance.log', 'a')
