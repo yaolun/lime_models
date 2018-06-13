@@ -16,16 +16,19 @@ class Hyperion2LIME:
     """
 
     def __init__(self, rtout, velfile, cs, age,
-                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False):
+                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True):
         self.rtout = rtout
         self.velfile = velfile
-        self.hyperion = ModelOutput(rtout)
-        self.hy_grid = self.hyperion.get_quantities()
+        if load_full:
+            self.hyperion = ModelOutput(rtout)
+            self.hy_grid = self.hyperion.get_quantities()
         self.rmin = rmin*1e2        # rmin defined in LIME, which use SI unit
         self.mmw = mmw
         self.g2d = g2d
         self.cs = cs
         self.age = age
+        self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
+
         # option to truncate the sphere to be a cylinder
         # the value is given in au to specify the radius of the truncated cylinder viewed from the observer
         self.truncate = truncate
@@ -34,26 +37,26 @@ class Hyperion2LIME:
         self.debug = debug
 
         # velocity grid construction
-        # ascii.read() fails for large file.  Use pandas instead
-        self.tsc = pd.read_table(velfile, skiprows=1, delim_whitespace=True, header=None)
-        self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
+        if load_full:
+            # ascii.read() fails for large file.  Use pandas instead
+            self.tsc = pd.read_table(velfile, skiprows=1, delim_whitespace=True, header=None)
+            self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
 
-        self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
-        self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
-                                 (self.xr[:-1]+self.xr[1:])/2,
-                                 [2*self.xr[-1]-self.xr[-2]]))
-        self.theta = np.unique(self.tsc['theta'])
-        self.theta_wall = np.hstack(([2*self.theta[0]-self.theta[1]],
-                                (self.theta[:-1]+self.theta[1:])/2,
-                                [2*self.theta[-1]-self.theta[-2]]))
-        self.nxr = len(self.xr)
-        self.ntheta = len(self.theta)
-        self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
+            self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
+            self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
+                                     (self.xr[:-1]+self.xr[1:])/2,
+                                     [2*self.xr[-1]-self.xr[-2]]))
+            self.theta = np.unique(self.tsc['theta'])
+            self.theta_wall = np.hstack(([2*self.theta[0]-self.theta[1]],
+                                    (self.theta[:-1]+self.theta[1:])/2,
+                                    [2*self.theta[-1]-self.theta[-2]]))
+            self.nxr = len(self.xr)
+            self.ntheta = len(self.theta)
 
-        self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-        self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-        self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-        self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
+            self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
 
     def Cart2Spherical(self, x, y, z, unit_convert=True):

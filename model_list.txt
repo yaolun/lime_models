@@ -23,68 +23,71 @@
 #                    (This is used to artificially decrease the abundance at outer radii
 #                     while keep the inner part following the same power law profile)
 #
-#################################################################################
-model_name  hy_model    cs      tsc         a_model     a_params0   a_params1   a_params2   a_params3   a_params4
-#################################################################################
+#####################################################################################################################
+model_name  hy_model    cs      tsc             a_model     a_params0   a_params1   a_params2   a_params3   a_params4
+#####################################################################################################################
 #
-# 1         model12     0.38    bhr71dust   uniform     3e-9        -1          -1          -1          -1
-# 2         model12     0.38    bhr71dust   step1       3e-9        5           1.0         -1          -1
-# 3         model12     0.38    bhr71dust   step1       3e-9        0.01        1.0         -1          -1      # failed in raytracing
-# 4         model12     0.38    bhr71dust   step1       1e-8        0.01        1.0         -1          -1
-# 5         model12     0.38    bhr71dust   step1       5e-8        0.01        1.0         -1          -1
-# 6         model12     0.38    bhr71dust   step1       5e-8        0.01        1.0         -1          -1
-# 7         model12     0.38    bhr71dust   step2       3e-9        0.1         1.0         0.02        200.0   # failed in raytracing
-# 8         model12     0.38    bhr71dust   step2       1e-8        0.1         1.0         0.02        200.0
-# 9         model12     0.38    bhr71dust   step2       5e-8        0.1         1.0         0.02        200.0
-# 10        model12     0.38    bhr71dust   step2       5e-8        0.1         1.0         0.001       200.0
-# 11        model12     0.38    bhr71dust   uniform     3.5e-9      -1          -1          -1          -1
-# 12        model12     0.38    bhr71dust   lognorm     3.5e-9      0.001       1.0         100.0       -1
-# 13        model12     0.38    bhr71dust   lognorm     3.5e-10     0.001       1.0         100.0       -1
-# 14        model12     0.38    bhr71dust   lognorm     1e-9        0.001       1.0         100.0       -1      # failed in raytracing
-# 15        model12     0.38    bhr71dust   step2       1e-7        0.1         1.0         0.0005      200.0
-# 16        model12     0.38    bhr71dust   step2       5e-7        0.1         1.0         0.0001      200.0
-# 17        model12     0.38    bhr71dust   step2       1e-6        0.1         1.0         0.00005     200.0
-# 18        model12     0.38    bhr71dust   lognorm    3.5e-8      0.001       1.0         100.0       -1
-# 19        model12     0.38    bhr71dust   lognorm    3.5e-7      0.001       1.0         100.0       -1
-# 20        model12     0.38    bhr71dust   lognorm    3.5e-8      0.0001      1.0         100.0       -1
-# 21        model12     0.38    bhr71dust   lognorm    3.5e-7      0.00001     1.0         100.0       -1
-# 22        model12     0.38    bhr71dust   lognorm    3.5e-9      0.001       1.5         100.0       -1
-# 23        model12     0.38    bhr71dust   lognorm    3.5e-8      0.0001      1.5         100.0       -1
-# 24        model12     0.38    bhr71dust   lognorm    3.5e-7      0.00001     1.5         100.0       -1
-# 25        model12     0.38    bhr71dust   lognorm    3.5e-9      0.001       1.5         200.0       -1
-# 26        model12     0.38    bhr71dust   lognorm    3.5e-8      0.0001      1.5         200.0       -1
-# 27        model12     0.38    bhr71dust   lognorm    3.5e-7      0.00001     1.5         200.0       -1
-# 28        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 29        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.5         2.0         -1
-# 30        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      2.0         2.0         -1
-# 31        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         1.75        -1
-# 32        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         1.4         -1
-# 33        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         1.0         -1
-# 34        model12     0.38    bhr71dust   powerlaw   3.5e-7      0.0001      1.0         2.0         -1
-# 35        model12     0.38    bhr71dust   powerlaw   3.5e-6      0.0001      1.0         2.0         -1
-# 36        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      0.8         2.0         -1
-# 37        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      0.6         2.0         -1
-# 38        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      0.4         2.0         -1
-# 39        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.2         1.7         -1
-# 40        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.5         1.7         -1
-# 41        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      2.0         1.7         -1
-# 42        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.2         1.5         -1
-# 43        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.5         1.5         -1
-# 44        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      2.0         1.5         -1
-# 45        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 46        model12     0.38    bhr71dust   powerlaw   3.5e-8      0.00001     1.0         2.0         -1
-# 47        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 48        model15     0.35    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 49        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 50        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.001       1.0         2.0         -1
-# 51        model14     0.37    bhr71dust   powerlaw   3.5e-9      0.0001      1.0         2.0         -1
-# 52        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-# 53        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.5         2.0         -1
-# 54        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      2.0         2.0         -1
-# 55        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.00001     2.0         2.0         -1
-# 56        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.8         2.0         -1
-# 57        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      0.6         2.0         -1
-# 58        model14     0.37    bhr71dust   powerlaw   1.0e-8      0.00035     1.0         2.0         -1
-# 59        model14     0.37    bhr71dust   powerlaw   5.0e-9      0.0007      1.0         2.0         -1
-60        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         1.0e-8
-61        model14     0.37    bhr71dust   powerlaw   3.5e-8      0.0001      1.0         2.0         5.0e-9
+# 1         model12     0.38    bhr71dust       uniform     3e-9        -1          -1          -1          -1
+# 2         model12     0.38    bhr71dust       step1       3e-9        5           1.0         -1          -1
+# 3         model12     0.38    bhr71dust       step1       3e-9        0.01        1.0         -1          -1      # failed in raytracing
+# 4         model12     0.38    bhr71dust       step1       1e-8        0.01        1.0         -1          -1
+# 5         model12     0.38    bhr71dust       step1       5e-8        0.01        1.0         -1          -1
+# 6         model12     0.38    bhr71dust       step1       5e-8        0.01        1.0         -1          -1
+# 7         model12     0.38    bhr71dust       step2       3e-9        0.1         1.0         0.02        200.0   # failed in raytracing
+# 8         model12     0.38    bhr71dust       step2       1e-8        0.1         1.0         0.02        200.0
+# 9         model12     0.38    bhr71dust       step2       5e-8        0.1         1.0         0.02        200.0
+# 10        model12     0.38    bhr71dust       step2       5e-8        0.1         1.0         0.001       200.0
+# 11        model12     0.38    bhr71dust       uniform     3.5e-9      -1          -1          -1          -1
+# 12        model12     0.38    bhr71dust       lognorm     3.5e-9      0.001       1.0         100.0       -1
+# 13        model12     0.38    bhr71dust       lognorm     3.5e-10     0.001       1.0         100.0       -1
+# 14        model12     0.38    bhr71dust       lognorm     1e-9        0.001       1.0         100.0       -1      # failed in raytracing
+# 15        model12     0.38    bhr71dust       step2       1e-7        0.1         1.0         0.0005      200.0
+# 16        model12     0.38    bhr71dust       step2       5e-7        0.1         1.0         0.0001      200.0
+# 17        model12     0.38    bhr71dust       step2       1e-6        0.1         1.0         0.00005     200.0
+# 18        model12     0.38    bhr71dust       lognorm    3.5e-8      0.001       1.0         100.0       -1
+# 19        model12     0.38    bhr71dust       lognorm    3.5e-7      0.001       1.0         100.0       -1
+# 20        model12     0.38    bhr71dust       lognorm    3.5e-8      0.0001      1.0         100.0       -1
+# 21        model12     0.38    bhr71dust       lognorm    3.5e-7      0.00001     1.0         100.0       -1
+# 22        model12     0.38    bhr71dust       lognorm    3.5e-9      0.001       1.5         100.0       -1
+# 23        model12     0.38    bhr71dust       lognorm    3.5e-8      0.0001      1.5         100.0       -1
+# 24        model12     0.38    bhr71dust       lognorm    3.5e-7      0.00001     1.5         100.0       -1
+# 25        model12     0.38    bhr71dust       lognorm    3.5e-9      0.001       1.5         200.0       -1
+# 26        model12     0.38    bhr71dust       lognorm    3.5e-8      0.0001      1.5         200.0       -1
+# 27        model12     0.38    bhr71dust       lognorm    3.5e-7      0.00001     1.5         200.0       -1
+# 28        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 29        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.5         2.0         -1
+# 30        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      2.0         2.0         -1
+# 31        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         1.75        -1
+# 32        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         1.4         -1
+# 33        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         1.0         -1
+# 34        model12     0.38    bhr71dust       powerlaw   3.5e-7      0.0001      1.0         2.0         -1
+# 35        model12     0.38    bhr71dust       powerlaw   3.5e-6      0.0001      1.0         2.0         -1
+# 36        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      0.8         2.0         -1
+# 37        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      0.6         2.0         -1
+# 38        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      0.4         2.0         -1
+# 39        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.2         1.7         -1
+# 40        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.5         1.7         -1
+# 41        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      2.0         1.7         -1
+# 42        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.2         1.5         -1
+# 43        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.5         1.5         -1
+# 44        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      2.0         1.5         -1
+# 45        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 46        model12     0.38    bhr71dust       powerlaw   3.5e-8      0.00001     1.0         2.0         -1
+# 47        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 48        model15     0.35    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 49        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 50        model14     0.37    bhr71dust       powerlaw   3.5e-9      0.001       1.0         2.0         -1
+# 51        model14     0.37    bhr71dust       powerlaw   3.5e-9      0.0001      1.0         2.0         -1
+# 52        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 53        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.5         2.0         -1
+# 54        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      2.0         2.0         -1
+# 55        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.00001     2.0         2.0         -1
+# 56        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      0.8         2.0         -1
+# 57        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      0.6         2.0         -1
+# 58        model14     0.37    bhr71dust       powerlaw   1.0e-8      0.00035     1.0         2.0         -1
+# 59        model14     0.37    bhr71dust       powerlaw   5.0e-9      0.0007      1.0         2.0         -1
+# 60        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         1.0e-8
+# 61        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         5.0e-9
+62          model14     0.37    bhr71swallow    powerlaw   3.5e-8      0.0001      1.0         1.5         -1
+63          model14     0.37    bhr71swallow    powerlaw   3.5e-8      0.0001      1.0         1.5         1.0e-8
+64          model14     0.37    bhr71swallow    powerlaw   3.5e-8      0.0001      1.0         1.5         5.0e-9
