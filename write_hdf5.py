@@ -3,35 +3,14 @@ import h5py
 import astropy.constants as const
 from scipy.interpolate import interp1d
 from astropy.io import ascii
+from LIMEanalyses import *
+import shutil
+
 pc = const.pc.cgs.value
 au = const.au.cgs.value
 c = const.c.cgs.value
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 mmw = 2.37
-
-from LIMEanalyses import *
-mod_dir = '/Volumes/SD-Mac/lime_runs/model49/'
-outfilename = 'infall_model49'
-grid = mod_dir+'grid5'
-pop = mod_dir+'populations.pop'
-config = mod_dir+'lime_config.txt'
-rtout = '/Volumes/SD-Mac/model12.rtout'
-velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
-
-# HCO+ 4-3
-auxdata = {'EA': 3.6269e-03, 'nu0': 356.7342880e9, 'trans_up': 4, 'degeneracy': [9,7]}  # degeneracy from upper to lower
-
-# load dust opacity
-g2d = 100
-dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5.txt', names=['wave', 'kappa_gas'])
-f_dust = interp1d(dust_lime['wave'], dust_lime['kappa_gas']*g2d)
-kappa_v_dust = f_dust(c/auxdata['nu0']*1e4)
-auxdata['kappa_v'] = kappa_v_dust
-
-# TODO:  add r_max
-
-
-lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata, velfile=velfile, rtout=rtout)
 
 def write_hdf5((lime_out, auxdata), filename='infall.h5'):
     n_cells = np.int32(len(lime_out['Tk']))
@@ -72,7 +51,7 @@ def write_hdf5((lime_out, auxdata), filename='infall.h5'):
         f.create_dataset('rho_dust', data=rho_dust) # Dust density (g/cm^3 of dust)
         f['rho_dust'].attrs['units'] = b'g/cm^3'
 
-def read_hdf5(filename=outfilename+'.h5'):
+def read_hdf5(filename):
     with h5py.File(filename, 'r') as f:
         print('Opened file:', filename)
         print('Attributes:', [item for item in f.attrs.items()])
@@ -81,5 +60,41 @@ def read_hdf5(filename=outfilename+'.h5'):
         T = f['T'][:]
         r = f['T'][:,:]
 
-write_hdf5((lime_out, auxdata), filename=outfilename+'.h5')
-# read_hdf5()
+import argparse
+parser = argparse.ArgumentParser(description='Options for converting LIME output for COLT')
+parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
+args = vars(parser.parse_args())
+
+for m in args['model_num'].split(','):
+    print('Converting model '+m)
+    # LIME model parameters
+    mod_dir = '/Volumes/SD-Mac/lime_runs/model'+m+'/'
+    outfilename = 'infall_model'+m
+    recalVelo = False
+    rtout = '/Volumes/SD-Mac/model14.rtout'
+    velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
+
+    # Line parameters
+    # HCO+ 4-3
+    auxdata = {'EA': 3.6269e-03, 'nu0': 356.7342880e9, 'trans_up': 4, 'degeneracy': [9,7]}  # degeneracy from upper to lower
+
+    # Dust parameters
+    g2d = 100
+    dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5.txt', names=['wave', 'kappa_dust'])
+    f_dust = interp1d(dust_lime['wave'], dust_lime['kappa_dust'])
+    kappa_v_dust = f_dust(c/auxdata['nu0']*1e4)
+    auxdata['kappa_v'] = float(kappa_v_dust)
+
+    # TODO:  add r_max
+
+    grid = mod_dir+'grid5'
+    pop = mod_dir+'populations.pop'
+    config = mod_dir+'lime_config.txt'
+
+    lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata, velfile=velfile, rtout=rtout, recalVelo=recalVelo)
+
+    write_hdf5((lime_out, auxdata), filename=outfilename+'.h5')
+
+    shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+outfilename+'.h5')
+    print('write to '+outfilename+'.h5\n'+\
+          '         /Users/yaolun/programs/colt-lime/inits/'+outfilename+'.h5')
