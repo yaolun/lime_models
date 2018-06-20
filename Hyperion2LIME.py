@@ -348,19 +348,30 @@ class Hyperion2LIME:
             a3 = float(config['a_params3'])
             a4 = float(config['a_params4'])
 
-            if r_in >= a2*self.r_inf:
-                abundance = a0
-            else:
-                # y = Ax^a3+B
-                A = a0*(1-a1)/((a2*self.r_inf)**a3 - self.rmin**a3)
-                B = a0-a0*(1-a1)*(a2*self.r_inf)**a3/((a2*self.r_inf)**a3 - self.rmin**a3)
+            # re-define rMin
+            rmin = 100*au_cgs
+            # rmin = self.r_min
 
+            if r_in >= a2*self.r_inf:
+                if (a4 < 0) and (a4 != -1):
+                    # y = Ax^a
+                    a = -2
+                    A = a0*self.r_inf**-a
+                    abundance = A*r_in**a
+                else:
+                    abundance = a0
+            elif (r_in >= rmin) and (r_in < a2*self.r_inf):
+                # y = Ax^a3+B
+                A = a0*(1-a1)/((a2*self.r_inf)**a3 - rmin**a3)
+                B = a0-a0*(1-a1)*(a2*self.r_inf)**a3/((a2*self.r_inf)**a3 - rmin**a3)
                 abundance = A*r_in**a3+B
+            else:
+                abundance = a0*a1
 
             # option to cap the maximum value of abundance
-            if a4 > 0:
-                if abundance > a4:
-                    abundance = a4
+            if a4 != -1:
+                if abundance > abs(a4):
+                    abundance = abs(a4)
 
         if self.debug:
             foo = open('abundance.log', 'a')
