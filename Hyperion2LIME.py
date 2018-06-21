@@ -349,17 +349,11 @@ class Hyperion2LIME:
             a4 = float(config['a_params4'])
 
             # re-define rMin
-            rmin = 100*au_cgs
-            # rmin = self.r_min
+            # rmin = 100*au_cgs
+            rmin = self.r_min
 
             if r_in >= a2*self.r_inf:
-                if (a4 < 0) and (a4 != -1):
-                    # y = Ax^a
-                    a = -2
-                    A = a0*self.r_inf**-a
-                    abundance = A*r_in**a
-                else:
-                    abundance = a0
+                abundance = a0
             elif (r_in >= rmin) and (r_in < a2*self.r_inf):
                 # y = Ax^a3+B
                 A = a0*(1-a1)/((a2*self.r_inf)**a3 - rmin**a3)
@@ -369,9 +363,30 @@ class Hyperion2LIME:
                 abundance = a0*a1
 
             # option to cap the maximum value of abundance
-            if a4 != -1:
+            if a4 > 0:
                 if abundance > abs(a4):
                     abundance = abs(a4)
+
+        elif config['a_model'] == 'chem':
+            a0 = float(config['a_params0'])  # peak abundance
+            a1 = float(config['a_params1'])  # inner abundace
+            a2 = float(config['a_params2'])  # peak radius
+            a3 = float(config['a_params3'])  # inner decrease power
+            a4 = float(config['a_params4'])  # outer decrease power
+
+            # radius of the evaporation front, determined by the extent of COM emission
+            rCOM = 100*au_cgs
+
+            if r_in >= a2*self.r_inf:
+                # y = Ax^a, a < 0
+                A_out = a0 / (a2*self.r_inf)**a4
+                abundance = A_out * r_in**a4
+            elif (r_in >= rCOM) and (r_in < a2*self.r_inf):
+                # y = Ax^a, a > 0
+                A_in = a0 / (a2*self.r_inf)**a3
+                abundance = A_in * r_in**a3
+            else:
+                abundance = a1
 
         if self.debug:
             foo = open('abundance.log', 'a')

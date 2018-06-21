@@ -102,9 +102,13 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 73        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      0.7         2.0         5.0e-9
 # 74        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      0.7         2.0         1.0e-9
 # the inner radius of the power-law model is now 100 au
-75          model14     0.37    bhr71dust       powerlaw   3.5e-9      0.0001      1.0         2.0         -1
-76          model14     0.37    bhr71dust       powerlaw   3.5e-9      0.0001      1.0         2.0         -999
-77          model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
-78          model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -999
-79          model14     0.37    bhr71dust       powerlaw   7.0e-9      0.0001      1.0         2.0         -1
-80          model14     0.37    bhr71dust       powerlaw   7.0e-9      0.0001      1.0         2.0         -999
+# 75        model14     0.37    bhr71dust       powerlaw   3.5e-9      0.0001      1.0         2.0         -1
+# 76        model14     0.37    bhr71dust       powerlaw   3.5e-9      0.0001      1.0         2.0         -999
+# 77        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -1
+# 78        model14     0.37    bhr71dust       powerlaw   3.5e-8      0.0001      1.0         2.0         -999
+# 79        model14     0.37    bhr71dust       powerlaw   7.0e-9      0.0001      1.0         2.0         -1
+# 80        model14     0.37    bhr71dust       powerlaw   7.0e-9      0.0001      1.0         2.0         -999
+81          model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.0         -2
+# 82        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.0         -2
+# 83        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.0         -2
+# 84        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.0         -2
