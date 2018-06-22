@@ -22,6 +22,12 @@
 #       * a_params4: the maximum abundance that a profile can have.
 #                    (This is used to artificially decrease the abundance at outer radii
 #                     while keep the inner part following the same power law profile)
+#   - chem: parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundace
+#       * a_params2: peak radius
+#       * a_params3: inner decrease power
+#       * a_params4: outer decrease power
 #
 #####################################################################################################################
 model_name  hy_model    cs      tsc             a_model     a_params0   a_params1   a_params2   a_params3   a_params4
@@ -112,5 +118,9 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 82        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.0         -2
 # 83        model14     0.37    bhr71dust       chem       2.0e-8      1.0e-9      1.0         2.0         -2
 # 84        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.5         -2
-85          model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
-86          model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     2.0         2.0         -2
+# 85        model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
+# 86        model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     2.0         2.0         -2
+87          model14     0.37    bhr71shallow    chem       2.0e-8      5.0e-10     1.0         2.0         -2
+88          model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     1.0         2.0         -2
+89          model14     0.37    bhr71shallow    chem       1.0e-8      5.0e-10     1.0         2.0         -2
+90          model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
