@@ -350,7 +350,7 @@ class Hyperion2LIME:
 
             # re-define rMin
             # rmin = 100*au_cgs
-            rmin = self.r_min
+            rmin = self.rmin
 
             if r_in >= a2*self.r_inf:
                 abundance = a0
