@@ -120,7 +120,13 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 84        model14     0.37    bhr71dust       chem       1.0e-8      1.0e-9      1.0         2.5         -2
 # 85        model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
 # 86        model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     2.0         2.0         -2
-87          model14     0.37    bhr71shallow    chem       2.0e-8      5.0e-10     1.0         2.0         -2
-88          model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     1.0         2.0         -2
-89          model14     0.37    bhr71shallow    chem       1.0e-8      5.0e-10     1.0         2.0         -2
-90          model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
+# 87        model14     0.37    bhr71shallow    chem       2.0e-8      5.0e-10     1.0         2.0         -2
+# 88        model14     0.37    bhr71shallow    chem       2.0e-8      1.0e-10     1.0         2.0         -2
+# 89        model14     0.37    bhr71shallow    chem       1.0e-8      5.0e-10     1.0         2.0         -2
+# 90        model14     0.37    bhr71shallow    chem       1.0e-8      1.0e-10     1.0         2.0         -2
+# grid of outer abundance
+91          model14     0.37    bhr71dust       chem       5.0e-9      1.0e-9      1.0         2.0         -2
+92          model14     0.37    bhr71dust       chem       1.0e-9      1.0e-9      1.0         2.0         -2
+93          model14     0.37    bhr71dust       chem       5.0e-10     1.0e-9      1.0         2.0         -2
+94          model14     0.37    bhr71dust       chem       1.0e-10     1.0e-9      1.0         2.0         -2
+# grid of inner abundance
