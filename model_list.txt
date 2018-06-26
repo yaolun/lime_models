@@ -133,8 +133,16 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 96        model14     0.37    bhr71dust       chem       1.0e-9      1.0e-10     1.0         2.0         -2
 # 97        model14     0.37    bhr71dust       chem       5.0e-10     1.0e-10     1.0         2.0         -2
 # 98        model14     0.37    bhr71dust       chem       1.0e-10     1.0e-10     1.0         2.0         -2
-99          model14     0.37    bhr71dust       chem       5.0e-9      1.0e-10     1.0         1.5         -2
-100         model14     0.37    bhr71dust       chem       5.0e-9      1.0e-10     1.0         1.0         -2
-101         model14     0.37    bhr71dust       chem       5.0e-9      1.0e-9      1.0         1.5         -2
-102         model14     0.37    bhr71dust       chem       5.0e-9      1.0e-9      1.0         1.0         -2
+# 99        model14     0.37    bhr71dust       chem       5.0e-9      1.0e-10     1.0         1.5         -2
+# 100       model14     0.37    bhr71dust       chem       5.0e-9      1.0e-10     1.0         1.0         -2
+# 101       model14     0.37    bhr71dust       chem       5.0e-9      1.0e-9      1.0         1.5         -2
+# 102       model14     0.37    bhr71dust       chem       5.0e-9      1.0e-9      1.0         1.0         -2
+103         model14     0.37    bhr71dust       chem       5.0e-9      9.0e-10     1.0         1.5         -2
+104         model14     0.37    bhr71dust       chem       5.0e-9      8.0e-10     1.0         1.5         -2
+105         model14     0.37    bhr71dust       chem       5.0e-9      7.0e-10     1.0         1.5         -2
+106         model14     0.37    bhr71dust       chem       5.0e-9      6.0e-10     1.0         1.5         -2
+107         model14     0.37    bhr71dust       chem       3.0e-9      9.0e-10     1.0         1.5         -2
+108         model14     0.37    bhr71dust       chem       3.0e-9      8.0e-10     1.0         1.5         -2
+109         model14     0.37    bhr71dust       chem       3.0e-9      7.0e-10     1.0         1.5         -2
+110         model14     0.37    bhr71dust       chem       3.0e-9      6.0e-10     1.0         1.5         -2
 # grid of inner abundance
