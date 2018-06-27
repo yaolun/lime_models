@@ -142,9 +142,9 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 105       model14     0.37    bhr71dust       chem        5.0e-9      7.0e-10     1.0         1.5         -2
 # 106       model14     0.37    bhr71dust       chem        5.0e-9      6.0e-10     1.0         1.5         -2
 # 107       model14     0.37    bhr71dust       chem        3.0e-9      9.0e-10     1.0         1.5         -2
-# 108       model14     0.37    bhr71dust       chem        3.0e-9      8.0e-10     1.0         1.5         -2
-# 109       model14     0.37    bhr71dust       chem        3.0e-9      7.0e-10     1.0         1.5         -2
-# 110       model14     0.37    bhr71dust       chem        3.0e-9      6.0e-10     1.0         1.5         -2
+108         model14     0.37    bhr71shallow    chem        3.0e-9      8.0e-10     1.0         1.5         -2
+109         model14     0.37    bhr71shallow    chem        3.0e-9      7.0e-10     1.0         1.5         -2
+110         model14     0.37    bhr71shallow    chem        3.0e-9      6.0e-10     1.0         1.5         -2
 # grid using simple drop function
 # fix the abundance of the freeze-out zone for these models
 # a0 = 1e-8
