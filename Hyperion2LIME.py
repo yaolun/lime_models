@@ -335,10 +335,10 @@ class Hyperion2LIME:
             if (r_in - a2*au_cgs) > tol/2:
                 abundance = a0
             # linear interpolation from the outer region to the first step
-        elif abs(r_in - a2*au_cgs) <= tol/2:
+            elif abs(r_in - a2*au_cgs) <= tol/2:
                 abundance = a1 + (r_in-(a2*au_cgs-tol/2))*(a0-a1)/tol
             # first step
-        elif (r_in - a4*au_cgs) > tol/5/2 and (a2*au_cgs - r_in) > tol/2:
+            elif (r_in - a4*au_cgs) > tol/5/2 and (a2*au_cgs - r_in) > tol/2:
                 abundance = a1
             # linear interpolation from the first step to the second step
             elif abs(r_in - a4*au_cgs) <= tol/5/2:
