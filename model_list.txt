@@ -160,15 +160,28 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 118         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-10     100.0
 # 119         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-11     100.0
 # same grid but a1 = 1e-9
+# # a0 = 1e-8
+# 120         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-9      100.0
+# 121         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-10     100.0
+# 122         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-11     100.0
+# # a0 = 1e-9
+# 123         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-9      100.0
+# 124         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-10     100.0
+# 125         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-11     100.0
+# # a0 = 1e-10
+# 126         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-9      100.0
+# 127         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-10     100.0
+# 128         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-11     100.0
+# same grid but a1 = 5e-9
 # a0 = 1e-8
-120           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-9      100.0
-121           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-10     100.0
-122           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-11     100.0
+129           model14     0.37    bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-9      100.0
+130           model14     0.37    bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-10     100.0
+131           model14     0.37    bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-11     100.0
 # a0 = 1e-9
-123           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-9      100.0
-124           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-10     100.0
-125           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-11     100.0
+132           model14     0.37    bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-9      100.0
+133           model14     0.37    bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-10     100.0
+134           model14     0.37    bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-11     100.0
 # a0 = 1e-10
-126           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-9      100.0
-127           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-10     100.0
-128           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-11     100.0
+135           model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-9      100.0
+136           model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-10     100.0
+137           model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-11     100.0
