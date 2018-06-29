@@ -142,20 +142,33 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 105       model14     0.37    bhr71dust       chem        5.0e-9      7.0e-10     1.0         1.5         -2
 # 106       model14     0.37    bhr71dust       chem        5.0e-9      6.0e-10     1.0         1.5         -2
 # 107       model14     0.37    bhr71dust       chem        3.0e-9      9.0e-10     1.0         1.5         -2
-108         model14     0.37    bhr71shallow    chem        3.0e-9      8.0e-10     1.0         1.5         -2
-109         model14     0.37    bhr71shallow    chem        3.0e-9      7.0e-10     1.0         1.5         -2
-110         model14     0.37    bhr71shallow    chem        3.0e-9      6.0e-10     1.0         1.5         -2
+# 108       model14     0.37    bhr71shallow    chem        3.0e-9      8.0e-10     1.0         1.5         -2
+# 109       model14     0.37    bhr71shallow    chem        3.0e-9      7.0e-10     1.0         1.5         -2
+# 110       model14     0.37    bhr71shallow    chem        3.0e-9      6.0e-10     1.0         1.5         -2
 # grid using simple drop function
-# fix the abundance of the freeze-out zone for these models
+# fix the abundance of the freeze-out zone for these models - a1 = 1e-10
+# # a0 = 1e-8
+# 111         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
+# 112         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-10     100.0
+# 113         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-11     100.0
+# # a0 = 1e-9
+# 114         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
+# 115         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-10     100.0
+# 116         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-11     100.0
+# # a0 = 1e-10
+# 117         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
+# 118         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-10     100.0
+# 119         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-11     100.0
+# same grid but a1 = 1e-9
 # a0 = 1e-8
-111         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
-112         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-10     100.0
-113         model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-11     100.0
+120           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-9      100.0
+121           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-10     100.0
+122           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-11     100.0
 # a0 = 1e-9
-114         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
-115         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-10     100.0
-116         model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-11     100.0
+123           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-9      100.0
+124           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-10     100.0
+125           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-11     100.0
 # a0 = 1e-10
-117         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
-118         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-10     100.0
-119         model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-11     100.0
+126           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-9      100.0
+127           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-10     100.0
+128           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-11     100.0
