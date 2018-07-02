@@ -366,6 +366,8 @@ class Hyperion2LIME:
                 abundance = a3 + (r_in-(a4*au_cgs-tol/5/2))*(a1-a3)/(tol/5)
             elif r_in >= 13*au_cgs:
                 abundance = a3
+            else:
+                abundance = 0.0
 
         elif config['a_model'] == 'uniform':
             abundance = float(config['a_params0'])
