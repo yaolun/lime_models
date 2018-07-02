@@ -204,7 +204,10 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 144           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
 # 145           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0
 # 146           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0
-# try the drop function with an inner cutoff at 13 au
-147             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
-148             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
-149             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
+# # try the drop function with an inner cutoff at 13 au
+# 147           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
+# 148           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
+# 149           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
+150             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
+151             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
+152             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
