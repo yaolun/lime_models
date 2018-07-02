@@ -28,6 +28,13 @@
 #       * a_params2: peak radius
 #       * a_params3: inner decrease power
 #       * a_params4: outer decrease power
+#   - drop: a drop function that has three fully tunable regions.
+#       * a_params0: outer abundance
+#       * a_params1: the abundance at the freeze-out zone
+#       * a_params2: the radius where the freeze-out occurred
+#       * a_params3: the inner abundance where molecules get photoevaporated
+#       * a_params4: the radius where the photoevaporation occurred.
+#   - drop2: the same function as the "drop" function but there is a innermost cutoff at 13 au (centrifugal radius for BHR71)
 #
 #####################################################################################################################
 model_name  hy_model    cs      tsc             a_model     a_params0   a_params1   a_params2   a_params3   a_params4
@@ -185,15 +192,19 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 135         model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-9      100.0
 # 136         model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-10     100.0
 # 137         model14     0.37    bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-11     100.0
-# same grid but a1 = 1e-11
-138           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
-139           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-10     100.0
-140           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-11     100.0
-# a0 = 1e-9
-141           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
-142           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-10     100.0
-143           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-11     100.0
-# a0 = 1e-1  0
-144           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
-145           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0
-146           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0
+# # same grid but a1 = 1e-11
+# 138           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
+# 139           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-10     100.0
+# 140           model14     0.37    bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-11     100.0
+# # a0 = 1e-9
+# 141           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
+# 142           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-10     100.0
+# 143           model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-11     100.0
+# # a0 = 1e-1  0
+# 144           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
+# 145           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0
+# 146           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0
+# try the drop function with an inner cutoff at 13 au
+147             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
+148             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
+149             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0

@@ -346,6 +346,27 @@ class Hyperion2LIME:
             else:
                 abundance = a3
 
+        elif (config['a_model'] == 'drop2'):
+            a0 = float(config['a_params0'])
+            a1 = float(config['a_params1'])
+            a2 = float(config['a_params2'])
+            a3 = float(config['a_params3'])
+            a4 = float(config['a_params4'])
+
+            if (r_in - a2*au_cgs) > tol/2:
+                abundance = a0
+            # linear interpolation from the outer region to the first step
+            elif abs(r_in - a2*au_cgs) <= tol/2:
+                abundance = a1 + (r_in-(a2*au_cgs-tol/2))*(a0-a1)/tol
+            # first step
+            elif (r_in - a4*au_cgs) > tol/5/2 and (a2*au_cgs - r_in) > tol/2:
+                abundance = a1
+            # linear interpolation from the first step to the second step
+            elif abs(r_in - a4*au_cgs) <= tol/5/2:
+                abundance = a3 + (r_in-(a4*au_cgs-tol/5/2))*(a1-a3)/(tol/5)
+            elif r_in >= 13*au_cgs:
+                abundance = a3
+
         elif config['a_model'] == 'uniform':
             abundance = float(config['a_params0'])
 
