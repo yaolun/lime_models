@@ -208,6 +208,15 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 147           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
 # 148           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
 # 149           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
-150             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
-151             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
-152             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
+# how to lower the high velocity channels?  Opt. 1 - lower the abundance in the evaporation zone.  More effective for lowering the peak
+# 150           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
+# 151           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
+# 152           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
+# Opt. 2 - increase the abundance in the freeze-out zone
+153             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
+154             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
+155             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
+# Opt. 3 - first match the peak intensity, then tune the profile in the evaporation zone to kill the high velocity emission
+156             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0
+157             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0
+158             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0
