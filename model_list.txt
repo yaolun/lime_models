@@ -204,7 +204,7 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 144           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
 # 145           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0
 # 146           model14     0.37    bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0
-# # try the drop function with an inner cutoff at 13 au
+# # try the drop function with an inner cutoff at 13 au - no significant difference
 # 147           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
 # 148           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
 # 149           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
@@ -212,11 +212,19 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 150           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
 # 151           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
 # 152           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
-# Opt. 2 - increase the abundance in the freeze-out zone
-153             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
-154             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
-155             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
-# Opt. 3 - first match the peak intensity, then tune the profile in the evaporation zone to kill the high velocity emission
-156             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0
-157             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0
-158             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0
+# # Opt. 2 - increase the abundance in the freeze-out zone
+# 153           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
+# 154           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
+# 155           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
+# # Opt. 3 - first match the peak intensity, then tune the profile in the evaporation zone to kill the high velocity emission
+# 156           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0
+# 157           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0
+# 158           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0
+# lower the abundance in evaporation zone a bit more to match the peak
+159             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     2.0e-9      100.0
+160             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      100.0
+161             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     2.0e-9      100.0
+# too high for the overall profile.  how about lower the entire profile
+162             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-12     4045.86     2.0e-10     100.0
+163             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-12     4045.86     2.0e-10     100.0
+164             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0
