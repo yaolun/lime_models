@@ -212,7 +212,7 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 150           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
 # 151           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
 # 152           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
-# # Opt. 2 - increase the abundance in the freeze-out zone
+# # Opt. 2 - increase the abundance in the freeze-out zone.  Change the peak positions, more significantly at the red peak.
 # 153           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
 # 154           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
 # 155           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
@@ -220,11 +220,19 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 156           model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0
 # 157           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0
 # 158           model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0
-# lower the abundance in evaporation zone a bit more to match the peak
-159             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     2.0e-9      100.0
-160             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      100.0
-161             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     2.0e-9      100.0
-# too high for the overall profile.  how about lower the entire profile
-162             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-12     4045.86     2.0e-10     100.0
-163             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-12     4045.86     2.0e-10     100.0
-164             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0
+# # lower the abundance in evaporation zone a bit more to match the peak
+# 159             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     2.0e-9      100.0
+# 160             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      100.0
+# 161             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     2.0e-9      100.0
+# # too high for the overall profile.  how about lower the entire profile.  Too sensitive
+# 162             model14     0.37    bhr71shallow    drop2       1.0e-8      1.0e-12     4045.86     2.0e-10     100.0
+# 163             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-12     4045.86     2.0e-10     100.0
+# 164             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0
+# Try to change the outer and the inner radius of the freeze-out zone
+# use model 160 as the template
+# inner radius
+165             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      200.0
+166             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      300.0
+# outer radius
+167             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     3045.86     2.0e-9      100.0
+168             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     2045.86     2.0e-9      100.0
