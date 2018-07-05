@@ -435,7 +435,7 @@ class Hyperion2LIME:
             # add the evaporation zone
             # TODO: parametrize the setup
             if (r_in <= 100*au_cgs) and (r_in >= 13*au_cgs):
-                abundance = a0*a1*5
+                abundance = 1e-10
 
             # option to cap the maximum value of abundance
             if a4 > 0:
