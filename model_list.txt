@@ -230,9 +230,15 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 164             model14     0.37    bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0
 # Try to change the outer and the inner radius of the freeze-out zone
 # use model 160 as the template
-# inner radius
-165             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      200.0
-166             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      300.0
-# outer radius
-167             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     3045.86     2.0e-9      100.0
-168             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     2045.86     2.0e-9      100.0
+# # inner radius - increase the line wings
+# 165           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      200.0
+# 166           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      300.0
+# # outer radius - just increase the absorption at the line center
+# 167           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     3045.86     2.0e-9      100.0
+# 168           model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     2045.86     2.0e-9      100.0
+# decrease the inner radius
+169             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      75.0
+170             model14     0.37    bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      50.0
+# try decreasing the inner radius for the "drop" function (no the inner 13 au limit)
+171             model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      75.0
+172             model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      50.0
