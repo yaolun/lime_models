@@ -243,11 +243,18 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 171       model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      75.0
 # 172       model14     0.37    bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      50.0
 # powerlaw model with an inner evaporation zone (based on model 71)
-173         model14     0.37    bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
+# 173       model14     0.37    bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
 # investigate the effect of outer abundance, which also offset the entire decreasing profile, so the increment should be small
-174         model14     0.37    bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
-175         model14     0.37    bhr71shallow    powerlaw2   3.0e-8      0.0001      0.8         2.0         5.0e-9
-176         model14     0.37    bhr71shallow    powerlaw2   2.5e-8      0.0001      0.8         2.0         5.0e-9
-177         model14     0.37    bhr71shallow    powerlaw2   2.0e-8      0.0001      0.8         2.0         5.0e-9
-178         model14     0.37    bhr71shallow    powerlaw2   1.5e-8      0.0001      0.8         2.0         5.0e-9
-179         model14     0.37    bhr71shallow    powerlaw2   1.0e-8      0.0001      0.8         2.0         5.0e-9
+# Decreasing the outer abundance for the powerlaw function decrease the peaks
+# 174       model14     0.37    bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
+# 175       model14     0.37    bhr71shallow    powerlaw2   3.0e-8      0.0001      0.8         2.0         5.0e-9
+# 176       model14     0.37    bhr71shallow    powerlaw2   2.5e-8      0.0001      0.8         2.0         5.0e-9
+# 177       model14     0.37    bhr71shallow    powerlaw2   2.0e-8      0.0001      0.8         2.0         5.0e-9
+# 178       model14     0.37    bhr71shallow    powerlaw2   1.5e-8      0.0001      0.8         2.0         5.0e-9
+# 179       model14     0.37    bhr71shallow    powerlaw2   1.0e-8      0.0001      0.8         2.0         5.0e-9
+# try increase the outer abundance instead
+180         model14     0.37    bhr71shallow    powerlaw2   4.0e-8      0.0001      0.8         2.0         5.0e-9
+181         model14     0.37    bhr71shallow    powerlaw2   5.0e-8      0.0001      0.8         2.0         5.0e-9
+182         model14     0.37    bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9
+183         model14     0.37    bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9
+184         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9
