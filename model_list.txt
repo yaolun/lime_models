@@ -252,9 +252,15 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 177       model14     0.37    bhr71shallow    powerlaw2   2.0e-8      0.0001      0.8         2.0         5.0e-9
 # 178       model14     0.37    bhr71shallow    powerlaw2   1.5e-8      0.0001      0.8         2.0         5.0e-9
 # 179       model14     0.37    bhr71shallow    powerlaw2   1.0e-8      0.0001      0.8         2.0         5.0e-9
-# try increase the outer abundance instead
-180         model14     0.37    bhr71shallow    powerlaw2   4.0e-8      0.0001      0.8         2.0         5.0e-9
-181         model14     0.37    bhr71shallow    powerlaw2   5.0e-8      0.0001      0.8         2.0         5.0e-9
-182         model14     0.37    bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9
-183         model14     0.37    bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9
-184         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9
+# # try increase the outer abundance instead
+# 180       model14     0.37    bhr71shallow    powerlaw2   4.0e-8      0.0001      0.8         2.0         5.0e-9
+# 181       model14     0.37    bhr71shallow    powerlaw2   5.0e-8      0.0001      0.8         2.0         5.0e-9
+# 182       model14     0.37    bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9
+# 183       model14     0.37    bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9
+# 184       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9
+# try increase the powerlaw index of the inner freeze-out zone
+185         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.1         5.0e-9
+186         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.2         5.0e-9
+187         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9
+188         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
+189         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
