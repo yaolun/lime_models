@@ -265,4 +265,4 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 188       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
 # 189       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
 # try use chem2 model to mimic the feature in powerlaw2 (based on model 184)
-190         model14     0.37    bhr71shallow    chem2       8.0e-8      5.0e-9      2883.81     4045.86     -0.8/-2.0
+190         model14     0.37    bhr71shallow    chem2       8.0e-8      5.0e-9      2883.81     4045.86     -0.8/2.0
