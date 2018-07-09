@@ -468,7 +468,7 @@ class Hyperion2LIME:
             a1 = float(config['a_params1'])  # inner abundace
             a2 = float(config['a_params2'])  # inner peak radius [AU]
             a3 = float(config['a_params3'])  # outer peak radius [AU]
-            a4 = float(config['a_params4'])  # inner/outer decrease power
+            # a4 = float(config['a_params4'])  # inner/outer decrease power
 
             # radius of the evaporation front, determined by the extent of COM emission
             rCOM = 100*au_cgs
