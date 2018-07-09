@@ -474,7 +474,7 @@ class Hyperion2LIME:
             rCOM = 100*au_cgs
             rCen = 13*au_cgs
 
-            innerExpo, outerExpo = [float(i) for i in a4.split('/')]
+            innerExpo, outerExpo = [float(i) for i in config['a_params4'].split('/')]
 
             if r_in >= a3*au_cgs:
                 # y = Ax^a, a < 0
