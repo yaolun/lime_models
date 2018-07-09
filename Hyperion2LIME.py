@@ -463,6 +463,34 @@ class Hyperion2LIME:
             else:
                 abundance = a1
 
+        elif config['a_model'] == 'chem2':
+            a0 = float(config['a_params0'])  # peak abundance
+            a1 = float(config['a_params1'])  # inner abundace
+            a2 = float(config['a_params2'])  # inner peak radius [AU]
+            a3 = float(config['a_params3'])  # outer peak radius [AU]
+            a4 = float(config['a_params4'])  # inner/outer decrease power
+
+            # radius of the evaporation front, determined by the extent of COM emission
+            rCOM = 100*au_cgs
+            rCen = 13*au_cgs
+
+            innerExpo, outerExpo = [float(i) for i in a4.split('/')]
+
+            if r_in >= a3*au_cgs:
+                # y = Ax^a, a < 0
+                A_out = a0 / (a3*au_cgs)**outerExpo
+                abundance = A_out * r_in**outerExpo
+            elif (r_in < a3*au_cgs) and (r_in >= a2*au_cgs):
+                abundance = a0
+            elif (r_in >= rCOM) and (r_in < a2*au_cgs):
+                # y = Ax^a, a > 0
+                A_in = a0 / (a2*au_cgs)**innerExpo
+                abundance = A_in * r_in**innerExpo
+            elif (r_in >= rCen) and (r_in < rCOM):  # centrifugal radius
+                abundance = a1
+            else:
+                abundance = 1e-20
+
         if self.debug:
             foo = open('abundance.log', 'a')
             foo.write('%e \t %e \t %e \t %f\n' % (x, y, z, abundance))

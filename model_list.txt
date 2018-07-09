@@ -16,7 +16,7 @@
 #       * a_params3: the inner radius where the log-normal decrease to a0*a1.
 #   - powerlaw: power-law decrease (y = x^a)
 #       * a_params0: the abundance beyond the (infall radius)*a_params2
-#       * a_params1: the abundance at the minimum raidus (rMin)
+#       * a_params1: the abundance at the minimum radius (rMin)
 #       * a_params2: the radius where the outer abundance starts to decrease in power-law
 #       * a_params3: the power of the power-law decrease
 #       * a_params4: the maximum abundance that a profile can have.
@@ -24,7 +24,7 @@
 #                     while keep the inner part following the same power law profile)
 #   - chem: parametrized profile based on chemical modeling result
 #       * a_params0: peak abundance
-#       * a_params1: inner abundace
+#       * a_params1: inner abundance
 #       * a_params2: peak radius
 #       * a_params3: inner decrease power
 #       * a_params4: outer decrease power
@@ -258,9 +258,11 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 182       model14     0.37    bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9
 # 183       model14     0.37    bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9
 # 184       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9
-# try increase the powerlaw index of the inner freeze-out zone
-185         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.1         5.0e-9
-186         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.2         5.0e-9
-187         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9
-188         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
-189         model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
+# # try increase the powerlaw index of the inner freeze-out zone
+# 185       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.1         5.0e-9
+# 186       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.2         5.0e-9
+# 187       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9
+# 188       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
+# 189       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
+# try use chem2 model to mimic the feature in powerlaw2 (based on model 184)
+190         model14     0.37    bhr71shallow    chem2       8.0e-8      5.0e-9      2883.81     4045.86     -0.8/-2.0
