@@ -264,5 +264,15 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 187       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9
 # 188       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
 # 189       model14     0.37    bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
-# try use chem2 model to mimic the feature in powerlaw2 (based on model 184)
-190         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     2883.81     4045.86     2.0/-2.0
+# # try use chem2 model to mimic the feature in powerlaw2 (based on model 184)
+# 190       model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     2883.81     4045.86     2.0/-2.0
+# try run a grid with (1) decrease the inner peak radius; (2) increase inner abundance
+191         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     2500.0      4045.86     2.0/-2.0
+192         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     2000.0      4045.86     2.0/-2.0
+193         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     1500.0      4045.86     2.0/-2.0
+194         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      4045.86     2.0/-2.0
+#
+195         model14     0.37    bhr71shallow    chem2       8.0e-9      2.5e-10     2883.81     4045.86     2.0/-2.0
+196         model14     0.37    bhr71shallow    chem2       8.0e-9      5.0e-10     2883.81     4045.86     2.0/-2.0
+197         model14     0.37    bhr71shallow    chem2       8.0e-9      7.5e-10     2883.81     4045.86     2.0/-2.0
+198         model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-9      2883.81     4045.86     2.0/-2.0
