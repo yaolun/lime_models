@@ -369,6 +369,21 @@ class Hyperion2LIME:
             else:
                 abundance = 0.0
 
+        elif (config['a_model'] == 'drop3'):
+            a0 = float(config['a_params0'])  # undelepted abundance
+            a1 = float(config['a_params1'])  # depleted abundance
+            a2 = float(config['a_params2'])  # evaporation temperature (K)
+            a3 = float(config['a_params3'])  # depletion density (cm-3)
+
+            temp = self.getTemperature(x, y, z)
+            density = self.getDensity(x, y, z)/1e6
+
+            if (temp <= a2) and (density >= a3):
+                abundance = a1
+            else:
+                abundance = a0
+
+
         elif config['a_model'] == 'uniform':
             abundance = float(config['a_params0'])
 
