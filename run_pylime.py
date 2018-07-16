@@ -10,11 +10,15 @@ import argparse
 parser = argparse.ArgumentParser(description='Options for running LIME in batch mode')
 parser.add_argument('--image_only', action='store_true',
                     help='only imaging the existing results of LIME')
+parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
-
-model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
-outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
+if args['model_list'] == None:
+    model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
+    outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
+else:
+    model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/'+args['model_list']+'.txt', comment='#')
+    outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
 pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 
 for i, m in enumerate(model_list['model_name']):
