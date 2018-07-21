@@ -10,6 +10,8 @@ import argparse
 parser = argparse.ArgumentParser(description='Options for running LIME in batch mode')
 parser.add_argument('--image_only', action='store_true',
                     help='only imaging the existing results of LIME')
+parser.add_argument('--no_image', action='store_true',
+                    help='only run the RTE calculation.')
 parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
@@ -59,9 +61,12 @@ for i, m in enumerate(model_list['model_name']):
     shutil.copyfile('model.py', outdir+'model.py')
 
 
-    # make sure the "image_only" file is reset everytime LIME run
+    # make sure the "image_only" file is reset everytime LIME runs
     if os.path.exists(outdir+'image_only'):
         os.remove(outdir+'image_only')
+    # make sure the "no_image" file is reset everytime LIME runs
+    if os.path.exists(outdir+'no_image'):
+        os.remove(outdir+'no_image')
     if args['image_only']:
         if not os.path.exists(outdir+'grid5'):
             print('No appropriate grid file found.  Abort...')
@@ -74,6 +79,10 @@ for i, m in enumerate(model_list['model_name']):
             os.remove(f)
         for f in glob.glob(outdir+'*pop'):
             os.remove(f)
+
+    if args['no_image']:
+        foo = open(outdir+'no_image', 'w')
+        foo.close()
 
     # run pylime - if "image_only" file is presented, it will enter image-only mode
     print('Start running model '+str(m))

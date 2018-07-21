@@ -61,14 +61,29 @@ def read_hdf5(filename):
         r = f['T'][:,:]
 
 import argparse
+import os
+import numpy as np
 parser = argparse.ArgumentParser(description='Options for converting LIME output for COLT')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
+parser.add_argument('--model_range', help='a range of model number to run')
+parser.add_argument('--subpath', help='any sub-directory following the default path')
 args = vars(parser.parse_args())
+
+# if model_range option is used instead
+if args['model_range'] != None:
+    mod_start = int(args['model_range'].split(',')[0])
+    mod_end = int(args['model_range'].split(',')[1])+1
+    args['model_num'] = ','.join(np.arange(mod_start, mod_end).astype('str'))
+
 
 for m in args['model_num'].split(','):
     print('Converting model '+m)
     # LIME model parameters
-    mod_dir = '/Volumes/SD-Mac/lime_runs/model'+m+'/'
+    if args['subpath'] == None:
+        mod_dir = '/Volumes/SD-Mac/lime_runs/model'+m+'/'
+        args['subpath'] = ''
+    else:
+        mod_dir = '/Volumes/SD-Mac/lime_runs/'+args['subpath']+'/model'+m+'/'
     outfilename = 'infall_model'+m
     recalVelo = False
     rtout = '/Volumes/SD-Mac/model14.rtout'
@@ -95,6 +110,9 @@ for m in args['model_num'].split(','):
 
     write_hdf5((lime_out, auxdata), filename=outfilename+'.h5')
 
-    shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+outfilename+'.h5')
+    if not os.path.exists('/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'):
+        os.makedirs('/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/')
+
+    shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
     print('write to '+outfilename+'.h5\n'+\
-          '         /Users/yaolun/programs/colt-lime/inits/'+outfilename+'.h5')
+          '         /Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
