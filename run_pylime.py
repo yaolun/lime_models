@@ -93,4 +93,5 @@ for i, m in enumerate(model_list['model_name']):
     if not os.path.exists(outdir+'grid5'):
         print('grid files not found.  pylime probably failed.')
     if not os.path.exists(outdir+'image0.fits'):
-        print('Image file not found.  pylime probably failed.')
+        if not no_image:
+            print('Image file not found.  pylime probably failed.')
