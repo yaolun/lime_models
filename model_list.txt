@@ -288,7 +288,12 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 206       model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2500.0      2.0/-2.0
 # 207       model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2000.0      2.0/-2.0
 # 208       model14     0.37    bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      2.0/-2.0
-# make the inner and outer abundances the same
-209         model14     0.37    bhr71shallow    chem2       1.0e-9      1.0e-9      1000.0      1500.0      2.0/-2.0
-210         model14     0.37    bhr71shallow    chem2       5.0e-8      5.0e-8      1000.0      1500.0      2.0/-2.0
-211         model14     0.37    bhr71shallow    chem2       5.0e-9      5.0e-9      1000.0      1500.0      2.0/-2.0
+# # make the inner and outer abundances the same
+# 209       model14     0.37    bhr71shallow    chem2       1.0e-9      1.0e-9      1000.0      1500.0      2.0/-2.0
+# 210       model14     0.37    bhr71shallow    chem2       5.0e-8      5.0e-8      1000.0      1500.0      2.0/-2.0
+# 211       model14     0.37    bhr71shallow    chem2       5.0e-9      5.0e-9      1000.0      1500.0      2.0/-2.0
+# the profile of model 209 is more reasonable, which has a clear freeze-out zone
+212         model14     0.37    bhr71shallow    chem2       1.0e-9      7.5e-10     1000.0      1500.0      2.0/-2.0
+213         model14     0.37    bhr71shallow    chem2       1.0e-9      5.0e-10     1000.0      1500.0      2.0/-2.0
+214         model14     0.37    bhr71shallow    chem2       1.0e-9      2.5e-10     1000.0      1500.0      2.0/-2.0
+215         model14     0.37    bhr71shallow    chem2       1.0e-9      1.0e-10     1000.0      1500.0      2.0/-2.0
