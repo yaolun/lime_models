@@ -483,13 +483,20 @@ class Hyperion2LIME:
             a1 = float(config['a_params1'])  # inner abundace
             a2 = float(config['a_params2'])  # inner peak radius [AU]
             a3 = float(config['a_params3'])  # outer peak radius [AU]
-            # a4 = float(config['a_params4'])  # inner/outer decrease power
+            a4 = config['a_params4']  # inner/outer radius of the evaporation region
 
             # radius of the evaporation front, determined by the extent of COM emission
-            rCOM = 100*au_cgs
-            rCen = 13*au_cgs
+            if (a4 == '-1') or (a4 == '2.0/-2.0'):  # for backward compatability
+                rCOM = 100*au_cgs
+                rCen = 13*au_cgs
+            else:
+                rCen = float(a4.split(',')[0])*au_cgs
+                rCOM = float(a4.split(',')[1])*au_cgs
 
-            innerExpo, outerExpo = [float(i) for i in config['a_params4'].split('/')]
+            # innerExpo, outerExpo = [float(i) for i in config['a_params4'].split('/')]
+            # fix the decreasing/increasing powers
+            innerExpo = 2.0
+            outerExpo = -2.0
 
             if r_in >= a3*au_cgs:
                 # y = Ax^a, a < 0
