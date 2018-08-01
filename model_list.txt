@@ -302,4 +302,13 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # modify the inner and outer radius of the evaporation zone
 # inner -> the evaporation radius of H2O, ~100 K
 # outer -> the evaporation radius of CO, ~40 K
-217         model14     0.37    bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,400
+# 217       model14     0.37    bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,400
+# too much high velocity emission, and not enough peak
+# lower the inner (cannot lower too much, because the increase of the outer abundance) and increase the outer
+# try to tune the outer evaporation radius
+218         model14     0.37    bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,300
+219         model14     0.37    bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,200
+220         model14     0.37    bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,100
+221         model14     0.37    bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,300
+222         model14     0.37    bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,200
+223         model14     0.37    bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,100
