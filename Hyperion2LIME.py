@@ -374,14 +374,19 @@ class Hyperion2LIME:
             a1 = float(config['a_params1'])  # depleted abundance
             a2 = float(config['a_params2'])  # evaporation temperature (K)
             a3 = float(config['a_params3'])  # depletion density (cm-3)
+            a4 = float(config['a_params4'])  # the temperature H2O starts to destory HCO+
+            if a4 == -1:
+                a4 = np.inf
 
             temp = self.getTemperature(x, y, z)
             density = self.getDensity(x, y, z)/1e6
 
             if (temp <= a2) and (density >= a3):
                 abundance = a1
-            else:
+            elif (temp <= a4):
                 abundance = a0
+            else:
+                abundance = 0.0
 
 
         elif config['a_model'] == 'uniform':
