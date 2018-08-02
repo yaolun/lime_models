@@ -313,8 +313,12 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 222       model14     0.37    bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,200
 # 223       model14     0.37    bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,100
 # modify the outer abundance
-224         model14     0.37    bhr71shallow    chem2       2.0e-9      2.0e-10     1000.0      1500.0      50,100
-225         model14     0.37    bhr71shallow    chem2       3.0e-9      2.0e-10     1000.0      1500.0      50,100
-226         model14     0.37    bhr71shallow    chem2       4.0e-9      2.0e-10     1000.0      1500.0      50,100
-227         model14     0.37    bhr71shallow    chem2       5.0e-9      2.0e-10     1000.0      1500.0      50,100
-228         model14     0.37    bhr71shallow    chem2       6.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 224       model14     0.37    bhr71shallow    chem2       2.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 225       model14     0.37    bhr71shallow    chem2       3.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 226       model14     0.37    bhr71shallow    chem2       4.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 227       model14     0.37    bhr71shallow    chem2       5.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 228       model14     0.37    bhr71shallow    chem2       6.0e-9      2.0e-10     1000.0      1500.0      50,100
+229         model14     0.37    bhr71shallow    chem2       7.0e-9      2.0e-10     1000.0      1500.0      50,100
+230         model14     0.37    bhr71shallow    chem2       8.0e-9      2.0e-10     1000.0      1500.0      50,100
+231         model14     0.37    bhr71shallow    chem2       9.0e-9      2.0e-10     1000.0      1500.0      50,100
+232         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100
