@@ -318,7 +318,14 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 226       model14     0.37    bhr71shallow    chem2       4.0e-9      2.0e-10     1000.0      1500.0      50,100
 # 227       model14     0.37    bhr71shallow    chem2       5.0e-9      2.0e-10     1000.0      1500.0      50,100
 # 228       model14     0.37    bhr71shallow    chem2       6.0e-9      2.0e-10     1000.0      1500.0      50,100
-229         model14     0.37    bhr71shallow    chem2       7.0e-9      2.0e-10     1000.0      1500.0      50,100
-230         model14     0.37    bhr71shallow    chem2       8.0e-9      2.0e-10     1000.0      1500.0      50,100
-231         model14     0.37    bhr71shallow    chem2       9.0e-9      2.0e-10     1000.0      1500.0      50,100
-232         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100
+# 229       model14     0.37    bhr71shallow    chem2       7.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 230       model14     0.37    bhr71shallow    chem2       8.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 231       model14     0.37    bhr71shallow    chem2       9.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 232       model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100
+# try to shift the peaks toward lower velocity and suppress the high velocity wings
+# decrease the evaporation abundance
+233         model14     0.37    bhr71shallow    chem2       1.0e-8      1.0e-10     1000.0      1500.0      50,100
+# move the outer region outward
+234         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1500.0      2000.0      50,100
+235         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2000.0      2500.0      50,100
+236         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2500.0      3000.0      50,100
