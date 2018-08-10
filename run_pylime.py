@@ -1,5 +1,6 @@
 # script for iterating pylime models
 from astropy.io import ascii
+import numpy as np
 import os
 import shutil
 from subprocess import Popen, call
