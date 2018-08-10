@@ -8,34 +8,46 @@ import sys
 
 import argparse
 parser = argparse.ArgumentParser(description='Options for running LIME in batch mode')
+parser.add_argument('--pathfile', required=True,
+                    help='[required] the path file')
 parser.add_argument('--image_only', action='store_true',
                     help='only imaging the existing results of LIME')
 parser.add_argument('--no_image', action='store_true',
                     help='only run the RTE calculation.')
-parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
+# parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
+# read in the path file
+path_list = np.genfromtxt(args['pathfile'], dtype=str).T
+dict_path = {}
+for name, val in zip(path_list[0],path_list[1]):
+    dict_path[name] = val
+
 # user-dependent
-if args['model_list'] == None:
-    model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
-    outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
-else:
-    model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/'+args['model_list']+'.txt', comment='#')
-    outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
-pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
+# if args['model_list'] == None:
+    # model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
+    # outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
+model_list = ascii.read(dict_path['model_list'], comment='#')
+outdir_base = dict_path['outdir']
+# else:
+#     model_list = ascii.read(dict_path['model_list']+args['model_list']+'.txt', comment='#')
+#     outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
+# pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
+pylime = dict_path['pylime']
 
 for i, m in enumerate(model_list['model_name']):
 
     # use the config file as the communication between model.py and user-defined model list
-    foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
+    # foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
+    foo = open(dict_path['lime_config_template'], 'w')
 
     # user-dependent
     # default parameters - the parameters that typically fixed and not defined in the model list
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
                'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
-    p_values = ['2.37', '100', '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt',
-                '50000', '8000', '/scratch/LIMEmods/pylime/YLY/'+model_list['hy_model'][i]+'.rtout',
-                '/scratch/LIMEmods/pylime/YLY/rho_v_env.'+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
+    p_values = ['2.37', '100', dict_path['dust_file'], # '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt'
+                '50000', '8000', dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout', # '/scratch/LIMEmods/pylime/YLY/'
+                dict_path['tsc_dir']+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
                 '0.2', '64973', '200.0', '50.0']
 
     for i, (name, val) in enumerate(zip(p_names, p_values)):
@@ -59,7 +71,7 @@ for i, m in enumerate(model_list['model_name']):
 
     # make a copy of config and model.py to the model directory
     # user-dependent
-    shutil.copyfile('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt',
+    shutil.copyfile(dict_path['lime_config_template'],
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 

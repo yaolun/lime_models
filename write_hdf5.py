@@ -67,6 +67,8 @@ parser = argparse.ArgumentParser(description='Options for converting LIME output
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
+parser.add_argument('--mod_dir', help='the model directory',
+                    default='/Volumes/SD-Mac/lime_runs/', type=str)
 args = vars(parser.parse_args())
 
 # if model_range option is used instead
@@ -80,10 +82,10 @@ for m in args['model_num'].split(','):
     print('Converting model '+m)
     # LIME model parameters
     if args['subpath'] == None:
-        mod_dir = '/Volumes/SD-Mac/lime_runs/model'+m+'/'
+        mod_dir = args['mod_dir']+'model'+m+'/'
         args['subpath'] = ''
     else:
-        mod_dir = '/Volumes/SD-Mac/lime_runs/'+args['subpath']+'/model'+m+'/'
+        mod_dir = args['mod_dir']+args['subpath']+'/model'+m+'/'
     outfilename = 'infall_model'+m
     recalVelo = False
     rtout = '/Volumes/SD-Mac/model14.rtout'
