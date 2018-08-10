@@ -12,9 +12,9 @@ rMax            64973
 distance        200.0
 inclination     50.0
 outdir          /scratch/LIMEmods/pylime/YLY/run/model25/
-a_model         chem
+a_model         chem3
 a_params0       1.0e-8
 a_params1       1.0e-9
-a_params2       1.0
-a_params3       2
-a_params4       -2
+a_params2       2000,2500
+a_params3       50,100
+a_params4       2.0,-2.0

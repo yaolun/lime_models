@@ -15,6 +15,7 @@ parser.add_argument('--no_image', action='store_true',
 parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
+# user-dependent
 if args['model_list'] == None:
     model_list = ascii.read('/scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt', comment='#')
     outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'
@@ -28,6 +29,7 @@ for i, m in enumerate(model_list['model_name']):
     # use the config file as the communication between model.py and user-defined model list
     foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
 
+    # user-dependent
     # default parameters - the parameters that typically fixed and not defined in the model list
     p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
                'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
@@ -56,6 +58,7 @@ for i, m in enumerate(model_list['model_name']):
         os.makedirs(outdir)
 
     # make a copy of config and model.py to the model directory
+    # user-dependent
     shutil.copyfile('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt',
                     outdir+'lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')

@@ -28,6 +28,18 @@
 #       * a_params2: peak radius
 #       * a_params3: inner decrease power
 #       * a_params4: outer decrease power
+#   - chem2: the 2nd version parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundance
+#       * a_params2: inner radius of the maximum abundance
+#       * a_params3: outer radius of the maximum abundance
+#       * a_params4: inner/outer radius of the evaporation zone
+#   - chem3: the 3rd version parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundance
+#       * a_params2: inner/outer radius of the maximum abundance
+#       * a_params3: inner/outer radius of the evaporation zone
+#       * a_params4: inner/outer decreasing powers
 #   - drop: a drop function that has three fully tunable regions.
 #       * a_params0: outer abundance
 #       * a_params1: the abundance at the freeze-out zone
@@ -324,8 +336,12 @@ model_name  hy_model    cs      tsc             a_model     a_params0   a_params
 # 232       model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100
 # try to shift the peaks toward lower velocity and suppress the high velocity wings
 # decrease the evaporation abundance
-233         model14     0.37    bhr71shallow    chem2       1.0e-8      1.0e-10     1000.0      1500.0      50,100
+# 233       model14     0.37    bhr71shallow    chem2       1.0e-8      1.0e-10     1000.0      1500.0      50,100
 # move the outer region outward
-234         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1500.0      2000.0      50,100
-235         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2000.0      2500.0      50,100
-236         model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2500.0      3000.0      50,100
+# 234       model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     1500.0      2000.0      50,100
+# 235       model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2000.0      2500.0      50,100
+# 236       model14     0.37    bhr71shallow    chem2       1.0e-8      2.0e-10     2500.0      3000.0      50,100
+# model 235 has the right red peak position before adding the continuum
+237         model14     0.37    bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.2,-2.0
+238         model14     0.37    bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.4,-2.0
+239         model14     0.37    bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0

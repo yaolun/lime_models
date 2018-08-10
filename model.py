@@ -8,12 +8,14 @@
 # For definitions of the classes ModelParameters and ImageParameters:
 
 import sys
+# user-dependent
 sys.path.append('/scratch/LIMEmods/pylime/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/YLY/lime_models/')
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
 import os
+# user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
 from Hyperion2LIME import *
 import astropy.constants as const
@@ -176,6 +178,7 @@ def input(macros):
     # Definitions for image #0. Add further similar blocks for additional images.
     #
     if not no_image:
+        # user-dependent
         par.img.append(ImageParameters())
         # by default this list par.img has 0 entries. Each 'append' will add an entry.
         # The [-1] entry is the most recently added.
