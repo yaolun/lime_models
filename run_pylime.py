@@ -35,7 +35,7 @@ outdir_base = dict_path['outdir']
 #     outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
 # pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 pylime = dict_path['pylime']
-config_template = open(dict_path['limemod_dir']+'lime_config.txt', 'r')
+config_template = open(dict_path['lime_config_template'], 'r')
 
 for i, m in enumerate(model_list['model_name']):
 
@@ -76,6 +76,7 @@ for i, m in enumerate(model_list['model_name']):
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     foo.close()
+    config_template.close()
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
