@@ -35,15 +35,16 @@ outdir_base = dict_path['outdir']
 #     outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
 # pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 pylime = dict_path['pylime']
+config_template = open(dict_path['limemod_dir']+'lime_config.txt', 'r')
 
 for i, m in enumerate(model_list['model_name']):
 
     # use the config file as the communication between model.py and user-defined model list
     # foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
-    foo = open(dict_path['lime_config_template'], 'w')
+    foo = open(dict_path['limemod_dir']+'lime_config.txt', 'w')
     # get the keys
     p = {}
-    for line in foo.readlines():
+    for line in config_template.readlines():
         p[line.split()[0]] = line.split()[1]
 
     p['dustfile'] = dict_path['dust_file']
@@ -81,7 +82,7 @@ for i, m in enumerate(model_list['model_name']):
 
     # make a copy of config and model.py to the model directory
     # user-dependent
-    shutil.copyfile(dict_path['lime_config_template'],
+    shutil.copyfile(dict_path['limemod_dir']+'lime_config.txt',
                     outdir+'lime_config.txt')
     # copy the lime_config.txt to the smae directory of model.py
     shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/lime_config.txt')
