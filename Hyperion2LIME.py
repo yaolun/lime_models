@@ -240,16 +240,19 @@ class Hyperion2LIME:
         # centrifugal barrier
         cb = J**2/(2*G*M)
 
-        vr = (2*G*M/r_in - J**2/r_in**2)**0.5
+        if 2*G*M/r_in - J**2/r_in**2 >= 0:
+            vr = (2*G*M/r_in - J**2/r_in**2)**0.5
+        else:
+            vr = 0.0
         # let vk = vp at CB
         M_k = J**2/(G*cb)
         vp = J/r_in
         vk = (G*M_k/r_in)**0.5
 
         if r_in >= cb:
-            v_sph = [vr/1e2, 0.0, vp/1e2]
+            v_sph = [-vr/1e2, 0.0, vp/1e2]
         else:
-            v_sph = [vr/1e2, 0.0, vk/1e2]
+            v_sph = [-vr/1e2, 0.0, vk/1e2]
 
         if sph:
             return v_sph
