@@ -41,18 +41,27 @@ for i, m in enumerate(model_list['model_name']):
     # use the config file as the communication between model.py and user-defined model list
     # foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
     foo = open(dict_path['lime_config_template'], 'w')
+    # get the keys
+    p = {}
+    for line in foo.readlines():
+        p[line.split()[0]] = line.split()[1]
+
+    p['dustfile'] = dict_path['dust_file']
+    p['rtout'] = dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout'
+    p['velfile'] = dict_path['tsc_dir']+str(model_list['tsc'][i])
+    p['cs'] = str(model_list['cs'][i])
 
     # user-dependent
     # default parameters - the parameters that typically fixed and not defined in the model list
-    p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
-               'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
-    p_values = ['2.37', '100', dict_path['dust_file'], # '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt'
-                '50000', '8000', dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout', # '/scratch/LIMEmods/pylime/YLY/'
-                dict_path['tsc_dir']+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
-                '0.2', '64973', '200.0', '50.0']
+    # p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
+    #            'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
+    # p_values = ['2.37', '100', dict_path['dust_file'], # '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt'
+    #             '50000', '8000', dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout', # '/scratch/LIMEmods/pylime/YLY/'
+    #             dict_path['tsc_dir']+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
+    #             '0.2', '64973', '200.0', '50.0']
 
-    for i, (name, val) in enumerate(zip(p_names, p_values)):
-        foo.write('{:<14s}  {:<s}\n'.format(name, val))
+    for i, name in enumerate(p.keys()):
+        foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
 
     # model parameters - only abundance now
     # the names of parameters will be the same as the ones in the header of model_list.txt
@@ -75,7 +84,7 @@ for i, m in enumerate(model_list['model_name']):
     shutil.copyfile(dict_path['lime_config_template'],
                     outdir+'lime_config.txt')
     # copy the lime_config.txt to the smae directory of model.py
-    shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/')
+    shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
 
