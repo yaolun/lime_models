@@ -6,6 +6,8 @@ import astropy.constants as const
 from astropy.convolution import convolve, Box1DKernel
 from scipy.interpolate import interp2d
 mh = const.m_p.cgs.value+const.m_e.cgs.value
+MS = const.M_sun.cgs.value
+G = const.G.cgs.value
 au_cgs = const.au.cgs.value
 au_si = const.au.si.value
 
@@ -190,12 +192,65 @@ class Hyperion2LIME:
 
         # if the input radius is smaller than the minimum in xr array,
         # use the minimum in xr array instead.
+        # UPDATE (081518): return zero velocity instead
         if r_in < self.xr_wall.min()*self.r_inf:
             r_in = self.xr.min()*self.r_inf
-            # TODO: raise warning
+
+            v_out = [0.0, 0.0, 0.0]
+            return v_out
 
         ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
         v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+        if sph:
+            return v_sph
+
+        v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
+
+        if self.debug:
+            foo = open('velocity.log', 'a')
+            foo.write('%e \t %e \t %e \t %f \t %f \t %f\n' % (x, y, z, v_out[0], v_out[1], v_out[2]))
+            foo.close()
+
+        return v_out
+
+    def getSakaiVelocity(self, x, y, z, J, M, sph=False, unit_convert=True):
+        """
+        cs: effecitve sound speed in km/s;
+        age: the time since the collapse began in year.
+        """
+
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z, unit_convert=unit_convert)
+
+        if self.truncate != None:
+            if (y**2+z**2)**0.5 > self.truncate*au_si:
+                v_out = [0.0, 0.0, 0.0]
+                return v_out
+
+        # if the input radius is smaller than the minimum in xr array,
+        # use the minimum in xr array instead.
+        # UPDATE: return zero velocity instead
+        if r_in < self.xr_wall.min()*self.r_inf:
+            r_in = self.xr.min()*self.r_inf
+
+            v_out = [0.0, 0.0, 0.0]
+            return v_out
+
+        # use the Sakai model
+        M = M*MS
+        # centrifugal barrier
+        cb = J**2/(2*G*M)
+
+        vr = (2*G*M/r_in - J**2/r_in**2)**0.5
+        # let vk = vp at CB
+        M_k = J**2/(G*cb)
+        vp = J/r_in
+        vk = (G*M_k/r_in)**0.5
+
+        if r_in >= cb:
+            v_sph = [vr/1e2, 0.0, vp/1e2]
+        else:
+            v_sph = [vr/1e2, 0.0, vk/1e2]
+
         if sph:
             return v_sph
 

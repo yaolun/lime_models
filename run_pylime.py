@@ -74,6 +74,8 @@ for i, m in enumerate(model_list['model_name']):
     # user-dependent
     shutil.copyfile(dict_path['lime_config_template'],
                     outdir+'lime_config.txt')
+    # copy the lime_config.txt to the smae directory of model.py
+    shutil.copyfile(dict_path['lime_config_template'], os.getcwd())
     shutil.copyfile('model.py', outdir+'model.py')
 
 

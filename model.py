@@ -45,6 +45,13 @@ rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at
 # a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
 theta_incl = float(config['inclination'])
+# determine whether to use the Sakai model
+if 'J' in config.keys():
+    J = float(config['J'])
+    M = float(config['M'])
+    sakai = True
+else:
+    sakai = False
 
 # path
 outdir = str(config['outdir'])
@@ -381,8 +388,10 @@ def velocity(macros, x, y, z):
     # vel[0] = -x*ffSpeed/rToUse
     # vel[1] = -y*ffSpeed/rToUse
     # vel[2] = -z*ffSpeed/rToUse
-
-    vel = model.getVelocity(x, y, z)
+    if not sakai:
+        vel = model.getVelocity(x, y, z)
+    else:
+        vel = model.getSakaiVelocity(x, y, z, J, M)
 
     # debug
     # foo = open('h2l.log', 'a')
