@@ -11,7 +11,7 @@ rMin            0.2
 rMax            64973
 distance        200.0
 inclination     50.0
-outdir          /scratch/LIMEmods/pylime/YLY/run/model208/
+outdir          /scratch/LIMEmods/pylime/YLY/run/model253/
 hy_model        model14
 cs              0.37
 tsc             bhr71shallow
