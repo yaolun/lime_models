@@ -366,6 +366,6 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 251       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-9      2000,3500   50,100      2.6,-2.0
 # Sakai model
 # (J, M) = 3.2e20, 0.46
-252         model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 252       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
 # (J, M) = 1e20, 0.13
-# 253       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+253         model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
