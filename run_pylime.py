@@ -69,7 +69,7 @@ for i, m in enumerate(model_list['model_name']):
     p_names = ['outdir']
     p_names.extend(model_list.keys()[1:])
     p_values = [outdir]
-    p_values.extend([str(model_list[p][model_list['model_name'] == m].data[0]) for p in model_list.keys()[1:]])
+    p_values.extend([str(model_list[_p][model_list['model_name'] == m].data[0]) for _p in model_list.keys()[1:]])
 
     # write out the default parameters
     for i, name in enumerate(p.keys()):
