@@ -39,7 +39,6 @@ config_template = open(dict_path['lime_config_template'], 'r').readlines()
 # get the keys
 p = {}
 for line in config_template:
-    print(line)
     p[line.strip().split()[0]] = line.strip().split()[1]
 
 for i, m in enumerate(model_list['model_name']):
@@ -73,6 +72,7 @@ for i, m in enumerate(model_list['model_name']):
     p_values = [outdir]
     p_values.extend([str(model_list[_p][model_list['model_name'] == m].data[0]) for _p in model_list.keys()[1:]])
 
+    print(p_names)
     print(p)
 
     # write out the default parameters
