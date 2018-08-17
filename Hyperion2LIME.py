@@ -213,7 +213,7 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getSakaiVelocity(self, x, y, z, J, M, sph=False, unit_convert=True):
+    def getSakaiVelocity(self, x, y, z, J, M, sph=False, unit_convert=True, vr_factor=1.0):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.

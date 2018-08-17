@@ -49,6 +49,10 @@ theta_incl = float(config['inclination'])
 if 'J' in config.keys():
     J = float(config['J'])
     M = float(config['M'])
+    if 'vr_factor' in config.keys():
+        vr_factor = float(config['vr_factor'])
+    else:
+        vr_factor = 1.0
     sakai = True
 else:
     sakai = False
@@ -391,7 +395,7 @@ def velocity(macros, x, y, z):
     if not sakai:
         vel = model.getVelocity(x, y, z)
     else:
-        vel = model.getSakaiVelocity(x, y, z, J, M)
+        vel = model.getSakaiVelocity(x, y, z, J, M, vr_factor=vr_factor)
 
     # debug
     # foo = open('h2l.log', 'a')

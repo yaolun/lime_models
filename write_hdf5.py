@@ -64,7 +64,7 @@ import argparse
 import os
 import numpy as np
 parser = argparse.ArgumentParser(description='Options for converting LIME output for COLT')
-# parser.add_argument('--pathfile', required=True, help='')
+# parser.add_argument('--pathfile', required=True, help='[required] path file for getting paths from run_pylime_path.txt')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
@@ -72,7 +72,7 @@ parser.add_argument('--mod_dir', help='the model directory',
                     default='/Volumes/SD-Mac/lime_runs/', type=str)
 args = vars(parser.parse_args())
 
-# # read in the path file
+# read in the path file
 # path_list = np.genfromtxt(args['pathfile'], dtype=str).T
 # dict_path = {}
 # for name, val in zip(path_list[0],path_list[1]):
@@ -84,7 +84,6 @@ if args['model_range'] != None:
     mod_end = int(args['model_range'].split(',')[1])+1
     args['model_num'] = ','.join(np.arange(mod_start, mod_end).astype('str'))
 
-
 for m in args['model_num'].split(','):
     print('Converting model '+m)
     # LIME model parameters
@@ -93,10 +92,19 @@ for m in args['model_num'].split(','):
         args['subpath'] = ''
     else:
         mod_dir = args['mod_dir']+args['subpath']+'/model'+m+'/'
+
+    # # read lime_config.txt
+    # lime_config = np.genfromtxt(mod_dir+'lime_config.txt', dtype=str).T
+    # dict_lime_config = {}
+    # for name, val in zip(lime_config[0],lime_config[1]):
+    #     dict_lime_config[name] = val
+
     outfilename = 'infall_model'+m
     recalVelo = False
     rtout = '/Volumes/SD-Mac/model14.rtout'
     velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
+    # rtout = dict_lime_config['rtout']
+    # velfile = dict_lime_config['velfile']
 
     # Line parameters
     # HCO+ 4-3
