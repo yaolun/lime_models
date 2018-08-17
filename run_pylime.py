@@ -45,6 +45,7 @@ for i, m in enumerate(model_list['model_name']):
     # get the keys
     p = {}
     for line in config_template.readlines():
+        print(line)
         p[line.split()[0]] = line.split()[1]
 
     p['dustfile'] = dict_path['dust_file']
