@@ -41,7 +41,7 @@ p = {}
 print(config_template.readlines())
 for line in config_template.readlines():
     print(line)
-    p[line.split()[0]] = line.split()[1]
+    p[line.strip().split()[0]] = line.strip().split()[1]å
 
 for i, m in enumerate(model_list['model_name']):
 
