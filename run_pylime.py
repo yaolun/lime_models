@@ -72,9 +72,6 @@ for i, m in enumerate(model_list['model_name']):
     p_values = [outdir]
     p_values.extend([str(model_list[_p][model_list['model_name'] == m].data[0]) for _p in model_list.keys()[1:]])
 
-    print(p_names)
-    print(p.keys())
-
     # write out the default parameters
     for i, name in enumerate(p.keys()):
         if name not in p_names:
@@ -82,6 +79,7 @@ for i, m in enumerate(model_list['model_name']):
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
     for i, (name, val) in enumerate(zip(p_names, p_values)):
+        print(name, val)
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     foo.close()
