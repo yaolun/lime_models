@@ -1,7 +1,7 @@
 model_list              /scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt
 outdir                  /scratch/LIMEmods/pylime/YLY/run/
 pylime                  /scratch/LIMEmods/pylime/lime/pylime.0504
-lime_config_template    /scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt
+lime_config_template    /scratch/LIMEmods/pylime/YLY/lime_models/lime_config_template.txt
 dust_file               /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt
 hyperion_dir            /scratch/LIMEmods/pylime/YLY/
 tsc_dir                 /scratch/LIMEmods/pylime/YLY/

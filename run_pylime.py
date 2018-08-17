@@ -84,7 +84,6 @@ for i, m in enumerate(model_list['model_name']):
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     foo.close()
-    config_template.close()
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
