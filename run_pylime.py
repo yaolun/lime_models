@@ -75,14 +75,11 @@ for i, m in enumerate(model_list['model_name']):
     # write out the default parameters
     for i, name in enumerate(p.keys()):
         if name not in p_names:
-            print(name, p[name])
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
     for i, (name, val) in enumerate(zip(p_names, p_values)):
-        print(name, val)
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
-    print(dict_path['limemod_dir']+'lime_config.txt')
     foo.close()
 
     if not os.path.exists(outdir):
@@ -92,9 +89,9 @@ for i, m in enumerate(model_list['model_name']):
     # user-dependent
     shutil.copyfile(dict_path['limemod_dir']+'lime_config.txt',
                     outdir+'lime_config.txt')
-    # copy the lime_config.txt to the smae directory of model.py
-    if dict_path['lime_config_template'] != os.getcwd()+'/lime_config.txt':
-        shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/lime_config.txt')
+    # copy the lime_config.txt to the same directory of model.py
+    if dict_path['limemod_dir']+'lime_config.txt' != os.getcwd()+'/lime_config.txt':
+        shutil.copyfile(dict_path['limemod_dir']+'lime_config.txt', os.getcwd()+'/lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
 
