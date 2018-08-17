@@ -71,6 +71,8 @@ for i, m in enumerate(model_list['model_name']):
     p_values = [outdir]
     p_values.extend([str(model_list[_p][model_list['model_name'] == m].data[0]) for _p in model_list.keys()[1:]])
 
+    print(p)
+
     # write out the default parameters
     for i, name in enumerate(p.keys()):
         if name not in p_names:

@@ -27,9 +27,9 @@ au_si = const.au.si.value
 pc_si = const.pc.si.value
 
 # TODO: read in the following parameters from files
-config_file = io.ascii.read('lime_config.txt')
+config_file = io.ascii.read('lime_config.txt', names=['names', 'values'])
 config = {}
-for name, val in zip(config_file['col1'],config_file['col2']):
+for name, val in zip(config_file['names'],config_file['values']):
     config[name] = val
 
 pIntensity = int(config['pIntensity'])
