@@ -77,8 +77,8 @@ for i, m in enumerate(model_list['model_name']):
 
     # write out the default parameters
     for i, name in enumerate(p.keys()):
-        print(name, p[name])
         if name not in p_names:
+            print(name, p[name])
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
     for i, (name, val) in enumerate(zip(p_names, p_values)):
