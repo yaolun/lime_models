@@ -35,11 +35,10 @@ outdir_base = dict_path['outdir']
 #     outdir_base = '/scratch/LIMEmods/pylime/YLY/run/'+args['model_list']+'/'
 # pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 pylime = dict_path['pylime']
-config_template = open(dict_path['lime_config_template'], 'r')
+config_template = open(dict_path['lime_config_template'], 'r').readlines()
 # get the keys
 p = {}
-print(config_template.readlines())
-for line in config_template.readlines():
+for line in config_template:
     print(line)
     p[line.strip().split()[0]] = line.strip().split()[1]
 
