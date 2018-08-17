@@ -36,17 +36,19 @@ outdir_base = dict_path['outdir']
 # pylime = '/scratch/LIMEmods/pylime/lime/pylime.0504'
 pylime = dict_path['pylime']
 config_template = open(dict_path['lime_config_template'], 'r')
+# get the keys
+p = {}
+print(config_template.readlines())
+for line in config_template.readlines():
+    print(line)
+    p[line.split()[0]] = line.split()[1]
 
 for i, m in enumerate(model_list['model_name']):
 
     # use the config file as the communication between model.py and user-defined model list
     # foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
     foo = open(dict_path['limemod_dir']+'lime_config.txt', 'w')
-    # get the keys
-    p = {}
-    for line in config_template.readlines():
-        print(line)
-        p[line.split()[0]] = line.split()[1]
+
 
     p['dustfile'] = dict_path['dust_file']
     p['rtout'] = dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout'
