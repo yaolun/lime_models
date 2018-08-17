@@ -82,6 +82,7 @@ for i, m in enumerate(model_list['model_name']):
         print(name, val)
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
+    print(dict_path['limemod_dir']+'lime_config.txt')
     foo.close()
 
     if not os.path.exists(outdir):
