@@ -72,11 +72,11 @@ parser.add_argument('--mod_dir', help='the model directory',
                     default='/Volumes/SD-Mac/lime_runs/', type=str)
 args = vars(parser.parse_args())
 
-# read in the path file
-path_list = np.genfromtxt(args['pathfile'], dtype=str).T
-dict_path = {}
-for name, val in zip(path_list[0],path_list[1]):
-    dict_path[name] = val
+# # read in the path file
+# path_list = np.genfromtxt(args['pathfile'], dtype=str).T
+# dict_path = {}
+# for name, val in zip(path_list[0],path_list[1]):
+#     dict_path[name] = val
 
 # if model_range option is used instead
 if args['model_range'] != None:
