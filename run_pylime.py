@@ -90,7 +90,8 @@ for i, m in enumerate(model_list['model_name']):
     shutil.copyfile(dict_path['limemod_dir']+'lime_config.txt',
                     outdir+'lime_config.txt')
     # copy the lime_config.txt to the smae directory of model.py
-    shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/lime_config.txt')
+    if dict_path['lime_config_template'] != os.getcwd()+'/lime_config.txt':
+        shutil.copyfile(dict_path['lime_config_template'], os.getcwd()+'/lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
 
 
