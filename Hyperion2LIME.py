@@ -241,7 +241,7 @@ class Hyperion2LIME:
         cb = J**2/(2*G*M)
 
         if 2*G*M/r_in - J**2/r_in**2 >= 0:
-            vr = (2*G*M/r_in - J**2/r_in**2)**0.5
+            vr = (2*G*M/r_in - J**2/r_in**2)**0.5 * vr_factor
         else:
             vr = 0.0
         # let vk = vp at CB
