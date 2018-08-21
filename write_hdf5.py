@@ -112,7 +112,7 @@ for m in args['model_num'].split(','):
 
     # Dust parameters
     g2d = 100
-    dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5.txt', names=['wave', 'kappa_dust'])
+    dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt', names=['wave', 'kappa_dust'])
     f_dust = interp1d(dust_lime['wave'], dust_lime['kappa_dust'])
     kappa_v_dust = f_dust(c/auxdata['nu0']*1e4)
     auxdata['kappa_v'] = float(kappa_v_dust)

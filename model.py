@@ -45,6 +45,11 @@ rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at
 # a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
 theta_incl = float(config['inclination'])
+
+# molecular data
+moldata = config['moldata']
+lower_level = int(config['lower_level'])
+
 # determine whether to use the Sakai model
 if 'J' in config.keys():
     J = float(config['J'])
@@ -174,7 +179,7 @@ def input(macros):
     #  par.doSolveRTE        = False
     # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
-    par.moldatfile        = ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
+    par.moldatfile        = [moldata] # ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
     #  par.girdatfile        = ["myGIRs.dat"] # must be a list, even when there is only 1 item.
 
     par.nThreads = 20
@@ -196,7 +201,7 @@ def input(macros):
         # TODO: review the choice of imaging parameters
 
         par.img[-1].nchan             = 100            # Number of channels
-        par.img[-1].trans             = 3              # zero-indexed J quantum number of the lower level
+        par.img[-1].trans             = lower_level # 3              # zero-indexed J quantum number of the lower level
         #  par.img[-1].molI              = -1
         par.img[-1].velres            = 100.0          # Channel resolution in m/s
         par.img[-1].imgres            = 0.05           # Resolution in arc seconds
