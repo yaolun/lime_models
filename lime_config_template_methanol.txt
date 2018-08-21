@@ -17,6 +17,6 @@ a_params0       0.0
 a_params1       2.0e-10
 a_params2       2000,2500
 a_params3       50,100
-a_params4       0.0,0.0 
+a_params4       0.0,0.0
 moldata         e-ch3oh.dat
-lower_level     23
+lower_level     22
