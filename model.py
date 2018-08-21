@@ -48,7 +48,7 @@ theta_incl = float(config['inclination'])
 
 # molecular data
 moldata = config['moldata']
-lower_level = int(config['lower_level'])
+lower_level = float(config['lower_level'])
 
 # determine whether to use the Sakai model
 if 'J' in config.keys():
