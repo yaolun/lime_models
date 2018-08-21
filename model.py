@@ -201,7 +201,8 @@ def input(macros):
         # TODO: review the choice of imaging parameters
 
         par.img[-1].nchan             = 100            # Number of channels
-        par.img[-1].trans             = lower_level # 3              # zero-indexed J quantum number of the lower level
+        par.img[-1].trans             = 22#lower_level # 3              # zero-indexed J quantum number of the lower level
+        print(type(par.img[-1].trans))
         #  par.img[-1].molI              = -1
         par.img[-1].velres            = 100.0          # Channel resolution in m/s
         par.img[-1].imgres            = 0.05           # Resolution in arc seconds
