@@ -62,9 +62,9 @@ class LIMEanalyses:
             return None
 
         lime_grid = self.unpackLIME(grid, 5)
-        v_grid = (lime_grid['vx'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs],
-                  lime_grid['vy'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs],
-                  lime_grid['vz'][lime_grid['r'] < lime_grid['r'].max()-1*au_cgs])
+        v_grid = (lime_grid['vx'][lime_grid['r'] < lime_grid['r'].max()-0.05*au_cgs],
+                  lime_grid['vy'][lime_grid['r'] < lime_grid['r'].max()-0.05*au_cgs],
+                  lime_grid['vz'][lime_grid['r'] < lime_grid['r'].max()-0.05*au_cgs])
 
         sph_grid = self.Cart2Spherical((popdata['x']*1e2, popdata['y']*1e2, popdata['z']*1e2))
 
@@ -86,10 +86,11 @@ class LIMEanalyses:
         if recalVelo:
             from Hyperion2LIME import Hyperion2LIME
             model = Hyperion2LIME(rtout, velfile, float(self.config['cs']), float(self.config['age']),
-                                  rmin=float(self.config['rMin']), g2d=float(self.config['g2d']), mmw=float(self.config['mmw']))
+                                  rmin=float(self.config['rMin'])*au_si, g2d=float(self.config['g2d']), mmw=float(self.config['mmw']))
             v_grid = [[], [], []]
             for i, (x,y,z) in enumerate(zip(popdata['x'], popdata['y'], popdata['z'])):  # unit is meter here
-                v = model.getVelocity2(x,y,z)
+                # v = model.getVelocity2(x,y,z)
+                v = model.getVelocity(x,y,z)
                 v_grid[0].append(v[0]*1e2)
                 v_grid[1].append(v[1]*1e2)
                 v_grid[2].append(v[2]*1e2)

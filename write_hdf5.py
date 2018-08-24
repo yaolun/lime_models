@@ -6,11 +6,19 @@ from astropy.io import ascii
 from LIMEanalyses import *
 import shutil
 
+# Line parameters
+# HCO+ 4-3
+auxdata = {'EA': 3.6269e-03,
+           'nu0': 356.7342880e9,
+           'trans_up': 4,
+           'degeneracy': [9,7]}  # degeneracy from upper to lower
+dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
+
+
 pc = const.pc.cgs.value
 au = const.au.cgs.value
 c = const.c.cgs.value
 mh = const.m_p.cgs.value+const.m_e.cgs.value
-mmw = 2.37
 
 def write_hdf5((lime_out, auxdata), filename='infall.h5'):
     n_cells = np.int32(len(lime_out['Tk']))
@@ -25,9 +33,6 @@ def write_hdf5((lime_out, auxdata), filename='infall.h5'):
 
     # Parameters (will go in another file and can be changed later)
     kappa_dust = auxdata['kappa_v'] # Dust opacity at line center (cm^2/g of dust)
-    d_L     = 200*pc # Distance to source (cm)
-    arcsec2 = 0.1**2 # Size of each pixel (arcsec^2)
-    n_pix   = 200*200 # Number of pixels
     r_max = auxdata['r_max']*au
 
     print(filename)
@@ -51,15 +56,6 @@ def write_hdf5((lime_out, auxdata), filename='infall.h5'):
         f.create_dataset('rho_dust', data=rho_dust) # Dust density (g/cm^3 of dust)
         f['rho_dust'].attrs['units'] = b'g/cm^3'
 
-def read_hdf5(filename):
-    with h5py.File(filename, 'r') as f:
-        print('Opened file:', filename)
-        print('Attributes:', [item for item in f.attrs.items()])
-        print('Datasets: ', [key for key in f.keys()])
-        n_cells = f.attrs['n_cells']
-        T = f['T'][:]
-        r = f['T'][:,:]
-
 import argparse
 import os
 import numpy as np
@@ -70,13 +66,10 @@ parser.add_argument('--model_range', help='a range of model number to run')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
 parser.add_argument('--mod_dir', help='the model directory',
                     default='/Volumes/SD-Mac/lime_runs/', type=str)
+parser.add_argument('--colt_dir', help='the path of colt-lime', default='/Users/yaolun/programs/colt-lime/', type=str)
+parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
+parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 args = vars(parser.parse_args())
-
-# read in the path file
-# path_list = np.genfromtxt(args['pathfile'], dtype=str).T
-# dict_path = {}
-# for name, val in zip(path_list[0],path_list[1]):
-#     dict_path[name] = val
 
 # if model_range option is used instead
 if args['model_range'] != None:
@@ -93,26 +86,30 @@ for m in args['model_num'].split(','):
     else:
         mod_dir = args['mod_dir']+args['subpath']+'/model'+m+'/'
 
-    # # read lime_config.txt
-    # lime_config = np.genfromtxt(mod_dir+'lime_config.txt', dtype=str).T
-    # dict_lime_config = {}
-    # for name, val in zip(lime_config[0],lime_config[1]):
-    #     dict_lime_config[name] = val
+    # read the lime_config.txt
+    config = np.genfromtxt(mod_dir+'lime_config.txt', dtype=str).T
+    dict_config = {}
+    for name, val in zip(config[0],config[1]):
+        dict_config[name] = val
 
     outfilename = 'infall_model'+m
-    recalVelo = False
-    rtout = '/Volumes/SD-Mac/model14.rtout'
-    velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
-    # rtout = dict_lime_config['rtout']
-    # velfile = dict_lime_config['velfile']
-
-    # Line parameters
-    # HCO+ 4-3
-    auxdata = {'EA': 3.6269e-03, 'nu0': 356.7342880e9, 'trans_up': 4, 'degeneracy': [9,7]}  # degeneracy from upper to lower
+    # rtout = '/Volumes/SD-Mac/model14.rtout'
+    # velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
+    if args['rtout'] == None:
+        rtout = dict_config['rtout']
+    else:
+        rtout = args['rtout']
+    if args['velfile'] == None:
+        velfile = dict_config['velfile']
+    else:
+        velfile = args['velfile']
+    mmw = float(dict_config['mmw'])
+    # dustpath = dict_config['dustfile']
 
     # Dust parameters
-    g2d = 100
-    dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt', names=['wave', 'kappa_dust'])
+    g2d = float(dict_config['g2d'])
+    # dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt', names=['wave', 'kappa_dust'])
+    dust_lime = ascii.read(dustpath, names=['wave', 'kappa_dust'])
     f_dust = interp1d(dust_lime['wave'], dust_lime['kappa_dust'])
     kappa_v_dust = f_dust(c/auxdata['nu0']*1e4)
     auxdata['kappa_v'] = float(kappa_v_dust)
@@ -122,14 +119,15 @@ for m in args['model_num'].split(','):
     grid = mod_dir+'grid5'
     pop = mod_dir+'populations.pop'
     config = mod_dir+'lime_config.txt'
+    recalVelo = False
 
-    lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata, velfile=velfile, rtout=rtout, recalVelo=recalVelo)
+    lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
+                                     velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    write_hdf5((lime_out, auxdata), filename=outfilename+'.h5')
+    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
 
-    if not os.path.exists('/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'):
-        os.makedirs('/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/')
+    if not os.path.exists(args['colt_dir']+'inits/'+args['subpath']+'/'):
+        os.makedirs(args['colt_dir']+'inits/'+args['subpath']+'/')
 
-    shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
-    print('write to '+outfilename+'.h5\n'+\
-          '         /Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
+    # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
+    print('write to '+args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
