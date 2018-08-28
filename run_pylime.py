@@ -78,6 +78,8 @@ for i, m in enumerate(model_list['model_name']):
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
     for i, (name, val) in enumerate(zip(p_names, p_values)):
+        if name in ['tsc', 'hy_model']:
+            continue
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
     foo.close()
