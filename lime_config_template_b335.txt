@@ -6,6 +6,7 @@ sinkPoints      8000
 rtout           /scratch/LIMEmods/pylime/YLY/model39.rtout
 velfile         /scratch/LIMEmods/pylime/YLY/rho_v_env.b335
 cs              0.233
+v_turb          0.12
 age             50000
 rMin            0.2
 rMax            10000
