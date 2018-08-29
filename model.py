@@ -211,7 +211,7 @@ def input(macros):
         #  par.img[-1].freq              = -1.0
         #  par.img[-1].bandwidth         = -1.0
         par.img[-1].source_vel        = 0.0            # source velocity in m/s
-        par.img[-1].theta             = 90.0-theta_incl
+        par.img[-1].theta             = theta_incl*macros["PI"]/2
         par.img[-1].phi               = 0.0
         # par.img[-1].incl              = theta_incl
         #  par.img[-1].posang            = 0.0
