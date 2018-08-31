@@ -373,5 +373,8 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 254       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
 # methanol
 # 255       model14     0.37    rho_v_env.bhr71shallow    chem3       0.0         2.0e-10     1000,1500   50,100      0.0,0.0
-# test for pylime - model 239
-256         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+# # test for pylime - model 239
+# 256       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+# fix the imaging rotation mistake.  Everything in above with theta = 50 should be more or less ok, but proceed with caution.
+# re-run model 239, which is the best fitted models so far.  Model 208 uses "chem2" so the abundance profile is a bit outdated
+257         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
