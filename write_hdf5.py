@@ -12,6 +12,9 @@ auxdata = {'EA': 3.6269e-03,
            'nu0': 356.7342880e9,
            'trans_up': 4,
            'degeneracy': [9,7]}  # degeneracy from upper to lower
+
+# Methanol 23-22
+# auxdata = {}
 dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
 
@@ -124,10 +127,10 @@ for m in args['model_num'].split(','):
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
-
     if not os.path.exists(args['colt_dir']+'inits/'+args['subpath']+'/'):
         os.makedirs(args['colt_dir']+'inits/'+args['subpath']+'/')
+
+    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
 
     # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
     print('write to '+args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
