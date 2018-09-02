@@ -1,0 +1,66 @@
+# a_model:
+#   - step1 (neg_step1): single negative step
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the ratio of the inner abundance to the outer abundance
+#       * a_params2: the radius of the step in unit of the infall radius
+#   - step2 (neg_step2): double negative steps
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the ratio of the first inner abundance to the outer abundance
+#       * a_params2: the radius of the first step in unit of the infall radius
+#       * a_params3: the ratio of the second inner abundance to the outer abundance
+#       * a_params4: the radius of the second step in unit of AU
+#   - lognorm: log-normal decrease between two radii (y = e^x)
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the ratio of the inner abundance to the outer abundance
+#       * a_params2: the radius where the outer abundance starts to decrease in log-normal.
+#       * a_params3: the inner radius where the log-normal decrease to a0*a1.
+#   - powerlaw: power-law decrease (y = x^a)
+#       * a_params0: the abundance beyond the (infall radius)*a_params2
+#       * a_params1: the abundance at the minimum radius (rMin)
+#       * a_params2: the radius where the outer abundance starts to decrease in power-law
+#       * a_params3: the power of the power-law decrease
+#       * a_params4: the maximum abundance that a profile can have.
+#                    (This is used to artificially decrease the abundance at outer radii
+#                     while keep the inner part following the same power law profile)
+#   - chem: parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundance
+#       * a_params2: peak radius
+#       * a_params3: inner decrease power
+#       * a_params4: outer decrease power
+#   - chem2: the 2nd version parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundance
+#       * a_params2: inner radius of the maximum abundance
+#       * a_params3: outer radius of the maximum abundance
+#       * a_params4: inner/outer radius of the evaporation zone
+#   - chem3: the 3rd version parametrized profile based on chemical modeling result
+#       * a_params0: peak abundance
+#       * a_params1: inner abundance
+#       * a_params2: inner/outer radius of the maximum abundance
+#       * a_params3: inner/outer radius of the evaporation zone
+#       * a_params4: inner/outer decreasing powers
+#   - drop: a drop function that has three fully tunable regions.
+#       * a_params0: outer abundance
+#       * a_params1: the abundance at the freeze-out zone
+#       * a_params2: the radius where the freeze-out occurred
+#       * a_params3: the inner abundance where molecules get photoevaporated
+#       * a_params4: the radius where the photoevaporation occurred.
+#   - drop2: the same function as the "drop" function but there is a innermost cutoff at 13 au (centrifugal radius for BHR71)
+#
+###############################################################################################################################
+model_name  hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4
+###############################################################################################################################
+#
+# Sakai model
+# (J, M) = 1e20, 0.13
+# max. abundance radius
+1           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+2           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1500,2000   50,100      2.6,-2.0
+3           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     2000,2500   50,100      2.6,-2.0
+# max. abundance
+4           model14     0.37    rho_v_env.bhr71shallow    chem3       5.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0
+5           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0
+# evap. abundance
+6           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.6,-2.0
+7           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-9      1000,1500   50,100      2.6,-2.0
