@@ -1,5 +1,5 @@
 model_list              /scratch/LIMEmods/pylime/YLY/lime_models/model_list_sakai2.txt
-outdir                  /scratch/LIMEmods/pylime/YLY/run/
+outdir                  /scratch/LIMEmods/pylime/YLY/run/sakai2/
 pylime                  /scratch/LIMEmods/pylime/lime/pylime.0504
 lime_config_template    /scratch/LIMEmods/pylime/YLY/lime_models/lime_config_sakai2.txt
 dust_file               /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt
