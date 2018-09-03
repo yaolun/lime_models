@@ -58,6 +58,15 @@ class Hyperion2LIME:
             self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+
+            # fix the discontinuity
+            dvr = abs((self.vr2d[1:,0] - self.vr2d[:-1,0])/self.vr2d[1:,0])
+            break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-1e-3)]
+            offset = self.vr2d[(self.xr > break_pt),0].min()-self.vr2d[(self.xr < break_pt),0].max()
+            self.vr2d[self.xr < break_pt] = self.vr2d[self.xr < break_pt] + offset
+            print('Fix the discontinuity of Vr ({:<.2f} km/s) at xr = {:<.2f}'.format(float(offset/1e5), float(break_pt)))
+            print('Vr at xr < {:<.2f} increased by {:<.2f} km/s.'.format(float(break_pt), float(offset/1e5)))
+
             self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
 

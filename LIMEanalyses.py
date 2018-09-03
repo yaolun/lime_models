@@ -110,8 +110,7 @@ class LIMEanalyses:
         r = (x_arr**2+y_arr**2+z_arr**2)**0.5
         t = np.arccos(z_arr/r)
         t[r == 0] = 0
-        p = np.sign(y_arr)*np.arctan(y_arr/x_arr)
-        p[x_arr == 0] = np.sign(y_arr[x_arr == 0])*np.pi/2
+        p = np.arctan2(y_arr, x_arr)
 
         return (r, t, p)
 
