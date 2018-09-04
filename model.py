@@ -86,7 +86,8 @@ pprint.pprint(config)
 # TODO: rmax, rmin, dustfile, distance, inclination
 # truncate = 2000.0  # in unit of au
 truncate = None
-model = Hyperion2LIME(rtout, velfile, cs, age, rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate)
+model = Hyperion2LIME(rtout, velfile, cs, age,
+                      rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate, fix_tsc=True)
 
 
 

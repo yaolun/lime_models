@@ -18,7 +18,7 @@ class Hyperion2LIME:
     """
 
     def __init__(self, rtout, velfile, cs, age,
-                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True):
+                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True, fix_tsc=True):
         self.rtout = rtout
         self.velfile = velfile
         if load_full:
@@ -59,13 +59,14 @@ class Hyperion2LIME:
             self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
 
-            # fix the discontinuity
-            for i in range(self.ntheta):
-                dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
-                break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-1e-3)]
-                if len(break_pt) > 0:
-                    offset = self.vr2d[(self.xr > break_pt),i].min()-self.vr2d[(self.xr < break_pt),i].max()
-                    self.vr2d[(self.xr < break_pt), i] = self.vr2d[(self.xr < break_pt), i]+offset
+            if fix_tsc:
+                # fix the discontinuity
+                for i in range(self.ntheta):
+                    dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
+                    break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-1e-3)]
+                    if len(break_pt) > 0:
+                        offset = self.vr2d[(self.xr > break_pt),i].min()-self.vr2d[(self.xr < break_pt),i].max()
+                        self.vr2d[(self.xr < break_pt), i] = self.vr2d[(self.xr < break_pt), i]+offset
 
             self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
