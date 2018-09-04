@@ -366,7 +366,7 @@ def doppler(macros, x, y, z):
     # Note that *doppler is a pointer, not an array.
     # Remember the * in front of doppler.
     #l
-    dopplerBValue = float(config['v_turb'])*1e2
+    dopplerBValue = float(config['v_turb'])*1e3
     # 0.34 km/s 1-D turbulent velocity from Yang+2017.
     # TODO: clarify if the broadening used here need 1-D turbulent velocity or 3-D.
 
