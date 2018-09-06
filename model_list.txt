@@ -48,336 +48,336 @@
 #       * a_params4: the radius where the photoevaporation occurred.
 #   - drop2: the same function as the "drop" function but there is a innermost cutoff at 13 au (centrifugal radius for BHR71)
 #
-###############################################################################################################################
-model_name  hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4
-###############################################################################################################################
+#############################################################################################################################################
+model_name  hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4     theta_cav
+#############################################################################################################################################
 #
-# 1         model12     0.38    rho_v_env.bhr71dust       uniform     3e-9        -1          -1          -1          -1
-# 2         model12     0.38    rho_v_env.bhr71dust       step1       3e-9        5           1.0         -1          -1
-# 3         model12     0.38    rho_v_env.bhr71dust       step1       3e-9        0.01        1.0         -1          -1
-# 4         model12     0.38    rho_v_env.bhr71dust       step1       1e-8        0.01        1.0         -1          -1
-# 5         model12     0.38    rho_v_env.bhr71dust       step1       5e-8        0.01        1.0         -1          -1
-# 6         model12     0.38    rho_v_env.bhr71dust       step1       5e-8        0.01        1.0         -1          -1
-# 7         model12     0.38    rho_v_env.bhr71dust       step2       3e-9        0.1         1.0         0.02        200.0
-# 8         model12     0.38    rho_v_env.bhr71dust       step2       1e-8        0.1         1.0         0.02        200.0
-# 9         model12     0.38    rho_v_env.bhr71dust       step2       5e-8        0.1         1.0         0.02        200.0
-# 10        model12     0.38    rho_v_env.bhr71dust       step2       5e-8        0.1         1.0         0.001       200.0
-# 11        model12     0.38    rho_v_env.bhr71dust       uniform     3.5e-9      -1          -1          -1          -1
-# 12        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.0         100.0       -1
-# 13        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-10     0.001       1.0         100.0       -1
-# 14        model12     0.38    rho_v_env.bhr71dust       lognorm     1e-9        0.001       1.0         100.0       -1
-# 15        model12     0.38    rho_v_env.bhr71dust       step2       1e-7        0.1         1.0         0.0005      200.0
-# 16        model12     0.38    rho_v_env.bhr71dust       step2       5e-7        0.1         1.0         0.0001      200.0
-# 17        model12     0.38    rho_v_env.bhr71dust       step2       1e-6        0.1         1.0         0.00005     200.0
-# 18        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.001       1.0         100.0       -1
-# 19        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.001       1.0         100.0       -1
-# 20        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.0         100.0       -1
-# 21        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.0         100.0       -1
-# 22        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.5         100.0       -1
-# 23        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.5         100.0       -1
-# 24        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.5         100.0       -1
-# 25        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.5         200.0       -1
-# 26        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.5         200.0       -1
-# 27        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.5         200.0       -1
-# 28        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 29        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         2.0         -1
-# 30        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         2.0         -1
-# 31        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.75        -1
-# 32        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.4         -1
-# 33        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.0         -1
-# 34        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-7      0.0001      1.0         2.0         -1
-# 35        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-6      0.0001      1.0         2.0         -1
-# 36        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         -1
-# 37        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.6         2.0         -1
-# 38        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.4         2.0         -1
-# 39        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.2         1.7         -1
-# 40        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         1.7         -1
-# 41        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         1.7         -1
-# 42        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.2         1.5         -1
-# 43        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         1.5         -1
-# 44        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         1.5         -1
-# 45        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 46        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.00001     1.0         2.0         -1
-# 47        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 48        model15     0.35    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 49        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 50        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.001       1.0         2.0         -1
-# 51        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -1
-# 52        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 53        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         2.0         -1
-# 54        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         2.0         -1
-# 55        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.00001     2.0         2.0         -1
-# 56        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         -1
-# 57        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.6         2.0         -1
-# 58        model14     0.37    rho_v_env.bhr71dust       powerlaw    1.0e-8      0.00035     1.0         2.0         -1
-# 59        model14     0.37    rho_v_env.bhr71dust       powerlaw    5.0e-9      0.0007      1.0         2.0         -1
-# 60        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         1.0e-8
-# 61        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         5.0e-9
-# 62        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         -1
-# 63        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         1.0e-8
-# 64        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         5.0e-9
-# 65        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.6         5.0e-9
-# 66        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.7         5.0e-9
-# 67        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.8         5.0e-9
-# 68        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.9         5.0e-9
-# 69        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.9         2.0         5.0e-9
-# 70        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.9         2.0         1.0e-9
-# 71        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         5.0e-9
-# 72        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         1.0e-9
-# 73        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.7         2.0         5.0e-9
-# 74        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.7         2.0         1.0e-9
+# 1         model12     0.38    rho_v_env.bhr71dust       uniform     3e-9        -1          -1          -1          -1            0.0
+# 2         model12     0.38    rho_v_env.bhr71dust       step1       3e-9        5           1.0         -1          -1            0.0
+# 3         model12     0.38    rho_v_env.bhr71dust       step1       3e-9        0.01        1.0         -1          -1            0.0
+# 4         model12     0.38    rho_v_env.bhr71dust       step1       1e-8        0.01        1.0         -1          -1            0.0
+# 5         model12     0.38    rho_v_env.bhr71dust       step1       5e-8        0.01        1.0         -1          -1            0.0
+# 6         model12     0.38    rho_v_env.bhr71dust       step1       5e-8        0.01        1.0         -1          -1            0.0
+# 7         model12     0.38    rho_v_env.bhr71dust       step2       3e-9        0.1         1.0         0.02        200.0         0.0
+# 8         model12     0.38    rho_v_env.bhr71dust       step2       1e-8        0.1         1.0         0.02        200.0         0.0
+# 9         model12     0.38    rho_v_env.bhr71dust       step2       5e-8        0.1         1.0         0.02        200.0         0.0
+# 10        model12     0.38    rho_v_env.bhr71dust       step2       5e-8        0.1         1.0         0.001       200.0         0.0
+# 11        model12     0.38    rho_v_env.bhr71dust       uniform     3.5e-9      -1          -1          -1          -1            0.0
+# 12        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.0         100.0       -1            0.0
+# 13        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-10     0.001       1.0         100.0       -1            0.0
+# 14        model12     0.38    rho_v_env.bhr71dust       lognorm     1e-9        0.001       1.0         100.0       -1            0.0
+# 15        model12     0.38    rho_v_env.bhr71dust       step2       1e-7        0.1         1.0         0.0005      200.0         0.0
+# 16        model12     0.38    rho_v_env.bhr71dust       step2       5e-7        0.1         1.0         0.0001      200.0         0.0
+# 17        model12     0.38    rho_v_env.bhr71dust       step2       1e-6        0.1         1.0         0.00005     200.0         0.0
+# 18        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.001       1.0         100.0       -1            0.0
+# 19        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.001       1.0         100.0       -1            0.0
+# 20        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.0         100.0       -1            0.0
+# 21        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.0         100.0       -1            0.0
+# 22        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.5         100.0       -1            0.0
+# 23        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.5         100.0       -1            0.0
+# 24        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.5         100.0       -1            0.0
+# 25        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-9      0.001       1.5         200.0       -1            0.0
+# 26        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-8      0.0001      1.5         200.0       -1            0.0
+# 27        model12     0.38    rho_v_env.bhr71dust       lognorm     3.5e-7      0.00001     1.5         200.0       -1            0.0
+# 28        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 29        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         2.0         -1            0.0
+# 30        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         2.0         -1            0.0
+# 31        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.75        -1            0.0
+# 32        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.4         -1            0.0
+# 33        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         1.0         -1            0.0
+# 34        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-7      0.0001      1.0         2.0         -1            0.0
+# 35        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-6      0.0001      1.0         2.0         -1            0.0
+# 36        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         -1            0.0
+# 37        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.6         2.0         -1            0.0
+# 38        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.4         2.0         -1            0.0
+# 39        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.2         1.7         -1            0.0
+# 40        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         1.7         -1            0.0
+# 41        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         1.7         -1            0.0
+# 42        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.2         1.5         -1            0.0
+# 43        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         1.5         -1            0.0
+# 44        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         1.5         -1            0.0
+# 45        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 46        model12     0.38    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.00001     1.0         2.0         -1            0.0
+# 47        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 48        model15     0.35    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 49        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 50        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.001       1.0         2.0         -1            0.0
+# 51        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -1            0.0
+# 52        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 53        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.5         2.0         -1            0.0
+# 54        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      2.0         2.0         -1            0.0
+# 55        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.00001     2.0         2.0         -1            0.0
+# 56        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         -1            0.0
+# 57        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.6         2.0         -1            0.0
+# 58        model14     0.37    rho_v_env.bhr71dust       powerlaw    1.0e-8      0.00035     1.0         2.0         -1            0.0
+# 59        model14     0.37    rho_v_env.bhr71dust       powerlaw    5.0e-9      0.0007      1.0         2.0         -1            0.0
+# 60        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         1.0e-8        0.0
+# 61        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         5.0e-9        0.0
+# 62        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         -1            0.0
+# 63        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         1.0e-8        0.0
+# 64        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.5         5.0e-9        0.0
+# 65        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.6         5.0e-9        0.0
+# 66        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.7         5.0e-9        0.0
+# 67        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.8         5.0e-9        0.0
+# 68        model14     0.37    rho_v_env.bhr71shallow    powerlaw    3.5e-8      0.0001      1.0         1.9         5.0e-9        0.0
+# 69        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.9         2.0         5.0e-9        0.0
+# 70        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.9         2.0         1.0e-9        0.0
+# 71        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 72        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.8         2.0         1.0e-9        0.0
+# 73        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.7         2.0         5.0e-9        0.0
+# 74        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      0.7         2.0         1.0e-9        0.0
 # the inner radius of the power-law model is now 100 au
-# 75        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -1
-# 76        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -999
-# 77        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1
-# 78        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -999
-# 79        model14     0.37    rho_v_env.bhr71dust       powerlaw    7.0e-9      0.0001      1.0         2.0         -1
-# 80        model14     0.37    rho_v_env.bhr71dust       powerlaw    7.0e-9      0.0001      1.0         2.0         -999
-# 81        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      2.0         2.0         -2
-# 82        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      1.0         2.0         -2
-# 83        model14     0.37    rho_v_env.bhr71dust       chem        2.0e-8      1.0e-9      1.0         2.0         -2
-# 84        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      1.0         2.5         -2
-# 85        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      1.0e-10     1.0         2.0         -2
-# 86        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      1.0e-10     2.0         2.0         -2
-# 87        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      5.0e-10     1.0         2.0         -2
-# 88        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      1.0e-10     1.0         2.0         -2
-# 89        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      5.0e-10     1.0         2.0         -2
-# 90        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      1.0e-10     1.0         2.0         -2
+# 75        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -1            0.0
+# 76        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-9      0.0001      1.0         2.0         -999          0.0
+# 77        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -1            0.0
+# 78        model14     0.37    rho_v_env.bhr71dust       powerlaw    3.5e-8      0.0001      1.0         2.0         -999          0.0
+# 79        model14     0.37    rho_v_env.bhr71dust       powerlaw    7.0e-9      0.0001      1.0         2.0         -1            0.0
+# 80        model14     0.37    rho_v_env.bhr71dust       powerlaw    7.0e-9      0.0001      1.0         2.0         -999          0.0
+# 81        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      2.0         2.0         -2            0.0
+# 82        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      1.0         2.0         -2            0.0
+# 83        model14     0.37    rho_v_env.bhr71dust       chem        2.0e-8      1.0e-9      1.0         2.0         -2            0.0
+# 84        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-8      1.0e-9      1.0         2.5         -2            0.0
+# 85        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      1.0e-10     1.0         2.0         -2            0.0
+# 86        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      1.0e-10     2.0         2.0         -2            0.0
+# 87        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      5.0e-10     1.0         2.0         -2            0.0
+# 88        model14     0.37    rho_v_env.bhr71shallow    chem        2.0e-8      1.0e-10     1.0         2.0         -2            0.0
+# 89        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      5.0e-10     1.0         2.0         -2            0.0
+# 90        model14     0.37    rho_v_env.bhr71shallow    chem        1.0e-8      1.0e-10     1.0         2.0         -2            0.0
 # grid of outer abundance
-# 91        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         2.0         -2
-# 92        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-9      1.0e-9      1.0         2.0         -2
-# 93        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-10     1.0e-9      1.0         2.0         -2
-# 94        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-10     1.0e-9      1.0         2.0         -2
-# 95        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         2.0         -2
-# 96        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-9      1.0e-10     1.0         2.0         -2
-# 97        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-10     1.0e-10     1.0         2.0         -2
-# 98        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-10     1.0e-10     1.0         2.0         -2
-# 99        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         1.5         -2
-# 100       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         1.0         -2
-# 101       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         1.5         -2
-# 102       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         1.0         -2
-# 103       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      9.0e-10     1.0         1.5         -2
-# 104       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      8.0e-10     1.0         1.5         -2
-# 105       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      7.0e-10     1.0         1.5         -2
-# 106       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      6.0e-10     1.0         1.5         -2
-# 107       model14     0.37    rho_v_env.bhr71dust       chem        3.0e-9      9.0e-10     1.0         1.5         -2
-# 108       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      8.0e-10     1.0         1.5         -2
-# 109       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      7.0e-10     1.0         1.5         -2
-# 110       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      6.0e-10     1.0         1.5         -2
+# 91        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         2.0         -2            0.0
+# 92        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-9      1.0e-9      1.0         2.0         -2            0.0
+# 93        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-10     1.0e-9      1.0         2.0         -2            0.0
+# 94        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-10     1.0e-9      1.0         2.0         -2            0.0
+# 95        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         2.0         -2            0.0
+# 96        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-9      1.0e-10     1.0         2.0         -2            0.0
+# 97        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-10     1.0e-10     1.0         2.0         -2            0.0
+# 98        model14     0.37    rho_v_env.bhr71dust       chem        1.0e-10     1.0e-10     1.0         2.0         -2            0.0
+# 99        model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         1.5         -2            0.0
+# 100       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-10     1.0         1.0         -2            0.0
+# 101       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         1.5         -2            0.0
+# 102       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      1.0e-9      1.0         1.0         -2            0.0
+# 103       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      9.0e-10     1.0         1.5         -2            0.0
+# 104       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      8.0e-10     1.0         1.5         -2            0.0
+# 105       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      7.0e-10     1.0         1.5         -2            0.0
+# 106       model14     0.37    rho_v_env.bhr71dust       chem        5.0e-9      6.0e-10     1.0         1.5         -2            0.0
+# 107       model14     0.37    rho_v_env.bhr71dust       chem        3.0e-9      9.0e-10     1.0         1.5         -2            0.0
+# 108       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      8.0e-10     1.0         1.5         -2            0.0
+# 109       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      7.0e-10     1.0         1.5         -2            0.0
+# 110       model14     0.37    rho_v_env.bhr71shallow    chem        3.0e-9      6.0e-10     1.0         1.5         -2            0.0
 # grid using simple drop function
 # fix the abundance of the freeze-out zone for these models - a1 = 1e-10
 # # a0 = 1e-8
-# 111       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
-# 112       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-10     100.0
-# 113       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-11     100.0
+# 111       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-9      100.0         0.0
+# 112       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-10     100.0         0.0
+# 113       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-10     4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-9
-# 114       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
-# 115       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-10     100.0
-# 116       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-11     100.0
+# 114       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-9      100.0         0.0
+# 115       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-10     100.0         0.0
+# 116       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-10     4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-10
-# 117       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
-# 118       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-10     100.0
-# 119       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-11     100.0
+# 117       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-9      100.0         0.0
+# 118       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-10     100.0         0.0
+# 119       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-10     4045.86     5.0e-11     100.0         0.0
 # same grid but a1 = 1e-9
 # # a0 = 1e-8
-# 120       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-9      100.0
-# 121       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-10     100.0
-# 122       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-11     100.0
+# 120       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-9      100.0         0.0
+# 121       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-10     100.0         0.0
+# 122       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-9      4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-9
-# 123       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-9      100.0
-# 124       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-10     100.0
-# 125       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-11     100.0
+# 123       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-9      100.0         0.0
+# 124       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-10     100.0         0.0
+# 125       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-9      4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-10
-# 126       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-9      100.0
-# 127       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-10     100.0
-# 128       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-11     100.0
+# 126       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-9      100.0         0.0
+# 127       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-10     100.0         0.0
+# 128       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-9      4045.86     5.0e-11     100.0         0.0
 # same grid but a1 = 5e-9
 # # a0 = 1e-8
-# 129       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-9      100.0
-# 130       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-10     100.0
-# 131       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-11     100.0
+# 129       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-9      100.0         0.0
+# 130       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-10     100.0         0.0
+# 131       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      5.0e-9      4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e
-# 132       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-9      100.0
-# 133       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-10     100.0
-# 134       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-11     100.0
+# 132       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-9      100.0         0.0
+# 133       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-10     100.0         0.0
+# 134       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      5.0e-9      4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e0
-# 135       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-9      100.0
-# 136       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-10     100.0
-# 137       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-11     100.0
+# 135       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-9      100.0         0.0
+# 136       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-10     100.0         0.0
+# 137       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     5.0e-9      4045.86     5.0e-11     100.0         0.0
 # # same grid but a1 = 1e-11
-# 138       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
-# 139       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-10     100.0
-# 140       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-11     100.0
+# 138       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-9      100.0         0.0
+# 139       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-10     100.0         0.0
+# 140       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-8      1.0e-11     4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-9
-# 141       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
-# 142       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-10     100.0
-# 143       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-11     100.0
+# 141       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-9      100.0         0.0
+# 142       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-10     100.0         0.0
+# 143       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     5.0e-11     100.0         0.0
 # # a0 = 1e-1  0
-# 144       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
-# 145       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0
-# 146       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0
+# 144       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-9      100.0         0.0
+# 145       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-10     100.0         0.0
+# 146       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-10     1.0e-11     4045.86     5.0e-11     100.0         0.0
 # # try the drop function with an inner cutoff at 13 au - no significant difference
-# 147       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0
-# 148       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0
-# 149       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0
+# 147       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     5.0e-9      100.0         0.0
+# 148       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     5.0e-9      100.0         0.0
+# 149       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     5.0e-9      100.0         0.0
 # how to lower the high velocity channels?  Opt. 1 - lower the abundance in the evaporation zone.  More effective for lowering the peak
-# 150       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0
-# 151       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0
-# 152       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0
+# 150       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     1.0e-9      100.0         0.0
+# 151       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     1.0e-9      100.0         0.0
+# 152       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     1.0e-9      100.0         0.0
 # # Opt. 2 - increase the abundance in the freeze-out zone.  Change the peak positions, more significantly at the red peak.
-# 153       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0
-# 154       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0
-# 155       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0
+# 153       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-10     4045.86     5.0e-9      100.0         0.0
+# 154       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-10     4045.86     5.0e-9      100.0         0.0
+# 155       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-10     4045.86     5.0e-9      100.0         0.0
 # # Opt. 3 - first match the peak intensity, then tune the profile in the evaporation zone to kill the high velocity emission
-# 156       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0
-# 157       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0
-# 158       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0
+# 156       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     3.0e-9      100.0         0.0
+# 157       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     3.0e-9      100.0         0.0
+# 158       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     3.0e-9      100.0         0.0
 # # lower the abundance in evaporation zone a bit more to match the peak
-# 159       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     2.0e-9      100.0
-# 160       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      100.0
-# 161       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     2.0e-9      100.0
+# 159       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-11     4045.86     2.0e-9      100.0         0.0
+# 160       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      100.0         0.0
+# 161       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-11     4045.86     2.0e-9      100.0         0.0
 # # too high for the overall profile.  how about lower the entire profile.  Too sensitive
-# 162       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-12     4045.86     2.0e-10     100.0
-# 163       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-12     4045.86     2.0e-10     100.0
-# 164       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0
+# 162       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-8      1.0e-12     4045.86     2.0e-10     100.0         0.0
+# 163       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-12     4045.86     2.0e-10     100.0         0.0
+# 164       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-10     1.0e-12     4045.86     2.0e-10     100.0         0.0
 # Try to change the outer and the inner radius of the freeze-out zone
 # use model 160 as the template
 # # inner radius - increase the line wings
-# 165       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      200.0
-# 166       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      300.0
+# 165       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      200.0         0.0
+# 166       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      300.0         0.0
 # # outer radius - just increase the absorption at the line center
-# 167       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     3045.86     2.0e-9      100.0
-# 168       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     2045.86     2.0e-9      100.0
+# 167       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     3045.86     2.0e-9      100.0         0.0
+# 168       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     2045.86     2.0e-9      100.0         0.0
 # # decrease the inner radius
-# 169       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      75.0
-# 170       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      50.0
+# 169       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      75.0          0.0
+# 170       model14     0.37    rho_v_env.bhr71shallow    drop2       1.0e-9      1.0e-11     4045.86     2.0e-9      50.0          0.0
 # # try decreasing the inner radius for the "drop" function (no the inner 13 au limit)
-# 171       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      75.0
-# 172       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      50.0
+# 171       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      75.0          0.0
+# 172       model14     0.37    rho_v_env.bhr71shallow    drop        1.0e-9      1.0e-11     4045.86     2.0e-9      50.0          0.0
 # powerlaw model with an inner evaporation zone (based on model 71)
-# 173       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
+# 173       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9        0.0
 # investigate the effect of outer abundance, which also offset the entire decreasing profile, so the increment should be small
 # Decreasing the outer abundance for the powerlaw function decrease the peaks
-# 174       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9
-# 175       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.0e-8      0.0001      0.8         2.0         5.0e-9
-# 176       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   2.5e-8      0.0001      0.8         2.0         5.0e-9
-# 177       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   2.0e-8      0.0001      0.8         2.0         5.0e-9
-# 178       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   1.5e-8      0.0001      0.8         2.0         5.0e-9
-# 179       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   1.0e-8      0.0001      0.8         2.0         5.0e-9
+# 174       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.5e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 175       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   3.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 176       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   2.5e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 177       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   2.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 178       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   1.5e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 179       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   1.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
 # # try increase the outer abundance instead
-# 180       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   4.0e-8      0.0001      0.8         2.0         5.0e-9
-# 181       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   5.0e-8      0.0001      0.8         2.0         5.0e-9
-# 182       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9
-# 183       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9
-# 184       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9
+# 180       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   4.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 181       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   5.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 182       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   6.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 183       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   7.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
+# 184       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.0         5.0e-9        0.0
 # # try increase the powerlaw index of the inner freeze-out zone
-# 185       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.1         5.0e-9
-# 186       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.2         5.0e-9
-# 187       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9
-# 188       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9
-# 189       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9
+# 185       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.1         5.0e-9        0.0
+# 186       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.2         5.0e-9        0.0
+# 187       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.3         5.0e-9        0.0
+# 188       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.4         5.0e-9        0.0
+# 189       model14     0.37    rho_v_env.bhr71shallow    powerlaw2   8.0e-8      0.0001      0.8         2.5         5.0e-9        0.0
 # # try use chem2 model to mimic the feature in powerlaw2 (based on model 184)
-# 190       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2883.81     4045.86     -1
+# 190       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2883.81     4045.86     -1            0.0
 # # try run a grid with (1) decrease the inner peak radius; (2) increase inner abundance
-# 191       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2500.0      4045.86     -1
-# 192       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2000.0      4045.86     -1
-# 193       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1500.0      4045.86     -1
-# 194       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      4045.86     -1
+# 191       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2500.0      4045.86     -1            0.0
+# 192       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     2000.0      4045.86     -1            0.0
+# 193       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1500.0      4045.86     -1            0.0
+# 194       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      4045.86     -1            0.0
 # #
-# 195       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      2.5e-10     2883.81     4045.86     -1
-# 196       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      5.0e-10     2883.81     4045.86     -1
-# 197       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      7.5e-10     2883.81     4045.86     -1
-# 198       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-9      2883.81     4045.86     -1
+# 195       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      2.5e-10     2883.81     4045.86     -1            0.0
+# 196       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      5.0e-10     2883.81     4045.86     -1            0.0
+# 197       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      7.5e-10     2883.81     4045.86     -1            0.0
+# 198       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-9      2883.81     4045.86     -1            0.0
 # # model 194 is close.  modify the outer abundance
-# 199       model14     0.37    rho_v_env.bhr71shallow    chem2       6.0e-9      1.0e-10     1000.0      4045.86     -1
-# 200       model14     0.37    rho_v_env.bhr71shallow    chem2       4.0e-9      1.0e-10     1000.0      4045.86     -1
-# 201       model14     0.37    rho_v_env.bhr71shallow    chem2       2.0e-9      1.0e-10     1000.0      4045.86     -1
-# 202       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-10     1000.0      4045.86     -1
-# 203       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-10     1.0e-10     1000.0      4045.86     -1
+# 199       model14     0.37    rho_v_env.bhr71shallow    chem2       6.0e-9      1.0e-10     1000.0      4045.86     -1            0.0
+# 200       model14     0.37    rho_v_env.bhr71shallow    chem2       4.0e-9      1.0e-10     1000.0      4045.86     -1            0.0
+# 201       model14     0.37    rho_v_env.bhr71shallow    chem2       2.0e-9      1.0e-10     1000.0      4045.86     -1            0.0
+# 202       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-10     1000.0      4045.86     -1            0.0
+# 203       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-10     1.0e-10     1000.0      4045.86     -1            0.0
 # # change outer peak radius
-# 204       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      3500.0      -1
-# 205       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      3000.0      -1
-# 206       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2500.0      -1
-# 207       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2000.0      -1
-# 208       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 204       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      3500.0      -1            0.0
+# 205       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      3000.0      -1            0.0
+# 206       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2500.0      -1            0.0
+# 207       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      2000.0      -1            0.0
+# 208       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # # make the inner and outer abundances the same
-# 209       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-9      1000.0      1500.0      -1
-# 210       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-8      5.0e-8      1000.0      1500.0      -1
-# 211       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-9      5.0e-9      1000.0      1500.0      -1
+# 209       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-9      1000.0      1500.0      -1            0.0
+# 210       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-8      5.0e-8      1000.0      1500.0      -1            0.0
+# 211       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-9      5.0e-9      1000.0      1500.0      -1            0.0
 # # test the high omega model
-# 212       model14     0.37    rho_v_env.bhr71highOmega  chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 212       model14     0.37    rho_v_env.bhr71highOmega  chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # the profile of model 209 is more reasonable, which has a clear freeze-out zone
-# 213       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      7.5e-10     1000.0      1500.0      -1
-# 214       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      5.0e-10     1000.0      1500.0      -1
-# 215       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.5e-10     1000.0      1500.0      -1
-# 216       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-10     1000.0      1500.0      -1
+# 213       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      7.5e-10     1000.0      1500.0      -1            0.0
+# 214       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      5.0e-10     1000.0      1500.0      -1            0.0
+# 215       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.5e-10     1000.0      1500.0      -1            0.0
+# 216       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # modify the inner and outer radius of the evaporation zone
 # inner -> the evaporation radius of H2O, ~100 K
 # outer -> the evaporation radius of CO, ~40 K
-# 217       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,400
+# 217       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,400        0.0
 # too much high velocity emission, and not enough peak
 # lower the inner (cannot lower too much, because the increase of the outer abundance) and increase the outer
 # try to tune the outer evaporation radius
-# 218       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,300
-# 219       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,200
-# 220       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,100
-# 221       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,300
-# 222       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,200
-# 223       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,100
+# 218       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,300        0.0
+# 219       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,200        0.0
+# 220       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      3.0e-10     1000.0      1500.0      50,100        0.0
+# 221       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,300        0.0
+# 222       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,200        0.0
+# 223       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
 # modify the outer abundance
-# 224       model14     0.37    rho_v_env.bhr71shallow    chem2       2.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 225       model14     0.37    rho_v_env.bhr71shallow    chem2       3.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 226       model14     0.37    rho_v_env.bhr71shallow    chem2       4.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 227       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 228       model14     0.37    rho_v_env.bhr71shallow    chem2       6.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 229       model14     0.37    rho_v_env.bhr71shallow    chem2       7.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 230       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 231       model14     0.37    rho_v_env.bhr71shallow    chem2       9.0e-9      2.0e-10     1000.0      1500.0      50,100
-# 232       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100
+# 224       model14     0.37    rho_v_env.bhr71shallow    chem2       2.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 225       model14     0.37    rho_v_env.bhr71shallow    chem2       3.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 226       model14     0.37    rho_v_env.bhr71shallow    chem2       4.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 227       model14     0.37    rho_v_env.bhr71shallow    chem2       5.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 228       model14     0.37    rho_v_env.bhr71shallow    chem2       6.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 229       model14     0.37    rho_v_env.bhr71shallow    chem2       7.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 230       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 231       model14     0.37    rho_v_env.bhr71shallow    chem2       9.0e-9      2.0e-10     1000.0      1500.0      50,100        0.0
+# 232       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     1000.0      1500.0      50,100        0.0
 # try to shift the peaks toward lower velocity and suppress the high velocity wings
 # decrease the evaporation abundance
-# 233       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      1.0e-10     1000.0      1500.0      50,100
+# 233       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      1.0e-10     1000.0      1500.0      50,100        0.0
 # move the outer region outward
-# 234       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     1500.0      2000.0      50,100
-# 235       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     2000.0      2500.0      50,100
-# 236       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     2500.0      3000.0      50,100
+# 234       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     1500.0      2000.0      50,100        0.0
+# 235       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     2000.0      2500.0      50,100        0.0
+# 236       model14     0.37    rho_v_env.bhr71shallow    chem2       1.0e-8      2.0e-10     2500.0      3000.0      50,100        0.0
 # model 235 has the right red peak position before adding the continuum
-# 237       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.2,-2.0
-# 238       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.4,-2.0
-# 239       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+# 237       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.2,-2.0      0.0
+# 238       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.4,-2.0      0.0
+# 239       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
 # The detailed shape of both peaks did change but the peak intensity decreases as the inner index increases
 # try to see if increase the size of the evaporation zone increases the peak intensity
-# 240       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,150      2.6,-2.0
-# 241       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,200      2.6,-2.0
-# 242       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.6,-2.0
+# 240       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,150      2.6,-2.0      0.0
+# 241       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,200      2.6,-2.0      0.0
+# 242       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.6,-2.0      0.0
 #
-# 243       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     500,1500    50,200      2.6,-2.0
+# 243       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     500,1500    50,200      2.6,-2.0      0.0
 # try without the evaporation zones
-# 244       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,50       2.0,-2.0
-# 245       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   10,10       2.0,-2.0
-# 246       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   100,100     2.0,-2.0
-# 247       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   200,200     2.0,-2.0
+# 244       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,50       2.0,-2.0      0.0
+# 245       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   10,10       2.0,-2.0      0.0
+# 246       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   100,100     2.0,-2.0      0.0
+# 247       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   200,200     2.0,-2.0      0.0
 # try to bring up the emission at the peak by reducing the maximum abundance
-# 248       model14     0.37    rho_v_env.bhr71shallow    chem3       5.0e-9      2.0e-10     708,2120    10,10       2.0,-2.0
+# 248       model14     0.37    rho_v_env.bhr71shallow    chem3       5.0e-9      2.0e-10     708,2120    10,10       2.0,-2.0      0.0
 # try other things
 # based on model 239
-# 249       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-9      1000,1500   50,100      2.6,-2.0
-# 250       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     2000,3500   50,100      2.6,-2.0
-# 251       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-9      2000,3500   50,100      2.6,-2.0
+# 249       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-9      1000,1500   50,100      2.6,-2.0      0.0
+# 250       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     2000,3500   50,100      2.6,-2.0      0.0
+# 251       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-9      2000,3500   50,100      2.6,-2.0      0.0
 # Sakai model
 # (J, M) = 3.2e20, 0.46
-# 252       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 252       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # (J, M) = 1e20, 0.13
-# 253       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 253       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # (J, M) = 3.2e20, 0.46 and vr = 0.5vr
-# 254       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1
+# 254       model14     0.37    rho_v_env.bhr71shallow    chem2       8.0e-9      1.0e-10     1000.0      1500.0      -1            0.0
 # methanol
-# 255       model14     0.37    rho_v_env.bhr71shallow    chem3       0.0         2.0e-10     1000,1500   50,100      0.0,0.0
+# 255       model14     0.37    rho_v_env.bhr71shallow    chem3       0.0         2.0e-10     1000,1500   50,100      0.0,0.0       0.0
 # # test for pylime - model 239
-# 256       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+# 256       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
 # fix the imaging rotation mistake.  Everything in above with theta = 50 should be more or less ok, but proceed with caution.
 # re-run model 239, which is the best fitted models so far.  Model 208 uses "chem2" so the abundance profile is a bit outdated
-# 257       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+# 257       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
 # after fix the discontinuity in Vr
 # re-run model 239
-258         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
+258         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
