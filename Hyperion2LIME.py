@@ -61,12 +61,13 @@ class Hyperion2LIME:
 
             if fix_tsc:
                 # fix the discontinuity
-                for i in range(self.ntheta):
-                    dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
-                    break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-1e-3)]
+                # vr = vr + offset * log(xr)/log(xr_break)  for xr >= xr_break
+                for i in range(ntheta):
+                    dvr = abs((vr2d[1:,i] - vr2d[:-1,i])/vr2d[1:,i])
+                    break_pt = xr[1:][(dvr > 0.1) & (xr[1:] > 1e-3) & (xr[1:] < 1-1e-3)]
                     if len(break_pt) > 0:
-                        offset = self.vr2d[(self.xr > break_pt),i].min()-self.vr2d[(self.xr < break_pt),i].max()
-                        self.vr2d[(self.xr < break_pt), i] = self.vr2d[(self.xr < break_pt), i]+offset
+                        offset = vr2d[(xr < break_pt),i].max() - vr2d[(xr > break_pt),i].min()
+                        vr2d[(xr >= break_pt),i] = vr2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
 
             self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
