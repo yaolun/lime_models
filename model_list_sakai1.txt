@@ -48,19 +48,19 @@
 #       * a_params4: the radius where the photoevaporation occurred.
 #   - drop2: the same function as the "drop" function but there is a innermost cutoff at 13 au (centrifugal radius for BHR71)
 #
-###############################################################################################################################
-model_name  hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4
-###############################################################################################################################
+#############################################################################################################################################
+model_name  hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4     theta_cav
+#############################################################################################################################################
 #
 # Sakai model
 # (J, M) = 3.2e20, 0.46
 # max. abundance radius
-1           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0
-2           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1500,2000   50,100      2.6,-2.0
-3           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     2000,2500   50,100      2.6,-2.0
+1           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
+2           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1500,2000   50,100      2.6,-2.0      0.0
+3           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     2000,2500   50,100      2.6,-2.0      0.0
 # max. abundance
-4           model14     0.37    rho_v_env.bhr71shallow    chem3       5.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0
-5           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0
+4           model14     0.37    rho_v_env.bhr71shallow    chem3       5.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
+5           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-9      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
 # evap. abundance
-6           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.6,-2.0
-7           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-9      1000,1500   50,100      2.6,-2.0
+6           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.6,-2.0      0.0
+7           model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-9      1000,1500   50,100      2.6,-2.0      0.0

@@ -183,7 +183,7 @@ class Hyperion2LIME:
 
         return float(self.temp[indice])
 
-    def getVelocity(self, x, y, z, sph=False, unit_convert=True):
+    def getVelocity(self, x, y, z, sph=False, unit_convert=True, vr_factor=1.0):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
@@ -212,6 +212,10 @@ class Hyperion2LIME:
 
         ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
         v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+
+        # test for artifically reducing the radial velocity
+        v_sph[0] = v_sph[1]*vr_factor
+
         if sph:
             return v_sph
 
