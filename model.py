@@ -226,14 +226,14 @@ def input(macros):
 
         print(par.img[-1].filename)
 
-        # single dish image
+        # single dish image - HCO+ 3-2
         par.img.append(ImageParameters())
         # by default this list par.img has 0 entries. Each 'append' will add an entry.
         # The [-1] entry is the most recently added.
         # TODO: review the choice of imaging parameters
 
         par.img[-1].nchan             = 100            # Number of channels
-        par.img[-1].trans             = lower_level # 3              # zero-indexed J quantum number of the lower level
+        par.img[-1].trans             = 2              # zero-indexed J quantum number of the lower level
         #  par.img[-1].molI              = -1
         par.img[-1].velres            = 100.0          # Channel resolution in m/s
         par.img[-1].imgres            = 0.5            # Resolution in arc seconds

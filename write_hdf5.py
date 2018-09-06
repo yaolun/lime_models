@@ -6,15 +6,6 @@ from astropy.io import ascii
 from LIMEanalyses import *
 import shutil
 
-# Line parameters
-# HCO+ 4-3
-auxdata = {'EA': 3.6269e-03,
-           'nu0': 356.7342880e9,
-           'trans_up': 4,
-           'degeneracy': [9,7]}  # degeneracy from upper to lower
-
-# Methanol 23-22
-# auxdata = {}
 dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
 
@@ -41,6 +32,7 @@ def write_hdf5((lime_out, auxdata), filename='infall.h5'):
     print(filename)
 
     with h5py.File(filename, 'w') as f:
+        f.attrs['transition'] = auxdata['transition']
         f.attrs['n_cells'] = n_cells
         f.attrs['r_max'] = r_max
         f.attrs['kappa_dust'] = kappa_dust  # Dust opacity at line center (cm^2/g of dust)
@@ -72,7 +64,32 @@ parser.add_argument('--mod_dir', help='the model directory',
 parser.add_argument('--colt_dir', help='the path of colt-lime', default='/Users/yaolun/programs/colt-lime/', type=str)
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
+parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
 args = vars(parser.parse_args())
+
+# Line parameters
+# HCO+ 4-3
+if args['transition'] == 'hco+4-3':
+    auxdata = {'transition': args['transition'],
+               'EA': 3.6269e-03,
+               'nu0': 356.7342880e9,
+               'trans_up': 4,
+               'degeneracy': [9,7]}  # degeneracy from upper to lower
+if args['transition'] == 'hco+3-2':
+    # HCO+ 3-2
+    auxdata = {'transition': args['transition'],
+               'EA': 1.4757e-03,
+               'nu0': 267.5576190e9,
+               'trans_up': 3,
+               'degeneracy': [7,5]}  # degeneracy from upper to lower
+
+
+    # Methanol 23-22
+    # auxdata = {}
+
+
+# Methanol 23-22
+# auxdata = {}
 
 # if model_range option is used instead
 if args['model_range'] != None:
