@@ -47,6 +47,7 @@ distance = float(config['distance'])*pc_si
 theta_incl = float(config['inclination'])
 # YLY update 090518
 theta_cav = float(config['theta_cav'])
+omega = float(config['omega'])
 
 # molecular data
 moldata = str(config['moldata'])
@@ -88,7 +89,8 @@ pprint.pprint(config)
 # TODO: rmax, rmin, dustfile, distance, inclination
 # truncate = 2000.0  # in unit of au
 truncate = None
-model = Hyperion2LIME(rtout, velfile, cs, age,
+# YLY update: add omega
+model = Hyperion2LIME(rtout, velfile, cs, age, omega,
                       rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate, fix_tsc=True)
 
 

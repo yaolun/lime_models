@@ -17,8 +17,9 @@ class Hyperion2LIME:
     IMPORTANT: LIME uses SI units, while Hyperion uses CGS units.
     """
 
-    def __init__(self, rtout, velfile, cs, age,
-                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True, fix_tsc=True):
+    def __init__(self, rtout, velfile, cs, age, omega,
+                 rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True,
+                 fix_tsc=True, hybrid_tsc=False):
         self.rtout = rtout
         self.velfile = velfile
         if load_full:
@@ -29,6 +30,8 @@ class Hyperion2LIME:
         self.g2d = g2d
         self.cs = cs
         self.age = age
+        # YLY update - add omega
+        self.omega = omega
         self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
 
         # option to truncate the sphere to be a cylinder
@@ -68,6 +71,26 @@ class Hyperion2LIME:
                     if len(break_pt) > 0:
                         offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
                         self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
+
+            # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
+            if hybrid_tsc:
+                from scipy.interpolate import interp1d
+                for i in range(self.ntheta):
+                    rCR = self.omega**2 * G**3 * (0.975*(self.cs*1e5)**3/G*(self.age*3600*24*365))**3 * np.sin(self.theta[i])**4 / (16*(self.cs*1e5)**8)
+                    if rCR/self.r_inf >= self.xr.min():
+                        f_vr = interp1d(self.xr, self.vr2d[:,i])
+                        vr_rCR = f_vr(rCR/self.r_inf)
+                        f_vphi = interp1d(self.xr, self.vphi2d[:,i])
+                        vphi_rCR = f_vphi(rCR/self.r_inf)
+
+                        # radius in cylinderical coordinates
+                        wCR = np.sin(self.theta[i]) * rCR
+                        J = vphi_rCR * wCR
+                        M = (vr_rCR**2 + vphi_rCR**2) * wCR / (2*G)
+
+                        w = self.xr*np.sin(self.theta[i])*self.r_inf
+                        vr2d[(self.xr <= rCR/self.r_inf), i] = -( 2*G*M/w[self.xr <= rCR/self.r_inf] - J**2/(w[self.xr <= rCR/self.r_inf])**2 )**0.5
+                        vphi2d[(self.xr <= rCR/self.r_inf), i] = J/(w[self.xr <= rCR/self.r_inf])
 
             self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
