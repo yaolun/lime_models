@@ -45,6 +45,8 @@ rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at
 # a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
 theta_incl = float(config['inclination'])
+# YLY update 090518
+theta_cav = float(config['theta_cav'])
 
 # molecular data
 moldata = str(config['moldata'])
@@ -196,7 +198,7 @@ def input(macros):
     # Definitions for image #0. Add further similar blocks for additional images.
     #
     if not no_image:
-        # user-dependent
+        # ALMA high resolution image
         par.img.append(ImageParameters())
         # by default this list par.img has 0 entries. Each 'append' will add an entry.
         # The [-1] entry is the most recently added.
@@ -220,6 +222,34 @@ def input(macros):
         par.img[-1].distance          = distance         # source distance in m
         par.img[-1].doInterpolateVels = True
         par.img[-1].filename          = outdir+'image0.fits'  # Output filename
+        #  par.img[-1].units             = "0,1"
+
+        print(par.img[-1].filename)
+
+        # single dish image
+        par.img.append(ImageParameters())
+        # by default this list par.img has 0 entries. Each 'append' will add an entry.
+        # The [-1] entry is the most recently added.
+        # TODO: review the choice of imaging parameters
+
+        par.img[-1].nchan             = 100            # Number of channels
+        par.img[-1].trans             = lower_level # 3              # zero-indexed J quantum number of the lower level
+        #  par.img[-1].molI              = -1
+        par.img[-1].velres            = 100.0          # Channel resolution in m/s
+        par.img[-1].imgres            = 0.5            # Resolution in arc seconds
+        par.img[-1].pxls              = 100            # Pixels per dimension
+        par.img[-1].unit              = 0              # 0:Kelvin 1:Jansky/pixel 2:SI 3:Lsun/pixel 4:tau
+        #  par.img[-1].freq              = -1.0
+        #  par.img[-1].bandwidth         = -1.0
+        par.img[-1].source_vel        = 0.0            # source velocity in m/s
+        par.img[-1].theta             = theta_incl*macros["PI"]/180
+        par.img[-1].phi               = 0.0
+        # par.img[-1].incl              = theta_incl
+        #  par.img[-1].posang            = 0.0
+        #  par.img[-1].azimuth           = 0.0
+        par.img[-1].distance          = distance         # source distance in m
+        par.img[-1].doInterpolateVels = True
+        par.img[-1].filename          = outdir+'image1.fits'  # Output filename
         #  par.img[-1].units             = "0,1"
 
         print(par.img[-1].filename)
@@ -341,7 +371,8 @@ def abundance(macros, x, y, z):
     #
     # listOfAbundances = [1.0e-9] # must be a list, even when there is only 1 item.
 
-    listOfAbundances = [model.getAbundance(x, y, z, config)]
+    # YLY update 090518 - add cavity option
+    listOfAbundances = [model.getAbundance(x, y, z, config, theta_cav=theta_cav)]
 
     return listOfAbundances
 

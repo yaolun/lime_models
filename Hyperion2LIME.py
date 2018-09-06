@@ -340,7 +340,7 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getAbundance(self, x, y, z, config, tol=10):
+    def getAbundance(self, x, y, z, config, tol=10, theta_cav=None):
         # tol: the size (in AU) of the linear region between two steps
         # (try to avoid "cannot find cell" problem in LIME)
 
@@ -357,6 +357,24 @@ class Hyperion2LIME:
         tol = tol*au_cgs
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+
+        # determine whether the cell is in the cavity
+        if (theta_cav != None) and (theta_cav != 0):
+            # using R = 10000 AU as the reference point
+            c0 = (10000.*au_cgs)**(-0.5)*\
+                 np.sqrt(1/np.sin(np.radians(theta_cav))**3-1/np.sin(np.radians(theta_cav)))
+
+            # related coordinates
+            w = abs(r_in*np.cos(np.pi/2 - t_in))
+            _z = r_in*np.sin(np.pi/2 - t_in)
+
+            # condition for open cavity
+            z_cav = c0*abs(w)**1.5
+            cav_con = abs(_z) > abs(z_cav)
+
+            if cav_con:
+                abundance = 0.0
+                return float(abundance)
 
         # single negative drop case
         # TODO: adopt a more generic model name, but keep backward compatability.
