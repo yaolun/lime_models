@@ -214,7 +214,7 @@ class Hyperion2LIME:
         v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
 
         # test for artifically reducing the radial velocity
-        v_sph[0] = v_sph[1]*vr_factor
+        v_sph[0] = v_sph[0]*vr_factor
 
         if sph:
             return v_sph
