@@ -89,8 +89,8 @@ class Hyperion2LIME:
                         M = (vr_rCR**2 + vphi_rCR**2) * wCR / (2*G)
 
                         w = self.xr*np.sin(self.theta[i])*self.r_inf
-                        vr2d[(self.xr <= rCR/self.r_inf), i] = -( 2*G*M/w[self.xr <= rCR/self.r_inf] - J**2/(w[self.xr <= rCR/self.r_inf])**2 )**0.5
-                        vphi2d[(self.xr <= rCR/self.r_inf), i] = J/(w[self.xr <= rCR/self.r_inf])
+                        self.vr2d[(self.xr <= rCR/self.r_inf), i] = -( 2*G*M/w[self.xr <= rCR/self.r_inf] - J**2/(w[self.xr <= rCR/self.r_inf])**2 )**0.5
+                        self.vphi2d[(self.xr <= rCR/self.r_inf), i] = J/(w[self.xr <= rCR/self.r_inf])
 
             self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
