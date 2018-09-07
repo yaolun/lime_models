@@ -83,6 +83,7 @@ if args['transition'] == 'hco+3-2':
                'trans_up': 3,
                'degeneracy': [7,5]}  # degeneracy from upper to lower
 
+print('Selected transition for calculation: {:<s}'.format(args['transition']))
 
     # Methanol 23-22
     # auxdata = {}
