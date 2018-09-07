@@ -23,4 +23,4 @@ a_params4       2.6,-2.0
 moldata         hco+@xpol.dat
 lower_level     3
 theta_cav       0.0
-vr_factor       0.8
+vr_factor       1.0
