@@ -85,7 +85,10 @@ class LIMEanalyses:
 
         if recalVelo:
             from Hyperion2LIME import Hyperion2LIME
-            model = Hyperion2LIME(rtout, velfile, float(self.config['cs']), float(self.config['age']),
+            # for backward compatibility
+            if 'omega' not in self.config.keys():
+                self.config['omega'] = 2.528700e-13
+            model = Hyperion2LIME(rtout, velfile, float(self.config['cs']), float(self.config['age']), float(self.config['omega']),
                                   rmin=float(self.config['rMin'])*au_si, g2d=float(self.config['g2d']), mmw=float(self.config['mmw']))
             v_grid = [[], [], []]
             for i, (x,y,z) in enumerate(zip(popdata['x'], popdata['y'], popdata['z'])):  # unit is meter here

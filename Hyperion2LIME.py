@@ -401,7 +401,7 @@ class Hyperion2LIME:
             cav_con = abs(_z) > abs(z_cav)
 
             if cav_con:
-                abundance = 0.0
+                abundance = 1e-20
                 return float(abundance)
 
         # single negative drop case
@@ -481,7 +481,7 @@ class Hyperion2LIME:
             elif r_in >= 13*au_cgs:
                 abundance = a3
             else:
-                abundance = 0.0
+                abundance = 1e-20
 
         elif (config['a_model'] == 'drop3'):
             a0 = float(config['a_params0'])  # undelepted abundance
@@ -500,7 +500,7 @@ class Hyperion2LIME:
             elif (temp <= a4):
                 abundance = a0
             else:
-                abundance = 0.0
+                abundance = 1e-20
 
 
         elif config['a_model'] == 'uniform':

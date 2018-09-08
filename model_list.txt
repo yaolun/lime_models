@@ -389,10 +389,18 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 261       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      0.0
 # with cavity and TSC kinematics
 # outer decrease power
-262         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.5      20.0
-263         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-3.0      20.0
-264         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-3.5      20.0
-# size of the max. abundance
-265         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1000   50,100      2.6,-2.0      20.0
-266         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1100   50,100      2.6,-2.0      20.0
-267         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1200   50,100      2.6,-2.0      20.0
+# 262       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.5      20.0
+# 263       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-3.0      20.0
+# 264       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-3.5      20.0
+# # size of the max. abundance
+# 265       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1000   50,100      2.6,-2.0      20.0
+# 266       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1100   50,100      2.6,-2.0      20.0
+# 267       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1200   50,100      2.6,-2.0      20.0
+# those variations did not change the profile significantly
+# the key region is the freeze-out zone
+# test the evaporation zone as the theoretical values suggest
+268         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.6,-2.0      20.0
+# test for the increasing power of the freeze-out zone
+269         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.0,-2.0      20.0
+270         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.5,-2.0      20.0
+271         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.0,-2.0      20.0
