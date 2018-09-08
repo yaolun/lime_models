@@ -91,7 +91,7 @@ pprint.pprint(config)
 truncate = None
 # YLY update: add omega
 model = Hyperion2LIME(rtout, velfile, cs, age, omega,
-                      rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate, fix_tsc=True, hybrid_tsc=True)
+                      rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate, fix_tsc=True, hybrid_tsc=False)
 
 
 
