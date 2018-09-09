@@ -75,6 +75,7 @@ if args['transition'] == 'hco+4-3':
                'nu0': 356.7342880e9,
                'trans_up': 4,
                'degeneracy': [9,7]}  # degeneracy from upper to lower
+    suffix = ''
 if args['transition'] == 'hco+3-2':
     # HCO+ 3-2
     auxdata = {'transition': args['transition'],
@@ -82,6 +83,7 @@ if args['transition'] == 'hco+3-2':
                'nu0': 267.5576190e9,
                'trans_up': 3,
                'degeneracy': [7,5]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
 
 print('Selected transition for calculation: {:<s}'.format(args['transition']))
 
@@ -148,7 +150,7 @@ for m in args['model_num'].split(','):
     if not os.path.exists(args['colt_dir']+'inits/'+args['subpath']+'/'):
         os.makedirs(args['colt_dir']+'inits/'+args['subpath']+'/')
 
-    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
+    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
 
     # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
-    print('write to '+args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+'.h5')
+    print('write to '+args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
