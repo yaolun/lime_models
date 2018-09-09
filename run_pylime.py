@@ -15,7 +15,7 @@ parser.add_argument('--image_only', action='store_true',
                     help='only imaging the existing results of LIME')
 parser.add_argument('--no_image', action='store_true',
                     help='only run the RTE calculation.')
-parser.add_argument('--vr_factor', default=1.0, help='artifically reduce the radial velocity by a factor')
+parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the radial velocity by a factor')
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
