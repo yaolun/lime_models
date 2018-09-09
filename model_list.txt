@@ -398,9 +398,19 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 267       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1200   50,100      2.6,-2.0      20.0
 # those variations did not change the profile significantly
 # the key region is the freeze-out zone
-# test the evaporation zone as the theoretical values suggest
-268         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.6,-2.0      20.0
-# test for the increasing power of the freeze-out zone
-269         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.0,-2.0      20.0
-270         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.5,-2.0      20.0
-271         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.0,-2.0      20.0
+# # test the evaporation zone as the theoretical values suggest
+# 268       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.6,-2.0      20.0
+# # test for the increasing power of the freeze-out zone
+# 269       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      2.0,-2.0      20.0
+# 270       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.5,-2.0      20.0
+# 271       model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,400      1.0,-2.0      20.0
+# keep the small evaporation zone
+272         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+273         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      1.5,-2.0      20.0
+274         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      1.0,-2.0      20.0
+# try a different abundance for the evaporation zone
+275         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+276         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-10     1000,1500   50,100      1.5,-2.0      20.0
+277         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      1.0e-10     1000,1500   50,100      1.0,-2.0      20.0
+# test for vr_factor = 0.5
+# 278         model14     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
