@@ -578,7 +578,7 @@ class Hyperion2LIME:
 
         elif config['a_model'] == 'chem':
             a0 = float(config['a_params0'])  # peak abundance
-            a1 = float(config['a_params1'])  # inner abundace
+            a1 = float(config['a_params1'])  # inner abundance
             a2 = float(config['a_params2'])  # peak radius
             a3 = float(config['a_params3'])  # inner decrease power
             a4 = float(config['a_params4'])  # outer decrease power
@@ -599,7 +599,7 @@ class Hyperion2LIME:
 
         elif config['a_model'] == 'chem2':
             a0 = float(config['a_params0'])  # peak abundance
-            a1 = float(config['a_params1'])  # inner abundace
+            a1 = float(config['a_params1'])  # inner abundance
             a2 = float(config['a_params2'])  # inner peak radius [AU]
             a3 = float(config['a_params3'])  # outer peak radius [AU]
             a4 = config['a_params4']  # inner/outer radius of the evaporation region
@@ -634,7 +634,7 @@ class Hyperion2LIME:
 
         elif config['a_model'] == 'chem3':
             a0 = float(config['a_params0'])  # peak abundance
-            a1 = float(config['a_params1'])  # inner abundace
+            a1 = float(config['a_params1'])  # inner abundance
             a2 = list(map(float, config['a_params2'].split(',')))  # inner/outer radius for the maximum abundance [AU]
             a3 = list(map(float, config['a_params3'].split(',')))  # inner/outer radius for the evaporation zone [AU]
             a4 = list(map(float, config['a_params4'].split(',')))  # inner/outer decreasing power
@@ -642,21 +642,43 @@ class Hyperion2LIME:
             rEvap_inner = a3[0]*au_cgs
             rEvap_outer = a3[1]*au_cgs
 
-            # innerExpo, outerExpo = [float(i) for i in config['a_params4'].split('/')]
-            # fix the decreasing/increasing powers
-            innerExpo = a4[0]
-            outerExpo = a4[1]
+            # test the case of a broken power law for the freeze-out zone
+            # In this case, there will be three values for both a2 and a4
 
-            if r_in >= a2[1]*au_cgs:
+            # The input powers are stored as -
+            #   innerExpo for all powers except for the last one
+            #   outerExpo for the last power
+            # fix the decreasing/increasing powers
+            innerExpo = a4[:-1]
+            outerExpo = a4[-1]
+            # calculate the constants for each freeze-out zone
+            A = []
+            for i, (r_out, pow) in enumerate(zip(a2[:-1][::-1], innerExpo[::-1])):
+                if i == 0:
+                    previous_pow = 0.0
+                    _A = (r_out*au_cgs)**(-pow)
+                else:
+                    _A = _A * (r_out*au_cgs)**(previous_pow-pow)
+                previous_pow = pow
+                A.append(a0*_A)
+            A = A[::-1]
+
+            if r_in >= a2[-1]*au_cgs:
                 # y = Ax^a, a < 0
-                A_out = a0 / (a2[1]*au_cgs)**outerExpo
+                A_out = a0 / (a2[-1]*au_cgs)**outerExpo
                 abundance = A_out * r_in**outerExpo
-            elif (r_in < a2[1]*au_cgs) and (r_in >= a2[0]*au_cgs):
+            elif (r_in < a2[-1]*au_cgs) and (r_in >= a2[-2]*au_cgs):
                 abundance = a0
-            elif (r_in >= rEvap_outer) and (r_in < a2[0]*au_cgs):
+            # freeze-out zone
+            elif (r_in >= rEvap_outer) and (r_in < a2[-2]*au_cgs):
                 # y = Ax^a, a > 0
-                A_in = a0 / (a2[0]*au_cgs)**innerExpo
-                abundance = A_in * r_in**innerExpo
+                # determine which freeze-out zone
+                ind_zone = a2[:-1].index(min([rr for i, rr in enumerate(a2[:-1])  if rr*au_cgs - r_in > 0]))
+                A_in = A[ind_zone]
+                Expo = innerExpo[ind_zone]
+                # A_in = a0 / (a2[0]*au_cgs)**innerExpo
+                # abundance = A_in * r_in**innerExpo
+                abundance = A_in * r_in**Expo
             elif (r_in >= rEvap_inner) and (r_in < rEvap_outer):  # centrifugal radius
                 abundance = a1
             else:

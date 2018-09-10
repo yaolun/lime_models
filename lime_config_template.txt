@@ -17,9 +17,9 @@ outdir          /scratch/LIMEmods/pylime/YLY/run/model25/
 a_model         chem3
 a_params0       1e-08
 a_params1       2e-09
-a_params2       1000,1500
+a_params2       500,1000,1500
 a_params3       50,100
-a_params4       2.6,-2.0
+a_params4       2.6,1.0,-2.0
 moldata         hco+@xpol.dat
 lower_level     3
 theta_cav       0.0
