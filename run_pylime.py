@@ -16,6 +16,7 @@ parser.add_argument('--image_only', action='store_true',
 parser.add_argument('--no_image', action='store_true',
                     help='only run the RTE calculation.')
 parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the radial velocity by a factor')
+parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
@@ -48,12 +49,13 @@ for i, m in enumerate(model_list['model_name']):
     # foo = open('/scratch/LIMEmods/pylime/YLY/lime_models/lime_config.txt', 'w')
     foo = open(dict_path['limemod_dir']+'lime_config.txt', 'w')
 
-
     p['dustfile'] = dict_path['dust_file']
     p['rtout'] = dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout'
     p['velfile'] = dict_path['tsc_dir']+str(model_list['tsc'][i])
     p['cs'] = str(model_list['cs'][i])
     p['vr_factor'] = args['vr_factor']
+    if args['age'] != None:
+        p['age'] = args['age']
 
     # user-dependent
     # default parameters - the parameters that typically fixed and not defined in the model list
