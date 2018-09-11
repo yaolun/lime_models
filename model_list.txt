@@ -432,10 +432,10 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 288       model14     0.37    rho_v_env.bhr71shallow    chem3       8.0e-9      2.0e-10     500,1000,1500   50,100      2.0,1.5,-2.0      20.0
 # Models with older age
 #   40000 yr
-289         model41     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
+289         model41     0.37    rho_v_env.bhr71_4e4       chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
 # #   60000 yr
-# 290       model42     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
+# 290       model42     0.37    rho_v_env.bhr71_6e4       chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
 # #   80000 yr
-# 291       model43     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
+# 291       model43     0.37    rho_v_env.bhr71_8e4       chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
 # #   100000 yr
-# 292       model44     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
+# 292       model44     0.37    rho_v_env.bhr71_1e5       chem3       1.0e-8      2.0e-10     1000,1500   50,100      2.6,-2.0      20.0
