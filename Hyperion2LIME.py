@@ -63,7 +63,7 @@ class Hyperion2LIME:
             self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
 
             if fix_tsc:
-                # fix the discontinuity
+                # fix the discontinuity in v_r
                 # vr = vr + offset * log(xr)/log(xr_break)  for xr >= xr_break
                 for i in range(self.ntheta):
                     dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
@@ -71,6 +71,14 @@ class Hyperion2LIME:
                     if len(break_pt) > 0:
                         offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
                         self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
+                # YLY update - 091118
+                # fix the discontinuity in v_phi
+                for i in range(ntheta):
+                    dvr = abs((vphi2d[1:,i] - vphi2d[:-1,i])/vphi2d[1:,i])
+                    break_pt = xr[1:][(dvr > 0.1) & (xr[1:] > 1e-3) & (xr[1:] < 1-2e-3)]
+                    if len(break_pt) > 0:
+                        offset = vphi2d[(xr < break_pt),i].min() - vphi2d[(xr > break_pt),i].max()
+                        vphi2d[(xr >= break_pt),i] = vphi2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
 
             # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
             if hybrid_tsc:
@@ -401,7 +409,7 @@ class Hyperion2LIME:
             cav_con = abs(_z) > abs(z_cav)
 
             if cav_con:
-                abundance = 1e-20
+                abundance = 0.0
                 return float(abundance)
 
         # single negative drop case
@@ -682,7 +690,7 @@ class Hyperion2LIME:
             elif (r_in >= rEvap_inner) and (r_in < rEvap_outer):  # centrifugal radius
                 abundance = a1
             else:
-                abundance = 1e-20
+                abundance = 0.0
 
         if self.debug:
             foo = open('abundance.log', 'a')
