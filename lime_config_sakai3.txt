@@ -7,6 +7,7 @@ rtout           /scratch/LIMEmods/pylime/YLY/model14.rtout
 velfile         /scratch/LIMEmods/pylime/YLY/rho_v_env.bhr71shallow
 cs              0.37
 age             36000
+omega           2.528700e-13
 rMin            0.2
 rMax            64973
 distance        200.0
