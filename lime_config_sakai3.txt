@@ -16,6 +16,9 @@ outdir          /scratch/LIMEmods/pylime/YLY/run/model252/
 hy_model        model14
 cs              0.37
 tsc             bhr71shallow
+moldata         hco+@xpol.dat
+lower_level     3
+theta_cav       0.0
 a_model         chem2
 a_params0       8e-09
 a_params1       1e-10
