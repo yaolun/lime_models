@@ -62,7 +62,7 @@ parser.add_argument('--colt_dir', help='the path of colt-lime', default='/Users/
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
-parset.add_argument('--dustpath', default='/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt',
+parser.add_argument('--dustpath', default='/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt',
                     help='the path to the dust model (default path for laptop)')
 args = vars(parser.parse_args())
 
