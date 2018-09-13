@@ -6,9 +6,6 @@ from astropy.io import ascii
 from LIMEanalyses import *
 import shutil
 
-dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
-
-
 pc = const.pc.cgs.value
 au = const.au.cgs.value
 c = const.c.cgs.value
@@ -65,7 +62,11 @@ parser.add_argument('--colt_dir', help='the path of colt-lime', default='/Users/
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
+parset.add_argument('--dustpath', default='/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt',
+                    help='the path to the dust model (default path for laptop)')
 args = vars(parser.parse_args())
+
+# dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
 # Line parameters
 # HCO+ 4-3
@@ -127,7 +128,10 @@ for m in args['model_num'].split(','):
     else:
         velfile = args['velfile']
     mmw = float(dict_config['mmw'])
-    # dustpath = dict_config['dustfile']
+    if args['dustpath'] == 'lime':
+        dustpath = dict_config['dustfile']
+    else:
+        dustpath = args['dustpath']
 
     # Dust parameters
     g2d = float(dict_config['g2d'])

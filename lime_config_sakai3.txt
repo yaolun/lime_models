@@ -21,6 +21,5 @@ a_params1       1e-10
 a_params2       1000.0
 a_params3       1500.0
 a_params4       2.0/-2.0
-J               3.2e20
+J               1e20
 M               0.46
-vr_factor       0.5
