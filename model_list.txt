@@ -468,12 +468,12 @@ model_name  hy_model    cs      tsc                       a_model     a_params0 
 # 306       model31     0.37    rho_v_env.bhr71shallow    chem3       1.0e-8      8.0e-11     1200,1500   50,100      2.6,-2.0      20.0
 # (6) earlier stage
 # 20000 year
-307         model45     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1500   50,100      2.6,-2.0      20.0
+307         model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1500   50,100      2.6,-2.0      20.0
 # try a broken power law to reduce the opacity
 # 308       model31     0.37    rho_v_env.bhr71shallow    chem3       6.0e-9      2.0e-10     500,1000,1500   50,100      2.6,2.0,-2.0      20.0
 # 309       model31     0.37    rho_v_env.bhr71shallow    chem3       4.0e-9      2.0e-10     500,1000,1500   50,100      2.6,1.5,-2.0      20.0
 # 10000 year
-# 310       model46     0.37    rho_v_env.bhr71_1e4       chem3       1.0e-8      8.0e-11     1000,1500   50,100      2.6,-2.0      20.0
+# 310       model45     0.37    rho_v_env.bhr71_1e4       chem3       1.0e-8      8.0e-11     1000,1500   50,100      2.6,-2.0      20.0
 # try a uniform abundance in the freeze-out zone
 # simulate ALMA image from the colt-lime result
 # push for more reduction on vr
