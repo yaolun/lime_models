@@ -90,12 +90,14 @@ if args['transition'] == 'hcn4-3':
     auxdata = {'transition': args['transition'],
                'EA': 2.0540e-03,
                'nu0': 354.5054779e9,
+               'trans_up': 4,
                'degeneracy': [9,7]}
 
 if args['transition'] == 'cs7-6':
     auxdata = {'transition': args['transition'],
                'EA': 8.395e-4,
                'nu0': 342.8828503e9,
+               'trans_up': 7,
                'degeneracy': [15,13]}
 
 print('Selected transition for calculation: {:<s}'.format(args['transition']))
