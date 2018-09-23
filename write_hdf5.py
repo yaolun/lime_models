@@ -92,6 +92,7 @@ if args['transition'] == 'hcn4-3':
                'nu0': 354.5054779e9,
                'trans_up': 4,
                'degeneracy': [9,7]}
+    suffix = '_'+args['transition']
 
 if args['transition'] == 'cs7-6':
     auxdata = {'transition': args['transition'],
@@ -99,6 +100,7 @@ if args['transition'] == 'cs7-6':
                'nu0': 342.8828503e9,
                'trans_up': 7,
                'degeneracy': [15,13]}
+    suffix = '_'+args['transition']
 
 print('Selected transition for calculation: {:<s}'.format(args['transition']))
 
