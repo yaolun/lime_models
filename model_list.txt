@@ -500,6 +500,14 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 325       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.6,-2.0      20.0
 # 326       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.7,-2.0      20.0
 # HCN - model319 abundance
-327         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 327       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
 # CS - model319 abundance
-328         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 328       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# HCN
+329         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+330         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+331         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      1000,1500   50,100      2.5,-2.0      20.0
+# CS
+332         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+333         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+334         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      1000,1500   50,100      2.5,-2.0      20.0
