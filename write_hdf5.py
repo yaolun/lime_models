@@ -86,6 +86,18 @@ if args['transition'] == 'hco+3-2':
                'degeneracy': [7,5]}  # degeneracy from upper to lower
     suffix = '_'+args['transition']
 
+if args['transition'] == 'hcn4-3':
+    auxdata = {'transition': args['transition'],
+               'EA': 2.0540e-03,
+               'nu0': 354.5054779e9,
+               'degeneracy': [9,7]}
+
+if args['transition'] == 'cs7-6':
+    auxdata = {'transition': args['transition'],
+               'EA': 8.395e-4,
+               'nu0': 342.8828503e9,
+               'degeneracy': [15,13]}
+
 print('Selected transition for calculation: {:<s}'.format(args['transition']))
 
     # Methanol 23-22
