@@ -144,10 +144,10 @@ for m in args['model_num'].split(','):
     print('Converting model '+m)
     # LIME model parameters
     if args['subpath'] == None:
-        mod_dir = args['mod_dir']+'model'+m+'/'
+        mod_dir = dict_path['mod_dir']+'model'+m+'/'
         args['subpath'] = ''
     else:
-        mod_dir = args['mod_dir']+args['subpath']+'/model'+m+'/'
+        mod_dir = dict_path['mod_dir']+args['subpath']+'/model'+m+'/'
 
     # read the lime_config.txt
     config = np.genfromtxt(mod_dir+'lime_config.txt', dtype=str).T
@@ -158,19 +158,19 @@ for m in args['model_num'].split(','):
     outfilename = 'infall_model'+m
     # rtout = '/Volumes/SD-Mac/model14.rtout'
     # velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
-    if args['rtout'] == None:
+    if dict_path['rtout'] == None:
         rtout = dict_config['rtout']
     else:
-        rtout = args['rtout']
-    if args['velfile'] == None:
+        rtout = dict_path['rtout']
+    if dict_path['velfile'] == None:
         velfile = dict_config['velfile']
     else:
-        velfile = args['velfile']
+        velfile = dict_path['velfile']
     mmw = float(dict_config['mmw'])
-    if args['dustpath'] == 'lime':
+    if dict_path['dustpath'] == 'lime':
         dustpath = dict_config['dustfile']
     else:
-        dustpath = args['dustpath']
+        dustpath = dict_path['dustpath']
 
     # Dust parameters
     g2d = float(dict_config['g2d'])
@@ -190,10 +190,10 @@ for m in args['model_num'].split(','):
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    if not os.path.exists(args['colt_dir']+'inits/'+args['subpath']+'/'):
-        os.makedirs(args['colt_dir']+'inits/'+args['subpath']+'/')
+    if not os.path.exists(dict_path['colt_dir']+'inits/'+args['subpath']+'/'):
+        os.makedirs(dict_path['colt_dir']+'inits/'+args['subpath']+'/')
 
-    write_hdf5((lime_out, auxdata), filename=args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
 
     # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
-    print('write to '+args['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    print('write to '+dict_path['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
