@@ -1,0 +1,5 @@
+mod_dir     /Volumes/SD-Mac/lime_runs/
+colt_dir    /Users/yaolun/programs/colt-lime/
+rtout       /Volumes/SD-Mac/model31.rtout
+velfile     /Volumes/SD-Mac/rho_v_env.bhr71shallow
+dustpath    /Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt

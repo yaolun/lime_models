@@ -5,6 +5,7 @@ from scipy.interpolate import interp1d
 from astropy.io import ascii
 from LIMEanalyses import *
 import shutil
+import sys
 
 pc = const.pc.cgs.value
 au = const.au.cgs.value
@@ -55,17 +56,38 @@ parser = argparse.ArgumentParser(description='Options for converting LIME output
 # parser.add_argument('--pathfile', required=True, help='[required] path file for getting paths from run_pylime_path.txt')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
-parser.add_argument('--pathfile', help='the pathfile for "mod_dir", "colt_dir", "rtout", "velfile", and "dustpath"')
+parser.add_argument('--pathfile', default='run_path_write_hdf5.txt', help='the pathfile for "mod_dir", "colt_dir", "rtout", "velfile", and "dustpath"')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
-parser.add_argument('--mod_dir', help='the model directory',
-                    default='/Volumes/SD-Mac/lime_runs/', type=str)
-parser.add_argument('--colt_dir', help='the path of colt-lime', default='/Users/yaolun/programs/colt-lime/', type=str)
+parser.add_argument('--mod_dir', help='the model directory', type=str)
+parser.add_argument('--colt_dir', help='the path of colt-lime', type=str)
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
-parser.add_argument('--dustpath', default='/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt',
-                    help='the path to the dust model (default path for laptop)')
+parser.add_argument('--dustpath', help='the path to the dust model (default path for laptop)')
 args = vars(parser.parse_args())
+
+# read in the paths
+if args['pathfile'] != None:
+    path = np.genfromtxt(args['pathfile'], dtype=str).T
+    dict_path = {}
+    for name, val in zip(path[0],path[1]):
+        dict_path[name] = val
+else:
+    dict_path = {}
+# update the paths with the command line option
+for k in args.keys():
+    if k in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']:
+        dict_path[k] = args[k]
+# check if all paths are specified
+path_flag = 1
+for p in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']:
+    if p not in dict_path.keys():
+        print(p+' not specified')
+        path_flag = path_flag * 0
+if path_flag == 0:
+    print('Insufficient paths.  Exit...')
+    sys.exit()
+
 
 # dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
