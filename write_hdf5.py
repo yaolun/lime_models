@@ -76,7 +76,7 @@ else:
     dict_path = {}
 # update the paths with the command line option
 for k in args.keys():
-    if k in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']:
+    if (k in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
         dict_path[k] = args[k]
 # check if all paths are specified
 path_flag = 1
