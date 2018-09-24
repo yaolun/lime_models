@@ -55,6 +55,7 @@ parser = argparse.ArgumentParser(description='Options for converting LIME output
 # parser.add_argument('--pathfile', required=True, help='[required] path file for getting paths from run_pylime_path.txt')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
+parser.add_argument('--pathfile', help='the pathfile for "mod_dir", "colt_dir", "rtout", "velfile", and "dustpath"')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
 parser.add_argument('--mod_dir', help='the model directory',
                     default='/Volumes/SD-Mac/lime_runs/', type=str)
