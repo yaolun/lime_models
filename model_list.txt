@@ -524,10 +524,16 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 341       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      1000,1500   50,100      0.0,-2.0      20.0
 # 342       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1500   50,100      0.0,-2.0      20.0
 # HCN - based on 330
-343         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
-344         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+# 343       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 344       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
 # CS
 # 345       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1500   50,100      0.0,-3.0      20.0
 # 346       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1500   50,100      0.0,-4.0      20.0
 # CS - 345 and 346 seem okay, but with too much absorption
-347         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1100   50,100      0.0,-3.0      20.0
+# 347       cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1100   50,100      0.0,-3.0      20.0
+# CS
+348         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1000   50,100      0.0,-3.0      20.0
+349         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       3.0e-10     5.0e-10     1000,1000   50,100      0.0,-3.0      20.0
+350         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-10     5.0e-10     1000,1000   50,100      0.0,-3.0      20.0
+# CS - try increasing abundance toward the inner region
+351         cs@lique.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1000   50,100      -0.2,-3.0     20.0
