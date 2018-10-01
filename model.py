@@ -91,7 +91,8 @@ pprint.pprint(config)
 truncate = None
 # YLY update: add omega
 model = Hyperion2LIME(rtout, velfile, cs, age, omega,
-                      rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate, fix_tsc=True, hybrid_tsc=False)
+                      rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate,
+                      fix_tsc=True, hybrid_tsc=False)
 
 
 
@@ -349,7 +350,8 @@ def temperature(macros, x, y, z):
 
     #  return (temp0, None)
 
-    temp_dust = model.getTemperature(x, y, z)
+    # YLY update: turn on the external heating
+    temp_dust = model.getTemperature(x, y, z, external_heating=True)
 
     return [temp_dust, temp_dust]
 

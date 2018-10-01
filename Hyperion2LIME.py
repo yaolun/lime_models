@@ -198,7 +198,7 @@ class Hyperion2LIME:
 
         return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
 
-    def getTemperature(self, x, y, z):
+    def getTemperature(self, x, y, z, external_heating=False):
         r_wall = self.hy_grid.r_wall
         t_wall = self.hy_grid.t_wall
         p_wall = self.hy_grid.p_wall
@@ -211,6 +211,16 @@ class Hyperion2LIME:
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+
+        if external_heating:
+            # get the temperature at the outermost radius
+            indice_lowT = self.locateCell(((r_wall[-1]+r_wall[-2])/2, t_in, p_in), (r_wall, t_wall, p_wall))
+            lowT = self.temp[indice_lowT]
+            # the inner radius where the temperature correction starts to apply
+            r_break = 13000*au_cgs
+            if lowT < 15:
+                dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
+                return float(self.temp[indice]) + float(dT)
 
         return float(self.temp[indice])
 
