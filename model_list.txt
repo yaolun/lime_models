@@ -544,7 +544,14 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 355       cs@lique.dat    6           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-10     5.0e-10     1000,1500   50,100      0.0,-3.0      20.0
 # 356       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
 # HCN - reduce the inner radius
-357         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   40,100      2.5,-2.0      20.0
-358         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   20,100      2.5,-2.0      20.0
-359         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       8.0e-10     5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
-360         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 357       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   40,100      2.5,-2.0      20.0
+# 358       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1500   20,100      2.5,-2.0      20.0
+# 359       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       8.0e-10     5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 360       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# HCN - take out the evaporation zone
+361         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     500,1000,1500   50,50       2.5,1.0,-2.0      20.0
+362         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     500,1000,1500   50,50       2.5,1.0,-2.0      20.0
+363         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     500,1000,1500   50,50       2.5,0.5,-2.0      20.0
+364         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     500,1000,1500   50,50       2.5,0.5,-2.0      20.0
+365         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     300,1000,1500   50,50       2.5,0.5,-2.0      20.0
+366         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     300,1000,1500   50,50       2.5,0.5,-2.0      20.0
