@@ -575,4 +575,7 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 377       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  50,1000  -2.0,-0.8,-2.0      20.0
 # 378       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  30,1000  -2.0,-0.8,-2.0      20.0
 # try the profile in Aikawa+2013
-379         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  10,500   -1.5,2.0,-2.0       20.0
+# 379       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  10,500   -1.5,2.0,-2.0       20.0
+380         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  50,500   -1.5,2.0,-2.0       20.0
+381         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  100,500  -1.5,2.0,-2.0       20.0
+382         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      8.0e-10     2000,6500,6500  50,500   -1.5,2.0,-2.0       20.0
