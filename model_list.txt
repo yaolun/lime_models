@@ -594,4 +594,11 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 392       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      1000,4000,4000  10,500   2.0,2.0,-2.0        20.0
 # 393       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      1000,2000,2000  10,500   2.0,2.0,-2.0        20.0
 # HCO+ comparison with and without cavity - 20000 year
-394         hco+@xpol.dat   3           model49     0.37    rho_v_env.bhr71_2e4    chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 394       hco+@xpol.dat   3           model49     0.37    rho_v_env.bhr71_2e4    chem3       1.0e-8      5.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# those HCN profiles do not work.  Back to model 343/344
+# reduce the size of max abundance region
+395         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1300   50,100      2.5,-2.0      20.0
+396         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1000   50,100      2.5,-2.0      20.0
+# reduce the inner radius of the evaporation zone
+397         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1300   40,100      2.5,-2.0      20.0
+398         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1300   30,100      2.5,-2.0      20.0
