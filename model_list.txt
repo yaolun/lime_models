@@ -604,13 +604,27 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 398       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1300   30,100      2.5,-2.0      20.0
 # still not change too much
 # inner power
-399         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.0,-2.0      20.0
-400         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      1.5,-2.0      20.0
-401         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      1.0,-2.0      20.0
+# 399       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.0,-2.0      20.0
+# 400       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      1.5,-2.0      20.0
+# 401       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      1.0,-2.0      20.0
 # evaporation abundance
-402         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     1.0e-9      1000,1200   50,100      2.0,-2.0      20.0
-403         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-9      1000,1200   50,100      2.0,-2.0      20.0
+# 402       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     1.0e-9      1000,1200   50,100      2.0,-2.0      20.0
+# 403       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-9      1000,1200   50,100      2.0,-2.0      20.0
 # max abundance
-404         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1200   50,100      2.0,-2.0      20.0
-405         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
-406         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+# 404       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      5.0e-10     1000,1200   50,100      2.0,-2.0      20.0
+# 405       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+# 406       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+# 402,403 works the best, but still far from a good fit.  379 looks not that bad actually
+# from 402, 403
+407         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     2.5e-9      1000,1200   60,100      2.0,-2.0      20.0
+408         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     2.5e-9      1000,1200   80,100      2.0,-2.0      20.0
+409         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-9      1000,1200   60,100      2.0,-2.0      20.0
+410         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-9      1000,1200   80,100      2.0,-2.0      20.0
+# from 379
+# reduce peaks
+411         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  30,500   -1.5,2.0,-2.0       20.0
+412         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  50,500   -1.5,2.0,-2.0       20.0
+413         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      1.0e-9      2000,6500,6500  10,400   -1.5,2.0,-2.0       20.0
+# add more absorption
+414         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      1.0e-9      2000,6500,6500  10,200   -1.5,2.0,-2.0       20.0
+415         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      1.0e-9      2000,6500,6500  30,500   -1.5,2.0,-2.0       20.0
