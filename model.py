@@ -57,17 +57,18 @@ lower_level = int(config['lower_level'])
 if 'J' in config.keys():
     J = float(config['J'])
     M = float(config['M'])
-    if 'vr_factor' in config.keys():
-        vr_factor = float(config['vr_factor'])
-    else:
-        vr_factor = 1.0
-    if 'vr_offset' in config.keys():
-        vr_offset = float(config['vr_offset'])
-    else:
-        vr_offset = 0.0
     sakai = True
 else:
     sakai = False
+
+if 'vr_factor' in config.keys():
+    vr_factor = float(config['vr_factor'])
+else:
+    vr_factor = 1.0
+if 'vr_offset' in config.keys():
+    vr_offset = float(config['vr_offset'])
+else:
+    vr_offset = 0.0
 
 # path
 outdir = str(config['outdir'])

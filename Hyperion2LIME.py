@@ -228,6 +228,7 @@ class Hyperion2LIME:
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
+        vr_offset: in km/s
         """
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z, unit_convert=unit_convert)
@@ -255,7 +256,7 @@ class Hyperion2LIME:
         v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
 
         # test for artifically reducing the radial velocity
-        v_sph[0] = v_sph[0]*vr_factor + vr_offset
+        v_sph[0] = v_sph[0]*vr_factor + vr_offset*1e3
 
         if sph:
             return v_sph
