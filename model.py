@@ -61,6 +61,10 @@ if 'J' in config.keys():
         vr_factor = float(config['vr_factor'])
     else:
         vr_factor = 1.0
+    if 'vr_offset' in config.keys():
+        vr_offset = float(config['vr_offset'])
+    else:
+        vr_offset = 0.0
     sakai = True
 else:
     sakai = False
@@ -437,7 +441,7 @@ def velocity(macros, x, y, z):
     if not sakai:
         vel = model.getVelocity(x, y, z)
     else:
-        vel = model.getSakaiVelocity(x, y, z, J, M, vr_factor=vr_factor)
+        vel = model.getSakaiVelocity(x, y, z, J, M, vr_factor=vr_factor, vr_offset=vr_offset)
 
     # debug
     # foo = open('h2l.log', 'a')

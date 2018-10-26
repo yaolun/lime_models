@@ -16,6 +16,7 @@ parser.add_argument('--image_only', action='store_true',
 parser.add_argument('--no_image', action='store_true',
                     help='only run the RTE calculation.')
 parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the radial velocity by a factor')
+parser.add_argument('--vr_offset', default='0.0', help='additional offset added to vr.  (vr < 0 for infall, thus vr_offset < 0 would increase the infall velocity.)')
 parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
@@ -54,6 +55,7 @@ for i, m in enumerate(model_list['model_name']):
     p['velfile'] = dict_path['tsc_dir']+str(model_list['tsc'][i])
     p['cs'] = str(model_list['cs'][i])
     p['vr_factor'] = args['vr_factor']
+    p['vr_offset'] = args['vr_offset']
     if args['age'] != None:
         p['age'] = args['age']
 
