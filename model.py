@@ -440,7 +440,7 @@ def velocity(macros, x, y, z):
     # vel[1] = -y*ffSpeed/rToUse
     # vel[2] = -z*ffSpeed/rToUse
     if not sakai:
-        vel = model.getVelocity(x, y, z)
+        vel = model.getVelocity(x, y, z, vr_factor=vr_factor, vr_offset=vr_offset)
     else:
         vel = model.getSakaiVelocity(x, y, z, J, M, vr_factor=vr_factor, vr_offset=vr_offset)
 
