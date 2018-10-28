@@ -240,7 +240,7 @@ class Hyperion2LIME:
 
         # outside of infall radius, the envelope is static
         if r_in > self.r_inf:
-            v_sph = [0.0+vr_offset, 0.0, 0.0]
+            v_sph = [0.0+vr_offset*1e3, 0.0, 0.0]
             v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
             return v_out
 
