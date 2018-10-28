@@ -240,7 +240,7 @@ class Hyperion2LIME:
 
         # outside of infall radius, the envelope is static
         if r_in > self.r_inf:
-            v_out = [0.0, 0.0, 0.0]
+            v_out = [0.0+vr_offset, 0.0, 0.0]
             return v_out
 
         # if the input radius is smaller than the minimum in xr array,
