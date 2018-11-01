@@ -259,7 +259,8 @@ class Hyperion2LIME:
         # test for artifically reducing the radial velocity
         v_sph[0] = v_sph[0]*vr_factor # + vr_offset*1e3
         # flatten out at the vr_offset
-        if v_sph[0] > vr_offset*1e3:
+        # static envelope beyong 10000 AU
+        if (v_sph[0] > vr_offset*1e3) and (r_in <= 1e4*au_cgs):
             v_sph[0] = vr_offset*1e3
 
         if sph:
