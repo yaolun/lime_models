@@ -650,9 +650,16 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 427       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-11     5.0e-11     1000,1200   50,100      2.5,-2.0      20.0
 # 428       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.0e-10     5.0e-12     1000,1200   50,100      2.5,-2.0      20.0
 # test the freeze-out slope
-429         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-11     1000,1200   50,100      3.0,-2.0      20.0
-430         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-11     1000,1200   50,100      3.5,-2.0      20.0
+# 429       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-11     1000,1200   50,100      3.0,-2.0      20.0
+# 430       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-11     1000,1200   50,100      3.5,-2.0      20.0
 # increase the abundance of the evaporation zone
-431         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
-432         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-09     1000,1200   50,100      2.5,-2.0      20.0
-433         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-08     1000,1200   50,100      2.5,-2.0      20.0
+# 431       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+# 432       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-09     1000,1200   50,100      2.5,-2.0      20.0
+# 433       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-08     1000,1200   50,100      2.5,-2.0      20.0
+# move the outer zone in
+434         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10      900,1100   50,100      2.5,-2.0      20.0
+435         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10      800,1000   50,100      2.5,-2.0      20.0
+436         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10       700,900   50,100      2.5,-2.0      20.0
+# tune the abundance in evaporation zone for a bit
+437         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     6.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+438         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     8.0e-10     1000,1200   50,100      2.5,-2.0      20.0
