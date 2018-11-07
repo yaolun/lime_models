@@ -1,7 +1,7 @@
 mmw             2.37
 g2d             100
 dustfile        /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5_interpolated.txt
-pIntensity      50000
+pIntensity      100000
 sinkPoints      8000
 rtout           /scratch/LIMEmods/pylime/YLY/model14.rtout
 velfile         /scratch/LIMEmods/pylime/YLY/rho_v_env.bhr71shallow
