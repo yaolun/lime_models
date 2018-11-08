@@ -1,7 +1,7 @@
 mmw             2.37
 g2d             100
 dustfile        /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5_interpolated.txt
-pIntensity      100000
+pIntensity      50000
 sinkPoints      8000
 rtout           /scratch/LIMEmods/pylime/YLY/model14.rtout
 velfile         /scratch/LIMEmods/pylime/YLY/rho_v_env.bhr71shallow
@@ -9,7 +9,7 @@ cs              0.37
 v_turb          0.34
 age             36000
 omega           2.528700e-13
-rMin            0.2
+rMin            0.1
 rMax            64973
 distance        200.0
 inclination     50.0
