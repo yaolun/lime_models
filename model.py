@@ -181,7 +181,7 @@ def input(macros):
     #  par.tcmb              = 2.72548
     #  par.lte_only          = False
     #  par.init_lte          = False
-    par.samplingAlgorithm = 0  # TODO: may want to try "1" in the future to employ a faster sampling
+    par.samplingAlgorithm = 1  # TODO: may want to try "1" in the future to employ a faster sampling
     par.sampling          = 2  # Now only accessed if par.samplingAlgorithm==0 (the default).
     #  par.blend             = False
     #  par.polarization      = False
