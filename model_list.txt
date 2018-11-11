@@ -716,9 +716,13 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 471       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1500   50,100      3.0,-2.0      20.0
 # the low velocity blue peak doesn't fit
 # reduce the max. zone
-472         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1250   50,100      2.5,-2.0      20.0
-473         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1000   50,100      2.5,-2.0      20.0
+# 472       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1250   50,100      2.5,-2.0      20.0
+# 473       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     1000,1000   50,100      2.5,-2.0      20.0
 # move the max. zone inward
-474         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
-475         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-9      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
-476         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
+# 474       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
+# 475       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-9      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
+# 476       hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      8.0e-11     500,1000    50,100      2.5,-2.0      20.0
+# go back to model 344, and reduce the evaporation abundance
+477         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     4.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+478         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     2.0e-10     1000,1200   50,100      2.5,-2.0      20.0
+479         hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     1.0e-10     1000,1200   50,100      2.5,-2.0      20.0
