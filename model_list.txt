@@ -743,5 +743,8 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 490       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1500   50,100      2.5,-3.0      20.0
 # need further reduce the opacity at line center
 # 491       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1500   50,100      2.5,-10.0      20.0
-492         hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1400   50,100      2.5,-10.0      20.0
+# 492       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1400   50,100      2.5,-10.0      20.0
 # 493       hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1300   50,100      2.5,-10.0      20.0
+494         hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1200   50,100      2.5,-10.0      20.0
+495         hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1100   50,100      2.5,-10.0      20.0
+496         hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1000   50,100      2.5,-10.0      20.0
