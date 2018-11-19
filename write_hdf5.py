@@ -109,6 +109,60 @@ if args['transition'] == 'hco+3-2':
                'degeneracy': [7,5]}  # degeneracy from upper to lower
     suffix = '_'+args['transition']
 
+if args['transition'] == 'hco+2-1':
+    # HCO+ 2-1
+    auxdata = {'transition': args['transition'],
+               'EA': 4.2512e-05,
+               'nu0': 178.3750650e9,
+               'trans_up': 2,
+               'degeneracy': [5,3]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
+if args['transition'] == 'hco+5-4':
+    # HCO+ 5-4
+    auxdata = {'transition': args['transition'],
+               'EA': 7.2449e-03,
+               'nu0': 445.9029960e9,
+               'trans_up': 5,
+               'degeneracy': [11,9]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
+if args['transition'] == 'hco+7-6':
+    # HCO+ 7-6
+    auxdata = {'transition': args['transition'],
+               'EA': 2.0402e-02,
+               'nu0': 624.2086733e9,
+               'trans_up': 7,
+               'degeneracy': [15,13]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
+if args['transition'] == 'hco+8-7':
+    # HCO+ 8-7
+    auxdata = {'transition': args['transition'],
+               'EA': 3.0711e-02,
+               'nu0': 713.3420900e9,
+               'trans_up': 8,
+               'degeneracy': [17,15]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
+if args['transition'] == 'hco+9-8':
+    # HCO+ 8-7
+    auxdata = {'transition': args['transition'],
+               'EA': 4.4006e-02,
+               'nu0': 802.4583290e9,
+               'trans_up': 9,
+               'degeneracy': [19,17]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
+if args['transition'] == 'hco+10-9':
+    # HCO+ 8-7
+    auxdata = {'transition': args['transition'],
+               'EA': 6.0667e-02,
+               'nu0': 891.5579242e9,
+               'trans_up': 10,
+               'degeneracy': [21,19]}  # degeneracy from upper to lower
+    suffix = '_'+args['transition']
+
 if args['transition'] == 'hcn4-3':
     auxdata = {'transition': args['transition'],
                'EA': 2.0540e-03,
