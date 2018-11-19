@@ -13,7 +13,7 @@ c = const.c.cgs.value
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 
 def write_hdf5(data, filename='infall.h5'):
-    lime_out, auxdata) = data
+    (lime_out, auxdata) = data
     n_cells = np.int32(len(lime_out['Tk']))
     T       = lime_out['Tk'] # Gas  Temperature               (K) [n_cells]
     # Generalize later?: T_dust = ? # Dust Temperature (K) [n_cells]
