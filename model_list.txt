@@ -761,4 +761,13 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 505      hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1300   50,100      2.3,-10.0      20.0
 # 506      hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-8      1.0e-10     1000,1400   50,100      2.3,-10.0      20.0
 # back to HCN
-507        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
+# 507      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
+# model 507: first time successfully reproduce the broad wing
+# decrease the freeze-out slope
+508        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.0,-2.0       20.0
+509        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       1.5,-2.0       20.0
+# move the inner radius of the peak abundance inward
+510        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1200    10,50       2.5,-2.0       20.0
+511        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1200    10,50       2.5,-2.0       20.0
+512        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1100    10,50       2.5,-2.0       20.0
+513        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1000    10,50       2.5,-2.0       20.0
