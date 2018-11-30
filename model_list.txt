@@ -764,10 +764,15 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 507      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
 # model 507: first time successfully reproduce the broad wing
 # decrease the freeze-out slope
-508        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.0,-2.0       20.0
-509        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       1.5,-2.0       20.0
+# 508      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       2.0,-2.0       20.0
+# 509      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     1000,1200   10,50       1.5,-2.0       20.0
 # move the inner radius of the peak abundance inward
-510        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1200    10,50       2.5,-2.0       20.0
-511        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1200    10,50       2.5,-2.0       20.0
-512        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1100    10,50       2.5,-2.0       20.0
-513        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1000    10,50       2.5,-2.0       20.0
+# 510      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1200    10,50       2.5,-2.0       20.0
+# 511      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1200    10,50       2.5,-2.0       20.0
+# 512      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     900,1100    10,50       2.5,-2.0       20.0
+# 513      hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     5.0e-10     800,1000    10,50       2.5,-2.0       20.0
+# increase peak abundance
+514        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1e-09       5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
+515        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-10     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
+516        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-09     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
+517        hcn@xpol.dat    3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-09     5.0e-10     1000,1200   10,50       2.5,-2.0       20.0
