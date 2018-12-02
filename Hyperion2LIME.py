@@ -218,11 +218,17 @@ class Hyperion2LIME:
             lowT = self.temp[indice_lowT]
             # the inner radius where the temperature correction starts to apply
             r_break = 13000*au_cgs
+            # r_break = 2600*au_cgs
             if lowT < 15:
                 dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
-                return float(self.temp[indice]) + float(dT)
-
-        return float(self.temp[indice])
+                if float(self.temp[indice]) + float(dT) >= 0.0:
+                    return float(self.temp[indice]) + float(dT)
+                else:
+                    return 0.0
+        if float(self.temp[indice]) >= 0.0:
+            return float(self.temp[indice])
+        else:
+            return 0.0
 
     def getVelocity(self, x, y, z, sph=False, unit_convert=True, vr_factor=1.0, vr_offset=0.0):
         """
