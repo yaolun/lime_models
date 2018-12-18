@@ -265,7 +265,11 @@ class Hyperion2LIME:
         # test for artifically reducing the radial velocity
         v_sph[0] = v_sph[0]*vr_factor # + vr_offset*1e3
         # flatten out at the vr_offset
-        # static envelope beyong 10000 AU
+        # if v_sph[0] > vr_offset*1e3:
+            # v_sph[0] = vr_offset*1e3 # Note infall velocity should be negative
+
+        # A hybrid outer envelope model: -0.5 km/s uniformly within 1e4 AU and static beyond.
+        # static envelope beyond 10000 AU
         if (v_sph[0] > vr_offset*1e3) and (r_in <= 1e4*au_cgs):
             v_sph[0] = vr_offset*1e3
 
@@ -281,7 +285,7 @@ class Hyperion2LIME:
 
         return v_out
 
-    def getSakaiVelocity(self, x, y, z, J, M, sph=False, unit_convert=True, vr_factor=1.0):
+    def getFFVelocity(self, x, y, z, J, M, sph=False, unit_convert=True, vr_factor=1.0):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.

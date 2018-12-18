@@ -442,7 +442,7 @@ def velocity(macros, x, y, z):
     if not sakai:
         vel = model.getVelocity(x, y, z, vr_factor=vr_factor, vr_offset=vr_offset)
     else:
-        vel = model.getSakaiVelocity(x, y, z, J, M, vr_factor=vr_factor, vr_offset=vr_offset)
+        vel = model.getFFVelocity(x, y, z, J, M, vr_factor=vr_factor, vr_offset=vr_offset)
 
     # debug
     # foo = open('h2l.log', 'a')
