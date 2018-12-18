@@ -89,6 +89,8 @@ if path_flag == 0:
     print('Insufficient paths.  Exit...')
     sys.exit()
 
+from pprint import pprint
+pprint(dict_path)
 
 # dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
