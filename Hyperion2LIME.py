@@ -269,8 +269,8 @@ class Hyperion2LIME:
             # v_sph[0] = vr_offset*1e3 # Note infall velocity should be negative
 
         # A hybrid outer envelope model: -0.5 km/s uniformly within 1e4 AU and static beyond.
-        # static envelope beyond 10000 AU
-        if (v_sph[0] > vr_offset*1e3) and (r_in <= 1e4*au_cgs):
+        # static envelope beyond 3000 AU
+        if (v_sph[0] > vr_offset*1e3) and (r_in <= 3e3*au_cgs):
             v_sph[0] = vr_offset*1e3
 
         if sph:
