@@ -212,7 +212,7 @@ class Hyperion2LIME:
                 ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
                 rho = self.tsc_rho2d[ind]*1e6
 
-            return rho
+            return float(rho)
 
     def getTemperature(self, x, y, z, external_heating=False):
         r_wall = self.hy_grid.r_wall
