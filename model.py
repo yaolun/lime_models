@@ -311,7 +311,7 @@ def density(macros, x, y, z):
     # listOfDensities = [1.5e6*((rToUse/(300.0*macros["AU"]))**(-1.5))*1e6] # must be a list, even when there is only 1 item.
 
 
-    listOfDensities = [model.getDensity(x, y, z)]
+    listOfDensities = [model.getDensity(x, y, z, version='fortran')]
 
 
     return listOfDensities

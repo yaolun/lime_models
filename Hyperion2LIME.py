@@ -10,6 +10,7 @@ MS = const.M_sun.cgs.value
 G = const.G.cgs.value
 au_cgs = const.au.cgs.value
 au_si = const.au.si.value
+yr = 3600.*24.*365
 
 class Hyperion2LIME:
     """
@@ -32,7 +33,7 @@ class Hyperion2LIME:
         self.age = age
         # YLY update - add omega
         self.omega = omega
-        self.r_inf = self.cs*1e5*self.age*3600*24*365  # in cm
+        self.r_inf = self.cs*1e5*self.age*yr  # in cm
 
         # option to truncate the sphere to be a cylinder
         # the value is given in au to specify the radius of the truncated cylinder viewed from the observer
@@ -57,6 +58,9 @@ class Hyperion2LIME:
                                     [2*self.theta[-1]-self.theta[-2]]))
             self.nxr = len(self.xr)
             self.ntheta = len(self.theta)
+
+            # the output of TSC fortran binary is in mass density
+            self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
 
             self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
@@ -175,28 +179,40 @@ class Hyperion2LIME:
 
         return (r_ind, t_ind)
 
-    def getDensity(self, x, y, z):
-        r_wall = self.hy_grid.r_wall
-        t_wall = self.hy_grid.t_wall
-        p_wall = self.hy_grid.p_wall
-        self.rho = self.hy_grid.quantities['density'][0].T
+    def getDensity(self, x, y, z, version='idl'):
+
+        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
         if self.truncate != None:
             if (y**2+z**2)**0.5 > self.truncate*au_si:
                 return 0.0
 
-        (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
+        if version == 'idl':
+            r_wall = self.hy_grid.r_wall
+            t_wall = self.hy_grid.t_wall
+            p_wall = self.hy_grid.p_wall
+            self.rho = self.hy_grid.quantities['density'][0].T
 
-        indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+            indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
 
-        # LIME needs molecule number density per cubic meter
+            # LIME needs molecule number density per cubic meter
+            if self.debug:
+                foo = open('density.log', 'a')
+                foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
+                foo.close()
 
-        if self.debug:
-            foo = open('density.log', 'a')
-            foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
-            foo.close()
+            return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
 
-        return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
+        elif version == 'fortran':
+            # isothermal solution
+            if r_in > self.r_inf:
+                rho = (self.cs*1e5)**2/(2*np.pi*G*(r_in)**2)/mh * 1e6
+            # TSC solution
+            else:
+                ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
+                rho = self.tsc_rho2d[ind]*1e6
+
+            return rho
 
     def getTemperature(self, x, y, z, external_heating=False):
         r_wall = self.hy_grid.r_wall
