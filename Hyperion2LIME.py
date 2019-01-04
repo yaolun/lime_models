@@ -20,7 +20,7 @@ class Hyperion2LIME:
 
     def __init__(self, rtout, velfile, cs, age, omega,
                  rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True,
-                 fix_tsc=True, hybrid_tsc=False):
+                 fix_tsc=True, hybrid_tsc=False, interpolate=False):
         self.rtout = rtout
         self.velfile = velfile
         if load_full:
@@ -42,6 +42,9 @@ class Hyperion2LIME:
         # debug option: print out every call to getDensity, getVelocity and getAbundance
         self.debug = debug
 
+        # option to use simple Trapezoid rule average for getting density, temperature, and velocity
+        self.interpolate = interpolate
+
         # velocity grid construction
         if load_full:
             # ascii.read() fails for large file.  Use pandas instead
@@ -60,7 +63,7 @@ class Hyperion2LIME:
             self.ntheta = len(self.theta)
 
             # the output of TSC fortran binary is in mass density
-            self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
+            self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh/mmw * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
 
             self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
@@ -167,6 +170,28 @@ class Hyperion2LIME:
 
         return (r_ind, t_ind, p_ind)
 
+    # def interpolateCell(self, coord, cube, wall_grid):
+    #     """
+    #     return the interpolated value at given data cube at given coordinates
+    #     """
+    #     r, t, p = coord
+    #     r_wall, t_wall, p_wall = wall_grid
+    #
+    #     # the cell center
+    #     r_ind = min(np.argsort(abs(r_wall-r))[:2])
+    #     t_ind = min(np.argsort(abs(t_wall-t))[:2])
+    #     p_ind = min(np.argsort(abs(p_wall-p))[:2])
+    #
+    #     # simple Trapezoid rule
+    #     val_dum = 0
+    #     for ri in r_ind:
+    #         for ti in t_ind:
+    #             for pi in p_ind:
+    #                 val_dum += cube[ri, ti, pi]
+    #     val = val_dum/8.0
+    #
+    #     return val
+
     def locateCell2d(self, coord, wall_grid):
         """
         return the indice of cell at given coordinates
@@ -178,6 +203,22 @@ class Hyperion2LIME:
         t_ind = min(np.argsort(abs(t_wall-t))[:2])
 
         return (r_ind, t_ind)
+
+    # def interpolateCell2d(self, coord, cube, wall_grid):
+    #     """
+    #     return the interpolated value at given data cube at given coordinates
+    #     """
+    #     r, t= coord
+    #     r_wall, t_wall = wall_grid
+    #
+    #     r_ind = np.argsort(abs(r_wall-r))[:2]
+    #     t_ind = np.argsort(abs(t_wall-t))[:2]
+    #
+    #     # simple Trapezoid rule
+    #     val = (cube[r_ind[0], t_ind[0]] + cube[r_ind[0], t_ind[1]] +
+    #            cube[r_ind[1], t_ind[0]] + cube[r_ind[1], t_ind[1]])/4.0
+    #
+    #     return val
 
     def getDensity(self, x, y, z, version='idl'):
 
@@ -193,24 +234,31 @@ class Hyperion2LIME:
             p_wall = self.hy_grid.p_wall
             self.rho = self.hy_grid.quantities['density'][0].T
 
-            indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+            if not self.interpolate:
+                indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+                rho = self.rho[indice]
+            else:
+                rho = self.interpolateCell((r_in, t_in, p_in), self.rho, (r_wall, t_wall, p_wall))
 
             # LIME needs molecule number density per cubic meter
-            if self.debug:
-                foo = open('density.log', 'a')
-                foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
-                foo.close()
+            # if self.debug:
+            #     foo = open('density.log', 'a')
+            #     foo.write('%e \t %e \t %e \t %e\n' % (x,y,z,float(self.rho[indice])*self.g2d/mh/self.mmw*1e6))
+            #     foo.close()
 
-            return float(self.rho[indice])*self.g2d/mh/self.mmw*1e6
+            return float(rho)*self.g2d/mh/self.mmw*1e6
 
         elif version == 'fortran':
             # isothermal solution
             if r_in > self.r_inf:
-                rho = (self.cs*1e5)**2/(2*np.pi*G*(r_in)**2)/mh * 1e6
+                rho = (self.cs*1e5)**2/(2*np.pi*G*(r_in)**2)/mh/self.mmw * 1e6
             # TSC solution
             else:
-                ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-                rho = self.tsc_rho2d[ind]*1e6
+                if not self.interpolate:
+                    ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
+                    rho = self.tsc_rho2d[ind]*1e6
+                else:
+                    rho = self.interpolateCell2d((r_in, t_in), self.tsc_rho2d, (self.xr_wall*self.r_inf, self.theta_wall))*1e6
 
             return float(rho)
 
@@ -226,7 +274,11 @@ class Hyperion2LIME:
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
-        indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+        if not self.interpolate:
+            indice = self.locateCell((r_in, t_in, p_in), (r_wall, t_wall, p_wall))
+            temp = self.temp[indice]
+        else:
+            temp = self.interpolateCell((r_in, t_in, p_in), cube, (r_wall, t_wall, p_wall))
 
         if external_heating:
             # get the temperature at the outermost radius
@@ -237,16 +289,17 @@ class Hyperion2LIME:
             # r_break = 2600*au_cgs
             if lowT < 15:
                 dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
-                if float(self.temp[indice]) + float(dT) >= 0.0:
-                    return float(self.temp[indice]) + float(dT)
+                if float(temp) + float(dT) >= 0.0:
+                    return float(temp) + float(dT)
                 else:
                     return 0.0
-        if float(self.temp[indice]) >= 0.0:
-            return float(self.temp[indice])
+        if float(temp) >= 0.0:
+            return float(temp)
         else:
             return 0.0
 
-    def getVelocity(self, x, y, z, sph=False, unit_convert=True, vr_factor=1.0, vr_offset=0.0):
+    def getVelocity(self, x, y, z, sph=False, unit_convert=True,
+                    vr_factor=1.0, vr_offset=0.0):
         """
         cs: effecitve sound speed in km/s;
         age: the time since the collapse began in year.
@@ -275,8 +328,14 @@ class Hyperion2LIME:
             v_out = [0.0, 0.0, 0.0]
             return v_out
 
-        ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-        v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+        if not self.interpolate:
+            ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
+            v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+        else:
+            vr = self.interpolateCell2d((r_in, t_in), self.vr2d, (self.xr_wall*self.r_inf, self.theta_wall))
+            vtheta = self.interpolateCell2d((r_in, t_in), self.vtheta2d, (self.xr_wall*self.r_inf, self.theta_wall))
+            vphi = self.interpolateCell2d((r_in, t_in), self.vphi2d, (self.xr_wall*self.r_inf, self.theta_wall))
+            v_sph = list(map(float, [vr/1e2, vtheta/1e2, vphi/1e2]))
 
         # test for artifically reducing the radial velocity
         v_sph[0] = v_sph[0]*vr_factor # + vr_offset*1e3
