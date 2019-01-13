@@ -836,25 +836,25 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 #
 # small grids based on model 533
 # outer abundance
-557        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-558        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-559        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-560        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-# inner abundance
-561        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      8.0e-11     1000,1500   50,100      2.0,-2.0      20.0
-562        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      1.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-563        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      4.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-564        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      8.0e-10     1000,1500   50,100      2.0,-2.0      20.0
-# inner slope
-565        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      1.0,-2.0      20.0
-566        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      1.5,-2.0      20.0
-567        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.5,-2.0      20.0
-568        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      3.0,-2.0      20.0
-# outer slope
-569        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-1.0      20.0
-570        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-3.0      20.0
-571        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-4.0      20.0
-572        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-10.0     20.0
+# 557        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-10     2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# 558        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       1.0e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# 559        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       5.0e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# 560        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       7.5e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# # inner abundance
+# 561        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      8.0e-11     1000,1500   50,100      2.0,-2.0      20.0
+# 562        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      1.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# 563        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      4.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# 564        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      8.0e-10     1000,1500   50,100      2.0,-2.0      20.0
+# # inner slope
+# 565        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      1.0,-2.0      20.0
+# 566        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      1.5,-2.0      20.0
+# 567        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.5,-2.0      20.0
+# 568        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      3.0,-2.0      20.0
+# # outer slope
+# 569        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-1.0      20.0
+# 570        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-3.0      20.0
+# 571        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-4.0      20.0
+# 572        hco+@xpol.dat   3           model46     0.37    rho_v_env.bhr71_2e4       chem3       2.5e-9      2.0e-10     1000,1500   50,100      2.0,-10.0     20.0
 # There seems to be an inconsistency between the density profile calculated with the IDL code and the Fortran code
 # The fortran version produces a higher density (~2.5x) in general, and resembles the infall-only profile (peaky) at the inner radius
 # test run the same parameters of model 533 for the fortran version density profile
