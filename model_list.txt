@@ -873,12 +873,14 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 581      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     3.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # 582      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     6.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # the peak abundance doesn't change too much.  Tweak the outer radius of the evaporation zone
-583        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,130      2.0,-2.0      20.0
-584        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,150      2.0,-2.0      20.0
-585        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,200      2.0,-2.0      20.0
+# 583      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,130      2.0,-2.0      20.0
+# 584      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,150      2.0,-2.0      20.0
+# 585      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,200      2.0,-2.0      20.0
 # also try to tweak the freeze-out slope
-586        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.8,-2.0      20.0
-587        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.6,-2.0      20.0
-588        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.4,-2.0      20.0
+# 586      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.8,-2.0      20.0
+# 587      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.6,-2.0      20.0
+# 588      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      1.4,-2.0      20.0
 # try to run one for CS
-589        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 589      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# try one for no cavity with the updated TSC Fortran density profile (based on model 577)
+590        hco+@xpol.dat   3           model58     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      0.0
