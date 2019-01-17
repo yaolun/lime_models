@@ -889,5 +889,10 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # test for a higher rotation speed (5e-13)
 # 592      hco+@xpol.dat   3           model59     0.37    rho_v_env.bhr71_model59     chem3     2.5e-9      2.0e-10     1000,1500   50,100      2.0,-2.0      20.0
 # for CS: (1) reduce the opacity; (2) increase the warm gas
-593        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      2.0,-5.0      20.0
-594        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      2.0,-10.0     20.0
+# 593      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      2.0,-5.0      20.0
+# 594      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      2.0,-10.0     20.0
+# flatten out the freeze-out zone and decrease the size of max. abundance zone
+595        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      1.5,-5.0      20.0
+596        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1500   50,100      1.0,-5.0      20.0
+597        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1000   50,100      1.5,-5.0      20.0
+598        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1000   50,100      1.0,-5.0      20.0
