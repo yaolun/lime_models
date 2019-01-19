@@ -12,7 +12,7 @@ omega           2.528700e-13
 rMin            0.2
 rMax            64973
 distance        200.0
-inclination     50.0
+inclination     130.0
 outdir          /scratch/LIMEmods/pylime/YLY/run/model25/
 a_model         chem3
 a_params0       1e-08
