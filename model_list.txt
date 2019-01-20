@@ -899,11 +899,25 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 598      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1000   50,100      1.5,-5.0      20.0
 # 599      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     5.0e-09     1000,1000   50,100      1.0,-5.0      20.0
 # for HCN: make the freeze-out slope shallower
-600        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     7.5e-10     7.0e-10     1000,1200   7.5,50      1.2,-2.0      20.0
-601        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     7.5e-10     7.0e-10     1000,1200   7.5,50      1.0,-2.0      20.0
+# 600      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     7.5e-10     7.0e-10     1000,1200   7.5,50      1.2,-2.0      20.0
+# 601      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     7.5e-10     7.0e-10     1000,1200   7.5,50      1.0,-2.0      20.0
 # or increase the max. abundance
-602        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     9.0e-10     7.0e-10     1000,1200   7.5,50      1.2,-2.0      20.0
-603        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     7.0e-10     1000,1200   7.5,50      1.0,-2.0      20.0
+# 602      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     9.0e-10     7.0e-10     1000,1200   7.5,50      1.2,-2.0      20.0
+# 603      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     7.0e-10     1000,1200   7.5,50      1.0,-2.0      20.0
 # for CS: reduce the max. abundance more and make the freeze-out slope flat; increase the inner abundance
-604        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.0e-10     5.0e-09     1000,1500   50,100      0.0,-5.0      20.0
-605        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     5.0e-10     5.0e-09     1000,1500   50,100      0.0,-5.0      20.0
+# 604      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.0e-10     5.0e-09     1000,1500   50,100      0.0,-5.0      20.0
+# 605      cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     5.0e-10     5.0e-09     1000,1500   50,100      0.0,-5.0      20.0
+# for CS: model 604 has an absorption similar to the observation although not perfect; but still doesn't have enough warm molecules
+606        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.0e-10     5.0e-09     1000,1500   50,200      0.0,-5.0      20.0
+607        cs@lique.dat    6           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.0e-10     5.0e-09     1000,1500   50,400      0.0,-5.0      20.0
+# for HCN: model 604 seems better but the intensity still quite weak.
+# try a flat freeze-out zone
+608        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     7.0e-10     1000,1200   7.5,50      0.0,-2.0      20.0
+609        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     7.0e-10     1000,1200   7.5,50      0.5,-2.0      20.0
+# increase the max. abundance
+610        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     1.0e-09     1000,1200   7.5,50      0.0,-2.0      20.0
+611        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     1.0e-09     1000,1200   7.5,50      0.5,-2.0      20.0
+612        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     1.0e-09     1000,1200   7.5,50      1.0,-2.0      20.0
+613        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     2.0e-09     1000,1200   7.5,50      0.0,-2.0      20.0
+614        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     2.0e-09     1000,1200   7.5,50      0.5,-2.0      20.0
+615        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     1.2e-09     2.0e-09     1000,1200   7.5,50      1.0,-2.0      20.0
