@@ -256,7 +256,7 @@ class Hyperion2LIME:
             else:
                 if not self.interpolate:
                     ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-                    rho = self.tsc_rho2d[ind]*1e6
+                    rho = self.tsc_rho2d[ind]*1e6  # has been divided by "mh" and "mmw"
                 else:
                     rho = self.interpolateCell2d((r_in, t_in), self.tsc_rho2d, (self.xr_wall*self.r_inf, self.theta_wall))*1e6
 
