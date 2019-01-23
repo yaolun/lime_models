@@ -220,7 +220,7 @@ class Hyperion2LIME:
     #
     #     return val
 
-    def getDensity(self, x, y, z, version='idl'):
+    def getDensity(self, x, y, z, version='fortran'):
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
 
@@ -285,9 +285,11 @@ class Hyperion2LIME:
             indice_lowT = self.locateCell(((r_wall[-1]+r_wall[-2])/2, t_in, p_in), (r_wall, t_wall, p_wall))
             lowT = self.temp[indice_lowT]
             # the inner radius where the temperature correction starts to apply
-            r_break = 13000*au_cgs
-            # r_break = 2600*au_cgs
-            if lowT < 15:
+            # User-defined value
+            # r_break = 13000*au_cgs
+            r_break = 2600*au_cgs
+
+            if (lowT < 15) and (r_in >= r_break):
                 dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
                 if float(temp) + float(dT) >= 0.0:
                     return float(temp) + float(dT)
