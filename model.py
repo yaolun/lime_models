@@ -45,13 +45,16 @@ rMin = float(config['rMin'])*au_si # greater than zero to avoid a singularity at
 # a_params = [float(config['a_params0']), float(config['a_params1']), float(config['a_params2'])]
 distance = float(config['distance'])*pc_si
 theta_incl = float(config['inclination'])
-# YLY update 090518
 theta_cav = float(config['theta_cav'])
 omega = float(config['omega'])
+r_break = float(config['r_break'])
 
 # molecular data
 moldata = str(config['moldata'])
 lower_level = int(config['lower_level'])
+
+# option to use existing grid file
+gridIn = str(config['gridIn'])
 
 # determine whether to use the Sakai model
 if 'J' in config.keys():
@@ -196,7 +199,14 @@ def input(macros):
 
     par.nThreads = 20
     par.nSolveIters = 17
-    par.gridOutFiles = ['', '', '', '', outdir+'grid5']
+    # (i)   grid points chosen
+    # (ii)  Delaunay tetrahedra calculated
+    # (iii) density and temperature functions sampled
+    # (iv)  the remaining user-provided functions sampled
+    # (v)   populations solved
+    par.gridOutFiles = ['', '', outdir+'grid3', '', outdir+'grid5']
+    if gridIn != 'None':
+        par.gridInFile = gridIn
 
     if image_only:
         # TODO: need to fix the problem of CFITSIO and use the new interface to do this
@@ -356,7 +366,7 @@ def temperature(macros, x, y, z):
     #  return (temp0, None)
 
     # YLY update: turn on the external heating
-    temp_dust = model.getTemperature(x, y, z, external_heating=True)
+    temp_dust = model.getTemperature(x, y, z, external_heating=True, r_break=r_break)
 
     return [temp_dust, temp_dust]
 

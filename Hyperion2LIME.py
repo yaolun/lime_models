@@ -220,10 +220,9 @@ class Hyperion2LIME:
     #
     #     return val
 
-    def getDensity(self, x, y, z, version='fortran'):
+    def getDensity(self, x, y, z, version='fortran', theta_cav=None):
 
         (r_in, t_in, p_in) = self.Cart2Spherical(x, y, z)
-
         if self.truncate != None:
             if (y**2+z**2)**0.5 > self.truncate*au_si:
                 return 0.0
@@ -249,6 +248,26 @@ class Hyperion2LIME:
             return float(rho)*self.g2d/mh/self.mmw*1e6
 
         elif version == 'fortran':
+            # check for cavity
+            # determine whether the cell is in the cavity
+            if (theta_cav != None) and (theta_cav != 0):
+                # using R = 10000 AU as the reference point
+                c0 = (10000.*au_cgs)**(-0.5)*\
+                     np.sqrt(1/np.sin(np.radians(theta_cav))**3-1/np.sin(np.radians(theta_cav)))
+
+                # related coordinates
+                w = abs(r_in*np.cos(np.pi/2 - t_in))
+                _z = r_in*np.sin(np.pi/2 - t_in)
+
+                # condition for open cavity
+                z_cav = c0*abs(w)**1.5
+                cav_con = abs(_z) > abs(z_cav)
+
+                if cav_con:
+                    # this is still wrong, because in the "correct" model setup.  The cavity does not have zero density.
+                    rho = 1e2*1e6
+                    return float(rho)
+
             # isothermal solution
             if r_in > self.r_inf:
                 rho = (self.cs*1e5)**2/(2*np.pi*G*(r_in)**2)/mh/self.mmw * 1e6
@@ -262,7 +281,7 @@ class Hyperion2LIME:
 
             return float(rho)
 
-    def getTemperature(self, x, y, z, external_heating=False):
+    def getTemperature(self, x, y, z, external_heating=False, r_break=None):
         r_wall = self.hy_grid.r_wall
         t_wall = self.hy_grid.t_wall
         p_wall = self.hy_grid.p_wall
@@ -287,7 +306,7 @@ class Hyperion2LIME:
             # the inner radius where the temperature correction starts to apply
             # User-defined value
             # r_break = 13000*au_cgs
-            r_break = 2600*au_cgs
+            # r_break = 2600*au_cgs
 
             if (lowT < 15) and (r_in >= r_break):
                 dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
