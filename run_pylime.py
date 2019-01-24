@@ -50,6 +50,9 @@ for line in config_template:
         continue
     p[line.strip().split()[0]] = line.strip().split()[1]
 
+if p['gridIn'] != 'None':
+    print('Use existing LIME grid from "{:<s}"'.format(p['gridIn']))
+
 for i, m in enumerate(model_list['model_name']):
 
     # use the config file as the communication between model.py and user-defined model list
@@ -77,8 +80,6 @@ for i, m in enumerate(model_list['model_name']):
 
     # write out the default parameters
     for i, name in enumerate(p.keys()):
-        if p['gridIn'] != 'None':
-            print('Use existing LIME grid from "{:<s}"'.format(p['gridIn']))
         if name not in p_names:
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
