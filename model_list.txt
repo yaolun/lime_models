@@ -934,7 +934,9 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 # 622      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     4.0e-10     3.0e-09     1000,1200   7.5,100     0.0,-2.0      20.0
 # for HCO+: test for gridding issue
 # re-run model 579 for grid3
-623        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 623      hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# test for using gridIn option
+624        hco+@xpol.dat   3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     2.5e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # model 620 has the best absorption
 # 623      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     1.0e-09     1000,1200   7.5,100     0.0,-2.0      20.0
 # 624      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     8.0e-09     1000,1200   7.5,100     0.0,-2.0      20.0
