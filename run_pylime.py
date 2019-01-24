@@ -18,9 +18,9 @@ parser.add_argument('--no_image', action='store_true',
 parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the radial velocity by a factor')
 parser.add_argument('--vr_offset', default='0.0', help='additional offset added to vr.  (vr < 0 for infall, thus vr_offset < 0 would increase the infall velocity.)')
 parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
-parser.add_argument('--gridding', help='Only run LIME for the gridding purpose.  It will use the "gridding" version in getDensity(), which takes the density profile from the TSC-Fortran output with no cavity.')
-parser.add_argument('--no_rte', help='Only run LIME for the gridding purpose.  NO change will be done to other parameters unlike the "gridding" option.')
-parser.add_argument('--dry_run', help='Test run the program until the point where LIME will be executed.')
+parser.add_argument('--gridding', action='store_true', help='Only run LIME for the gridding purpose.  It will use the "gridding" version in getDensity(), which takes the density profile from the TSC-Fortran output with no cavity.')
+parser.add_argument('--no_rte', action='store_true', help='Only run LIME for the gridding purpose.  NO change will be done to other parameters unlike the "gridding" option.')
+parser.add_argument('--dry_run', action='store_true', help='Test run the program until the point where LIME will be executed.')
 
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
