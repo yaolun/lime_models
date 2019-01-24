@@ -91,6 +91,20 @@ if os.path.exists(outdir+'no_image'):
 else:
     no_image = False
 
+if os.path.exists(outdir+'gridding'):
+    no_rte = True
+    density_ver = 'gridding'
+    print('####### Run LIME for the gridding #######')
+else:
+    no_rte = False
+    density_ver = 'hyperion'
+
+if os.path.exists(outdir+'no_rte'):
+    no_rte = True
+    print('####### Only run the gridding part #######')
+else:
+    no_rte = False
+
 print('input parameters --')
 pprint.pprint(config)
 
@@ -190,7 +204,8 @@ def input(macros):
     #  par.polarization      = False
     par.traceRayAlgorithm = 0
     #  par.resetRNG          = False
-    #  par.doSolveRTE        = False
+    if no_rte:
+        par.doSolveRTE    = False
     # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     print(moldata)
@@ -321,7 +336,7 @@ def density(macros, x, y, z):
     # listOfDensities = [1.5e6*((rToUse/(300.0*macros["AU"]))**(-1.5))*1e6] # must be a list, even when there is only 1 item.
 
 
-    listOfDensities = [model.getDensity(x, y, z, version='fortran')]
+    listOfDensities = [model.getDensity(x, y, z, version=density_ver)]
 
 
     return listOfDensities

@@ -18,6 +18,10 @@ parser.add_argument('--no_image', action='store_true',
 parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the radial velocity by a factor')
 parser.add_argument('--vr_offset', default='0.0', help='additional offset added to vr.  (vr < 0 for infall, thus vr_offset < 0 would increase the infall velocity.)')
 parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
+parser.add_argument('--gridding', help='Only run LIME for the gridding purpose.  It will use the "gridding" version in getDensity(), which takes the density profile from the TSC-Fortran output with no cavity.')
+parser.add_argument('--no_rte', help='Only run LIME for the gridding purpose.  NO change will be done to other parameters unlike the "gridding" option.')
+parser.add_argument('--dry_run', help='Test run the program until the point where LIME will be executed.')
+
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
 
@@ -42,6 +46,8 @@ config_template = open(dict_path['lime_config_template'], 'r').readlines()
 # get the keys
 p = {}
 for line in config_template:
+    if line.startswith('#'):
+        continue
     p[line.strip().split()[0]] = line.strip().split()[1]
 
 for i, m in enumerate(model_list['model_name']):
@@ -59,17 +65,6 @@ for i, m in enumerate(model_list['model_name']):
     if args['age'] != None:
         p['age'] = args['age']
 
-    # user-dependent
-    # default parameters - the parameters that typically fixed and not defined in the model list
-    # p_names = ['mmw', 'g2d', 'dustfile', 'pIntensity', 'sinkPoints',
-    #            'rtout', 'velfile', 'cs', 'age', 'rMin', 'rMax', 'distance', 'inclination']
-    # p_values = ['2.37', '100', dict_path['dust_file'], # '/scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5.txt'
-    #             '50000', '8000', dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout', # '/scratch/LIMEmods/pylime/YLY/'
-    #             dict_path['tsc_dir']+str(model_list['tsc'][i]), str(model_list['cs'][i]), '36000',
-    #             '0.2', '64973', '200.0', '50.0']
-
-
-
     # model parameters - only abundance now
     # the names of parameters will be the same as the ones in the header of model_list.txt
     outdir = outdir_base+'model'+str(m)+'/'
@@ -82,6 +77,8 @@ for i, m in enumerate(model_list['model_name']):
 
     # write out the default parameters
     for i, name in enumerate(p.keys()):
+        if p['gridIn'] != 'None':
+            print('Use existing LIME grid from "{:<s}"'.format(p['gridIn']))
         if name not in p_names:
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
@@ -103,7 +100,7 @@ for i, m in enumerate(model_list['model_name']):
     if dict_path['limemod_dir']+'lime_config.txt' != os.getcwd()+'/lime_config.txt':
         shutil.copyfile(dict_path['limemod_dir']+'lime_config.txt', os.getcwd()+'/lime_config.txt')
     shutil.copyfile('model.py', outdir+'model.py')
-
+    shutil.copyfile('Hyperion2LIME.py', outdir+'Hyperion2LIME.py')
 
     # make sure the "image_only" file is reset everytime LIME runs
     if os.path.exists(outdir+'image_only'):
@@ -128,14 +125,24 @@ for i, m in enumerate(model_list['model_name']):
         foo = open(outdir+'no_image', 'w')
         foo.close()
 
-    # run pylime - if "image_only" file is presented, it will enter image-only mode
-    print('Start running model '+str(m))
-    log = open(outdir+'pylime.log','w')
-    err = open(outdir+'pylime.err','w')
-    run = call([pylime, 'model.py'], stdout=log, stderr=err)
+    # now implement no_rte as a separated mode, but it may need to be part of the standard run in the future
+    if (args['no_rte']):
+        foo = open(outdir+'no_rte', 'w')
+        foo.close()
+    # the gridding option.  Basically the same as "no_rte" except for changing the version of getDensity() to "gridding"
+    if (args['gridding']):
+        foo = open(outdir+'gridding', 'w')
+        foo.close()
 
-    if not os.path.exists(outdir+'grid5'):
-        print('grid files not found.  pylime probably failed.')
-    if not os.path.exists(outdir+'image0.fits'):
-        if not args['no_image']:
-            print('Image file not found.  pylime probably failed.')
+    if not args['dry_run']:
+        # run pylime - if "image_only" file is presented, it will enter image-only mode
+        print('Start running model '+str(m))
+        log = open(outdir+'pylime.log','w')
+        err = open(outdir+'pylime.err','w')
+        run = call([pylime, 'model.py'], stdout=log, stderr=err)
+
+        if not os.path.exists(outdir+'grid5'):
+            print('grid files not found.  pylime probably failed.')
+        if not os.path.exists(outdir+'image0.fits'):
+            if not args['no_image']:
+                print('Image file not found.  pylime probably failed.')
