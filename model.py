@@ -221,7 +221,7 @@ def input(macros):
     # (v)   populations solved
     par.gridOutFiles = ['', '', outdir+'grid3', '', outdir+'grid5']
     if gridIn != 'None':
-        par.gridInFile = gridIn
+        par.gridInFile = ['', '', gridIn, '', '']
 
     if image_only:
         # TODO: need to fix the problem of CFITSIO and use the new interface to do this
