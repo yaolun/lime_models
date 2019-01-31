@@ -92,18 +92,12 @@ else:
     no_image = False
 
 if os.path.exists(outdir+'gridding'):
-    no_rte = True
+    no_image = True
     density_ver = 'gridding'
     print('####### Run LIME for the gridding #######')
 else:
-    no_rte = False
+    no_image = False
     density_ver = 'hyperion'
-
-if os.path.exists(outdir+'no_rte'):
-    no_rte = True
-    print('####### Only run the gridding part #######')
-else:
-    no_rte = False
 
 print('input parameters --')
 pprint.pprint(config)
@@ -187,9 +181,8 @@ def input(macros):
     #    Below is an example of how you might use these parameters:
     #
     par.collPartIds        = [macros["CP_H2"]] # must be a list, even when there is only 1 item.
+    par.collPartNames      = ['H2 from Flower (1999) + extrapolation'] # must be a list, even when there is only 1 item.
     par.nMolWeights        = [1.0] # must be a list, even when there is only 1 item.
-
-    #  par.collPartNames     = ["phlogiston"] # must be a list, even when there is only 1 item.
     par.collPartMolWeights = [mmw] # must be a list, even when there is only 1 item.  TODO: review the choice of mmw in the future
 
     #  par.gridDensMaxValues = [1.0] # must be a list, even when there is only 1 item.
@@ -204,8 +197,7 @@ def input(macros):
     #  par.polarization      = False
     par.traceRayAlgorithm = 0
     #  par.resetRNG          = False
-    if no_rte:
-        par.doSolveRTE    = False
+
     # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     print(moldata)

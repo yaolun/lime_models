@@ -19,7 +19,6 @@ parser.add_argument('--vr_factor', default='1.0', help='artifically reduce the r
 parser.add_argument('--vr_offset', default='0.0', help='additional offset added to vr.  (vr < 0 for infall, thus vr_offset < 0 would increase the infall velocity.)')
 parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
 parser.add_argument('--gridding', action='store_true', help='Only run LIME for the gridding purpose.  It will use the "gridding" version in getDensity(), which takes the density profile from the TSC-Fortran output with no cavity.')
-parser.add_argument('--no_rte', action='store_true', help='Only run LIME for the gridding purpose.  NO change will be done to other parameters unlike the "gridding" option.')
 parser.add_argument('--dry_run', action='store_true', help='Test run the program until the point where LIME will be executed.')
 
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
@@ -126,10 +125,6 @@ for i, m in enumerate(model_list['model_name']):
         foo = open(outdir+'no_image', 'w')
         foo.close()
 
-    # now implement no_rte as a separated mode, but it may need to be part of the standard run in the future
-    if (args['no_rte']):
-        foo = open(outdir+'no_rte', 'w')
-        foo.close()
     # the gridding option.  Basically the same as "no_rte" except for changing the version of getDensity() to "gridding"
     if (args['gridding']):
         foo = open(outdir+'gridding', 'w')
