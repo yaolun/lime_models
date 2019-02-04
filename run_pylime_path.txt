@@ -1,6 +1,8 @@
 model_list              /scratch/LIMEmods/pylime/YLY/lime_models/model_list.txt
 outdir                  /scratch/LIMEmods/pylime/YLY/run/
-pylime                  /scratch/LIMEmods/pylime/lime/pylime.0504
+pylime                  /scratch/LIMEmods/pylime/lime_test/lime/pylime
+# for some reason, the python does work with this executable any more
+# pylime                  /scratch/LIMEmods/pylime/lime/pylime.0504
 lime_config_template    /scratch/LIMEmods/pylime/YLY/lime_models/lime_config_template.txt
 dust_file               /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5_interpolated.txt
 hyperion_dir            /scratch/LIMEmods/pylime/YLY/
