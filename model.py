@@ -97,7 +97,8 @@ if os.path.exists(outdir+'gridding'):
     print('####### Run LIME for the gridding #######')
 else:
     no_image = False
-    density_ver = 'hyperion'
+    # temperory solution for the gridding issue
+    density_ver = 'gridding'
 
 print('input parameters --')
 pprint.pprint(config)
@@ -198,7 +199,6 @@ def input(macros):
     par.traceRayAlgorithm = 0
     #  par.resetRNG          = False
 
-    # par.gridOutFiles      = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5'] # must be a list with 5 string elements, although some or all can be empty.
     # can use HDF5 format by adding USEHDF5="yes" to the make command
     print(moldata)
     par.moldatfile        = [moldata] # ["hco+@xpol.dat"] # must be a list, even when there is only 1 item.
@@ -211,9 +211,9 @@ def input(macros):
     # (iii) density and temperature functions sampled
     # (iv)  the remaining user-provided functions sampled
     # (v)   populations solved
-    par.gridOutFiles = ['', '', outdir+'grid3', '', outdir+'grid5']
+    par.gridOutFiles = ['', '', outdir+'grid3', outdir+'grid4', outdir+'grid5']
     if gridIn != 'None':
-        par.gridInFile = ['', '', gridIn, '', '']
+        par.gridInFile = gridIn
 
     if image_only:
         # TODO: need to fix the problem of CFITSIO and use the new interface to do this
