@@ -135,8 +135,7 @@ for i, m in enumerate(model_list['model_name']):
         print('Start running model '+str(m))
         log = open(outdir+'pylime.log','w')
         err = open(outdir+'pylime.err','w')
-        print(os.environ['PATH'])
-        run = call(['pylime_test', 'model.py'], stdout=log, stderr=err)
+        run = call([pylime, 'model.py'], stdout=log, stderr=err)
 
         if not os.path.exists(outdir+'grid5'):
             print('grid files not found.  pylime probably failed.')
