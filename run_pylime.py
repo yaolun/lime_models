@@ -135,7 +135,7 @@ for i, m in enumerate(model_list['model_name']):
         print('Start running model '+str(m))
         log = open(outdir+'pylime.log','w')
         err = open(outdir+'pylime.err','w')
-        call(['which', 'gcc'])
+        call(['which', 'gcc'], stdout=log, stderr=err)
         run = call([pylime, 'model.py'], stdout=log, stderr=err)
 
         if not os.path.exists(outdir+'grid5'):
