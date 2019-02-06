@@ -76,9 +76,6 @@ class Hyperion2LIME:
                     dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
                     break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
                     if len(break_pt) > 0:
-                        print(break_pt)
-                        print(self.vr2d[(self.xr < break_pt),i].max())
-                        print(self.vr2d[(self.xr > break_pt),i].min())
                         offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
                         self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
                 # YLY update - 091118
