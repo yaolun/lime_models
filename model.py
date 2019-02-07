@@ -12,7 +12,9 @@ import os
 # user-dependent
 sys.path = ['/scratch/LIMEmods/pylime/lime/python/',
             '/scratch/LIMEmods/pylime/YLY/lime_models/',
-            os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/']
+            os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/',
+            os.path.expanduser('~')+'/anaconda/bin/python/']
+
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
