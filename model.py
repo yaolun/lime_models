@@ -17,7 +17,7 @@ from par_classes import *
 import os
 # user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
-from Hyperion2LIME import *
+import Hyperion2LIME import h2l
 import astropy.constants as const
 import astropy.io as io
 import pprint
@@ -107,7 +107,8 @@ pprint.pprint(config)
 # truncate = 2000.0  # in unit of au
 truncate = None
 # YLY update: add omega
-model = Hyperion2LIME(rtout, velfile, cs, age, omega,
+print(h2l.__file__)
+model = h2l.Hyperion2LIME(rtout, velfile, cs, age, omega,
                       rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate,
                       fix_tsc=True, hybrid_tsc=False)
 
