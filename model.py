@@ -15,6 +15,7 @@ from par_classes import *
 
 # import results from Hyperion and TSC calculations
 import os
+print(sys.path)
 import numpy
 # user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
