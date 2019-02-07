@@ -15,11 +15,12 @@ from par_classes import *
 
 # import results from Hyperion and TSC calculations
 import os
-print(sys.path)
-import numpy as np
-print(np.__file__)
+
 # user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
+import numpy as np
+print(np.__file__)
+
 import Hyperion2LIME as h2l
 import astropy.constants as const
 import astropy.io as io
