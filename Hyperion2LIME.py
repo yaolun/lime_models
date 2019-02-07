@@ -65,9 +65,15 @@ class Hyperion2LIME:
             # the output of TSC fortran binary is in mass density
             self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh/mmw * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
 
-            self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            # self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            # self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            # self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+
+            print(type(self.tsc['ur'].values))
+            self.vr2d = (self.tsc['ur'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            self.vtheta2d = (self.tsc['utheta'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            self.vphi2d = (self.tsc['uphi'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+
 
             if fix_tsc:
                 # fix the discontinuity in v_r
@@ -75,8 +81,6 @@ class Hyperion2LIME:
                 for i in range(self.ntheta):
                     dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
                     break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
-                    print(dvr[(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)])
-                    print(break_pt)
                     if len(break_pt) > 0:
                         offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
                         self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
