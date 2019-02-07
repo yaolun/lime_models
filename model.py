@@ -16,7 +16,8 @@ from par_classes import *
 # import results from Hyperion and TSC calculations
 import os
 print(sys.path)
-import numpy
+import numpy as np
+print(np.__file__)
 # user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
 import Hyperion2LIME as h2l
