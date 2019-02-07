@@ -17,7 +17,7 @@ from par_classes import *
 import os
 # user-dependent
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
-import Hyperion2LIME import h2l
+import Hyperion2LIME as h2l
 import astropy.constants as const
 import astropy.io as io
 import pprint
