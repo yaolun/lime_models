@@ -8,20 +8,19 @@
 # For definitions of the classes ModelParameters and ImageParameters:
 
 import sys
+import os
 # user-dependent
 sys.path.append('/scratch/LIMEmods/pylime/lime_test/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/YLY/lime_models/')
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
 import numpy as np
+print(np.__file__)
 
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
-import os
 
 # user-dependent
-print(np.__file__)
-
 import Hyperion2LIME as h2l
 import astropy.constants as const
 import astropy.io as io
