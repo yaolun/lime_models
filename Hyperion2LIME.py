@@ -69,10 +69,12 @@ class Hyperion2LIME:
             # self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
             # self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
 
-            print(type(self.tsc['ur'].values))
-            self.vr2d = (self.tsc['ur'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            self.vtheta2d = (self.tsc['utheta'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            self.vphi2d = (self.tsc['uphi'].values).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+            # in unit of km/s
+            self.vr2d = np.reshape(self.tsc['ur'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+            self.vtheta2d = np.reshape(self.tsc['utheta'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+            self.vphi2d = np.reshape(self.tsc['uphi'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+
+            print(self.vr2d[:10,0])
 
 
             if fix_tsc:
@@ -357,11 +359,11 @@ class Hyperion2LIME:
 
         if not self.interpolate:
             ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-            v_sph = list(map(float, [self.vr2d[ind]/1e2, self.vtheta2d[ind]/1e2, self.vphi2d[ind]/1e2]))
+            v_sph = list(map(float, [self.vr2d[ind]*1e5/1e2, self.vtheta2d[ind]*1e5/1e2, self.vphi2d[ind]*1e5/1e2]))
         else:
-            vr = self.interpolateCell2d((r_in, t_in), self.vr2d, (self.xr_wall*self.r_inf, self.theta_wall))
-            vtheta = self.interpolateCell2d((r_in, t_in), self.vtheta2d, (self.xr_wall*self.r_inf, self.theta_wall))
-            vphi = self.interpolateCell2d((r_in, t_in), self.vphi2d, (self.xr_wall*self.r_inf, self.theta_wall))
+            vr = self.interpolateCell2d((r_in, t_in), self.vr2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
+            vtheta = self.interpolateCell2d((r_in, t_in), self.vtheta2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
+            vphi = self.interpolateCell2d((r_in, t_in), self.vphi2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
             v_sph = list(map(float, [vr/1e2, vtheta/1e2, vphi/1e2]))
 
         # test for artifically reducing the radial velocity
@@ -479,7 +481,7 @@ class Hyperion2LIME:
             f = interp2d(self.xr[r_corners]*self.r_inf,
                          self.theta[theta_corners],
                          self.tsc2d[k][np.ix_(r_corners, theta_corners)])
-            v_sph.append(float(f(r_in, t_in)/1e2))
+            v_sph.append(float(f(r_in, t_in)*1e5/1e2))
 
         # v_r, v_theta, v_phi = 0.0, 0.0, 0.0
         # for rc in r_corners:
