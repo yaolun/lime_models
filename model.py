@@ -13,14 +13,13 @@ import os
 sys.path.append('/scratch/LIMEmods/pylime/lime_test/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/YLY/lime_models/')
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
+# set this env. var. to prevent numpy+MKL error (but it seems reducing the speed of the calculation)
+os.environ['NPY_MKL_FORCE_INTEL'] = '1'
 import numpy as np
-print(np.__file__)
 
 from par_classes import *
 
 # import results from Hyperion and TSC calculations
-
-# user-dependent
 import Hyperion2LIME as h2l
 import astropy.constants as const
 import astropy.io as io
