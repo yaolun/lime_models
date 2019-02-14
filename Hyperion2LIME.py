@@ -48,7 +48,7 @@ class Hyperion2LIME:
         # velocity grid construction
         if load_full:
             # ascii.read() fails for large file.  Use pandas instead
-            self.tsc = pd.read_table(velfile, skiprows=1, delim_whitespace=True, header=None)
+            self.tsc = pd.read_csv(velfile, skiprows=1, delim_whitespace=True, header=None)
             self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
 
             self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
@@ -73,9 +73,6 @@ class Hyperion2LIME:
             self.vr2d = np.reshape(self.tsc['ur'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
             self.vtheta2d = np.reshape(self.tsc['utheta'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
             self.vphi2d = np.reshape(self.tsc['uphi'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
-
-            print(self.vr2d[:10,0])
-
 
             if fix_tsc:
                 # fix the discontinuity in v_r
