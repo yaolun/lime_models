@@ -14,8 +14,8 @@ sys.path.append('/scratch/LIMEmods/pylime/lime_test/lime/python/')
 sys.path.append('/scratch/LIMEmods/pylime/YLY/lime_models/')
 sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/')
 # set this env. var. to prevent numpy+MKL error (but it seems reducing the speed of the calculation)
-os.environ['NPY_MKL_FORCE_INTEL'] = '1'
-import numpy as np
+# os.environ['NPY_MKL_FORCE_INTEL'] = '1'
+# import numpy as np
 
 # from par_classes import *
 # update for LIME v1.9.4
