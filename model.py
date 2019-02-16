@@ -17,7 +17,9 @@ sys.path.append(os.path.expanduser('~')+'/anaconda/lib/python2.7/site-packages/'
 os.environ['NPY_MKL_FORCE_INTEL'] = '1'
 import numpy as np
 
-from par_classes import *
+# from par_classes import *
+# update for LIME v1.9.4
+from limepar_classes import *
 
 # import results from Hyperion and TSC calculations
 import Hyperion2LIME as h2l
@@ -110,7 +112,6 @@ pprint.pprint(config)
 # truncate = 2000.0  # in unit of au
 truncate = None
 # YLY update: add omega
-print(h2l.__file__)
 model = h2l.Hyperion2LIME(rtout, velfile, cs, age, omega,
                       rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate,
                       fix_tsc=True, hybrid_tsc=False)

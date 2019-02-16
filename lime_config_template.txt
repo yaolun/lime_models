@@ -27,6 +27,6 @@ a_params4       2.6,1.0,-2.0
 # LIME settings - RT / Imaging
 pIntensity      50000
 sinkPoints      8000
-gridIn          /scratch/LIMEmods/pylime/YLY/run/model623/grid3
-moldata         hco+@xpol.dat
+gridIn          None
+moldata         /scartch/LIMEmods/pylime/YLY/lime_models/hco+@xpol.dat
 lower_level     3
