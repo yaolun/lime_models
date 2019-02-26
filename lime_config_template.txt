@@ -12,7 +12,8 @@ age             36000
 omega           2.528700e-13
 # rMin            0.2
 rMin            1.0
-rMax            64973
+# rMax            64973
+rMax            30000
 distance        200.0
 inclination     130.0
 theta_cav       0.0
