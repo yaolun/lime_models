@@ -28,7 +28,7 @@ def grid_create(list_params):
         foo.write('{:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}\n'.format(*colhead))
 
     ref = {'model_name': last_model_num+1, 'hy_model': 'model14', 'cs': 0.37, 'tsc': 'bhr71shallow',
-           'a_model': 'drop3', 'Xo': 5e-9, 'Xd': 1e-11,'Tevap': 100.0, 'ndepl': 1e6, 'a_params4': -1}
+           'a_model': 'drop3', 'Xo': 5e-9, 'Xd': 1e-11,'Tevap': 30.0, 'ndepl': 1e6, 'a_params4': 100}
 
     for i, mod in enumerate(product):
         params_dum = copy.copy(ref)
@@ -55,7 +55,7 @@ import numpy as np
 # 2nd run
 list_params = {'Xo': 10**np.arange(-9.5, -7.0, 1.0),
                'Xd': 10**np.arange(-12.5, -9.5, 1.0),
-               'Tevap': np.arange(100,101),
+               'Tevap': np.arange(30,31),
                'ndepl': 10**np.arange(5.5, 8.0, 1.0)}
 
 grid_create(list_params)

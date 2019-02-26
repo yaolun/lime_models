@@ -312,6 +312,7 @@ class Hyperion2LIME:
             # User-defined value
             # r_break = 13000*au_cgs
             # r_break = 2600*au_cgs
+            r_break = r_break*au_cgs
 
             if (lowT < 15) and (r_in >= r_break):
                 dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
