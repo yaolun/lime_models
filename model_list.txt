@@ -958,4 +958,5 @@ model_name  moldata         lower_level hy_model    cs      tsc                 
 #
 # 637      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     8.0e-10     1000,1200   1.0,100     0.0,-2.0      20.0
 # model 637 with the hybrid TSC model
-638        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     8.0e-10     1000,1200   1.0,100     0.0,-2.0      20.0
+# 638      hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     8.0e-10     1000,1200   1.0,100     0.0,-2.0      20.0
+639        hcn@xpol.dat    3           model53     0.37    rho_v_env.bhr71_2e4_fortran chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
