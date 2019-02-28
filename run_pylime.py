@@ -20,6 +20,7 @@ parser.add_argument('--vr_offset', default='0.0', help='additional offset added 
 parser.add_argument('--age', help='one-time change to the age for the current run [unit: yr]')
 parser.add_argument('--gridding', action='store_true', help='Only run LIME for the gridding purpose.  It will use the "gridding" version in getDensity(), which takes the density profile from the TSC-Fortran output with no cavity.')
 parser.add_argument('--dry_run', action='store_true', help='Test run the program until the point where LIME will be executed.')
+parser.add_argument('--hybrid_tsc', action='store_true', help='Option to have an angular momentum consered envelope inside the centrifugal radius')
 
 # parser.add_argument('--model_list', help='specify model list other than the default one (model_list.txt)')
 args = vars(parser.parse_args())
@@ -66,6 +67,10 @@ for i, m in enumerate(model_list['model_name']):
     p['vr_offset'] = args['vr_offset']
     if args['age'] != None:
         p['age'] = args['age']
+    if args['hybrid_tsc']:
+        p['hybrid_tsc'] = '1'
+    else:
+        p['hybrid_tsc'] = '0'
 
     # model parameters - only abundance now
     # the names of parameters will be the same as the ones in the header of model_list.txt

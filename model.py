@@ -61,6 +61,9 @@ lower_level = int(config['lower_level'])
 # option to use existing grid file
 gridIn = str(config['gridIn'])
 
+# option to choose the hybrid TSC model
+hybrid_tsc = bool(config['hybrid_tsc'])
+
 # determine whether to use the Sakai model
 if 'J' in config.keys():
     J = float(config['J'])
@@ -114,7 +117,7 @@ truncate = None
 # YLY update: add omega
 model = h2l.Hyperion2LIME(rtout, velfile, cs, age, omega,
                       rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate,
-                      fix_tsc=True, hybrid_tsc=False)
+                      fix_tsc=True, hybrid_tsc=hybrid_tsc)
 
 
 
