@@ -30,5 +30,5 @@ a_params4       2.6,1.0,-2.0
 pIntensity      50000
 sinkPoints      8000
 gridIn          None
-moldata         /scartch/LIMEmods/pylime/YLY/lime_models/hco+@xpol.dat
+moldata         /scratch/LIMEmods/pylime/YLY/lime_models/hco+@xpol.dat
 lower_level     3
