@@ -27,7 +27,7 @@ def grid_create(list_params):
         colhead = ('model_name', 'hy_model', 'cs', 'tsc', 'a_model', 'a_params0', 'a_params1', 'a_params2', 'a_params3', 'a_params4')
         foo.write('{:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}\n'.format(*colhead))
 
-    ref = {'model_name': last_model_num+1, 'hy_model': 'model14', 'cs': 0.37, 'tsc': 'bhr71shallow',
+    ref = {'model_name': last_model_num+1, 'hy_model': 'model57', 'cs': 0.37, 'tsc': 'rho_v_env.bhr71_model57',
            'a_model': 'drop3', 'Xo': 5e-9, 'Xd': 1e-11,'Tevap': 30.0, 'ndepl': 1e6, 'a_params4': 100}
 
     for i, mod in enumerate(product):
