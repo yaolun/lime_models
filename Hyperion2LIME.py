@@ -20,7 +20,8 @@ class Hyperion2LIME:
 
     def __init__(self, rtout, velfile, cs, age, omega,
                  rmin=0, mmw=2.37, g2d=100, truncate=None, debug=False, load_full=True,
-                 fix_tsc=True, hybrid_tsc=False, interpolate=False):
+                 fix_tsc=True, hybrid_tsc=False, interpolate=False,
+                 TSC_dir='', tsc_outdir=''):
         self.rtout = rtout
         self.velfile = velfile
         if load_full:
@@ -45,74 +46,76 @@ class Hyperion2LIME:
         # option to use simple Trapezoid rule average for getting density, temperature, and velocity
         self.interpolate = interpolate
 
-        # velocity grid construction
-        if load_full:
-            # ascii.read() fails for large file.  Use pandas instead
-            self.tsc = pd.read_csv(velfile, skiprows=1, delim_whitespace=True, header=None)
-            self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
+        self.tsc2d = getTSC(age, cs, omega, velfile=velfile, TSC_dir=TSC_dir, outdir=tsc_outdir, outname='tsc_regrid')
 
-            self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
-            self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
-                                     (self.xr[:-1]+self.xr[1:])/2,
-                                     [2*self.xr[-1]-self.xr[-2]]))
-            self.theta = np.unique(self.tsc['theta'])
-            self.theta_wall = np.hstack(([2*self.theta[0]-self.theta[1]],
-                                    (self.theta[:-1]+self.theta[1:])/2,
-                                    [2*self.theta[-1]-self.theta[-2]]))
-            self.nxr = len(self.xr)
-            self.ntheta = len(self.theta)
-
-            # the output of TSC fortran binary is in mass density
-            self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh/mmw * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
-
-            # self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            # self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-            # self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
-
-            # in unit of km/s
-            self.vr2d = np.reshape(self.tsc['ur'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
-            self.vtheta2d = np.reshape(self.tsc['utheta'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
-            self.vphi2d = np.reshape(self.tsc['uphi'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
-
-            if fix_tsc:
-                # fix the discontinuity in v_r
-                # vr = vr + offset * log(xr)/log(xr_break)  for xr >= xr_break
-                for i in range(self.ntheta):
-                    dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
-                    break_pt = self.xr[1:][(dvr > 0.05) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
-                    if len(break_pt) > 0:
-                        offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
-                        self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
-                # YLY update - 091118
-                # fix the discontinuity in v_phi
-                for i in range(self.ntheta):
-                    dvr = abs((self.vphi2d[1:,i] - self.vphi2d[:-1,i])/self.vphi2d[1:,i])
-                    break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
-                    if len(break_pt) > 0:
-                        offset = self.vphi2d[(self.xr < break_pt),i].min() - self.vphi2d[(self.xr > break_pt),i].max()
-                        self.vphi2d[(self.xr >= break_pt),i] = self.vphi2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
-
-            # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
-            if hybrid_tsc:
-                from scipy.interpolate import interp1d
-                for i in range(self.ntheta):
-                    rCR = self.omega**2 * G**3 * (0.975*(self.cs*1e5)**3/G*(self.age*3600*24*365))**3 * np.sin(self.theta[i])**4 / (16*(self.cs*1e5)**8)
-                    if rCR/self.r_inf >= self.xr.min():
-                        f_vr = interp1d(self.xr, self.vr2d[:,i])
-                        vr_rCR = f_vr(rCR/self.r_inf)
-                        f_vphi = interp1d(self.xr, self.vphi2d[:,i])
-                        vphi_rCR = f_vphi(rCR/self.r_inf)
-
-                        # radius in cylinderical coordinates
-                        wCR = np.sin(self.theta[i]) * rCR
-                        J = vphi_rCR * wCR
-                        M = (vr_rCR**2 + vphi_rCR**2) * wCR / (2*G)
-
-                        w = self.xr*np.sin(self.theta[i])*self.r_inf
-                        self.vr2d[(self.xr <= rCR/self.r_inf), i] = -( 2*G*M/w[self.xr <= rCR/self.r_inf] - J**2/(w[self.xr <= rCR/self.r_inf])**2 )**0.5
-                        self.vphi2d[(self.xr <= rCR/self.r_inf), i] = J/(w[self.xr <= rCR/self.r_inf])
-
-            self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
+        # # velocity grid construction
+        # if load_full:
+        #     # ascii.read() fails for large file.  Use pandas instead
+        #     self.tsc = pd.read_csv(velfile, skiprows=1, delim_whitespace=True, header=None)
+        #     self.tsc.columns = ['lp', 'xr', 'theta', 'ro', 'ur', 'utheta', 'uphi']
+        #
+        #     self.xr = np.unique(self.tsc['xr'])  # reduce radius: x = r/(a*t) = r/r_inf
+        #     self.xr_wall = np.hstack(([2*self.xr[0]-self.xr[1]],
+        #                              (self.xr[:-1]+self.xr[1:])/2,
+        #                              [2*self.xr[-1]-self.xr[-2]]))
+        #     self.theta = np.unique(self.tsc['theta'])
+        #     self.theta_wall = np.hstack(([2*self.theta[0]-self.theta[1]],
+        #                             (self.theta[:-1]+self.theta[1:])/2,
+        #                             [2*self.theta[-1]-self.theta[-2]]))
+        #     self.nxr = len(self.xr)
+        #     self.ntheta = len(self.theta)
+        #
+        #     # the output of TSC fortran binary is in mass density
+        #     self.tsc_rho2d = 1/(4*np.pi*G*(self.age*yr)**2)/mh/mmw * np.array(self.tsc['ro']).reshape([self.nxr, self.ntheta])
+        #
+        #     # self.vr2d = np.array(self.tsc['ur']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        #     # self.vtheta2d = np.array(self.tsc['utheta']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        #     # self.vphi2d = np.array(self.tsc['uphi']).reshape([self.nxr, self.ntheta]) * self.cs*1e5
+        #
+        #     # in unit of km/s
+        #     self.vr2d = np.reshape(self.tsc['ur'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+        #     self.vtheta2d = np.reshape(self.tsc['utheta'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+        #     self.vphi2d = np.reshape(self.tsc['uphi'].to_numpy(), (self.nxr, self.ntheta)) * np.float64(self.cs)
+        #
+        #     if fix_tsc:
+        #         # fix the discontinuity in v_r
+        #         # vr = vr + offset * log(xr)/log(xr_break)  for xr >= xr_break
+        #         for i in range(self.ntheta):
+        #             dvr = abs((self.vr2d[1:,i] - self.vr2d[:-1,i])/self.vr2d[1:,i])
+        #             break_pt = self.xr[1:][(dvr > 0.05) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
+        #             if len(break_pt) > 0:
+        #                 offset = self.vr2d[(self.xr < break_pt),i].max() - self.vr2d[(self.xr > break_pt),i].min()
+        #                 self.vr2d[(self.xr >= break_pt),i] = self.vr2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
+        #         # YLY update - 091118
+        #         # fix the discontinuity in v_phi
+        #         for i in range(self.ntheta):
+        #             dvr = abs((self.vphi2d[1:,i] - self.vphi2d[:-1,i])/self.vphi2d[1:,i])
+        #             break_pt = self.xr[1:][(dvr > 0.1) & (self.xr[1:] > 1e-3) & (self.xr[1:] < 1-2e-3)]
+        #             if len(break_pt) > 0:
+        #                 offset = self.vphi2d[(self.xr < break_pt),i].min() - self.vphi2d[(self.xr > break_pt),i].max()
+        #                 self.vphi2d[(self.xr >= break_pt),i] = self.vphi2d[(self.xr >= break_pt),i] + offset*np.log10(self.xr[self.xr >= break_pt])/np.log10(break_pt)
+        #
+        #     # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
+        #     if hybrid_tsc:
+        #         from scipy.interpolate import interp1d
+        #         for i in range(self.ntheta):
+        #             rCR = self.omega**2 * G**3 * (0.975*(self.cs*1e5)**3/G*(self.age*3600*24*365))**3 * np.sin(self.theta[i])**4 / (16*(self.cs*1e5)**8)
+        #             if rCR/self.r_inf >= self.xr.min():
+        #                 f_vr = interp1d(self.xr, self.vr2d[:,i])
+        #                 vr_rCR = f_vr(rCR/self.r_inf)
+        #                 f_vphi = interp1d(self.xr, self.vphi2d[:,i])
+        #                 vphi_rCR = f_vphi(rCR/self.r_inf)
+        #
+        #                 # radius in cylinderical coordinates
+        #                 wCR = np.sin(self.theta[i]) * rCR
+        #                 J = vphi_rCR * wCR
+        #                 M = (vr_rCR**2 + vphi_rCR**2) * wCR / (2*G)
+        #
+        #                 w = self.xr*np.sin(self.theta[i])*self.r_inf
+        #                 self.vr2d[(self.xr <= rCR/self.r_inf), i] = -( 2*G*M/w[self.xr <= rCR/self.r_inf] - J**2/(w[self.xr <= rCR/self.r_inf])**2 )**0.5
+        #                 self.vphi2d[(self.xr <= rCR/self.r_inf), i] = J/(w[self.xr <= rCR/self.r_inf])
+        #
+        #     self.tsc2d = {'vr2d': self.vr2d, 'vtheta2d': self.vtheta2d, 'vphi2d': self.vphi2d}
 
 
     def Cart2Spherical(self, x, y, z, unit_convert=True):
@@ -279,10 +282,10 @@ class Hyperion2LIME:
             # TSC solution
             else:
                 if not self.interpolate:
-                    ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-                    rho = self.tsc_rho2d[ind]*1e6  # has been divided by "mh" and "mmw"
+                    ind = self.locateCell2d((r_in, t_in), (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall']))
+                    rho = self.tsc2d['rho2d'][ind]*1e6  # has been divided by "mh" and "mmw"
                 else:
-                    rho = self.interpolateCell2d((r_in, t_in), self.tsc_rho2d, (self.xr_wall*self.r_inf, self.theta_wall))*1e6
+                    rho = self.interpolateCell2d((r_in, t_in), self.tsc2d['rho2d'], (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall']))*1e6
 
             return float(rho)
 
@@ -349,19 +352,19 @@ class Hyperion2LIME:
         # if the input radius is smaller than the minimum in xr array,
         # use the minimum in xr array instead.
         # UPDATE (081518): return zero velocity instead
-        if r_in < self.xr_wall.min()*self.r_inf:
-            r_in = self.xr.min()*self.r_inf
+        if r_in < self.tsc2d['xr_wall'].min()*self.r_inf:
+            r_in = self.tsc2d['xrc'].min()*self.r_inf
 
             v_out = [0.0, 0.0, 0.0]
             return v_out
 
         if not self.interpolate:
-            ind = self.locateCell2d((r_in, t_in), (self.xr_wall*self.r_inf, self.theta_wall))
-            v_sph = list(map(float, [self.vr2d[ind]*1e5/1e2, self.vtheta2d[ind]*1e5/1e2, self.vphi2d[ind]*1e5/1e2]))
+            ind = self.locateCell2d((r_in, t_in), (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall']))
+            v_sph = list(map(float, [self.tsc2d['vr2d'][ind]*1e5/1e2, self.tsc2d['vtheta2d'][ind]*1e5/1e2, self.tsc2d['vphi2d'][ind]*1e5/1e2]))
         else:
-            vr = self.interpolateCell2d((r_in, t_in), self.vr2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
-            vtheta = self.interpolateCell2d((r_in, t_in), self.vtheta2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
-            vphi = self.interpolateCell2d((r_in, t_in), self.vphi2d, (self.xr_wall*self.r_inf, self.theta_wall)) * 1e5
+            vr = self.interpolateCell2d((r_in, t_in), self.tsc2d['vr2d'], (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall'])) * 1e5
+            vtheta = self.interpolateCell2d((r_in, t_in), self.tsc2d['vtheta2d'], (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall'])) * 1e5
+            vphi = self.interpolateCell2d((r_in, t_in), self.tsc2d['vphi2d'], (self.tsc2d['xr_wall']*self.r_inf, self.tsc2d['theta_wall'])) * 1e5
             v_sph = list(map(float, [vr/1e2, vtheta/1e2, vphi/1e2]))
 
         # test for artifically reducing the radial velocity
@@ -461,14 +464,14 @@ class Hyperion2LIME:
 
         # if the input radius is smaller than the minimum in xr array,
         # use the minimum in xr array instead.
-        if r_in < self.xr_wall.min()*self.r_inf:
-            r_in = self.xr.min()*self.r_inf
+        if r_in < self.tsc2d['xr_wall'].min()*self.r_inf:
+            r_in = self.tsc2d['xrc'].min()*self.r_inf
             # TODO: raise warning
 
         # r, t = 10*au, np.radians(30.)
         # print(r, t)
-        r_corners = np.argsort(abs(r_in-self.xr*self.r_inf))[:2]
-        theta_corners = np.argsort(abs(t_in-self.theta))[:2]
+        r_corners = np.argsort(abs(r_in-self.tsc2d['xrc']*self.r_inf))[:2]
+        theta_corners = np.argsort(abs(t_in-self.tsc2d['thetac']))[:2]
 
         # print(r_corners, theta_corners)
 
@@ -476,8 +479,8 @@ class Hyperion2LIME:
         # TODO: use scipy interp2d
         v_sph = []
         for k in ['vr2d', 'vtheta2d', 'vphi2d']:
-            f = interp2d(self.xr[r_corners]*self.r_inf,
-                         self.theta[theta_corners],
+            f = interp2d(self.tsc2d['xrc'][r_corners]*self.r_inf,
+                         self.tsc2d['thetac'][theta_corners],
                          self.tsc2d[k][np.ix_(r_corners, theta_corners)])
             v_sph.append(float(f(r_in, t_in)*1e5/1e2))
 

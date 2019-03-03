@@ -61,7 +61,8 @@ for i, m in enumerate(model_list['model_name']):
 
     p['dustfile'] = dict_path['dust_file']
     p['rtout'] = dict_path['hyperion_dir']+model_list['hy_model'][i]+'.rtout'
-    p['velfile'] = dict_path['tsc_dir']+str(model_list['tsc'][i])
+    p['TSC_dir'] = dict_path['TSC_dir']
+    # p['velfile'] = dict_path['tsc_dir']+str(model_list['tsc'][i])
     p['cs'] = str(model_list['cs'][i])
     p['vr_factor'] = args['vr_factor']
     p['vr_offset'] = args['vr_offset']
@@ -75,11 +76,10 @@ for i, m in enumerate(model_list['model_name']):
     # model parameters - only abundance now
     # the names of parameters will be the same as the ones in the header of model_list.txt
     outdir = outdir_base+'model'+str(m)+'/'
-    p_names = ['outdir']
+
+    p_names = ['outdir', 'velfile']
     p_names.extend(model_list.keys()[1:])
-    p_values = [outdir]
-    # p_values.extend([str(model_list[_p][model_list['model_name'] == m].data[0]) for _p in model_list.keys()[1:]])
-    # bug fix
+    p_values = [outdir, outdir+'tsc_regrid.pkl']
     p_values.extend([str(model_list[_p][i]) for _p in model_list.keys()[1:]])
 
     # write out the default parameters

@@ -6,5 +6,6 @@ pylime                  /scratch/LIMEmods/pylime/lime_test/lime/pylime
 lime_config_template    /scratch/LIMEmods/pylime/YLY/lime_models/lime_config_template.txt
 dust_file               /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5_interpolated.txt
 hyperion_dir            /scratch/LIMEmods/pylime/YLY/
-tsc_dir                 /scratch/LIMEmods/pylime/YLY/
+# tsc_dir                 /scratch/LIMEmods/pylime/YLY/
+TSC_dir                 /home/bettyjo/yaolun/misc/TSC/
 limemod_dir             /scratch/LIMEmods/pylime/YLY/lime_models/

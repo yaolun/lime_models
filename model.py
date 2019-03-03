@@ -41,6 +41,7 @@ pIntensity = int(config['pIntensity'])
 sinkPoints = int(config['sinkPoints'])
 mmw = float(config['mmw'])
 rtout = config['rtout']
+TSC_dir = config['TSC_dir']
 velfile = config['velfile']
 cs = float(config['cs'])
 age = float(config['age'])
@@ -117,7 +118,8 @@ truncate = None
 # YLY update: add omega
 model = h2l.Hyperion2LIME(rtout, velfile, cs, age, omega,
                       rmin=rMin, g2d=g2d, mmw=mmw, truncate=truncate,
-                      fix_tsc=True, hybrid_tsc=hybrid_tsc)
+                      fix_tsc=True, hybrid_tsc=hybrid_tsc,
+                      TSC_dir=TSC_dir, tsc_outdir=outdir)
 
 
 
