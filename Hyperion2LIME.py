@@ -5,6 +5,7 @@ import astropy.io as io
 import astropy.constants as const
 from astropy.convolution import convolve, Box1DKernel
 from scipy.interpolate import interp2d
+from getTSC import *
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 MS = const.M_sun.cgs.value
 G = const.G.cgs.value
