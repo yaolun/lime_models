@@ -66,7 +66,7 @@ for i, m in enumerate(model_list['model_name']):
     p['cs'] = str(model_list['cs'][i])
     p['vr_factor'] = args['vr_factor']
     p['vr_offset'] = args['vr_offset']
-    p['moldata'] = dict_path['moldata_dir']+model_list['moldata']
+    p['moldata'] = dict_path['moldata_dir']+model_list['moldata'][i]
     if args['age'] != None:
         p['age'] = args['age']
     if args['hybrid_tsc']:
