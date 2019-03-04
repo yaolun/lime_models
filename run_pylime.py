@@ -83,7 +83,6 @@ for i, m in enumerate(model_list['model_name']):
 
     p_names.extend(model_list.keys()[1:])
     p_values.extend([str(model_list[_p][i]) for _p in model_list.keys()[1:]])
-    print(p_names)
     if p_values[p_names.index('velfile')] == 'none':
         p_values[p_names.index('velfile')] = outdir+'tsc_regrid.h5'
 

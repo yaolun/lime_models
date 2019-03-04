@@ -49,7 +49,7 @@
 #   - drop2: the same function as the "drop" function but there is a innermost cutoff at 13 au (centrifugal radius for BHR71)
 #
 #############################################################################################################################################
-model_name  moldata         lower_level hy_model    cs      tsc                       a_model     a_params0   a_params1   a_params2   a_params3   a_params4     theta_cav
+model_name  moldata         lower_level hy_model    cs      velfile                   a_model     a_params0   a_params1   a_params2   a_params3   a_params4     theta_cav
 #############################################################################################################################################
 #
 # 1         hco+@xpol.dat   3           model12     0.38    rho_v_env.bhr71dust       uniform     3e-9        -1          -1          -1          -1            0.0
