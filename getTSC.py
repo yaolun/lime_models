@@ -3,7 +3,7 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.01, TSC_dir='', outdir=''
     import os
     import astropy.constants as const
     from scipy.interpolate import interp1d
-    import pickle
+    import h5py
     au = const.au.cgs.value
     yr = 3600.*24*365
 
@@ -38,15 +38,18 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.01, TSC_dir='', outdir=''
 
         tscpar = open(TSC_dir+'tsc.par', 'w')
         tscpar.write('0.1 3.0 0.1 1 90 %.3f\n' % (omega*age*yr) )
-        tscpar.write('0.0001 0.01 0.00001 %d %d' % (ntheta/2, nphi) )
+        tscpar.write('0.00001 0.01 0.00001 %d %d' % (ntheta/2, nphi) )
         tscpar.close()
+
+        os.chdir(TSC_dir)
+        os.system(TSC_dir+'ncofrac_update')
 
         # read in the TSC output
         tsc2d_fine = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, **kwargs)
 
         # reduce the total file size and interpolate onto a log-grid
         # create the log-linear grid cap at 0.01 for the reduced radius
-        r_in = 1.0*au/(cs*1e5*age*yr)
+        r_in = 0.1*au/(cs*1e5*age*yr)
         ri           = r_in * (1.0/r_in)**(np.arange(nr+1).astype(dtype='float')/float(nr))
         ri           = np.hstack((0.0, ri))
         # Keep the constant cell size in r-direction at large radii
@@ -55,18 +58,18 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.01, TSC_dir='', outdir=''
         ri = np.hstack((ri[0:ind], ri[ind]+np.arange(np.ceil((1.0-ri[ind])/max_rCell))*max_rCell, 1.0))
         rc = (ri[1:]+ri[:-1])/2
 
-        thetac = tsc2d_fine['theta']
+        thetac = tsc2d_fine['thetac']
 
         vr2d = np.empty((len(rc), len(thetac)))
         vtheta2d = np.empty((len(rc), len(thetac)))
         vphi2d = np.empty((len(rc), len(thetac)))
         rho2d = np.empty((len(rc), len(thetac)))
 
-        tsc_theta_wall = np.hstack(([2*tsc2d_fine['theta'][0]-tsc2d_fine['theta'][1]],
-                                    (tsc2d_fine['theta'][:-1]+tsc2d_fine['theta'][1:])/2,
-                                    [2*tsc2d_fine['theta'][-1]-tsc2d_fine['theta'][-2]]))
+        tsc_theta_wall = np.hstack(([2*tsc2d_fine['thetac'][0]-tsc2d_fine['thetac'][1]],
+                                    (tsc2d_fine['thetac'][:-1]+tsc2d_fine['thetac'][1:])/2,
+                                    [2*tsc2d_fine['thetac'][-1]-tsc2d_fine['thetac'][-2]]))
 
-        tsc_xr = np.hstack((tsc2d_fine['xr'], tsc2d_coarse['xr'][:]))
+        tsc_xr = np.hstack((tsc2d_fine['xrc'], tsc2d_coarse['xrc']))
         # interpolate the tsc kinematics onto the log-linear grid
         for it, t in enumerate(thetac):
             vr = np.hstack((tsc2d_fine['vr2d'][:,it], tsc2d_coarse['vr2d'][:,it]))
@@ -88,11 +91,30 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.01, TSC_dir='', outdir=''
                  'xrc':rc, 'thetac': thetac, 'xr_wall': ri, 'theta_wall': tsc_theta_wall}
 
         # Saving the objects:
-        with open(outdir+outname+'.pkl', 'wb') as f:
-            pickle.dump(tsc2d, f)
+        with h5py.File(outdir+outname+'.h5', 'w') as f:
+            f.attrs['age'] = age
+            f.attrs['cs'] = cs
+            f.attrs['omega'] = omega
+            for k in tsc2d.keys():
+                f.create_dataset(k, data=tsc2d[k])
+        # with open(outdir+outname+'.pkl', 'wb') as f:
+        #     pickle.dump(tsc2d, f)
     else:
-        with open(velfile, 'rb') as f:
-            tsc2d = pickle.load(f)
+        try:
+            tsc2d = {}
+            tsc2d_keys = ['vr2d', 'vtheta2d', 'vphi2d', 'rho2d',
+                          'xrc', 'thetac', 'xr_wall', 'theta_wall']
+            with h5py.File(velfile, 'r') as f:
+                for k in tsc2d_keys:
+                    if '2d' in k:
+                        tsc2d[k] = f[k][:,:]
+                    else:
+                        tsc2d[k] = f[k][:]
+            # with open(velfile, 'rb') as f:
+            #     tsc2d = pickle.load(f)
+        except:
+            print(velfile)
+            tsc2d = loadTSC(velfile, age, cs, omega, **kwargs)
 
     return tsc2d
 
@@ -165,6 +187,6 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
                 vphi2d[(xr <= rCR/r_inf), i] = J/(w[xr <= rCR/r_inf])
 
     tsc2d = {'vr2d': vr2d, 'vtheta2d': vtheta2d, 'vphi2d': vphi2d, 'rho2d': rho2d,
-             'xr':xr, 'theta':theta}
+             'xrc':xr, 'thetac':theta}
 
     return tsc2d
