@@ -85,6 +85,7 @@ for i, m in enumerate(model_list['model_name']):
     p_values.extend([str(model_list[_p][i]) for _p in model_list.keys()[1:]])
     if p_values[p_names.index('velfile')] == 'none':
         p_values[p_names.index('velfile')] = outdir+'tsc_regrid.h5'
+    p_values[p_names.index('moldata')] = dict_path['moldata_dir']+model_list['moldata'][i]
 
     # write out the default parameters
     for i, name in enumerate(p.keys()):
@@ -92,7 +93,7 @@ for i, m in enumerate(model_list['model_name']):
             foo.write('{:<14s}  {:<s}\n'.format(name, p[name]))
     # write out the parameters specified in the model_list
     for i, (name, val) in enumerate(zip(p_names, p_values)):
-        if name in ['tsc', 'hy_model']:
+        if name in ['hy_model']:
             continue
         foo.write('{:<14s}  {:<s}\n'.format(name, val))
 
