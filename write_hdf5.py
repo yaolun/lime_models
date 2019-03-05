@@ -259,7 +259,7 @@ for m in args['model_num'].split(','):
                    'dustpath': dustpath,
                    'recalVelo': recalVelo}
     pprint(dict_params)
-    ppritn(auxdata)
+    pprint(auxdata)
 
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
