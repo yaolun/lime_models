@@ -1,4 +1,4 @@
-def getTSC(age, cs, omega, velfile='none', max_rCell=0.01, TSC_dir='', outdir='', outname='', overwrite=False, **kwargs):
+def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='', outname='', overwrite=False, **kwargs):
     import numpy as np
     import os
     import astropy.constants as const
