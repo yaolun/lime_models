@@ -219,7 +219,7 @@ for m in args['model_num'].split(','):
         rtout = dict_config['rtout']
     else:
         rtout = dict_path['rtout']
-    if dict_path['velfile'] == None:
+    if dict_path['velfile'] == 'none':
         velfile = dict_config['velfile']
     else:
         velfile = dict_path['velfile']
