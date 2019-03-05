@@ -57,10 +57,10 @@ parser = argparse.ArgumentParser(description='Options for converting LIME output
 # parser.add_argument('--pathfile', required=True, help='[required] path file for getting paths from run_pylime_path.txt')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
-parser.add_argument('--pathfile', default='run_path_write_hdf5.txt', help='the pathfile for "mod_dir", "colt_dir", "rtout", "velfile", and "dustpath"')
+parser.add_argument('--pathfile', default='run_path_write_hdf5.txt', help='the pathfile for "mod_dir", "limeaid_dir", "rtout", "velfile", and "dustpath"')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
 parser.add_argument('--mod_dir', help='the model directory', type=str)
-parser.add_argument('--colt_dir', help='the path of colt-lime', type=str)
+parser.add_argument('--limeaid_dir', help='the path of lime-aid', type=str)
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
@@ -77,11 +77,11 @@ else:
     dict_path = {}
 # update the paths with the command line option
 for k in args.keys():
-    if (k in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
+    if (k in ['mod_dir', 'limeaid_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
         dict_path[k] = args[k]
 # check if all paths are specified
 path_flag = 1
-for p in ['mod_dir', 'colt_dir', 'rtout', 'velfile', 'dustpath']:
+for p in ['mod_dir', 'limeaid_dir', 'rtout', 'velfile', 'dustpath']:
     if p not in dict_path.keys():
         print(p+' not specified')
         path_flag = path_flag * 0
@@ -213,17 +213,22 @@ for m in args['model_num'].split(','):
         dict_config[name] = val
 
     outfilename = 'infall_model'+m
-    # rtout = '/Volumes/SD-Mac/model14.rtout'
-    # velfile = '/Users/yaolun/programs/misc/TSC/rho_v_env'
-    if dict_path['rtout'] == None:
+    if args['rtout'] != None:
+        rtout = args['rtout']
+    elif dict_path['rtout'] == 'none':
+        # this is the default option
         rtout = dict_config['rtout']
     else:
         rtout = dict_path['rtout']
-    if dict_path['velfile'] == 'none':
+
+    if args['velfile'] != None:
+        velfile = args['velfile']
+    elif dict_path['velfile'] == 'none':
+        # this is the default option
         velfile = dict_config['velfile']
     else:
         velfile = dict_path['velfile']
-    mmw = float(dict_config['mmw'])
+
     if dict_path['dustpath'] == 'lime':
         dustpath = dict_config['dustfile']
     else:
@@ -231,11 +236,14 @@ for m in args['model_num'].split(','):
 
     # Dust parameters
     g2d = float(dict_config['g2d'])
+    mmw = float(dict_config['mmw'])
     # dust_lime = ascii.read('/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt', names=['wave', 'kappa_dust'])
     dust_lime = ascii.read(dustpath, names=['wave', 'kappa_dust'])
     f_dust = interp1d(dust_lime['wave'], dust_lime['kappa_dust'])
     kappa_v_dust = f_dust(c/auxdata['nu0']*1e4)
     auxdata['kappa_v'] = float(kappa_v_dust)
+    auxdata['g2d'] = g2d
+    auxdata['mmw'] = mmw
 
     # TODO:  add r_max
 
@@ -244,13 +252,22 @@ for m in args['model_num'].split(','):
     config = mod_dir+'lime_config.txt'
     recalVelo = False
 
+    dict_params = {'limeaid_dir': dict_path['limeaid_dir'],
+                   'mod_dir': mod_dir,
+                   'rtout': rtout,
+                   'velfile': velfile,
+                   'dustpath': dustpath,
+                   'recalVelo': recalVelo}
+    pprint(dict_params)
+    ppritn(auxdata)
+
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    if not os.path.exists(dict_path['colt_dir']+'inits/'+args['subpath']+'/'):
-        os.makedirs(dict_path['colt_dir']+'inits/'+args['subpath']+'/')
+    if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'):
+        os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath']+'/')
 
-    write_hdf5((lime_out, auxdata), filename=dict_path['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
 
     # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
-    print('write to '+dict_path['colt_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
