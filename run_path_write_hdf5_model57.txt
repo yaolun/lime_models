@@ -1,0 +1,8 @@
+mod_dir     /scratch/LIMEmods/pylime/YLY/run/
+colt_dir    /home/bettyjo/yaolun/programs/colt-lime/
+rtout       /scratch/LIMEmods/pylime/YLY/model57.rtout
+# rtout       /scratch/LIMEmods/pylime/YLY/model59.rtout
+velfile     /scratch/LIMEmods/pylime/YLY/rho_v_env.bhr71_model57
+# velfile     /scratch/LIMEmods/pylime/YLY/rho_v_env.bhr71_model59
+dustpath    /scratch/LIMEmods/pylime/YLY/lime_models/dust_oh5_interpolated.txt
+
