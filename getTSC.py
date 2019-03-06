@@ -45,7 +45,8 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
         os.system(TSC_dir+'ncofrac_update')
 
         # read in the TSC output
-        tsc2d_fine = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, **kwargs)
+        # typically the inner region of the TSC model doesn't have the "glitch"
+        tsc2d_fine = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, fix_tsc=False, **kwargs)
 
         # reduce the total file size and interpolate onto a log-grid
         # create the log-linear grid cap at 0.01 for the reduced radius
@@ -152,12 +153,23 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
     if fix_tsc:
         # fix the discontinuity in v_r
         # vr = vr + offset * log(xr)/log(xr_break)  for xr >= xr_break
+        # use second derivative to find the break point
+        h = ((xr[1:]-xr[:-1])[1:] + (xr[1:]-xr[:-1])[:-1])/2
+        reduce_rc = omega**2*0.973**3*(age*yr)**2/16.0
         for i in range(ntheta):
-            dvr = abs((vr2d[1:,i] - vr2d[:-1,i])/vr2d[1:,i])
-            break_pt = xr[1:][(dvr > 0.05) & (xr[1:] > 1e-3) & (xr[1:] < 1-5e-3)]
+            # dvr = abs((vr2d[1:,i] - vr2d[:-1,i])/vr2d[1:,i])
+            ddvr = (vr2d[2:,i]-2*vr2d[1:-1,i]+vr2d[:-2,i])/h**2
+            ddvrddvr = ddvr[xr[1:-1] > reduce_rc][1:] * ddvr[xr[1:-1] > reduce_rc][:-1]
+            break_pt = xr[1:-1][xr[1:-1] > reduce_rc][1:][ddvrddvr == ddvrddvr.min()]
+            # break_pt = xr[1:][(dvr > 0.05) & (xr[1:] > 1e-3) & (xr[1:] < 1-5e-3)]
             if len(break_pt) > 0:
-                offset = vr2d[(xr < break_pt),i].max() - vr2d[(xr > break_pt),i].min()
-                vr2d[(xr >= break_pt),i] = vr2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
+                try:
+                    offset = vr2d[(xr < break_pt),i].max() - vr2d[(xr >= break_pt),i].min()
+                    vr2d[(xr >= break_pt),i] = vr2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
+                except:
+                    if xr.max() > 0.9:
+                        print('something went wrong')
+
         # fix the discontinuity in v_phi
         for i in range(ntheta):
             dvr = abs((vphi2d[1:,i] - vphi2d[:-1,i])/vphi2d[1:,i])
