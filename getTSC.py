@@ -199,6 +199,6 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
                 vphi2d[(xr <= rCR/r_inf), i] = J/(w[xr <= rCR/r_inf])
 
     tsc2d = {'vr2d': vr2d, 'vtheta2d': vtheta2d, 'vphi2d': vphi2d, 'rho2d': rho2d,
-             'xrc':xr, 'thetac':theta}
+             'xrc':xr, 'thetac':theta, 'xr_wall': xr_wall, 'theta_wall': theta_wall}
 
     return tsc2d

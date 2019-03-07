@@ -5,7 +5,9 @@ from scipy.interpolate import interp1d
 from astropy.io import ascii
 from LIMEanalyses import *
 import shutil
-import sys
+import sys, os
+from pprint import pprint
+
 
 pc = const.pc.cgs.value
 au = const.au.cgs.value
@@ -75,6 +77,7 @@ if args['pathfile'] != None:
         dict_path[name] = val
 else:
     dict_path = {}
+
 # update the paths with the command line option
 for k in args.keys():
     if (k in ['mod_dir', 'limeaid_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
@@ -89,9 +92,12 @@ if path_flag == 0:
     print('Insufficient paths.  Exit...')
     sys.exit()
 
-from pprint import pprint
-pprint(dict_path)
-
+print('\n')
+print('====================')
+print('Please double check!')
+print('====================')
+print('The following conversion(s) to LIME-AID will use the Hyperion output from {:<s}'.format(dict_path['rtout']))
+print('\n')
 # dustpath = '/Volumes/SD-Mac/Google Drive/research/lime_models/dust_oh5_interpolated.txt'
 
 # Line parameters
@@ -225,9 +231,15 @@ for m in args['model_num'].split(','):
         velfile = args['velfile']
     elif dict_path['velfile'] == 'none':
         # this is the default option
-        velfile = dict_config['velfile']
+        velfile = mod_dir+'tsc_regrid.h5'
+        # velfile = dict_config['velfile']
     else:
-        velfile = dict_path['velfile']
+        if os.path.exist(dict_config['velfile']):
+            velfile = dict_config['velfile']
+        elif os.path.exist(dict_path['velfile']):
+            velfile = dict_path['velfile']
+        else:
+            print('velfile not found.  It may cause error if a re-calculation is required.')
 
     if dict_path['dustpath'] == 'lime':
         dustpath = dict_config['dustfile']
@@ -258,16 +270,30 @@ for m in args['model_num'].split(','):
                    'velfile': velfile,
                    'dustpath': dustpath,
                    'recalVelo': recalVelo}
-    pprint(dict_params)
-    pprint(auxdata)
+
+    print('=-=-=-=-=-=-=-=-=-=-')
+    print('Settings and Options')
+    print('=-=-=-=-=-=-=-=-=-=-')
+    for i, k in enumerate(dict_params.keys()):
+        print('{:<14s}:  {:<s}'.format(k, str(dict_params[k])))
+    print('=-=-=-=-=-=-=-=')
+    print('Line parameters')
+    print('=-=-=-=-=-=-=-=')
+    for i, k in enumerate(auxdata.keys()):
+        if type(auxdata[k]) == list():
+            aux_str = ', '.join(map(str, auxdata[k]))
+        else:
+            aux_str = str(auxdata[k])
+        print('{:<14s}:  {:<s}'.format(k, aux_str))
+    # pprint(dict_params)
+    # pprint(auxdata)
 
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'):
-        os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath']+'/')
+    if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']):
+        os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath'])
 
-    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+suffix+'.h5')
 
-    # shutil.copyfile(outfilename+'.h5', '/Users/yaolun/programs/colt-lime/inits/'+args['subpath']+'/'+outfilename+'.h5')
-    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+suffix+'.h5')
