@@ -968,9 +968,11 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # test for the new adaptive light TSC grid
 # 644      hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # try the HCN model that I had before. model 519
-645        hcn@xpol.dat    3           model53     0.37    none                        chem3     7.5e-10     5.0e-10     1000,1200   10,50       1.5,-5.0      20.0
+# 645      hcn@xpol.dat    3           model53     0.37    none                        chem3     7.5e-10     5.0e-10     1000,1200   10,50       1.5,-5.0      20.0
 # CS: need less optical depth at ~ 1 km/s, corresponding to ~ 300 AU.  Try adding a mini-freeze out zone on model 604
-646        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1500    50,100      0.5,-5.0      20.0
-647        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     300,1500    50,100      0.5,-5.0      20.0
-648        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1500    50,100      1.5,-5.0      20.0
-649        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     300,1500    50,100      1.5,-5.0      20.0
+# 646      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1500    50,100      0.5,-5.0      20.0
+# 647      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     300,1500    50,100      0.5,-5.0      20.0
+# 648      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1500    50,100      1.5,-5.0      20.0
+# 649      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     300,1500    50,100      1.5,-5.0      20.0
+# run a uniform model of HCO+ for multiple transitions study
+650        hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      5.0e-09     1000,1500   50,100      0.0,0.0       20.0
