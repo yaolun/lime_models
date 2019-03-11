@@ -294,6 +294,6 @@ for m in args['model_num'].split(','):
     if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']):
         os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath'])
 
-    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+suffix+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
 
     print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+suffix+'.h5')
