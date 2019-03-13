@@ -991,4 +991,6 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # no cavity HCO+ model based on model 644
 # 659      hco+@xpol.dat   3           model58     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      0.0
 # high omega model based on model 644
-660        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      0.0
+660        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# re-run Y17 model (age=36000 yrs) on model 644
+661        hco+@xpol.dat   3           model57     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
