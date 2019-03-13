@@ -989,4 +989,6 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 657      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1300   50,100      0.0,-5.0      20.0
 # 658      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1000   50,100      0.0,-5.0      20.0
 # no cavity HCO+ model based on model 644
-659        hco+@xpol.dat   3           model58     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      0.0
+# 659      hco+@xpol.dat   3           model58     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      0.0
+# high omega model based on model 644
+660        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      0.0
