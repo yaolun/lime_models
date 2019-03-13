@@ -76,7 +76,7 @@ for i, m in enumerate(model_list['model_name']):
         p['hybrid_tsc'] = '0'
 
     if args['omega'] != None:
-        p['omega'] = args['omega']
+        p['omega'] = float(args['omega'])
 
     # model parameters - only abundance now
     # the names of parameters will be the same as the ones in the header of model_list.txt
