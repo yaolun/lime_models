@@ -34,6 +34,10 @@ def write_hdf5(data, filename='infall.h5'):
 
     with h5py.File(filename, 'w') as f:
         f.attrs['transition'] = auxdata['transition']
+        f.attrs['EA'] = auxdata['EA'] # Einstein-A of the line (s^-1)
+        f.attrs['nu0'] = auxdata['nu0'] # Line frequency (Hz)
+        f.attrs['trans_up'] = auxdata['trans_up'] # Upper transition level
+        f.attrs['degeneracy'] = auxdata['degeneracy'] # Degeneracy of the upper and lower levels (e.g. 11,9)
         f.attrs['n_cells'] = n_cells
         f.attrs['r_max'] = r_max
         f.attrs['kappa_dust'] = kappa_dust  # Dust opacity at line center (cm^2/g of dust)
@@ -213,6 +217,6 @@ for m in args['model_num'].split(','):
     if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']):
         os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath'])
 
-    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+suffix+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+auxdata['transition']+'.h5')
 
-    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+suffix+'.h5')
+    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+auxdata['transition']+'.h5')
