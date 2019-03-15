@@ -345,10 +345,10 @@ class Hyperion2LIME:
                 return v_out
 
         # outside of infall radius, the envelope is static
-        if r_in > self.r_inf:
-            v_sph = [0.0+vr_offset*1e3, 0.0, 0.0]
-            v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
-            return v_out
+        # if r_in > self.r_inf:
+        #     v_sph = [0.0+vr_offset*1e3, 0.0, 0.0]
+        #     v_out = self.Spherical2Cart_vector((r_in, t_in, p_in), v_sph)
+        #     return v_out
 
         # if the input radius is smaller than the minimum in xr array,
         # use the minimum in xr array instead.
@@ -376,8 +376,12 @@ class Hyperion2LIME:
 
         # A hybrid outer envelope model: -0.5 km/s uniformly within 1e4 AU and static beyond.
         # static envelope beyond 3000 AU
-        if (v_sph[0] > vr_offset*1e3) and (r_in <= 3e3*au_cgs):
-            v_sph[0] = vr_offset*1e3
+
+        # the vr_offset has a parabolic curve as a function of radius (e.g. Keto+2015)
+        # parameter is taken from Keto+2015.  y = a(r - r_max)^2
+        # vr is negative
+        if v_sph[0] > vr_offset*1e3:
+            v_sph[0]  = 50.0*(r_in - (r_wall[-1]+r_wall[-2])/2 )**2 * 1e3
 
         if sph:
             return v_sph
