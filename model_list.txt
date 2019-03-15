@@ -996,3 +996,5 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 661      hco+@xpol.dat   3           model57     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # test the vr_offset again; vr_offset = 0.13 km/s
 662        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# vr_offset = 0.5 km/s
+663        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
