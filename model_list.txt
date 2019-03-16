@@ -995,6 +995,9 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # re-run Y17 model (age=36000 yrs) on model 644
 # 661      hco+@xpol.dat   3           model57     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # test the vr_offset again; vr_offset = 0.13 km/s
-# 662      hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 662      hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # vr_offset = 0.5 km/s
-663        hco+@xpol.dat   3           model59     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 663      hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# test for the cs / age degeneracy
+664        hco+@xpol.dat   3           model61     0.555   none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+665        hco+@xpol.dat   3           model62     0.185   none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
