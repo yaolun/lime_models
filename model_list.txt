@@ -1008,5 +1008,10 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 668      hcn@xpol.dat    3           model53     0.37    none                        chem3     6.0e-09     5.0e-09     1000,1200   10,50       1.5,-5.0      20.0
 # 669      hcn@xpol.dat    3           model53     0.37    none                        chem3     5.0e-09     5.0e-09     1000,1200   10,50       1.5,-5.0      20.0
 # back to the 3 peaks CS model
-670        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1500   50,100      -2.0,0.0,-5.0      20.0
-671        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
+# 670      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1500   50,100      -2.0,0.0,-5.0      20.0
+# 671      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
+672        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     7.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
+673        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     9.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
+#
+674        cs@lique.dat    6           model53     0.37    none                        chem3     2.5e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
+675        cs@lique.dat    6           model53     0.37    none                        chem3     5.0e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
