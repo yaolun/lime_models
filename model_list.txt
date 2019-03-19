@@ -1016,6 +1016,9 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 674      cs@lique.dat    6           model53     0.37    none                        chem3     2.5e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
 # 675      cs@lique.dat    6           model53     0.37    none                        chem3     5.0e-10     5.0e-09     500,1000,1500   50,100      -1.0,0.0,-5.0      20.0
 # try H13CN
-676        h13cn.dat       3           model53     0.37    None                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+# 676      h13cn.40K.dat   3           model53     0.37    None                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
 # reduce the abundance of H13CN by 70 (Wilson & Rood 1994)
-677        h13cn.dat       3           model53     0.37    None                        chem3     1.14e-11    1.43e-10    1000,1200    1.0,10     0.0,-2.0      20.0
+# 677      h13cn.40K.dat   3           model53     0.37    None                        chem3     1.14e-11    1.43e-10    1000,1200    1.0,10     0.0,-2.0      20.0
+# try 300 K instead of 40 K; same model 676 and 677
+678        h13cn.dat       3           model53     0.37    None                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+679        h13cn.dat       3           model53     0.37    None                        chem3     1.14e-11    1.43e-10    1000,1200    1.0,10     0.0,-2.0      20.0
