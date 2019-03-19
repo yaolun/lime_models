@@ -1024,9 +1024,13 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 679      h13cn.dat       3           model53     0.37    None                        chem3     1.14e-11    1.43e-10    1000,1200    1.0,10     0.0,-2.0      20.0
 # model 679 is too weak, and the ratio of emission to absorption doesn't look promising.
 # try a few different 12C/13C ratios, 60, 50, and 40
-680        h13cn.dat       3           model53     0.37    None                        chem3     1.33e-11    1.67e-10    1000,1200    1.0,10     0.0,-2.0      20.0
-681        h13cn.dat       3           model53     0.37    None                        chem3     1.60e-11    2.00e-10    1000,1200    1.0,10     0.0,-2.0      20.0
-682        h13cn.dat       3           model53     0.37    None                        chem3     2.00e-11    2.50e-10    1000,1200    1.0,10     0.0,-2.0      20.0
+# 680      h13cn.dat       3           model53     0.37    None                        chem3     1.33e-11    1.67e-10    1000,1200    1.0,10     0.0,-2.0      20.0
+# 681      h13cn.dat       3           model53     0.37    None                        chem3     1.60e-11    2.00e-10    1000,1200    1.0,10     0.0,-2.0      20.0
+# 682      h13cn.dat       3           model53     0.37    None                        chem3     2.00e-11    2.50e-10    1000,1200    1.0,10     0.0,-2.0      20.0
 # make sure the 1 au inner radius is necessary
-683        hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    5.0,10     0.0,-2.0      20.0
-684        hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,20     0.0,-2.0      20.0
+# 683      hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    5.0,10     0.0,-2.0      20.0
+# 684      hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,20     0.0,-2.0      20.0
+# try a higher 12C/13C ratios, 2, 5, 10
+685        h13cn.dat       3           model53     0.37    none                        chem3     4.0e-10     5.0e-09     1000,1200    1.0,10     0.0,-2.0      20.0
+686        h13cn.dat       3           model53     0.37    none                        chem3     1.6e-10     2.0e-09     1000,1200    1.0,10     0.0,-2.0      20.0
+687        h13cn.dat       3           model53     0.37    none                        chem3     8.0e-09     1.0e-09     1000,1200    1.0,10     0.0,-2.0      20.0
