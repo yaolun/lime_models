@@ -1043,11 +1043,14 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # try a higher abundance hcn
 # 692      hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     5.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
 # 693      hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-07     1000,1200    1.0,10     0.0,-2.0      20.0
-# H13CN
-694        h13cn.dat       3           model53     0.37    none                        chem3     8.0e-11     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
-695        h13cn.dat       3           model53     0.37    none                        chem3     4.0e-11     5.0e-09     1000,1200    1.0,10     0.0,-2.0      20.0
-696        h13cn.dat       3           model53     0.37    none                        chem3     1.33e-11    1.67e-09    1000,1200    1.0,10     0.0,-2.0      20.0
+# H13CN.  12C/13C = 10, 20, 60
+# 694      h13cn.dat       3           model53     0.37    none                        chem3     8.0e-11     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+# 695      h13cn.dat       3           model53     0.37    none                        chem3     4.0e-11     5.0e-09     1000,1200    1.0,10     0.0,-2.0      20.0
+# 696      h13cn.dat       3           model53     0.37    none                        chem3     1.33e-11    1.67e-09    1000,1200    1.0,10     0.0,-2.0      20.0
 # CS
 # 697      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1300   50,100      -1.0,0.0,-5.0      20.0
 # 698      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1100   50,100      -1.0,0.0,-5.0      20.0
 # 699      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     500,1000,1000   50,100      -1.0,0.0,-5.0      20.0
+#
+700        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     7.0e-09     1000,1500   50,100      0.0,-5.0      20.0
+701        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-08     1000,1500   50,100      0.0,-5.0      20.0
