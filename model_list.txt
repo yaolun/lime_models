@@ -1055,4 +1055,4 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 700      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     7.0e-09     1000,1500   50,100      0.0,-5.0      20.0
 # 701      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-08     1000,1500   50,100      0.0,-5.0      20.0
 # test high HCN abundance. Take model 688 times 60
-702        hcn.dat         3           model53     0.37    none                        chem3     1.62e-08    1.98e-0     1000,1200    1.0,10     0.0,-2.0      20.0
+702        hcn.dat         3           model53     0.37    none                        chem3     1.62e-08    1.98e-07    1000,1200    1.0,10     0.0,-2.0      20.0
