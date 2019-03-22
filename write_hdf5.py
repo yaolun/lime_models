@@ -63,10 +63,10 @@ parser = argparse.ArgumentParser(description='Options for converting LIME output
 # parser.add_argument('--pathfile', required=True, help='[required] path file for getting paths from run_pylime_path.txt')
 parser.add_argument('--model_num', help='model number for converting from LIME to COLT (accept multiple entries separated by comma)')
 parser.add_argument('--model_range', help='a range of model number to run')
-parser.add_argument('--pathfile', default='run_path_write_hdf5.txt', help='the pathfile for "mod_dir", "limeaid_dir", "rtout", "velfile", and "dustpath"')
+parser.add_argument('--pathfile', default='run_path_write_hdf5.txt', help='the pathfile for "mod_dir", "inits_dir", "rtout", "velfile", and "dustpath"')
 parser.add_argument('--subpath', help='any sub-directory following the default path')
 parser.add_argument('--mod_dir', help='the model directory', type=str)
-parser.add_argument('--limeaid_dir', help='the path of lime-aid', type=str)
+parser.add_argument('--inits_dir', help='the path to the initial condition for lime-aid', type=str)
 parser.add_argument('--rtout', help='user-defined path to the rtout to overwrite the path in lime_config.txt')
 parser.add_argument('--velfile', help='user-defined path to the TSC velocity file to overwrite the path in lime_config.txt')
 parser.add_argument('--transition', help='the transition to model (default: hco+4-3)', default='hco+4-3')
@@ -84,11 +84,11 @@ else:
 
 # update the paths with the command line option
 for k in args.keys():
-    if (k in ['mod_dir', 'limeaid_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
+    if (k in ['mod_dir', 'inits_dir', 'rtout', 'velfile', 'dustpath']) and args[k] != None:
         dict_path[k] = args[k]
 # check if all paths are specified
 path_flag = 1
-for p in ['mod_dir', 'limeaid_dir', 'rtout', 'velfile', 'dustpath']:
+for p in ['mod_dir', 'inits_dir', 'rtout', 'velfile', 'dustpath']:
     if p not in dict_path.keys():
         print(p+' not specified')
         path_flag = path_flag * 0
@@ -187,7 +187,7 @@ for m in args['model_num'].split(','):
     config = mod_dir+'lime_config.txt'
     recalVelo = False
 
-    dict_params = {'limeaid_dir': dict_path['limeaid_dir'],
+    dict_params = {'inits_dir': dict_path['inits_dir'],
                    'mod_dir': mod_dir,
                    'rtout': rtout,
                    'velfile': velfile,
@@ -214,9 +214,9 @@ for m in args['model_num'].split(','):
     lime_out, auxdata = LIMEanalyses(config=config).LIME2COLT(grid, 5, pop, auxdata,
                                      velfile=velfile, rtout=rtout, recalVelo=recalVelo)
 
-    if not os.path.exists(dict_path['limeaid_dir']+'inits/'+args['subpath']):
-        os.makedirs(dict_path['limeaid_dir']+'inits/'+args['subpath'])
+    if not os.path.exists(dict_path['inits_dir']+args['subpath']):
+        os.makedirs(dict_path['inits_dir']+args['subpath'])
 
-    write_hdf5((lime_out, auxdata), filename=dict_path['limeaid_dir']+'inits/'+args['subpath']+'/'+outfilename+'_'+auxdata['transition']+'.h5')
+    write_hdf5((lime_out, auxdata), filename=dict_path['inits_dir']+args['subpath']+'/'+outfilename+'_'+auxdata['transition']+'.h5')
 
-    print('write to '+dict_path['limeaid_dir']+'inits/'+args['subpath']+outfilename+'_'+auxdata['transition']+'.h5')
+    print('write to '+dict_path['inits_dir']+args['subpath']+outfilename+'_'+auxdata['transition']+'.h5')
