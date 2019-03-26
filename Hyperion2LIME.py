@@ -31,8 +31,8 @@ class Hyperion2LIME:
         self.rmin = rmin*1e2        # rmin defined in LIME, which use SI unit
         self.mmw = mmw
         self.g2d = g2d
-        self.cs = cs
-        self.age = age
+        self.cs = cs    # in km/s
+        self.age = age  # in year
         # YLY update - add omega
         self.omega = omega
         self.r_inf = self.cs*1e5*self.age*yr  # in cm
@@ -308,22 +308,43 @@ class Hyperion2LIME:
         else:
             temp = self.interpolateCell((r_in, t_in, p_in), cube, (r_wall, t_wall, p_wall))
 
-        if external_heating:
-            # get the temperature at the outermost radius
-            indice_lowT = self.locateCell(((r_wall[-1]+r_wall[-2])/2, t_in, p_in), (r_wall, t_wall, p_wall))
-            lowT = self.temp[indice_lowT]
-            # the inner radius where the temperature correction starts to apply
-            # User-defined value
-            # r_break = 13000*au_cgs
-            # r_break = 2600*au_cgs
-            r_break = r_break*au_cgs
+        # if external_heating:
+        #     # get the temperature at the outermost radius
+        #     indice_lowT = self.locateCell(((r_wall[-1]+r_wall[-2])/2, t_in, p_in), (r_wall, t_wall, p_wall))
+        #     lowT = self.temp[indice_lowT]
+        #     # the inner radius where the temperature correction starts to apply
+        #     # User-defined value
+        #     # r_break = 13000*au_cgs
+        #     # r_break = 2600*au_cgs
+        #     r_break = r_break*au_cgs
+        #
+        #     if (lowT < 15) and (r_in >= r_break):
+        #         dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
+        #         if float(temp) + float(dT) >= 0.0:
+        #             return float(temp) + float(dT)
+        #         else:
+        #             return 0.0
 
-            if (lowT < 15) and (r_in >= r_break):
-                dT = (r_in - r_break)*(15-lowT)/((r_wall[-1]+r_wall[-2])/2 - r_break)
-                if float(temp) + float(dT) >= 0.0:
-                    return float(temp) + float(dT)
-                else:
-                    return 0.0
+        # test for a different approach of external heating
+        if external_heating:
+            from scipy.interpolate import interp1d
+            # get the temperature at the outermost radius
+            rc = (r_wall[1:] + r_wall[:-1])/2
+            indice_Tmin = self.locateCell((rc.max(), t_in, p_in), (r_wall, t_wall, p_wall))
+            Tmin = self.temp[indice_Tmin]
+
+            # set an inner radius that the external heating will apply for skipping the disk, where temperature may be lower than 10 K
+            # take two times the centrifugal radius
+            rCen = self.omega**2*G**3*(0.975*(self.cs*1e5)**3/G*(self.age*yr))**3/(16*(self.cs*1e5)**8)
+            r_ext_min = 2 * rCen
+
+            if (temp < 10.0) and (r_in >= r_ext_min) and (Tmin < 15.0):
+                rc = (r_wall[1:] + r_wall[:-1])/2
+                f_temp = interp1d(self.temp[(rc > r_ext_min),indice_Tmin[1],indice_Tmin[2]], rc[rc > r_ext_min])
+                r10K = f_temp(10.0)
+                dT = (r_in - r10K)/(rc.max() - r10K) * (15.0 - Tmin)
+                temp = float(temp) + float(dT)
+
         if float(temp) >= 0.0:
             return float(temp)
         else:
