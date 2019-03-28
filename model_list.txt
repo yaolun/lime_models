@@ -1059,7 +1059,10 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # back to hco+ with r_break = 6000 au, where rho_gas ~ 1e5 cm-3
 # 703      hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # try CS
-704        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   25,100      0.0,-5.0      20.0
-705        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   10,100      0.0,-5.0      20.0
-706        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   25,100      0.0,-5.0      20.0
-707        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   10,100      0.0,-5.0      20.0
+# 704      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   25,100      0.0,-5.0      20.0
+# 705      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   10,100      0.0,-5.0      20.0
+# 706      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   25,100      0.0,-5.0      20.0
+# 707      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   10,100      0.0,-5.0      20.0
+# modify model 705
+708        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   10,70       0.0,-5.0      20.0
+709        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   10,50       0.0,-5.0      20.0
