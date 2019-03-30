@@ -1073,12 +1073,19 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 713      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   25,150      0.0,-5.0      20.0
 # 714      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     5.0e-09     1000,1500   50,200      0.0,-5.0      20.0
 #
-715        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
+# 715      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
 # 716      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      0.0,-5.0      20.0
 # 717      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   20,400      0.0,-5.0      20.0
 #
-718        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,450      0.0,-5.0      20.0
-719        cs@lique.dat    6           model53     0.37    none                        chem3     2.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
-720        cs@lique.dat    6           model53     0.37    none                        chem3     4.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
-721        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      -1.0,-5.0     20.0
-722        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      -2.0,-5.0     20.0
+# 718      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,450      0.0,-5.0      20.0
+# 719      cs@lique.dat    6           model53     0.37    none                        chem3     2.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
+# 720      cs@lique.dat    6           model53     0.37    none                        chem3     4.0e-10     2.5e-09     1000,1500   10,500      0.0,-5.0      20.0
+# 721      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      -1.0,-5.0     20.0
+# 722      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,500      -2.0,-5.0     20.0
+#
+# conbine model 716 r_evap_out = 400 au and model 721 r_slope = -1
+723        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
+724        cs@lique.dat    6           model53     0.37    none                        chem3     2.0e-10     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
+# try reduce outer radius
+725        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1300   10,400      -1.0,-5.0     20.0
+726        cs@lique.dat    6           model53     0.37    none                        chem3     2.0e-10     2.5e-09     1000,1300   10,400      -1.0,-5.0     20.0
