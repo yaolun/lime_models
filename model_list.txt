@@ -1090,10 +1090,14 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 725      cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1300   10,400      -1.0,-5.0     20.0
 # 726      cs@lique.dat    6           model53     0.37    none                        chem3     2.0e-10     2.5e-09     1000,1300   10,400      -1.0,-5.0     20.0
 # try to fit the absorption
-727        cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
-728        cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
+# 727      cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
+# 728      cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     2.5e-09     1000,1500   10,400      -1.0,-5.0     20.0
 # reduce the inner radius to reduce the high velocity emission
-729        cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     2.5e-09     1000,1500   20,400      -1.0,-5.0     20.0
-730        cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     2.5e-09     1000,1500   20,400      -1.0,-5.0     20.0
-731        cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     4.0e-09     1000,1500   20,400      -1.0,-5.0     20.0
-732        cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     4.0e-09     1000,1500   20,400      -1.0,-5.0     20.0
+# 729      cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     2.5e-09     1000,1500   20,400      -1.0,-5.0     20.0
+# 730      cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     2.5e-09     1000,1500   20,400      -1.0,-5.0     20.0
+# 731      cs@lique.dat    6           model53     0.37    none                        chem3     9.0e-11     4.0e-09     1000,1500   20,400      -1.0,-5.0     20.0
+# 732      cs@lique.dat    6           model53     0.37    none                        chem3     7.0e-11     4.0e-09     1000,1500   20,400      -1.0,-5.0     20.0
+# test with vr_factor = 0.9
+733        cs@lique.dat    6           model53     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      0.0,-5.0      20.0
+734        hco+@xpol.dat   3           model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+735        hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
