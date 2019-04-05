@@ -191,10 +191,17 @@ def input(macros):
     #
     #    Below is an example of how you might use these parameters:
     #
-    par.collPartIds        = [macros["CP_H2"]] # must be a list, even when there is only 1 item.
-    par.collPartNames      = ['H2 from Flower (1999) + extrapolation'] # must be a list, even when there is only 1 item.
-    par.nMolWeights        = [1.0] # must be a list, even when there is only 1 item.
-    par.collPartMolWeights = [mmw] # must be a list, even when there is only 1 item.  TODO: review the choice of mmw in the future
+    if 'h2co' not in moldata:
+        par.collPartIds        = [macros["CP_H2"]] # must be a list, even when there is only 1 item.
+        # par.collPartNames      = ['H2 from Flower (1999) + extrapolation'] # must be a list, even when there is only 1 item.
+        par.nMolWeights        = [1.0] # must be a list, even when there is only 1 item.
+        par.collPartMolWeights = [mmw] # must be a list, even when there is only 1 item.  TODO: review the choice of mmw in the future
+    else:
+        par.collPartIds        = [macros["CP_p_H2"], macros["CP_o_H2"]] # must be a list, even when there is only 1 item.
+        # par.collPartNames      = ['H2 from Flower (1999) + extrapolation'] # must be a list, even when there is only 1 item.
+        par.nMolWeights        = [1.0, 1.0] # must be a list, even when there is only 1 item.
+        par.collPartMolWeights = [mmw, mmw] # must be a list, even when there is only 1 item.  TODO: review the choice of mmw in the future
+
 
     #  par.gridDensMaxValues = [1.0] # must be a list, even when there is only 1 item.
     #  par.gridDensMaxLoc    = [[0.0,0.0,0.0]] # must be a list, each element of which is also a list with 3 entries (1 for each spatial coordinate).
