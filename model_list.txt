@@ -1102,4 +1102,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 734      hco+@xpol.dat   3           model53     0.33    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # 735      hcn.dat         3           model53     0.33    none                        chem3     8.0e-10     1.0e-08     1000,1200   1.0,10      0.0,-2.0      20.0
 # try to run for H2CO
-736        oh2co-h2.dat    59          model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 736      oh2co-h2.dat    59          model53     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# test for age = 15000 on CS and HCO+
+737        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      0.0,-5.0      20.0
+738        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
