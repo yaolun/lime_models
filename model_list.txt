@@ -1111,8 +1111,18 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # run for BHR 71 IRS2 with model 644.  In reality, the abundance should change.
 # 740      hco+@xpol.dat   3           model66     0.37    none                        chem3     5.0e-9      1.0e-09     1000,1500   50,100      2.0,-2.0      20.0
 # age = 15000 yrs seems working -> tune the abundance for a bit
-741        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   20,400      0.0,-5.0      20.0
-742        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   50,400      0.0,-5.0      20.0
-743        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      1.5e-09     1000,1500   50,100      2.0,-2.0      20.0
-744        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     1000,1500   50,100      2.0,-2.0      20.0
-745        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200   1.0,10      0.0,-2.0      20.0
+# 741      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   20,400      0.0,-5.0      20.0
+# 742      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   50,400      0.0,-5.0      20.0
+# 743      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      1.5e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 744      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     1000,1500   50,100      2.0,-2.0      20.0
+# 745      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200   1.0,10      0.0,-2.0      20.0
+# CS
+746        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   30,400      0.0,-5.0      20.0
+747        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   40,400      0.0,-5.0      20.0
+748        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1500   20,400      0.0,-5.0      20.0
+# HCO+: freeze-out slope
+749        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     1000,1500   50,100      1.8,-2.0      20.0
+750        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     1000,1500   50,100      1.6,-2.0      20.0
+# HCN: peak a bit too high, and the 1-10 au evap. region sounds unphysical
+751        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     9.0e-09     1000,1200   1.0,10      0.0,-2.0      20.0
+752        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     9.0e-09     1000,1200   10,50       0.0,-2.0      20.0
