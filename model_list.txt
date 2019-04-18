@@ -1138,4 +1138,4 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 760        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1100    10,50      0.0,-10.0     20.0
 761        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1000    10,50      0.0,-10.0     20.0
 # re-run model 639 for HCN to confirm
-762        hcn.dat         3           model53     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+762        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
