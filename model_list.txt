@@ -1128,5 +1128,9 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 752      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     9.0e-09     1000,1200   10,50       0.0,-2.0      20.0
 # HCN
 # 753      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     5.0e-09     1000,1200   10,50       0.0,-2.0      20.0
-754        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     3.0e-09     1000,1200   10,50       0.0,-2.0      20.0
-755        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-09     1000,1200   10,50       0.0,-2.0      20.0
+# 754      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     3.0e-09     1000,1200   10,50       0.0,-2.0      20.0
+# 755      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-09     1000,1200   10,50       0.0,-2.0      20.0
+# H13CN - too much absorption (parameters taken from model 691)
+756        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1200    1.0,10     0.0,-10.0     20.0
+757        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1100    1.0,10     0.0,-10.0     20.0
+758        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1000    1.0,10     0.0,-10.0     20.0
