@@ -1134,8 +1134,11 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 756      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1200    1.0,10     0.0,-10.0     20.0
 # 757      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1100    1.0,10     0.0,-10.0     20.0
 # 758      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1000    1.0,10     0.0,-10.0     20.0
-759        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1200    10,50      0.0,-10.0     20.0
-760        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1100    10,50      0.0,-10.0     20.0
-761        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1000    10,50      0.0,-10.0     20.0
+# 759      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1200    10,50      0.0,-10.0     20.0
+# 760      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1100    10,50      0.0,-10.0     20.0
+# 761      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     1000,1000    10,50      0.0,-10.0     20.0
 # re-run model 639 for HCN to confirm
-762        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+# 762      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     1.0e-08     1000,1200    1.0,10     0.0,-2.0      20.0
+# H13CN - reduce the absorption by truncating the abundance profile at outer envelope
+763        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     800,800      1.0,10     0.0,-10.0     20.0
+764        h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     600,600      1.0,10     0.0,-10.0     20.0
