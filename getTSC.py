@@ -180,6 +180,7 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
 
     # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
     if hybrid_tsc:
+        r_inf = age*yr*cs*1e5
         from scipy.interpolate import interp1d
         for i in range(ntheta):
             rCR = omega**2 * G**3 * (0.975*(cs*1e5)**3/G*(age*3600*24*365))**3 * np.sin(theta[i])**4 / (16*(cs*1e5)**8)
