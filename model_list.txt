@@ -1144,16 +1144,30 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 764      h13cn.dat       3           model63     0.37    none                        chem3     2.7e-10     3.3e-09     600,600      1.0,10     0.0,-10.0     20.0
 # see if adding a freeze-out zone to HCN and CS will also fit the data
 # HCN - flatten out the inner two plateaus
-765        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     8.0e-10     1000,1200   1.0,10      0.0,-2.0      20.0
+# 765      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     8.0e-10     1000,1200   1.0,10      0.0,-2.0      20.0
 # then introduce a freeze-out zone
-766        hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
+# 766      hcn.dat         3           model63     0.37    none                        chem3     8.0e-10     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
 # increase the outer abundance
-767        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
-768        hcn.dat         3           model63     0.37    none                        chem3     5.0e-09     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
+# 767      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
+# 768      hcn.dat         3           model63     0.37    none                        chem3     5.0e-09     8.0e-10     1000,1200   1.0,100     2.0,-2.0      20.0
 # CS - introduce a freeze-out zone
-769        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      2.0,-5.0      20.0
+# 769      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,400      2.0,-5.0      20.0
 # set the evaporation front to the same as HCN and HCO+ (100 au)
-770        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
+# 770      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
 # then increase the outer abundance
-771        cs@lique.dat    6           model63     0.37    none                        chem3     3.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
-772        cs@lique.dat    6           model63     0.37    none                        chem3     6.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
+# 771      cs@lique.dat    6           model63     0.37    none                        chem3     3.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
+# 772      cs@lique.dat    6           model63     0.37    none                        chem3     6.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
+# HCN: model 767 and 768 look ok.  Increase the evaporation abundance
+773        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+774        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+775        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# model 769 seems ok, but a bit too much intensity.  However, model 769 has R_evap,o = 400 au instead of 100 au
+776        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1500   10,400      2.0,-5.0      20.0
+777        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   10,400      2.0,-5.0      20.0
+# try from model 770, increase the evaporation abundance
+778        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     4.0e-09     1000,1500   10,100      2.0,-5.0      20.0
+779        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     6.0e-09     1000,1500   10,100      2.0,-5.0      20.0
+# HCN 773-775 with R_evap,i = 10 au
+780        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+781        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+782        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   10,100      2.0,-2.0      20.0
