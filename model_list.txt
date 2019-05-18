@@ -1172,10 +1172,16 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 781      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   10,100      2.0,-2.0      20.0
 # 782      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   10,100      2.0,-2.0      20.0
 # HCN: based on 773 and increase the outer abundance
-783        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
-784        hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
-785        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 783      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 784      hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 785      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
 # CS: 776 and 778 have the right intensity, but the absorption fits better for 776.  Try to reduce the absorption
-786        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1400   10,400      2.0,-5.0      20.0
-787        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1300   10,400      2.0,-5.0      20.0
-788        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1200   10,400      2.0,-5.0      20.0
+# 786      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1400   10,400      2.0,-5.0      20.0
+# 787      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1300   10,400      2.0,-5.0      20.0
+# 788      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1200   10,400      2.0,-5.0      20.0
+# CS: tweak model 787
+789        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.2e-09     1000,1300   10,400      2.0,-5.0      20.0
+790        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.4e-09     1000,1300   10,400      2.0,-5.0      20.0
+# HCN: tweak model 785 (the absorption feature is not fitted well)
+791        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      900,1200   1.0,100     2.0,-2.0      20.0
+792        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      800,1200   1.0,100     2.0,-2.0      20.0
