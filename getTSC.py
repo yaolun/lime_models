@@ -46,13 +46,13 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
 
         # read in the TSC output
         # typically the inner region of the TSC model doesn't have the "glitch"
-        tsc2d_fine = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, fix_tsc=False, **kwargs)
+        tsc2d_fine = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, fix_tsc=False)
 
         # reduce the total file size and interpolate onto a log-grid
         # create the log-linear grid cap at 0.01 for the reduced radius
         r_in = 0.1*au/(cs*1e5*age*yr)
         ri           = r_in * (1.0/r_in)**(np.arange(nr+1).astype(dtype='float')/float(nr))
-        ri           = np.hstack((0.0, ri))
+        # ri           = np.hstack((0.0, ri))
         # Keep the constant cell size in r-direction at large radii
         ri_cellsize = ri[1:-1]-ri[0:-2]
         ind = np.where(ri_cellsize > max_rCell)[0][0]       # The largest cell size is 100 AU
@@ -143,7 +143,7 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
     ntheta = len(theta)
 
     # the output of TSC fortran binary is in mass density
-    rho2d = 1/(4*np.pi*G*(age*yr)**2)/mh/mmw * np.array(tsc['ro']).reshape([nxr, ntheta])
+    rho2d = 1/(4*np.pi*G*(age*yr)**2)/mh/mmw * np.reshape(tsc['ro'].to_numpy(), (nxr, ntheta))
 
     # in unit of km/s
     vr2d = np.reshape(tsc['ur'].to_numpy(), (nxr, ntheta)) * np.float64(cs)
@@ -162,7 +162,10 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
             ddvrddvr = ddvr[xr[1:-1] > reduce_rc][1:] * ddvr[xr[1:-1] > reduce_rc][:-1]
             break_pt = xr[1:-1][xr[1:-1] > reduce_rc][1:][ddvrddvr == ddvrddvr.min()]
             # break_pt = xr[1:][(dvr > 0.05) & (xr[1:] > 1e-3) & (xr[1:] < 1-5e-3)]
+
             if len(break_pt) > 0:
+                if (break_pt[0] < 1e-3):
+                    continue
                 try:
                     offset = vr2d[(xr < break_pt),i].max() - vr2d[(xr >= break_pt),i].min()
                     vr2d[(xr >= break_pt),i] = vr2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
@@ -175,8 +178,23 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
             dvr = abs((vphi2d[1:,i] - vphi2d[:-1,i])/vphi2d[1:,i])
             break_pt = xr[1:][(dvr > 0.1) & (xr[1:] > 1e-3) & (xr[1:] < 1-2e-3)]
             if len(break_pt) > 0:
+                if (break_pt[0] < 2e-3):
+                    continue
                 offset = vphi2d[(xr < break_pt),i].min() - vphi2d[(xr > break_pt),i].max()
                 vphi2d[(xr >= break_pt),i] = vphi2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
+
+        # fix the discontinuity in rho
+        for i in range(ntheta):
+            dvr = abs((rho2d[1:,i] - rho2d[:-1,i])/rho2d[1:,i])
+            break_pt = xr[1:][(dvr > 0.1) & (xr[1:] > 1e-2) & (xr[1:] < 1-2e-3)]
+            # print(break_pt)
+            # print(dvr[(dvr > 0.15) & (xr[1:] > 1e-3) & (xr[1:] < 1-2e-3)])
+            if len(break_pt) > 0:
+                if (break_pt[0] < 1e-3):
+                    continue
+                offset = rho2d[(xr < break_pt),i].min() - rho2d[(xr > break_pt),i].max()
+                # rho2d[(xr >= break_pt),i] = rho2d[(xr >= break_pt),i] + offset*np.log10(xr[xr >= break_pt])/np.log10(break_pt)
+                rho2d[(xr < break_pt),i] = rho2d[(xr < break_pt),i] - offset*np.log10(xr[xr < break_pt])/np.log10(break_pt)
 
     # hybrid TSC kinematics that switches to angular momentum conservation within the centrifugal radius
     if hybrid_tsc:

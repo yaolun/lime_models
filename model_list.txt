@@ -1158,16 +1158,24 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 771      cs@lique.dat    6           model63     0.37    none                        chem3     3.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
 # 772      cs@lique.dat    6           model63     0.37    none                        chem3     6.0e-10     2.5e-09     1000,1500   10,100      2.0,-5.0      20.0
 # HCN: model 767 and 768 look ok.  Increase the evaporation abundance
-773        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
-774        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
-775        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 773      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 774      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# 775      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
 # model 769 seems ok, but a bit too much intensity.  However, model 769 has R_evap,o = 400 au instead of 100 au
-776        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1500   10,400      2.0,-5.0      20.0
-777        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   10,400      2.0,-5.0      20.0
+# 776      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1500   10,400      2.0,-5.0      20.0
+# 777      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.0e-09     1000,1500   10,400      2.0,-5.0      20.0
 # try from model 770, increase the evaporation abundance
-778        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     4.0e-09     1000,1500   10,100      2.0,-5.0      20.0
-779        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     6.0e-09     1000,1500   10,100      2.0,-5.0      20.0
+# 778      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     4.0e-09     1000,1500   10,100      2.0,-5.0      20.0
+# 779      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     6.0e-09     1000,1500   10,100      2.0,-5.0      20.0
 # HCN 773-775 with R_evap,i = 10 au
-780        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   10,100      2.0,-2.0      20.0
-781        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   10,100      2.0,-2.0      20.0
-782        hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+# 780      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     1.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+# 781      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     2.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+# 782      hcn.dat         3           model63     0.37    none                        chem3     1.0e-09     4.0e-09     1000,1200   10,100      2.0,-2.0      20.0
+# HCN: based on 773 and increase the outer abundance
+783        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+784        hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+785        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09     1000,1200   1.0,100     2.0,-2.0      20.0
+# CS: 776 and 778 have the right intensity, but the absorption fits better for 776.  Try to reduce the absorption
+786        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1400   10,400      2.0,-5.0      20.0
+787        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1300   10,400      2.0,-5.0      20.0
+788        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1200   10,400      2.0,-5.0      20.0
