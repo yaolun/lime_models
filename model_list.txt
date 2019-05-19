@@ -1180,8 +1180,15 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 787      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1300   10,400      2.0,-5.0      20.0
 # 788      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     1000,1200   10,400      2.0,-5.0      20.0
 # CS: tweak model 787
-789        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.2e-09     1000,1300   10,400      2.0,-5.0      20.0
-790        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.4e-09     1000,1300   10,400      2.0,-5.0      20.0
+# 789      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.2e-09     1000,1300   10,400      2.0,-5.0      20.0
+# 790      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.4e-09     1000,1300   10,400      2.0,-5.0      20.0
 # HCN: tweak model 785 (the absorption feature is not fitted well)
-791        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      900,1200   1.0,100     2.0,-2.0      20.0
-792        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      800,1200   1.0,100     2.0,-2.0      20.0
+# 791      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      900,1200   1.0,100     2.0,-2.0      20.0
+# 792      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09      800,1200   1.0,100     2.0,-2.0      20.0
+# HCN: try to match the absorption feature.  However, the freeze-out feature is not very significant in Fig. 9 of Lee+2004.
+793        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09      900,1200   1.0,100     2.0,-2.0      20.0
+794        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.4e-09      900,1200   1.0,100     2.0,-2.0      20.0
+795        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.6e-09      900,1200   1.0,100     2.0,-2.0      20.0
+# CS:
+796        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.2e-09      900,1300   10,400      2.0,-5.0      20.0
+797        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.2e-09      800,1300   10,400      2.0,-5.0      20.0
