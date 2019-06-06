@@ -1213,10 +1213,15 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # H13CN
 # 811      h13cn.dat       3           model63     0.37    none                        chem3     2.5e-09     1.2e-09       800,800   1.0,100     2.0,-2.0      20.0
 # H13CN: reduce by 60
-812        h13cn.dat       3           model63     0.37    none                        chem3     4.2e-11     2.0e-11       800,800   1.0,100     2.0,-2.0      20.0
+# 812      h13cn.dat       3           model63     0.37    none                        chem3     4.2e-11     2.0e-11       800,800   1.0,100     2.0,-2.0      20.0
 # CS: model810 has good double peaks but still has too much absorption
-813        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1300   10,600      2.0,-7.0      20.0
-814        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1300   10,600      2.0,-10.0     20.0
-815        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1200   10,600      2.0,-5.0      20.0
-816        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1100   10,600      2.0,-5.0      20.0
-817        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1000   10,600      2.0,-5.0      20.0
+# 813      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1300   10,600      2.0,-7.0      20.0
+# 814      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1300   10,600      2.0,-10.0     20.0
+# 815      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1200   10,600      2.0,-5.0      20.0
+# 816      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1100   10,600      2.0,-5.0      20.0
+# 817      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1000   10,600      2.0,-5.0      20.0
+# model 814 works the best among the group, but still has too much absorption
+818        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1200   10,600      2.0,-10.0     20.0
+819        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1100   10,600      2.0,-10.0     20.0
+820        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1000   10,600      2.0,-10.0     20.0
+821        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     1000,1000   10,600      2.0,-20.0     20.0
