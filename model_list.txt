@@ -1253,4 +1253,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 842      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1300   10,520      2.8,-10.0     20.0
 # 843      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1300   10,520      3.0,-10.0     20.0
 # CS
-844        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1300   10,520      2.8,-2.0      20.0
+# 844      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1300   10,520      2.8,-2.0      20.0
+845        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1200   10,520      2.8,-2.0      20.0
+846        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1100   10,520      2.8,-2.0      20.0
+847        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1000   10,520      2.8,-2.0      20.0
