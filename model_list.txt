@@ -1258,4 +1258,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 846      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1100   10,520      2.8,-2.0      20.0
 # 847      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.8e-09     1000,1000   10,520      2.8,-2.0      20.0
 # change the evaporation radius to 1000 au! Re-run all molecules
-848        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+# 848      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+849        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     2000,4000   100,1000    2.0,-2.0      20.0
+850        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     3000,4000   100,1000    2.0,-2.0      20.0
+851        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     4000,4000   100,1000    2.0,-2.0      20.0
