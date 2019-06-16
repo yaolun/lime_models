@@ -1263,10 +1263,12 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 850      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     3000,4000   100,1000    2.0,-2.0      20.0
 # 851      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.0e-09     4000,4000   100,1000    2.0,-2.0      20.0
 # a_evap
-852        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.5e-09     2000,4000   100,1000    2.0,-2.0      20.0
-853        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.0,-2.0      20.0
-854        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.5e-09     2000,4000   100,1000    2.0,-2.0      20.0
+# 852      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      2.5e-09     2000,4000   100,1000    2.0,-2.0      20.0
+# 853      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.0,-2.0      20.0
+# 854      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.5e-09     2000,4000   100,1000    2.0,-2.0      20.0
 # freeze-out slope
-855        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.2,-2.0      20.0
-856        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.4,-2.0      20.0
-857        hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.6,-2.0      20.0
+# 855      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.2,-2.0      20.0
+# 856      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.4,-2.0      20.0
+# 857      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.6,-2.0      20.0
+# HCN: use a more realistic evaporation radius
+858        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,2000   1.0,1000    2.0,-2.0      20.0
