@@ -1272,5 +1272,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 857      hco+@xpol.dat   3           model63     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   100,1000    2.6,-2.0      20.0
 # HCN: use a more realistic evaporation radius
 # 858      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,2000   1.0,1000    2.0,-2.0      20.0
-859        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,4000   1.0,1000    2.0,-2.0      20.0
-860        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,2000   10,1000     2.0,-2.0      20.0
+# 859      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,4000   1.0,1000    2.0,-2.0      20.0
+# 860      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.2e-09     2000,2000   10,1000     2.0,-2.0      20.0
+861        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09     2000,4000   1.0,1000    2.0,-2.0      20.0
+862        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     8.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
+863        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
