@@ -1277,5 +1277,11 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 861      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     1.0e-09     2000,4000   1.0,1000    2.0,-2.0      20.0
 # 862      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     8.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
 # 863      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
-864        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,3000   1.0,1000    2.0,-2.0      20.0
-865        hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
+# 864      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,3000   1.0,1000    2.0,-2.0      20.0
+# 865      hcn.dat         3           model63     0.37    none                        chem3     2.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
+866        hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     6.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
+867        hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     6.0e-10     2000,3000   1.0,1000    2.0,-2.0      20.0
+868        hcn.dat         3           model63     0.37    none                        chem3     2.0e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
+869        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,4000   1.0,1000    2.0,-2.0      20.0
+870        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,3000   1.0,1000    2.0,-2.0      20.0
+871        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
