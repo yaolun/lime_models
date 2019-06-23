@@ -1286,6 +1286,10 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 870      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,3000   1.0,1000    2.0,-2.0      20.0
 # 871      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
 # only the outer radius matters.  changing a0 from 865->868->871 doesn't make significant difference
-872        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1800,1800   1.0,1000    2.0,-2.0      20.0
-873        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1600,1600   1.0,1000    2.0,-2.0      20.0
-874        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1400,1400   1.0,1000    2.0,-2.0      20.0
+# 872      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1800,1800   1.0,1000    2.0,-2.0      20.0
+# 873      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1600,1600   1.0,1000    2.0,-2.0      20.0
+# 874      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1400,1400   1.0,1000    2.0,-2.0      20.0
+875        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1200,1400   1.0,1000    2.0,-2.0      20.0
+876        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1400   1.0,1000    2.0,-2.0      20.0
+877        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1200,1200   1.0,1000    2.0,-2.0      20.0
+878        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1200   1.0,1000    2.0,-2.0      20.0
