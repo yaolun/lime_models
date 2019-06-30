@@ -1298,4 +1298,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 880      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1200   10,1000     2.0,-2.0      20.0
 # 881      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1200   20,1000     2.0,-2.0      20.0
 # doesn't matter too much.  Try one more
-882        hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1200   50,1000     2.0,-2.0      20.0
+# 882      hcn.dat         3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     1000,1200   50,1000     2.0,-2.0      20.0
+# CS
+883        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+884        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     3.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+885        cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
