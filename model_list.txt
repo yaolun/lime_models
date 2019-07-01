@@ -1304,6 +1304,13 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 884      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     3.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
 # 885      cs@lique.dat    6           model63     0.37    none                        chem3     9.6e-11     1.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
 # 883 matches the strength okay, but too much absorption
-886        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
-887        cs@lique.dat    6           model63     0.37    none                        chem3     7.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
-888        cs@lique.dat    6           model63     0.37    none                        chem3     5.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+# 886      cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+# 887      cs@lique.dat    6           model63     0.37    none                        chem3     7.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+# 888      cs@lique.dat    6           model63     0.37    none                        chem3     5.0e-11     2.0e-09     1000,1300   10,1000     2.0,-2.0      20.0
+# model 886 has the weakest absorption among 886-888 but still far from the data
+889        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1200   10,1000     2.0,-2.0      20.0
+890        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1100   10,1000     2.0,-2.0      20.0
+891        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1000   10,1000     2.0,-2.0      20.0
+892        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1200   50,1000     2.0,-2.0      20.0
+893        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1100   50,1000     2.0,-2.0      20.0
+894        cs@lique.dat    6           model63     0.37    none                        chem3     9.0e-11     2.0e-09     1000,1000   50,1000     2.0,-2.0      20.0
