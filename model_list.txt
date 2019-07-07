@@ -1328,7 +1328,11 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 902      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.8e-09     2000,4000   10,1000     2.0,-2.0      20.0
 # 903      cs@lique.dat    6           model63     0.37    none                        chem3     2.0e-10     1.8e-09     2000,4000   10,1000     2.0,-2.0      20.0
 # vary a1 (based on 902)
-904        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     8.0e-10     2000,4000   10,1000     2.0,-2.0      20.0
-905        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
-906        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
-907        cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     4.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
+# 904      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     8.0e-10     2000,4000   10,1000     2.0,-2.0      20.0
+# 905      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     1.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
+# 906      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     2.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
+# 907      cs@lique.dat    6           model63     0.37    none                        chem3     1.0e-10     4.0e-09     2000,4000   10,1000     2.0,-2.0      20.0
+# switch to two evaporation zones, and then lower the outer evap zone first (based on model 905)
+908        cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     1.0e-09,2.0e-10     2000,4000   10,300,1000     2.0,-2.0      20.0
+909        cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     1.0e-09,5.0e-10     2000,4000   10,300,1000     2.0,-2.0      20.0
+910        cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     1.0e-09,8.0e-10     2000,4000   10,300,1000     2.0,-2.0      20.0
