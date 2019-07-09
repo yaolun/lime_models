@@ -4,7 +4,7 @@ import pandas as pd
 import astropy.io as io
 import astropy.constants as const
 from astropy.convolution import convolve, Box1DKernel
-from scipy.interpolate import interp2d
+from scipy.interpolate import interp2d, interp1d
 from getTSC import *
 mh = const.m_p.cgs.value+const.m_e.cgs.value
 MS = const.M_sun.cgs.value
@@ -903,6 +903,15 @@ class Hyperion2LIME:
                 abundance = a1[0]
             else:
                 abundance = 0.0
+
+        elif config['a_model'] == 'interp':
+            filename = config['a_params0']
+            adata = io.ascii.read(filename, names=['radius', 'abundance'])
+            f_a = interp1d(adata['radius'], adata['abundance'])
+            if (r_in < adata['radius'].min()*au_cgs) or (r_in > adata['radius'].max()*au_cgs):
+                abundance = 1e-40
+            else:
+                abundance = f_a(r_in/au_cgs)
 
         if self.debug:
             foo = open('abundance.log', 'a')
