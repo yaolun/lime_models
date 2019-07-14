@@ -1362,5 +1362,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 929      cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.4e-09,1.0e-10     2000,4000   20,300,1000     2.0,-2.0      20.0
 # 930      cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.4e-09,1.0e-10     2000,4000   50,300,1000     2.0,-2.0      20.0
 #
-931        cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   50,300,1000     2.0,-2.0      20.0
-932        cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.8e-09,1.0e-10     2000,4000   50,300,1000     2.0,-2.0      20.0
+# 931      cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   50,300,1000     2.0,-2.0      20.0
+# 932      cs@lique.dat    6           model63     0.37    none                        chem4     1.0e-10     2.8e-09,1.0e-10     2000,4000   50,300,1000     2.0,-2.0      20.0
+# try model 928 with a younger envelope
+933        cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.4e-09,1.0e-10     2000,4000   10,300,1000     2.0,-2.0      20.0
