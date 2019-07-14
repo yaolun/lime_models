@@ -912,6 +912,9 @@ class Hyperion2LIME:
                 abundance = 1e-40
             else:
                 abundance = f_a(r_in/au_cgs)
+        else:
+            print('Cannot recognize the input a_model', config['a_model'])
+            return False
 
         if self.debug:
             foo = open('abundance.log', 'a')
