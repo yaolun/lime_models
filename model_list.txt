@@ -1372,6 +1372,6 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 935      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
 # H13CN - 15000 and 12500
 # 936      h13cn.dat       3           model63     0.37    none                        chem3     1.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
-# 937        h13cn.dat       3           model69     0.37    none                        chem3     1.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
+937        h13cn.dat       3           model69     0.37    none                        chem3     1.5e-09     6.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
 # run a flat one for Vivien
-938        hco+@xpol.dat   3           model63     0.37    none                        chem3     2.0e-9      2.0e-09     2000,4000   50,1000     0.0,0.0       20.0
+# 938      hco+@xpol.dat   3           model63     0.37    none                        chem3     2.0e-9      2.0e-09     2000,4000   50,1000     0.0,0.0       20.0
