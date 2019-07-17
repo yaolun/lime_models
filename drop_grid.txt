@@ -1,28 +1,82 @@
 model_name      moldata         lower_level     hy_model        cs              velfile         a_model         a_params0       a_params1       a_params2       a_params3       a_params4
-# 1             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+05    100
-# 2             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+05    100
-# 3             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+05    100
-# 4             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+05    100
-# 5             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+05    100
-# 6             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+05    100
-# 7             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+05    100
-# 8             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+05    100
-# 9             hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+05    100
-# 10            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+06    100
-# 11            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+06    100
-# 12            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+06    100
-# 13            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+06    100
-# 14            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+06    100
-# 15            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+06    100
-# 16            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+06    100
-# 17            hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+06    100
-18              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+06    100
-19              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+07    100
-20              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+07    100
-21              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+07    100
-22              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+07    100
-23              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+07    100
-24              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+07    100
-25              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+07    100
-26              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+07    100
-27              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+07    100
+# 1               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+05    100
+# 2               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+05    100
+# 3               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+05    100
+# 4               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+05    100
+# 5               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+05    100
+# 6               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+05    100
+# 7               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+05    100
+# 8               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+05    100
+# 9               hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+05    100
+# 10              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+06    100
+# 11              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+06    100
+# 12              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+06    100
+# 13              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+06    100
+# 14              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+06    100
+# 15              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+06    100
+# 16              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+06    100
+# 17              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+06    100
+# 18              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+06    100
+# 19              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-13    30.000000       3.162278e+07    100
+# 20              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-12    30.000000       3.162278e+07    100
+# 21              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-10    3.162278e-11    30.000000       3.162278e+07    100
+# 22              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-13    30.000000       3.162278e+07    100
+# 23              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-12    30.000000       3.162278e+07    100
+# 24              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-09    3.162278e-11    30.000000       3.162278e+07    100
+# 25              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-13    30.000000       3.162278e+07    100
+# 26              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-12    30.000000       3.162278e+07    100
+# 27              hco+@xpol.dat   3               model57         0.370           none            drop3           3.162278e-08    3.162278e-11    30.000000       3.162278e+07    100
+28              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    20.000000       3.162278e+05    100           
+29              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    30.000000       3.162278e+05    100           
+30              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    20.000000       3.162278e+05    100           
+31              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    30.000000       3.162278e+05    100           
+32              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    20.000000       3.162278e+05    100           
+33              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    30.000000       3.162278e+05    100           
+34              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    20.000000       3.162278e+05    100           
+35              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    30.000000       3.162278e+05    100           
+36              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    20.000000       3.162278e+05    100           
+37              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    30.000000       3.162278e+05    100           
+38              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    20.000000       3.162278e+05    100           
+39              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    30.000000       3.162278e+05    100           
+40              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    20.000000       3.162278e+05    100           
+41              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    30.000000       3.162278e+05    100           
+42              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    20.000000       3.162278e+05    100           
+43              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    30.000000       3.162278e+05    100           
+44              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    20.000000       3.162278e+05    100           
+45              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    30.000000       3.162278e+05    100           
+46              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    20.000000       3.162278e+06    100           
+47              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    30.000000       3.162278e+06    100           
+48              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    20.000000       3.162278e+06    100           
+49              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    30.000000       3.162278e+06    100           
+50              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    20.000000       3.162278e+06    100           
+51              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    30.000000       3.162278e+06    100           
+52              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    20.000000       3.162278e+06    100           
+53              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    30.000000       3.162278e+06    100           
+54              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    20.000000       3.162278e+06    100           
+55              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    30.000000       3.162278e+06    100           
+56              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    20.000000       3.162278e+06    100           
+57              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    30.000000       3.162278e+06    100           
+58              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    20.000000       3.162278e+06    100           
+59              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    30.000000       3.162278e+06    100           
+60              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    20.000000       3.162278e+06    100           
+61              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    30.000000       3.162278e+06    100           
+62              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    20.000000       3.162278e+06    100           
+63              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    30.000000       3.162278e+06    100           
+64              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    20.000000       3.162278e+07    100           
+65              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-11    30.000000       3.162278e+07    100           
+66              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    20.000000       3.162278e+07    100           
+67              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-10    30.000000       3.162278e+07    100           
+68              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    20.000000       3.162278e+07    100           
+69              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-10    1.000000e-09    30.000000       3.162278e+07    100           
+70              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    20.000000       3.162278e+07    100           
+71              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-11    30.000000       3.162278e+07    100           
+72              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    20.000000       3.162278e+07    100           
+73              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-10    30.000000       3.162278e+07    100           
+74              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    20.000000       3.162278e+07    100           
+75              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-09    1.000000e-09    30.000000       3.162278e+07    100           
+76              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    20.000000       3.162278e+07    100           
+77              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-11    30.000000       3.162278e+07    100           
+78              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    20.000000       3.162278e+07    100           
+79              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-10    30.000000       3.162278e+07    100           
+80              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    20.000000       3.162278e+07    100           
+81              hco+@xpol.dat   3               model69         0.370           none            drop3           1.000000e-08    1.000000e-09    30.000000       3.162278e+07    100           

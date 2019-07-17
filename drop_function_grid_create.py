@@ -13,9 +13,9 @@ def grid_create(list_params):
     # read the exisiting model list
     if os.path.exists('/Users/yaolun/GoogleDrive/research/lime_models/drop_grid.txt'):
         model_list = open('/Users/yaolun/GoogleDrive/research/lime_models/drop_grid.txt','r').readlines()
-        for i, line in enumerate(model_list[2:]):
+        for i, line in enumerate(model_list[1:]):
             if not line.startswith('#'):
-                model_list[i+2] = '# '+line
+                model_list[i+1] = '# '+line
         last_model_num = i+1
         foo = open('/Users/yaolun/GoogleDrive/research/lime_models/drop_grid.txt', 'w')
         for line in model_list:
@@ -28,7 +28,7 @@ def grid_create(list_params):
         foo.write('{:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}  {:<14s}\n'.format(*colhead))
 
     ref = {'model_name': last_model_num+1, 'moldata': 'hco+@xpol.dat', 'lower_level': '3',
-           'hy_model': 'model57', 'cs': 0.37, 'tsc': 'none',
+           'hy_model': 'model69', 'cs': 0.37, 'tsc': 'none',
            'a_model': 'drop3', 'Xo': 5e-9, 'Xd': 1e-11,'Tevap': 30.0, 'ndepl': 1e6, 'a_params4': 100}
 
     for i, mod in enumerate(product):
@@ -55,9 +55,9 @@ import numpy as np
 #                'ndepl': 10**np.arange(5, 7.5, 1.0)}
 
 # 2nd run
-list_params = {'Xo': 10**np.arange(-9.5, -7.0, 1.0),
-               'Xd': 10**np.arange(-12.5, -9.5, 1.0),
-               'Tevap': np.arange(30,31),
+list_params = {'Xo': 10**np.arange(-10.0, -7.0, 1.0),
+               'Xd': 10**np.arange(-11.0, -8.0, 1.0),
+               'Tevap': np.array([20.0, 30.0]),# np.arange(30,31),
                'ndepl': 10**np.arange(5.5, 8.0, 1.0)}
 
 grid_create(list_params)
