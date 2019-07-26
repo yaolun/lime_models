@@ -1382,6 +1382,9 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 942      hcn.dat         3           model69     0.37    none                        chem3     1.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
 # 943      hcn.dat         3           model69     0.37    none                        chem3     9.0e-10     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
 # 944      hcn.dat         3           model69     0.37    none                        chem3     8.0e-10     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
-945        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
-946        hcn.dat         3           model69     0.37    none                        chem3     2.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
-947        hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
+# 945      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
+# 946      hcn.dat         3           model69     0.37    none                        chem3     2.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
+# 947      hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
+# HCO+: deeper absorption
+948        hco+@xpol.dat   3           model69     0.37    none                        chem3     6.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+949        hco+@xpol.dat   3           model69     0.37    none                        chem3     7.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
