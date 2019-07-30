@@ -1389,7 +1389,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 948      hco+@xpol.dat   3           model69     0.37    none                        chem3     6.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
 # 949      hco+@xpol.dat   3           model69     0.37    none                        chem3     7.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
 # HCN
-950        hcn.dat         3           model69     0.37    none                        chem3     4.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
-951        hcn.dat         3           model69     0.37    none                        chem3     5.0e-09     6.0e-10     1500,2500   1.0,1000    2.0,-2.0      20.0
-952        hco+@xpol.dat   3           model69     0.37    none                        chem3     4.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
-953        hco+@xpol.dat   3           model69     0.37    none                        chem3     3.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+950        hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     6.0e-10     1500,2000   1.0,1000    2.0,-2.0      20.0
+951        hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     6.0e-10     1400,2500   1.0,1000    2.0,-2.0      20.0
+952        hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     6.0e-10     1200,2500   1.0,1000    2.0,-2.0      20.0
+953        hco+@xpol.dat   3           model69     0.37    none                        chem3     4.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+954        hco+@xpol.dat   3           model69     0.37    none                        chem3     3.0e-9      2.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
