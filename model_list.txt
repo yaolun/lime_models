@@ -1408,8 +1408,15 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 963      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     1.0e-09     1800,2000   1.0,1000    2.0,-2.0      20.0
 # HCO+
 # if use the mean temperature for 20 K and 100 K.
-964        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      1.0e-09     4000,6000   75,3300     2.0,-2.0      20.0
+# 964      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      1.0e-09     4000,6000   75,3300     2.0,-2.0      20.0
 # use the lowest temp. to determine the CO evap. radius and H2O evap. radius
-965        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
-966        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
-967        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      5.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
+# 965      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# 966      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
+# 967      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      5.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
+#
+968        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+969        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      2.5e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# HCN
+970        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     1800,2000   1.0,1250    2.0,-2.0      20.0
+971        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
+972        hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
