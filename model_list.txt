@@ -1400,9 +1400,12 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 957      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     7.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
 # 958      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     8.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
 # HCO+
-959        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
-960        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      5.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+# 959      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
+# 960      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      5.0e-09     2000,4000   50,1000     2.0,-2.0      20.0
 # HCN
-961        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
-962        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     1.0e-09     2000,2000   1.0,1000    2.0,-2.0      20.0
-963        hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     1.0e-09     1800,2000   1.0,1000    2.0,-2.0      20.0
+# 961      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,2000   1.0,1000    2.0,-2.0      20.0
+# 962      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     1.0e-09     2000,2000   1.0,1000    2.0,-2.0      20.0
+# 963      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     1.0e-09     1800,2000   1.0,1000    2.0,-2.0      20.0
+# HCO+
+961        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
+962        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      5.0e-09     2000,4000   50,1250     2.0,-2.0      20.0
