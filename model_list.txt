@@ -1421,7 +1421,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 971      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
 # 972      hcn.dat         3           model69     0.37    none                        chem3     3.0e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
 # CS
-973        cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.4e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
+# 973      cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.4e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
 # H13CN
-974        h13cn.dat       3           model69     0.37    none                        chem3     1.9e-11     1.2e-11     2000,4000   1.0,1250    2.0,-2.0      20.0
+# 974      h13cn.dat       3           model69     0.37    none                        chem3     1.9e-11     1.2e-11     2000,4000   1.0,1250    2.0,-2.0      20.0
 # test for a lower v_turb
+975        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
