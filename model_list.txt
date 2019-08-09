@@ -1434,5 +1434,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 978      cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.4e-09,1.2e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
 # 979      cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.4e-09,1.4e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
 # lower vturb = 0.25 km/s
-980      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
-981      h13cn.dat       3           model69     0.37    none                        chem3     1.9e-11     1.2e-11     2000,4000   1.0,1250    2.0,-2.0      20.0
+# 980      hcn.dat         3           model69     0.37    none                        chem3     1.5e-09     9.0e-10     2000,4000   1.0,1250    2.0,-2.0      20.0
+# 981      h13cn.dat       3           model69     0.37    none                        chem3     1.9e-11     1.2e-11     2000,4000   1.0,1250    2.0,-2.0      20.0
+# lower vturb (0.25 km/s) for CS
+982        cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
