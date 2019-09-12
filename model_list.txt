@@ -1,4 +1,4 @@
-# a_model:
+ # a_model:
 #   - step1 (neg_step1): single negative step
 #       * a_params0: the abundance beyond the (infall radius)*a_params2
 #       * a_params1: the ratio of the inner abundance to the outer abundance
@@ -1439,5 +1439,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # lower vturb (0.25 km/s) for CS
 # 982      cs@lique.dat    6           model69     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
 # tweak HCO+ with vturb=0.25 km/s
-983        hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
-984        hco+@xpol.dat   3           model69     0.37    none                        chem3     6.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# 983      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# 984      hco+@xpol.dat   3           model69     0.37    none                        chem3     6.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# run HCO+ and CS with a higher Ω (5e-13)
+985        hco+@xpol.dat   3           model70     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+986        cs@lique.dat    6           model70     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
