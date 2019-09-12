@@ -1,4 +1,4 @@
- # a_model:
+# a_model:
 #   - step1 (neg_step1): single negative step
 #       * a_params0: the abundance beyond the (infall radius)*a_params2
 #       * a_params1: the ratio of the inner abundance to the outer abundance
