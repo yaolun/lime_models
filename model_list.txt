@@ -1442,5 +1442,8 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # 983      hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
 # 984      hco+@xpol.dat   3           model69     0.37    none                        chem3     6.0e-9      4.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
 # run HCO+ and CS with a higher Ω (5e-13)
-985        hco+@xpol.dat   3           model70     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
-986        cs@lique.dat    6           model70     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
+# 985      hco+@xpol.dat   3           model70     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# 986      cs@lique.dat    6           model70     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
+# even higher Ω=1e-12
+987        hco+@xpol.dat   3           model71     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+988        cs@lique.dat    6           model71     0.37    none                        chem4     1.0e-10     2.6e-09,1.0e-10     2000,4000   10,300,1250     2.0,-2.0      20.0
