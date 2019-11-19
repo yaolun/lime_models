@@ -157,9 +157,9 @@ for m in args['model_num'].split(','):
         velfile = mod_dir+'tsc_regrid.h5'
         # velfile = dict_config['velfile']
     else:
-        if os.path.exist(dict_config['velfile']):
+        if os.path.exists(dict_config['velfile']):
             velfile = dict_config['velfile']
-        elif os.path.exist(dict_path['velfile']):
+        elif os.path.exists(dict_path['velfile']):
             velfile = dict_path['velfile']
         else:
             print('velfile not found.  It may cause error if a re-calculation is required.')
