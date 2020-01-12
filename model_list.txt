@@ -1464,7 +1464,7 @@ model_name  moldata         lower_level hy_model    cs      velfile             
 # v_turb = 0.3 km/s
 # 1000     hco+@xpol.dat   3           model74     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
 # test for LIME vs. LIME-AID (model 996)
-1001       hco+@xpol.dat   3           model74     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
+# 1001      hco+@xpol.dat   3           model74     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
 # test for high rotation with an age of 12500 years (model69)
 # Ω = 2.5e-13
 1002       hco+@xpol.dat   3           model69     0.37    none                        chem3     5.0e-9      3.0e-09     2000,4000   15,1250     2.0,-2.0      20.0
