@@ -4,6 +4,7 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
     import astropy.constants as const
     from scipy.interpolate import interp1d
     import h5py
+    import shutil
     au = const.au.cgs.value
     yr = 3600.*24*365
 
@@ -33,6 +34,10 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
         os.chdir(TSC_dir)
         os.system(TSC_dir+'ncofrac_update')
 
+        # save the outputs
+        shutil.copy2(TSC_dir+'tsc.par', outdir+'tsc_outer.par')
+        shutil.copy2(TSC_dir+'rho_v_env', outdir+'tsc_outer')
+
         # read in the TSC output
         tsc2d_coarse = loadTSC(TSC_dir+'rho_v_env', age, cs, omega, **kwargs)
 
@@ -43,6 +48,10 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
 
         os.chdir(TSC_dir)
         os.system(TSC_dir+'ncofrac_update')
+
+        # save the outputs
+        shutil.copy2(TSC_dir+'tsc.par', outdir+'tsc_inner.par')
+        shutil.copy2(TSC_dir+'rho_v_env', outdir+'tsc_inner')
 
         # read in the TSC output
         # typically the inner region of the TSC model doesn't have the "glitch"

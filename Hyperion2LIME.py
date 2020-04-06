@@ -1,9 +1,7 @@
 from hyperion.model import ModelOutput
 import numpy as np
-import pandas as pd
 import astropy.io as io
 import astropy.constants as const
-from astropy.convolution import convolve, Box1DKernel
 from scipy.interpolate import interp2d, interp1d
 from getTSC import *
 mh = const.m_p.cgs.value+const.m_e.cgs.value
@@ -47,7 +45,8 @@ class Hyperion2LIME:
         # option to use simple Trapezoid rule average for getting density, temperature, and velocity
         self.interpolate = interpolate
 
-        self.tsc2d = getTSC(age, cs, omega, velfile=velfile, TSC_dir=TSC_dir, outdir=tsc_outdir, outname='tsc_regrid')
+        self.tsc2d = getTSC(age, cs, omega, velfile=velfile, TSC_dir=TSC_dir, 
+                            outdir=tsc_outdir, outname='tsc_regrid')
 
         # # velocity grid construction
         # if load_full:
