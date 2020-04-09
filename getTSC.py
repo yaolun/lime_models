@@ -60,7 +60,6 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
 
         # reduce the total file size and interpolate onto a log-grid
         # create the log-linear grid cap at 0.01 for the reduced radius
-        print(age, cs)
         r_in = 0.1*au/(cs*1e5*age*yr)
         ri           = r_in * (1.0/r_in)**(np.arange(nr+1).astype(dtype='float')/float(nr))
         # ri           = np.hstack((0.0, ri))
