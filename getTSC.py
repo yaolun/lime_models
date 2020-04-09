@@ -68,7 +68,6 @@ def getTSC(age, cs, omega, velfile='none', max_rCell=0.001, TSC_dir='', outdir='
         ind = np.where(ri_cellsize > max_rCell)[0][0]       # The largest cell size is 100 AU
         ri = np.hstack((ri[0:ind], ri[ind]+np.arange(np.ceil((1.0-ri[ind])/max_rCell))*max_rCell, 1.0))
         rc = (ri[1:]+ri[:-1])/2
-        print(rc.min())
 
         thetac = tsc2d_fine['thetac']
 
