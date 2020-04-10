@@ -153,7 +153,7 @@ def loadTSC(velfile, age, cs, omega, fix_tsc=True, hybrid_tsc=False):
     ntheta = len(theta)
 
     # the output of TSC fortran binary is in mass density
-    rho2d = 1/(4*np.pi*G*(age*yr)**2)/mh/mmw * np.reshape(tsc['ro'].to_numpy(), (nxr, ntheta))
+    rho2d = 1/(4*np.pi*G*(age*yr)**2)/mh/mmw * np.reshape(tsc['ro'].to_numpy(), (nxr, ntheta))  # to gas number density
 
     # in unit of km/s
     vr2d = np.reshape(tsc['ur'].to_numpy(), (nxr, ntheta)) * np.float64(cs)
